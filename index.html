@@ -3165,6 +3165,82 @@
       .difference-card__promise { box-shadow: inset 0 4px 0 var(--purple); }
     }
 
+    /* Real Google appointment schedule — prominent and fully usable in the hero. */
+    .hero-inner {
+      grid-template-columns: minmax(0, 1.28fr) minmax(500px, .72fr);
+      column-gap: clamp(30px, 4vw, 64px);
+    }
+    .hero-booking {
+      width: 100%;
+      padding: 14px;
+      overflow: hidden;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, .94);
+      box-shadow: 0 34px 90px -32px rgba(17, 17, 19, .42);
+    }
+    .hero-booking__intro { padding: 8px 10px 12px; }
+    .hero-booking .hero-contact__label { margin-bottom: 8px; }
+    .hero-booking h2 { font-size: clamp(1.65rem, 2vw, 2.1rem); }
+    .hero-booking .hero-contact__lede { margin: 7px 0 0; font-size: .73rem; }
+    .hero-booking__frame {
+      width: 100%;
+      height: min(56svh, 570px);
+      min-height: 450px;
+      overflow: hidden;
+      border: 1px solid rgba(17, 17, 19, .1);
+      border-radius: 16px;
+      background: #fff;
+    }
+    .hero-booking__frame iframe {
+      width: 100%;
+      height: 100%;
+      display: block;
+      border: 0;
+      background: #fff;
+    }
+    .hero-booking__fallback {
+      display: block;
+      padding: 10px 8px 1px;
+      color: var(--ink-soft);
+      font-size: .68rem;
+      font-weight: 650;
+      text-align: center;
+      text-decoration: none;
+    }
+    .hero-booking__fallback:hover { color: var(--purple); }
+
+    @media (max-width: 1120px) and (min-width: 861px) {
+      .hero-inner { grid-template-columns: minmax(0, 1fr) minmax(460px, .85fr); column-gap: 28px; }
+      .hero-booking__frame { height: 520px; min-height: 420px; }
+    }
+
+    @media (max-width: 860px) {
+      .hero { min-height: auto; overflow: visible; }
+      .hero-inner {
+        width: min(calc(100% - 36px), 720px);
+        min-height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 34px;
+        padding: 176px 0 104px;
+      }
+      .hero-copy { width: 100%; order: 1; position: static; top: auto; text-align: center; }
+      .hero-booking { display: block; order: 2; padding: 10px; }
+      .hero-booking__intro { padding: 10px 8px 14px; text-align: center; }
+      .hero-booking .hero-contact__label { justify-content: center; }
+      .hero-booking h2 { font-size: clamp(1.8rem, 7vw, 2.35rem); }
+      .hero-booking .hero-contact__lede { font-size: .82rem; line-height: 1.45; }
+      .hero-booking__frame { height: 650px; min-height: 650px; border-radius: 14px; }
+      .hero-booking__fallback { padding-block: 12px 3px; font-size: .76rem; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-inner { width: calc(100% - 24px); padding-top: 164px; gap: 28px; }
+      .hero-booking { border-radius: 20px; }
+      .hero-booking__frame { height: 620px; min-height: 620px; }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
@@ -3294,18 +3370,22 @@
           </a>
         </div>
 
-        <aside class="hero-contact" aria-labelledby="hero-contact-title">
-          <span class="hero-contact__label">Kostenloser Praxis-Check</span>
-          <h2 id="hero-contact-title">Wie viel Potenzial hat Ihre Praxis?</h2>
-          <p class="hero-contact__lede">Wir rufen Sie innerhalb eines Werktags zurück.</p>
-          <form id="hero-contact-form">
-            <div class="hero-form-grid">
-              <div class="hero-field hero-field--full"><label for="hero-practice">Praxisname</label><input id="hero-practice" name="practice" autocomplete="organization" placeholder="Name Ihrer Praxis" required></div>
-              <div class="hero-field hero-field--full"><label for="hero-phone">Telefon</label><input id="hero-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+49 …" required></div>
-            </div>
-            <button class="button button--ink" type="submit">Potenzial prüfen lassen<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-            <p class="hero-form-status" id="hero-form-status" aria-live="polite"></p>
-          </form>
+        <aside class="hero-contact hero-booking" aria-labelledby="hero-booking-title">
+          <div class="hero-booking__intro">
+            <span class="hero-contact__label">Direkte Online-Terminbuchung</span>
+            <h2 id="hero-booking-title">Wählen Sie Ihren Termin.</h2>
+            <p class="hero-contact__lede">30 Minuten · kostenlos · freie Zeiten live aus unserem Kalender</p>
+          </div>
+          <div class="hero-booking__frame">
+            <iframe
+              src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ2NX_FIacQIgMsaH21AOHbTUKh-Djo1RyKp-cnsw9z5vPVt95WV-l_tLb4JztzKj3ZVuODZA8MG?gv=true"
+              title="Kostenloses Potenzialgespräch mit Digital Movement buchen"
+              loading="eager"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allow="clipboard-write"
+            ></iframe>
+          </div>
+          <a class="hero-booking__fallback" href="https://calendar.app.google/AUnFZYSrXs3DtoLV7" target="_blank" rel="noopener">Terminseite in neuem Tab öffnen ↗</a>
         </aside>
       </div>
 
@@ -4117,27 +4197,6 @@
         });
       }, { threshold: .7 });
       document.querySelectorAll('[data-count]').forEach(function (element) { counterObserver.observe(element); });
-
-      var heroForm = document.getElementById('hero-contact-form');
-      var heroFormStatus = document.getElementById('hero-form-status');
-      heroForm.addEventListener('submit', function (event) {
-        event.preventDefault();
-        if (!heroForm.reportValidity()) return;
-        var data = new FormData(heroForm);
-        var subject = 'Kostenloser Praxis-Check – ' + data.get('practice');
-        var body = [
-          'Hallo Raoul,',
-          '',
-          'ich möchte den kostenlosen Praxis-Check anfragen.',
-          '',
-          'Praxis: ' + data.get('practice'),
-          'Telefon: ' + data.get('phone'),
-          '',
-          'Viele Grüße'
-        ].join('\n');
-        heroFormStatus.textContent = 'Ihr E-Mail-Programm wird mit der vorbereiteten Anfrage geöffnet.';
-        window.location.href = 'mailto:alex@digitalmovement.uk?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
-      });
 
       var form = document.getElementById('contact-form');
       var status = document.getElementById('form-status');
