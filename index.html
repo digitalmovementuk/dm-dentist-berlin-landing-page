@@ -2780,6 +2780,34 @@
       --shadow-2: 0 38px 86px -48px rgba(18, 14, 24, .3);
     }
 
+    .hero-metrics {
+      width:fit-content;
+      max-width:100%;
+      display:flex;
+      overflow:visible;
+      margin:18px 0 20px;
+      border:0;
+      border-radius:0;
+      background:transparent;
+      box-shadow:none;
+      backdrop-filter:none;
+    }
+    .hero-metrics > div {
+      min-height:0;
+      display:flex;
+      flex-direction:row;
+      align-items:baseline;
+      gap:7px;
+      padding:0 18px;
+      border:0;
+      border-right:1px solid rgba(17,17,19,.22);
+      text-align:left;
+    }
+    .hero-metrics > div:first-child { padding-left:0; }
+    .hero-metrics > div:last-child { padding-right:0; border-right:0; }
+    .hero-metrics strong { color:var(--ink); font-size:1.34rem; font-weight:700; line-height:1; }
+    .hero-metrics span { color:var(--ink-soft); font-size:.78rem; font-weight:600; line-height:1.25; white-space:nowrap; }
+
     .site-background::after { display: none; }
     main > .section:not(.hero),
     main > .section--compact,
@@ -2898,6 +2926,26 @@
     .difference-proof__link::after { color: #d9c5e4; }
 
     @media (max-width: 700px) {
+      .hero-metrics {
+        width:100%;
+        display:grid;
+        grid-template-columns:repeat(3,minmax(0,1fr));
+        margin:14px 0 17px;
+      }
+      .hero-metrics > div,
+      .hero-metrics > div:first-child,
+      .hero-metrics > div:last-child {
+        min-height:0;
+        flex-direction:column;
+        align-items:center;
+        gap:5px;
+        padding:0 8px;
+        border-right:1px solid rgba(17,17,19,.18);
+        text-align:center;
+      }
+      .hero-metrics > div:last-child { border-right:0; }
+      .hero-metrics strong { font-size:1.12rem; }
+      .hero-metrics span { font-size:.64rem; line-height:1.25; white-space:normal; }
       main > .section:not(.hero),
       main > .section--compact,
       main > .contact-section,
@@ -3029,14 +3077,9 @@
           <p class="hero-lede">Wir helfen Zahnarztpraxen zu mehr Wunschpatienten und Umsatz.</p>
 
           <div class="hero-metrics" aria-label="Beispielhafte Ergebnisse aus Kundenprojekten">
-            <div><strong>+20</strong><span>Neupatienten<br>pro Monat</span></div>
-            <div><strong>+140&nbsp;%</strong><span>mehr Premium-Behandlungen<br>pro Monat</span></div>
+            <div><strong>+20</strong><span>Neupatienten</span></div>
+            <div><strong>+140&nbsp;%</strong><span>Premium-Behandlungen</span></div>
             <div><strong>+280&nbsp;%</strong><span>Umsatzsteigerung</span></div>
-          </div>
-
-          <div class="hero-special">
-            <span>Sonderaktion bis 15. August 2026</span>
-            <strong>Kostenlose High-End-Premium-Website</strong>
           </div>
 
           <div class="hero-actions">
@@ -3273,25 +3316,9 @@
             <span class="difference-card__meta">Mindestlaufzeit: sechs Monate</span>
           </article>
 
-          <article class="difference-card difference-card--special reveal">
-            <div>
-              <span class="difference-special__badge">03 · Sonderaktion bis 15. August 2026</span>
-              <h3>Kostenlose High-End-Premium-Website.</h3>
-              <p>Bei Projektstart bis zum 15. August 2026 erstellen wir Ihre neue Praxis-Website im Rahmen des vereinbarten SEO-Projekts ohne separate Website-Kosten.</p>
-            </div>
-            <ul class="difference-features" aria-label="Bestandteile der Premium-Website">
-              <li>Individuelles Premium-UX/UI-Design</li>
-              <li>Animationen und interaktive Elemente</li>
-              <li>Eingebettete Videos und hochwertige Medien</li>
-              <li>Schnelle, mobile-optimierte Umsetzung</li>
-              <li>Kurze Formulare und direkte Kontaktwege</li>
-              <li>Konzipiert für mehr Terminanfragen</li>
-            </ul>
-          </article>
-
           <article class="difference-card difference-card--advice reveal">
             <div class="difference-card__top">
-              <span class="difference-card__number">04</span>
+              <span class="difference-card__number">03</span>
               <span class="difference-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19V9l8-5 8 5v10"/><path d="M8 19v-5h8v5M8 10h8"/></svg></span>
             </div>
             <span class="difference-card__kicker">Senior-Beratung</span>
@@ -3302,7 +3329,7 @@
 
           <article class="difference-card difference-card--proof reveal reveal-delay-1">
             <div class="difference-card__top">
-              <span class="difference-card__number">05</span>
+              <span class="difference-card__number">04</span>
               <span class="difference-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m12 3 2.7 5.5 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></svg></span>
             </div>
             <span class="difference-card__kicker">Beratung &amp; Kundenservice</span>
