@@ -2929,6 +2929,20 @@
       font-weight:650;
       line-height:1.55;
     }
+    .story-geo-note {
+      max-width:820px;
+      display:grid;
+      gap:8px;
+      margin-top:22px;
+      padding:18px 20px;
+      border:1px solid rgba(116,66,148,.22);
+      border-left:4px solid var(--purple);
+      border-radius:14px;
+      background:rgba(116,66,148,.09);
+      text-align:left;
+    }
+    .story-geo-note strong { color:var(--purple); font-size:.76rem; letter-spacing:.07em; text-transform:uppercase; }
+    .story-geo-note p { margin:0; color:#392546; font-size:clamp(.84rem,1.1vw,.96rem); line-height:1.55; }
     .story-takeaway,
     .story-search-grid .channel-window:nth-child(2) .story-takeaway,
     .story-search-grid .channel-window:nth-child(3) .story-takeaway {
@@ -3028,6 +3042,7 @@
       .story-search-grid .channel-window:nth-child(2),
       .story-search-grid .channel-window:nth-child(3) { padding: 7px; border-radius: 20px; }
       .story-takeaway { padding: 17px 15px; }
+      .story-geo-note { text-align:center; }
       .difference-card__promise { box-shadow: inset 0 4px 0 var(--purple); }
     }
 
@@ -3233,9 +3248,18 @@
                   <img class="deferred-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="assets/screens/invisalign-google-results.jpg" alt="Google-Ergebnisse für Invisalign Berlin mit mehreren sichtbaren Praxen" width="1596" height="1800" loading="lazy" decoding="async" fetchpriority="low">
                 </figure>
                 <figure class="channel-window reveal">
+                  <div class="story-scene__intro story-card-copy">
+                    <span class="story-step-label">KI-Suche</span>
+                    <h3>Zunehmend wird mit KI gesucht.</h3>
+                    <p class="story-scene__lead">KI-Antworten nennen Anbieter und Quellen direkt.</p>
+                    <p class="story-card-copy__statement">Hier liegt Ihr größtes Potenzial, da aktuell nur sehr wenige Wettbewerber ihre Websites für KI-Suchen optimieren.</p>
+                    <aside class="story-geo-note" aria-label="Definition und Vorteil von GEO">
+                      <strong>AI Search Optimisation – kurz „GEO“</strong>
+                      <p>GEO bereitet Ihre Website so auf, dass KI-Systeme Ihre Praxis als passende Quelle verstehen und in Antworten nennen können. Ihr Vorteil: Sie werden früher sichtbar als Wettbewerber, die ihre Seiten noch nicht für KI-Suchen optimieren.</p>
+                    </aside>
+                  </div>
                   <div class="channel-window__bar" aria-hidden="true"><i></i><i></i><i></i><span>ChatGPT-Antwort</span></div>
                   <img class="deferred-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="assets/screens/invisalign-ai-recommendation.jpg" alt="ChatGPT-Antwort mit konkreten Empfehlungen für Invisalign-Praxen in Berlin" width="1800" height="1342" loading="lazy" decoding="async" fetchpriority="low">
-                  <figcaption><span>KI-Empfehlung 03</span><div><h3>Auch ChatGPT empfiehlt konkrete Praxen.</h3><p>KI-Antworten nennen Anbieter und Quellen direkt.</p></div><p class="story-takeaway"><span>Google und KI werden zu direkten Vertriebskanälen für Ihre Praxis.</span></p></figcaption>
                 </figure>
               </div>
             </section>
