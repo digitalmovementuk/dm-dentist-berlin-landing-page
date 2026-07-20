@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Doctolib Self-Booking-Kalender</title>
+  <desc id="desc">Beispiel eines Online-Kalenders zur Buchung einer Invisalign-Erstberatung.</desc>
+  <rect width="1200" height="760" fill="#eef3f8"/>
+  <rect x="54" y="42" width="1092" height="676" rx="28" fill="#fff" stroke="#dce4ed" stroke-width="2"/>
+  <rect x="54" y="42" width="1092" height="82" rx="28" fill="#0d6de8"/>
+  <path d="M54 96h1092v28H54z" fill="#0d6de8"/>
+  <circle cx="100" cy="83" r="22" fill="#fff" opacity=".18"/>
+  <path d="M90 83h20M100 73v20" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+  <text x="138" y="91" fill="#fff" font-family="Arial, sans-serif" font-size="30" font-weight="700">Doctolib</text>
+  <text x="1090" y="89" text-anchor="end" fill="#dcecff" font-family="Arial, sans-serif" font-size="16">Termin online buchen</text>
+
+  <line x1="465" y1="124" x2="465" y2="718" stroke="#e3e9f0" stroke-width="2"/>
+  <text x="94" y="174" fill="#607080" font-family="Arial, sans-serif" font-size="14" font-weight="700" letter-spacing="1.5">IHRE AUSWAHL</text>
+  <text x="94" y="220" fill="#162436" font-family="Arial, sans-serif" font-size="28" font-weight="700">Invisalign-Erstberatung</text>
+  <text x="94" y="252" fill="#607080" font-family="Arial, sans-serif" font-size="17">Lumera Dental Atelier · Steglitz</text>
+  <rect x="94" y="292" width="325" height="92" rx="16" fill="#f5f8fb" stroke="#dce4ed"/>
+  <circle cx="132" cy="338" r="20" fill="#dcecff"/>
+  <path d="M123 338h18M132 329v18" stroke="#0d6de8" stroke-width="3" stroke-linecap="round"/>
+  <text x="170" y="329" fill="#607080" font-family="Arial, sans-serif" font-size="14">Behandlung</text>
+  <text x="170" y="354" fill="#162436" font-family="Arial, sans-serif" font-size="17" font-weight="700">Erstgespräch · 30 Minuten</text>
+  <text x="94" y="432" fill="#162436" font-family="Arial, sans-serif" font-size="19" font-weight="700">So funktioniert es</text>
+  <circle cx="108" cy="475" r="14" fill="#0d6de8"/><text x="108" y="481" text-anchor="middle" fill="#fff" font-family="Arial" font-size="14" font-weight="700">1</text>
+  <text x="136" y="481" fill="#526172" font-family="Arial, sans-serif" font-size="16">Freien Termin auswählen</text>
+  <circle cx="108" cy="520" r="14" fill="#0d6de8"/><text x="108" y="526" text-anchor="middle" fill="#fff" font-family="Arial" font-size="14" font-weight="700">2</text>
+  <text x="136" y="526" fill="#526172" font-family="Arial, sans-serif" font-size="16">Kontaktdaten eingeben</text>
+  <circle cx="108" cy="565" r="14" fill="#0d6de8"/><text x="108" y="571" text-anchor="middle" fill="#fff" font-family="Arial" font-size="14" font-weight="700">3</text>
+  <text x="136" y="571" fill="#526172" font-family="Arial, sans-serif" font-size="16">Termin direkt bestätigen</text>
+
+  <text x="514" y="174" fill="#162436" font-family="Arial, sans-serif" font-size="24" font-weight="700">Termin auswählen</text>
+  <rect x="512" y="198" width="584" height="54" rx="14" fill="#f5f8fb" stroke="#dce4ed"/>
+  <path d="m544 226 8-8m-8 8 8 8" stroke="#526172" stroke-width="2.5" stroke-linecap="round"/>
+  <text x="804" y="232" text-anchor="middle" fill="#162436" font-family="Arial, sans-serif" font-size="17" font-weight="700">August 2026</text>
+  <path d="m1064 218 8 8m-8 8 8-8" stroke="#526172" stroke-width="2.5" stroke-linecap="round"/>
+
+  <g font-family="Arial, sans-serif" font-size="14" fill="#758392" text-anchor="middle">
+    <text x="574" y="290">MO</text><text x="680" y="290">DI</text><text x="786" y="290">MI</text><text x="892" y="290">DO</text><text x="998" y="290">FR</text>
+  </g>
+  <g font-family="Arial, sans-serif" text-anchor="middle">
+    <text x="574" y="324" fill="#162436" font-size="17" font-weight="700">24</text>
+    <text x="680" y="324" fill="#162436" font-size="17" font-weight="700">25</text>
+    <text x="786" y="324" fill="#162436" font-size="17" font-weight="700">26</text>
+    <text x="892" y="324" fill="#162436" font-size="17" font-weight="700">27</text>
+    <text x="998" y="324" fill="#162436" font-size="17" font-weight="700">28</text>
+  </g>
+  <g font-family="Arial, sans-serif" font-size="16" text-anchor="middle">
+    <rect x="526" y="350" width="96" height="48" rx="12" fill="#eaf3ff"/><text x="574" y="380" fill="#0d6de8" font-weight="700">09:00</text>
+    <rect x="632" y="350" width="96" height="48" rx="12" fill="#eaf3ff"/><text x="680" y="380" fill="#0d6de8" font-weight="700">09:30</text>
+    <rect x="738" y="350" width="96" height="48" rx="12" fill="#eaf3ff"/><text x="786" y="380" fill="#0d6de8" font-weight="700">10:00</text>
+    <rect x="844" y="350" width="96" height="48" rx="12" fill="#0d6de8"/><text x="892" y="380" fill="#fff" font-weight="700">10:30</text>
+    <rect x="950" y="350" width="96" height="48" rx="12" fill="#eaf3ff"/><text x="998" y="380" fill="#0d6de8" font-weight="700">11:00</text>
+    <rect x="526" y="414" width="96" height="48" rx="12" fill="#eaf3ff"/><text x="574" y="444" fill="#0d6de8" font-weight="700">13:00</text>
+    <rect x="632" y="414" width="96" height="48" rx="12" fill="#eaf3ff"/><text x="680" y="444" fill="#0d6de8" font-weight="700">14:30</text>
+    <rect x="738" y="414" width="96" height="48" rx="12" fill="#eaf3ff"/><text x="786" y="444" fill="#0d6de8" font-weight="700">15:00</text>
+    <rect x="844" y="414" width="96" height="48" rx="12" fill="#eaf3ff"/><text x="892" y="444" fill="#0d6de8" font-weight="700">16:30</text>
+    <rect x="950" y="414" width="96" height="48" rx="12" fill="#eaf3ff"/><text x="998" y="444" fill="#0d6de8" font-weight="700">17:00</text>
+  </g>
+  <rect x="512" y="508" width="584" height="74" rx="16" fill="#f5f8fb" stroke="#dce4ed"/>
+  <text x="542" y="539" fill="#607080" font-family="Arial, sans-serif" font-size="14">Ausgewählter Termin</text>
+  <text x="542" y="565" fill="#162436" font-family="Arial, sans-serif" font-size="18" font-weight="700">Donnerstag, 27. August · 10:30 Uhr</text>
+  <rect x="512" y="610" width="584" height="58" rx="29" fill="#0d6de8"/>
+  <text x="804" y="646" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="17" font-weight="700">Termin bestätigen</text>
+</svg>
