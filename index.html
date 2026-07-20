@@ -2807,6 +2807,31 @@
     .hero-metrics > div:last-child { padding-right:0; border-right:0; }
     .hero-metrics strong { color:var(--ink); font-size:1.34rem; font-weight:700; line-height:1; }
     .hero-metrics span { color:var(--ink-soft); font-size:.78rem; font-weight:600; line-height:1.25; white-space:nowrap; }
+    .hero-google-rating {
+      width:fit-content;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      margin-top:13px;
+      padding:8px 12px;
+      border:1px solid rgba(17,17,19,.12);
+      border-radius:999px;
+      background:rgba(255,255,255,.72);
+      box-shadow:0 10px 30px -22px rgba(17,17,19,.5);
+      color:var(--ink);
+      text-decoration:none;
+      backdrop-filter:blur(14px);
+      -webkit-backdrop-filter:blur(14px);
+    }
+    .hero-google-rating svg { width:18px; height:18px; flex:0 0 auto; }
+    .hero-google-rating__stars { color:#e9a700; font-size:.76rem; letter-spacing:.06em; line-height:1; }
+    .hero-google-rating strong { font-size:.78rem; line-height:1; }
+    .hero-google-rating > span:last-child { color:var(--ink-soft); font-size:.68rem; font-weight:600; line-height:1; }
+    .hero-google-rating:hover { border-color:rgba(17,17,19,.24); background:rgba(255,255,255,.86); }
+    @media (min-width: 1180px) {
+      .seo-reason .channel-heading { max-width:none; }
+      .seo-reason .channel-heading .section-title { font-size:clamp(2.9rem,3.5vw,3.5rem); white-space:nowrap; }
+    }
 
     .site-background::after { display: none; }
     main > .section:not(.hero),
@@ -2946,6 +2971,9 @@
       .hero-metrics > div:last-child { border-right:0; }
       .hero-metrics strong { font-size:1.12rem; }
       .hero-metrics span { font-size:.64rem; line-height:1.25; white-space:normal; }
+      .hero-google-rating { margin:12px auto 0; padding:8px 11px; }
+      .hero-google-rating__stars { font-size:.7rem; }
+      .hero-google-rating > span:last-child { font-size:.62rem; }
       main > .section:not(.hero),
       main > .section--compact,
       main > .contact-section,
@@ -3092,6 +3120,13 @@
               Anrufen
             </a>
           </div>
+
+          <a class="hero-google-rating" href="https://success.digitalmovement.uk/" target="_blank" rel="noopener" aria-label="5,0 von 5 Sternen bei Google. Bewertungen lesen">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+            <span class="hero-google-rating__stars" aria-hidden="true">★★★★★</span>
+            <strong>5,0</strong>
+            <span>Google-Bewertungen</span>
+          </a>
         </div>
 
         <aside class="hero-contact" aria-labelledby="hero-contact-title">
@@ -3120,27 +3155,13 @@
         </aside>
       </div>
 
-      <div class="hero-proof" aria-label="Digital Movement Vertrauenssignale">
-        <div class="hero-proof__item">
-          <strong>Seit 2018</strong>
-          <span>+300 Kunden</span>
-        </div>
-        <a class="hero-proof__item" href="https://success.digitalmovement.uk/" target="_blank" rel="noopener">
-          <strong>5,0 ★</strong>
-          <span>100+ Google-Bewertungen<small>Alle Bewertungen lesen ↗</small></span>
-        </a>
-        <div class="hero-proof__item hero-proof__item--award">
-          <strong>Digital Reference Award</strong>
-          <span>Auszeichnung 2026 · AU</span>
-        </div>
-      </div>
     </section>
 
     <section class="section section--compact seo-reason" id="warum" aria-labelledby="warum-title">
       <div class="container">
         <header class="section-heading channel-heading reveal">
           <p class="eyebrow">01 — Warum SEO für Ihre Praxis?</p>
-          <h2 class="section-title" id="warum-title">SEO als primärer Vertriebskanal <span class="muted">für Ihre Praxis.</span></h2>
+          <h2 class="section-title" id="warum-title">SEO als primärer Vertriebskanal für Ihre Praxis.</h2>
           <p class="section-lede">Erleben Sie den Weg aus Sicht eines Patienten: von der ersten Suche bis zum neuen Termin in Ihrer Praxis.</p>
         </header>
 
