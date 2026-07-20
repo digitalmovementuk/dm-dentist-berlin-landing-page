@@ -3241,6 +3241,161 @@
       .hero-booking__frame { height: 620px; min-height: 620px; }
     }
 
+    /* Digital Movement profile — one connected growth system. */
+    .about-dm {
+      position: relative;
+      z-index: 2;
+      padding-block: clamp(104px, 11vw, 168px);
+      background: transparent;
+    }
+    .about-dm__panel {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(38px, 5vw, 72px);
+      border: 1px solid rgba(17, 17, 19, .11);
+      border-radius: 30px;
+      color: var(--ink);
+      background: rgba(255, 255, 255, .94);
+      box-shadow: 0 40px 90px -54px rgba(17, 17, 19, .4);
+    }
+    .about-dm__panel::before {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      height: 4px;
+      content: "";
+      background: var(--gradient);
+    }
+    .about-dm__header {
+      max-width: 960px;
+      display: grid;
+      gap: 20px;
+    }
+    .about-dm__eyebrow {
+      width: fit-content;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0;
+      color: var(--purple);
+      font-size: .72rem;
+      font-weight: 750;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+    .about-dm__eyebrow::before {
+      width: 8px;
+      height: 8px;
+      flex: 0 0 auto;
+      border-radius: 50%;
+      content: "";
+      background: var(--gradient);
+      box-shadow: 0 0 0 6px rgba(116, 66, 148, .08);
+    }
+    .about-dm h2 {
+      max-width: 900px;
+      margin: 0;
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: clamp(3rem, 6vw, 6.4rem);
+      font-weight: 500;
+      line-height: .94;
+      letter-spacing: -.055em;
+      text-wrap: balance;
+    }
+    .about-dm h2 em {
+      color: transparent;
+      font-style: normal;
+      background: var(--gradient);
+      background-clip: text;
+      -webkit-background-clip: text;
+    }
+    .about-dm__lede {
+      max-width: 780px;
+      margin: 0;
+      color: var(--ink-soft);
+      font-size: clamp(1rem, 1.5vw, 1.28rem);
+      line-height: 1.55;
+    }
+    .about-dm__services {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      margin-top: clamp(48px, 6vw, 80px);
+      overflow: hidden;
+      border: 1px solid rgba(17, 17, 19, .11);
+      border-radius: 20px;
+      background: #fbfaf7;
+    }
+    .about-dm__service {
+      min-height: 148px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 22px;
+      border-right: 1px solid rgba(17, 17, 19, .1);
+      transition: color .3s var(--ease), background .3s var(--ease), transform .3s var(--ease);
+    }
+    .about-dm__service:last-child { border-right: 0; }
+    .about-dm__service span {
+      color: var(--ink-faint);
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+      font-size: .65rem;
+      letter-spacing: .08em;
+    }
+    .about-dm__service strong {
+      max-width: 160px;
+      font-size: clamp(.94rem, 1.35vw, 1.14rem);
+      font-weight: 650;
+      line-height: 1.22;
+    }
+    .about-dm__service:hover {
+      color: #fff;
+      background: #17131c;
+      transform: translateY(-2px);
+    }
+    .about-dm__service:hover span { color: rgba(255, 255, 255, .56); }
+    .about-dm__footprint {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+      margin-top: 24px;
+      color: var(--ink-soft);
+      font-size: .72rem;
+      font-weight: 650;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .about-dm__footprint strong { color: var(--ink); }
+    .about-dm__footprint i {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--purple);
+    }
+
+    @media (max-width: 900px) {
+      .about-dm__services { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .about-dm__service { min-height: 130px; border-right: 1px solid rgba(17, 17, 19, .1); border-bottom: 1px solid rgba(17, 17, 19, .1); }
+      .about-dm__service:nth-child(2n) { border-right: 0; }
+      .about-dm__service:nth-last-child(-n+2) { border-bottom: 0; }
+      .about-dm__service:last-child { grid-column: 1 / -1; min-height: 108px; border-top: 1px solid rgba(17, 17, 19, .1); }
+    }
+
+    @media (max-width: 700px) {
+      .about-dm { padding-block: 96px; }
+      .about-dm__panel { padding: 42px 20px 28px; border-radius: 24px; text-align: center; }
+      .about-dm__header { justify-items: center; gap: 18px; }
+      .about-dm h2 { font-size: clamp(2.7rem, 13vw, 3.65rem); line-height: .96; }
+      .about-dm__lede { font-size: 1rem; line-height: 1.58; }
+      .about-dm__services { margin-top: 40px; border-radius: 16px; }
+      .about-dm__service { min-height: 118px; align-items: center; gap: 18px; padding: 20px 12px; text-align: center; }
+      .about-dm__service strong { max-width: 130px; font-size: .94rem; }
+      .about-dm__service:last-child { min-height: 96px; }
+      .about-dm__footprint { justify-content: center; gap: 8px 12px; margin-top: 24px; font-size: .66rem; line-height: 1.5; }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
@@ -3389,6 +3544,30 @@
         </aside>
       </div>
 
+    </section>
+
+    <section class="about-dm" id="about-dm" aria-labelledby="about-dm-title">
+      <div class="container">
+        <div class="about-dm__panel">
+          <header class="about-dm__header reveal">
+            <p class="about-dm__eyebrow">What we do</p>
+            <h2 id="about-dm-title">We help businesses <em>grow and scale.</em></h2>
+            <p class="about-dm__lede">We do this via SEO, AI Search (GEO), Paid Ads, CRM automations, and Web Development.</p>
+          </header>
+
+          <div class="about-dm__services reveal reveal-delay-1" aria-label="Digital Movement services">
+            <div class="about-dm__service"><span>01</span><strong>SEO</strong></div>
+            <div class="about-dm__service"><span>02</span><strong>AI Search (GEO)</strong></div>
+            <div class="about-dm__service"><span>03</span><strong>Paid Ads</strong></div>
+            <div class="about-dm__service"><span>04</span><strong>CRM Automations</strong></div>
+            <div class="about-dm__service"><span>05</span><strong>Web Development</strong></div>
+          </div>
+
+          <div class="about-dm__footprint reveal reveal-delay-2" aria-label="Digital Movement locations">
+            <strong>Est. 2018</strong><i aria-hidden="true"></i><span>Global footprint</span><i aria-hidden="true"></i><span>London</span><i aria-hidden="true"></i><span>Auckland</span><i aria-hidden="true"></i><span>Berlin</span><i aria-hidden="true"></i><span>Melbourne</span>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section class="section section--compact seo-reason" id="warum" aria-labelledby="warum-title">
