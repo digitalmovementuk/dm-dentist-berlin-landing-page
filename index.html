@@ -2912,6 +2912,23 @@
       background:#fff;
       box-shadow:none;
     }
+    .story-card-copy h3 {
+      max-width:900px;
+      margin:0;
+      color:var(--ink);
+      font-size:clamp(1.8rem,3.5vw,3.4rem);
+      font-weight:500;
+      line-height:1.04;
+      letter-spacing:-.04em;
+    }
+    .story-card-copy__statement {
+      max-width:780px;
+      margin:14px 0 0;
+      color:var(--ink);
+      font-size:clamp(.94rem,1.2vw,1.06rem);
+      font-weight:650;
+      line-height:1.55;
+    }
     .story-takeaway,
     .story-search-grid .channel-window:nth-child(2) .story-takeaway,
     .story-search-grid .channel-window:nth-child(3) .story-takeaway {
@@ -2938,6 +2955,7 @@
     .team-member,
     .team-member__body,
     .contact-form { background: #fff; }
+    .story-scene.story-scene--search { background:transparent; }
     .team-member { align-items:center; border-radius:30px; }
     .team-member__visual {
       width:calc(100% - 40px);
@@ -3205,9 +3223,14 @@
                   <figcaption><p class="story-takeaway"><span>Jede Kombination von Suchbegriffen zu „Invisalign“ ist ein eigener Weg zu Ihrer Praxis. Idealerweise haben Sie für die Top-Suchbegriffe jeweils eine eigene Seite, um Ihre Sichtbarkeit zu maximieren.</span></p></figcaption>
                 </figure>
                 <figure class="channel-window reveal">
+                  <div class="story-scene__intro story-card-copy">
+                    <span class="story-step-label">Google-Ergebnis · Seite 1</span>
+                    <h3>Sichtbarkeit entscheidet über den Praxisbesuch.</h3>
+                    <p class="story-scene__lead">Auf Seite 1 vergleicht der Patient die sichtbaren Praxen.</p>
+                    <p class="story-card-copy__statement">Wir erstellen Webseiten für die Top-Suchbegriffe, sodass Sie auf Seite 1 gefunden werden.</p>
+                  </div>
                   <div class="channel-window__bar" aria-hidden="true"><i></i><i></i><i></i><span>Google-Ergebnisse</span></div>
                   <img class="deferred-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="assets/screens/invisalign-google-results.jpg" alt="Google-Ergebnisse für Invisalign Berlin mit mehreren sichtbaren Praxen" width="1596" height="1800" loading="lazy" decoding="async" fetchpriority="low">
-                  <figcaption><span>Google-Ergebnis 02</span><div><h3>Sichtbarkeit entscheidet über den Praxisbesuch.</h3><p>Auf Seite 1 vergleicht der Patient die sichtbaren Praxen.</p></div><p class="story-takeaway"><span>Nur sichtbare Praxen kommen in die Auswahl.</span></p></figcaption>
                 </figure>
                 <figure class="channel-window reveal">
                   <div class="channel-window__bar" aria-hidden="true"><i></i><i></i><i></i><span>ChatGPT-Antwort</span></div>
