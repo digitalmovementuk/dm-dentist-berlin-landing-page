@@ -2828,6 +2828,14 @@
     .hero-google-rating strong { font-size:.78rem; line-height:1; }
     .hero-google-rating > span:last-child { color:var(--ink-soft); font-size:.68rem; font-weight:600; line-height:1; }
     .hero-google-rating:hover { border-color:rgba(17,17,19,.24); background:rgba(255,255,255,.86); }
+    .hero-actions .button--call {
+      color:#fff;
+      border-color:#111113;
+      background:#111113;
+      backdrop-filter:none;
+    }
+    .hero-actions .button--call:hover { color:#fff; border-color:#26262a; background:#26262a; }
+    #services-title { color:#111113; }
     @media (min-width: 1180px) {
       .seo-reason .channel-heading { max-width:none; }
       .seo-reason .channel-heading .section-title { font-size:clamp(2.9rem,3.5vw,3.5rem); white-space:nowrap; }
@@ -2998,6 +3006,52 @@
     .story-booking-preview img { width:100%; display:block; border-radius:14px; }
     .story-booking-preview figcaption { padding:12px 8px 4px; color:var(--ink-soft); font-size:.72rem; text-align:center; }
     .story-progress__item .story-progress__label-short { display:none; }
+    .sticky-cta {
+      width:auto;
+      min-height:0;
+      gap:6px;
+      padding:6px;
+      border:1px solid rgba(17,17,19,.13);
+      border-radius:18px;
+      background:rgba(255,255,255,.86);
+      box-shadow:0 18px 48px rgba(17,17,19,.2);
+      backdrop-filter:blur(18px) saturate(135%);
+      -webkit-backdrop-filter:blur(18px) saturate(135%);
+    }
+    .sticky-cta.is-visible::before {
+      position:absolute;
+      inset:-1px;
+      border:1px solid rgba(116,66,148,.2);
+      border-radius:inherit;
+      content:"";
+      pointer-events:none;
+      animation:sticky-contact-pulse 3.2s ease-in-out infinite;
+    }
+    .sticky-contact-button {
+      min-height:46px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      padding:0 16px;
+      border-radius:12px;
+      color:#fff;
+      font-size:.7rem;
+      font-weight:750;
+      letter-spacing:.08em;
+      text-decoration:none;
+      text-transform:uppercase;
+      white-space:nowrap;
+    }
+    .sticky-contact-button svg { width:17px; height:17px; }
+    .sticky-contact-button--whatsapp { background:#07883f; }
+    .sticky-contact-button--whatsapp:hover { background:#086f38; }
+    .sticky-contact-button--call { background:#111113; }
+    .sticky-contact-button--call:hover { background:#29292d; }
+    @keyframes sticky-contact-pulse {
+      0%,100% { box-shadow:0 0 0 0 rgba(116,66,148,0); }
+      50% { box-shadow:0 0 0 7px rgba(116,66,148,.1); }
+    }
     .story-takeaway,
     .story-search-grid .channel-window:nth-child(2) .story-takeaway,
     .story-search-grid .channel-window:nth-child(3) .story-takeaway {
@@ -3105,6 +3159,9 @@
       .story-booking-preview img { height:430px; object-fit:cover; object-position:72% center; }
       .story-progress__item .story-progress__label-long { display:none; }
       .story-progress__item .story-progress__label-short { display:inline; }
+      .sticky-cta { right:12px; left:12px; width:auto; gap:5px; padding:5px; }
+      .sticky-cta.is-visible { transform:none; }
+      .sticky-contact-button { min-width:0; flex:1 1 50%; min-height:46px; padding-inline:10px; font-size:.65rem; }
       .difference-card__promise { box-shadow: inset 0 4px 0 var(--purple); }
     }
 
@@ -3159,7 +3216,6 @@
       <nav class="nav-pills" aria-label="Hauptnavigation">
         <a href="#warum">Warum SEO?</a>
         <a href="#patientenweg">Patientenweg</a>
-        <a href="#leistungen">Was wir übernehmen</a>
         <a href="#ablauf">Projektablauf</a>
       </nav>
 
@@ -3177,7 +3233,6 @@
       <nav aria-label="Vollbildnavigation">
         <a href="#warum">Warum SEO?</a>
         <a href="#patientenweg">Patientenweg</a>
-        <a href="#leistungen">Was wir übernehmen</a>
         <a href="#ablauf">Projektablauf</a>
         <a href="#team">Projektteam</a>
         <a href="#kontakt">Kontakt</a>
@@ -3243,23 +3298,12 @@
           <span class="hero-contact__label">Kostenloser Praxis-Check</span>
           <h2 id="hero-contact-title">Wie viel Potenzial hat Ihre Praxis?</h2>
           <p class="hero-contact__lede">Wir rufen Sie innerhalb eines Werktags zurück.</p>
-
           <form id="hero-contact-form">
             <div class="hero-form-grid">
-              <div class="hero-field hero-field--full">
-                <label for="hero-practice">Praxisname</label>
-                <input id="hero-practice" name="practice" autocomplete="organization" placeholder="Name Ihrer Praxis" required>
-              </div>
-              <div class="hero-field hero-field--full">
-                <label for="hero-phone">Telefon</label>
-                <input id="hero-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+49 …" required>
-              </div>
+              <div class="hero-field hero-field--full"><label for="hero-practice">Praxisname</label><input id="hero-practice" name="practice" autocomplete="organization" placeholder="Name Ihrer Praxis" required></div>
+              <div class="hero-field hero-field--full"><label for="hero-phone">Telefon</label><input id="hero-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+49 …" required></div>
             </div>
-
-            <button class="button button--ink" type="submit">
-              Potenzial prüfen lassen
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </button>
+            <button class="button button--ink" type="submit">Potenzial prüfen lassen<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
             <p class="hero-form-status" id="hero-form-status" aria-live="polite"></p>
           </form>
         </aside>
@@ -3281,7 +3325,7 @@
             <span class="story-progress__rail" aria-hidden="true"><i></i></span>
             <a class="story-progress__item is-active" href="#story-step-1" data-story-nav="1" aria-current="step"><b>1</b><span>Google &amp; ChatGPT</span></a>
             <a class="story-progress__item" href="#story-step-2" data-story-nav="2"><b>2</b><span>Website-Besuch</span></a>
-            <a class="story-progress__item" href="#story-step-3" data-story-nav="3"><b>3</b><span>Website-Besuch</span></a>
+            <a class="story-progress__item" href="#story-step-3" data-story-nav="3"><b>3</b><span>Kontaktformular</span></a>
             <a class="story-progress__item" href="#story-step-4" data-story-nav="4"><b>4</b><span><span class="story-progress__label-long">Terminvergabe mittels Doctolib</span><span class="story-progress__label-short">Doctolib</span></span></a>
             <a class="story-progress__item" href="#story-step-5" data-story-nav="5"><b>5</b><span>Neupatient</span></a>
           </nav>
@@ -3346,17 +3390,17 @@
 
             <section class="story-scene reveal" id="story-step-3" data-story-step="3" aria-labelledby="story-form-title">
               <span class="story-step-label">Website-Besuch · 3 von 5</span>
-              <h2 id="story-form-title">Patient sieht Behandlung und Kontaktformular.</h2>
-              <p class="story-scene__lead">Die Invisalign-Seite erklärt die Behandlung und macht die Anfrage direkt im ersten Besuch möglich.</p>
+              <h2 id="story-form-title">Patient sieht Behandlung und Terminbuchung.</h2>
+              <p class="story-scene__lead">Die Invisalign-Seite erklärt die Behandlung und zeigt direkt die verfügbaren Buchungszeiten.</p>
               <div class="story-responsive-preview">
                 <figure class="story-device story-device--desktop">
                   <div class="story-device__bar" aria-hidden="true"><i></i><i></i><i></i><span>lumera-dental.de/invisalign-steglitz</span></div>
-                  <img class="deferred-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="assets/screens/invisalign-steglitz-desktop-hero.jpg" alt="Desktop-Ansicht der Invisalign-Landingpage mit direkt sichtbarem Kontaktformular" width="1440" height="1000" loading="lazy" decoding="async" fetchpriority="low">
-                  <figcaption>Desktop-Ansicht mit direkt sichtbarem Kontaktformular</figcaption>
+                  <img class="deferred-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="assets/screens/invisalign-steglitz-desktop-hero.jpg" alt="Desktop-Ansicht der Invisalign-Landingpage mit direkt sichtbarem Doctolib-Terminwidget" width="1440" height="1000" loading="lazy" decoding="async" fetchpriority="low">
+                  <figcaption>Desktop-Ansicht mit direkt sichtbarem Doctolib-Terminwidget</figcaption>
                 </figure>
                 <figure class="story-device story-device--mobile">
-                  <img class="deferred-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="assets/screens/invisalign-steglitz-mobile-hero.jpg" alt="Mobile Ansicht der Invisalign-Landingpage mit Kontaktformular" width="780" height="1688" loading="lazy" decoding="async" fetchpriority="low">
-                  <figcaption>Mobile Ansicht mit direkt sichtbarem Kontaktformular</figcaption>
+                  <img class="deferred-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="assets/screens/invisalign-steglitz-mobile-hero.jpg" alt="Mobile Ansicht der Invisalign-Landingpage mit Doctolib-Terminwidget" width="780" height="1688" loading="lazy" decoding="async" fetchpriority="low">
+                  <figcaption>Mobile Ansicht mit direkt sichtbarem Doctolib-Terminwidget</figcaption>
                 </figure>
               </div>
             </section>
@@ -3385,59 +3429,10 @@
       </div>
     </section>
 
-    <section class="section section--fog section--compact" id="leistungen" aria-labelledby="services-title">
-      <div class="container">
-        <header class="section-heading reveal">
-          <p class="eyebrow">02 — Was übernehmen wir?</p>
-          <h2 class="section-title" id="services-title">Was wir für Ihre Praxis <span class="muted">umsetzen.</span></h2>
-          <p class="section-lede">Website, Behandlungsseiten und laufende Optimierung aus einer Hand.</p>
-        </header>
-
-        <div class="deliverables-grid">
-          <article class="deliverable-card deliverable-card--website reveal">
-            <div class="deliverable-card__copy">
-              <span class="deliverable-number">01</span>
-              <p class="service-kicker">Behandlungsspezifische Webseite</p>
-              <h3>Eine eigene Seite für „Invisalign Steglitz“.</h3>
-              <p>Wir entwickeln eine hochwertige Seite für passende Google-Suchen und führen Interessenten direkt zur Kontaktanfrage.</p>
-              <div class="mobile-first-proof">
-                <strong>96&nbsp;%</strong>
-                <div><span>Mobile ist der Standard</span><p>96&nbsp;% der Online-Erwachsenen nutzen ein Mobiltelefon für einen Teil ihrer Online-Aktivitäten. Deshalb optimieren wir jede Seite für schnelle mobile Nutzung und maximale Konversionsraten.</p></div>
-              </div>
-              <ul class="deliverable-points">
-                <li>Ziel: Sichtbarkeit auf Seite 1 bei Google</li>
-                <li>Eigene Marke, eigenes Logo und eigene Bildwelt</li>
-                <li>Kontaktformular direkt im ersten Bildschirm</li>
-              </ul>
-            </div>
-            <figure class="portfolio-frame portfolio-frame--phone">
-              <div class="story-external-scroll-cue" aria-label="Hinweis: Die Live-Seite im folgenden Gerät kann gescrollt werden"><span class="story-external-scroll-cue__icon" aria-hidden="true">↓</span><span class="story-external-scroll-cue__copy"><strong>Live-Seite scrollen</strong><small>Mit Maus oder Finger im iPhone scrollen</small></span></div>
-              <div class="story-phone-stage">
-                <div class="story-browser" aria-label="Mobile Live-Ansicht der Invisalign-Seite">
-                  <div class="story-phone-status" aria-hidden="true">
-                    <span>9:41</span><span class="story-phone-island"></span>
-                    <span class="story-phone-status__icons">
-                      <svg viewBox="0 0 18 12" fill="currentColor"><rect x="1" y="8" width="2.5" height="3" rx="1"/><rect x="5" y="6" width="2.5" height="5" rx="1"/><rect x="9" y="3" width="2.5" height="8" rx="1"/><rect x="13" width="2.5" height="11" rx="1"/></svg>
-                      <svg viewBox="0 0 18 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M2 4.5c4.2-4 9.8-4 14 0M5 7c2.5-2.3 5.5-2.3 8 0M8 9.5c.7-.6 1.3-.6 2 0"/></svg>
-                      <svg viewBox="0 0 22 12" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="1" y="1" width="17" height="10" rx="2.5"/><path d="M20 4v4"/><rect x="3" y="3" width="12" height="6" rx="1" fill="currentColor" stroke="none"/></svg>
-                    </span>
-                  </div>
-                  <div class="story-phone-screen"><iframe src="demos/invisalign-steglitz/index.html" title="Vollständige Landingpage für Invisalign in Berlin-Steglitz" loading="lazy"></iframe></div>
-                </div>
-                <p class="story-phone-caption">Mobile Live-Seite · vollständig scrollbar</p>
-              </div>
-              <figcaption>Beispiel: von der Google-Suche bis zur Kontaktanfrage</figcaption>
-            </figure>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
     <section class="section section--compact difference-section" id="unterschied" aria-labelledby="difference-title">
       <div class="container">
         <header class="section-heading reveal">
-          <p class="eyebrow">03 — Ihr Vorteil</p>
+          <p class="eyebrow">02 — Ihr Vorteil</p>
           <h2 class="section-title" id="difference-title">Wie wir uns <span class="muted">unterscheiden.</span></h2>
           <p class="section-lede">Klare Leistung, überschaubare Bindung und erfahrene Beratung.</p>
         </header>
@@ -3496,7 +3491,7 @@
     <section class="section section--compact" id="ablauf" aria-labelledby="process-title">
       <div class="container">
         <header class="section-heading reveal">
-          <p class="eyebrow">04 — Wie läuft das Projekt?</p>
+          <p class="eyebrow">03 — Wie läuft das Projekt?</p>
           <h2 class="section-title" id="process-title">Ihre neue Website <span class="muted">in sechs Wochen.</span></h2>
           <p class="section-lede">Danach verbessern wir Ihre Behandlungsseiten sechs Monate lang weiter.</p>
         </header>
@@ -3680,7 +3675,7 @@
     <section class="section section--fog section--compact" id="team" aria-labelledby="team-title">
       <div class="container">
         <header class="section-heading reveal">
-          <p class="eyebrow">05 — Wer verantwortet Ihr Projekt?</p>
+          <p class="eyebrow">04 — Wer verantwortet Ihr Projekt?</p>
           <h2 class="section-title" id="team-title">Ein Ansprechpartner. <span class="muted">Ein spezialisiertes Team.</span></h2>
           <p class="section-lede">Raoul koordiniert Strategie, Freigaben, Umsetzung und Berichte.</p>
         </header>
@@ -3753,7 +3748,7 @@
     <section class="section contact-section" id="kontakt" aria-labelledby="contact-title">
       <div class="container">
         <header class="section-heading reveal">
-          <p class="eyebrow">06 — Nächster Schritt</p>
+          <p class="eyebrow">05 — Nächster Schritt</p>
           <h2 class="section-title" id="contact-title">Kostenloses <span class="muted">Potenzialgespräch.</span></h2>
           <p class="section-lede">Welche Behandlungen möchten Sie gezielt stärken?</p>
         </header>
@@ -3811,7 +3806,6 @@
         <h3>Navigation</h3>
         <a href="#warum">Warum SEO?</a>
         <a href="#patientenweg">Patientenweg</a>
-        <a href="#leistungen">Was wir übernehmen</a>
         <a href="#unterschied">Unser Unterschied</a>
         <a href="#ablauf">Projektablauf</a>
       </div>
@@ -3836,8 +3830,14 @@
   </footer>
 
   <aside class="sticky-cta" id="sticky-cta" aria-label="Schnellkontakt">
-    <span class="sticky-cta__copy"><strong>Mehr Terminanfragen für Ihre Praxis</strong><span>Kostenloses Potenzialgespräch</span></span>
-    <a class="button button--light" href="#kontakt">Gespräch anfragen</a>
+    <a class="sticky-contact-button sticky-contact-button--whatsapp" href="https://wa.me/4917682360647" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20 11.6a8 8 0 0 1-11.8 7L4 20l1.4-4.1A8 8 0 1 1 20 11.6Z"/><path d="M8.5 8.2c.3 3.5 2 5.2 5.4 5.7M8.5 8.2l1.2-.4 1 2-1 .8M13.9 13.9l.8-1 2 1-.4 1.2"/></svg>
+      WhatsApp
+    </a>
+    <a class="sticky-contact-button sticky-contact-button--call" href="tel:+4917623296439">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M7.4 3.8 10 7.7 8.3 9.4c1 2.2 2.1 3.3 4.3 4.3l1.7-1.7 3.9 2.6-.6 3.1c-.2 1-1.2 1.7-2.2 1.5C8.7 18 6 15.3 4.8 8.6c-.2-1 .5-2 1.5-2.2l1.1-2.6Z"/></svg>
+      Anrufen
+    </a>
   </aside>
 
   <div class="patient-win-overlay" id="patient-win-overlay" role="dialog" aria-modal="true" aria-labelledby="patient-win-title" hidden>
@@ -3865,30 +3865,22 @@
       var menuOverlay = document.getElementById('menu-overlay');
       var menuLinks = menuOverlay.querySelectorAll('a');
       var stickyCta = document.getElementById('sticky-cta');
-      var ctaStartZone = document.getElementById('patientenweg');
-      var ctaEndZone = document.getElementById('ablauf');
-      var ctaProtectedZones = document.querySelectorAll('.patient-story, .deliverables-grid');
       var contact = document.getElementById('kontakt');
       var footer = document.querySelector('.site-footer');
       var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       var contactVisible = false;
       var footerVisible = false;
       var heroCtaVisibility = new Map();
+      var heroCtaIsVisible = true;
 
       function setHeader() {
         var threshold = Math.max(80, hero.offsetHeight - header.offsetHeight);
         header.classList.toggle('is-light', window.scrollY >= threshold);
-        var reachedCtaStart = window.scrollY > hero.offsetHeight * .85 && window.scrollY >= ctaStartZone.offsetTop - window.innerHeight * .45;
         var contactRect = contact.getBoundingClientRect();
         var footerRect = footer.getBoundingClientRect();
         var contactApproaching = contactRect.top < window.innerHeight * .88 && contactRect.bottom > 0;
         var footerApproaching = footerRect.top < window.innerHeight && footerRect.bottom > 0;
-        var reachedCtaEnd = window.scrollY >= ctaEndZone.offsetTop - window.innerHeight * .72;
-        var protectedAtBottom = Array.prototype.some.call(ctaProtectedZones, function (zone) {
-          var rect = zone.getBoundingClientRect();
-          return rect.top < window.innerHeight - 8 && rect.bottom > window.innerHeight - 92;
-        });
-        stickyCta.classList.toggle('is-visible', reachedCtaStart && !reachedCtaEnd && !protectedAtBottom && !contactVisible && !footerVisible && !contactApproaching && !footerApproaching);
+        stickyCta.classList.toggle('is-visible', !heroCtaIsVisible && !contactVisible && !footerVisible && !contactApproaching && !footerApproaching);
       }
 
       function closeMenu() {
@@ -3953,8 +3945,9 @@
         entries.forEach(function (entry) {
           heroCtaVisibility.set(entry.target, entry.isIntersecting && entry.intersectionRatio > .12);
         });
-        var heroCtaIsVisible = Array.from(heroCtaVisibility.values()).some(Boolean);
+        heroCtaIsVisible = Array.from(heroCtaVisibility.values()).some(Boolean);
         header.classList.toggle('is-cta-visible', !heroCtaIsVisible);
+        setHeader();
       }, { threshold: [0, .12, .5] });
       document.querySelectorAll('.hero-actions, .hero-contact .button').forEach(function (element) {
         heroCtaVisibility.set(element, false);
