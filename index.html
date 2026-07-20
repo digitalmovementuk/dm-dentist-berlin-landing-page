@@ -2904,6 +2904,21 @@
     .story-takeaway strong,
     .story-search-grid .channel-window:nth-child(2) .story-takeaway strong,
     .story-search-grid .channel-window:nth-child(3) .story-takeaway strong { color: var(--purple); }
+    .story-search-grid .channel-window > .story-scene__intro {
+      margin:0;
+      padding:clamp(26px,4vw,48px);
+      border:0;
+      border-radius:18px 18px 0 0;
+      background:#fff;
+      box-shadow:none;
+    }
+    .story-takeaway,
+    .story-search-grid .channel-window:nth-child(2) .story-takeaway,
+    .story-search-grid .channel-window:nth-child(3) .story-takeaway {
+      display:block;
+      line-height:1.55;
+    }
+    .story-takeaway span { display:block; }
 
     .story-ranking-proof,
     .story-phone-stage,
@@ -3178,26 +3193,26 @@
 
           <div class="story-scenes">
             <section class="story-scene story-scene--search reveal" id="story-step-1" data-story-step="1" aria-labelledby="story-search-title">
-              <div class="story-scene__intro">
-                <span class="story-step-label">Patientenweg · 1 von 5</span>
-                <h2 id="story-search-title">Patient sucht bei Google oder ChatGPT.</h2>
-                <p class="story-scene__lead">Er sucht konkret nach Invisalign, Kosten, Bezirk oder einer empfohlenen Praxis. Hier entsteht die Nachfrage.</p>
-              </div>
               <div class="story-search-grid">
                 <figure class="channel-window reveal">
+                  <div class="story-scene__intro">
+                    <span class="story-step-label">Patientenweg · 1 von 5</span>
+                    <h2 id="story-search-title">Patient sucht bei Google oder ChatGPT.</h2>
+                    <p class="story-scene__lead">Suche nach „Invisalign“, Kosten oder Bezirk.</p>
+                  </div>
                   <div class="channel-window__bar" aria-hidden="true"><i></i><i></i><i></i><span>Google-Suchvorschläge</span></div>
                   <img class="deferred-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="assets/screens/invisalign-google-suggestions.jpg" alt="Google-Suchvorschläge für Invisalign Berlin mit Varianten zu Kosten, Bezirken und Sprache" width="1800" height="616" loading="lazy" decoding="async" fetchpriority="low">
-                  <figcaption><span>Google-Suche 01</span><div><h3>Eine Behandlung, viele Suchanfragen.</h3><p>Patienten suchen nach Invisalign, Kosten, Sprache oder ihrem Stadtteil.</p></div><p class="story-takeaway"><strong>Merksatz</strong><span>Jede Suchanfrage ist ein eigener Weg zu Ihrer Praxis.</span></p></figcaption>
+                  <figcaption><p class="story-takeaway"><span>Jede Kombination von Suchbegriffen zu „Invisalign“ ist ein eigener Weg zu Ihrer Praxis. Idealerweise haben Sie für die Top-Suchbegriffe jeweils eine eigene Seite, um Ihre Sichtbarkeit zu maximieren.</span></p></figcaption>
                 </figure>
                 <figure class="channel-window reveal">
                   <div class="channel-window__bar" aria-hidden="true"><i></i><i></i><i></i><span>Google-Ergebnisse</span></div>
                   <img class="deferred-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="assets/screens/invisalign-google-results.jpg" alt="Google-Ergebnisse für Invisalign Berlin mit mehreren sichtbaren Praxen" width="1596" height="1800" loading="lazy" decoding="async" fetchpriority="low">
-                  <figcaption><span>Google-Ergebnis 02</span><div><h3>Sichtbarkeit entscheidet über den Praxisbesuch.</h3><p>Auf Seite 1 vergleicht der Patient die sichtbaren Praxen.</p></div><p class="story-takeaway"><strong>Merksatz</strong><span>Nur sichtbare Praxen kommen in die Auswahl.</span></p></figcaption>
+                  <figcaption><span>Google-Ergebnis 02</span><div><h3>Sichtbarkeit entscheidet über den Praxisbesuch.</h3><p>Auf Seite 1 vergleicht der Patient die sichtbaren Praxen.</p></div><p class="story-takeaway"><span>Nur sichtbare Praxen kommen in die Auswahl.</span></p></figcaption>
                 </figure>
                 <figure class="channel-window reveal">
                   <div class="channel-window__bar" aria-hidden="true"><i></i><i></i><i></i><span>ChatGPT-Antwort</span></div>
                   <img class="deferred-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="assets/screens/invisalign-ai-recommendation.jpg" alt="ChatGPT-Antwort mit konkreten Empfehlungen für Invisalign-Praxen in Berlin" width="1800" height="1342" loading="lazy" decoding="async" fetchpriority="low">
-                  <figcaption><span>KI-Empfehlung 03</span><div><h3>Auch ChatGPT empfiehlt konkrete Praxen.</h3><p>KI-Antworten nennen Anbieter und Quellen direkt.</p></div><p class="story-takeaway"><strong>Merksatz</strong><span>Google und KI werden zu direkten Vertriebskanälen für Ihre Praxis.</span></p></figcaption>
+                  <figcaption><span>KI-Empfehlung 03</span><div><h3>Auch ChatGPT empfiehlt konkrete Praxen.</h3><p>KI-Antworten nennen Anbieter und Quellen direkt.</p></div><p class="story-takeaway"><span>Google und KI werden zu direkten Vertriebskanälen für Ihre Praxis.</span></p></figcaption>
                 </figure>
               </div>
             </section>
