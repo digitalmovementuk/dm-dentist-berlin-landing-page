@@ -1,0 +1,928 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#123c3b">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <meta name="description" content="Invisalign in Berlin-Steglitz: transparente Aligner, persönliche Beratung, digitale Planung und zahnärztliche Begleitung im Lumera Dental Atelier.">
+  <title>Invisalign Steglitz | Lumera Dental Atelier</title>
+  <link rel="canonical" href="https://lumera-dental.example/invisalign-steglitz/">
+  <link rel="alternate" hreflang="de-DE" href="https://lumera-dental.example/invisalign-steglitz/">
+  <link rel="icon" href="assets/lumera-favicon.svg" type="image/svg+xml">
+  <link rel="preload" as="image" href="assets/lumera-hero-consultation.webp" type="image/webp" fetchpriority="high">
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:site_name" content="Lumera Dental Atelier">
+  <meta property="og:title" content="Invisalign in Berlin-Steglitz | Lumera">
+  <meta property="og:description" content="Transparente Aligner, digitale Planung und persönliche zahnärztliche Begleitung in Steglitz.">
+  <meta property="og:url" content="https://lumera-dental.example/invisalign-steglitz/">
+  <meta property="og:image" content="https://lumera-dental.example/invisalign-steglitz/assets/lumera-og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Persönliches Beratungsgespräch in einer modernen Zahnarztpraxis">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Invisalign in Berlin-Steglitz | Lumera">
+  <meta name="twitter:description" content="Transparente Aligner, digitale Planung und persönliche zahnärztliche Begleitung in Steglitz.">
+  <meta name="twitter:image" content="https://lumera-dental.example/invisalign-steglitz/assets/lumera-og.jpg">
+
+  <style>
+    :root {
+      --pine: #123c3b;
+      --pine-deep: #082827;
+      --pine-soft: #2b5a57;
+      --mint: #c9e6dc;
+      --mint-pale: #e9f3ef;
+      --ivory: #f7f3eb;
+      --paper: #fffdf9;
+      --coral: #e8846d;
+      --ink: #172c2b;
+      --text: #4f6461;
+      --muted: #5f716e;
+      --line: rgba(18, 60, 59, .14);
+      --line-light: rgba(255, 255, 255, .18);
+      --shadow-sm: 0 18px 42px -28px rgba(8, 40, 39, .26);
+      --shadow-lg: 0 36px 90px -38px rgba(8, 40, 39, .34);
+      --radius-sm: 14px;
+      --radius-md: 22px;
+      --radius-lg: 32px;
+      --max: 1280px;
+      --gutter: clamp(20px, 5vw, 72px);
+      --section: clamp(84px, 9vw, 144px);
+      --ease: cubic-bezier(.16, 1, .3, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+    body {
+      margin: 0;
+      overflow-x: hidden;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    body.menu-open { overflow: hidden; }
+    img, svg { display: block; max-width: 100%; }
+    img { height: auto; }
+    a { color: inherit; }
+    button, input, select, textarea { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    ::selection { color: var(--white, #fff); background: var(--pine-soft); }
+    :focus-visible { outline: 3px solid var(--coral); outline-offset: 4px; }
+
+    .skip-link {
+      position: fixed;
+      top: 12px;
+      left: 12px;
+      z-index: 300;
+      padding: 10px 16px;
+      border-radius: 999px;
+      color: #fff;
+      background: var(--pine-deep);
+      transform: translateY(-160%);
+      transition: transform .2s ease;
+    }
+    .skip-link:focus { transform: translateY(0); }
+    .container { width: min(calc(100% - (var(--gutter) * 2)), var(--max)); margin-inline: auto; }
+    .section { position: relative; padding-block: var(--section); }
+    .section--ivory { background: var(--ivory); }
+    .section--mint { background: var(--mint-pale); }
+    .section--dark { color: #fff; background: var(--pine-deep); }
+    .section-heading { max-width: 790px; margin-bottom: clamp(40px, 6vw, 72px); }
+    .section-heading--center { margin-inline: auto; text-align: center; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      margin: 0 0 18px;
+      color: var(--pine-soft);
+      font-size: .7rem;
+      font-weight: 750;
+      letter-spacing: .17em;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+    .eyebrow::before { width: 30px; height: 1px; content: ""; background: currentColor; }
+    .section--dark .eyebrow { color: var(--mint); }
+    .section-title {
+      margin: 0;
+      font-size: clamp(2.5rem, 5.2vw, 5rem);
+      font-weight: 430;
+      line-height: 1.02;
+      letter-spacing: -.052em;
+      text-wrap: balance;
+    }
+    .section-title em { color: var(--pine-soft); font-style: normal; }
+    .section--dark .section-title em { color: var(--mint); }
+    .section-lede { max-width: 680px; margin: 22px 0 0; color: var(--text); font-size: clamp(1rem, 1.35vw, 1.17rem); }
+    .section--dark .section-lede { color: rgba(255,255,255,.68); }
+
+    .site-header {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 100;
+      height: 76px;
+      color: #fff;
+      transition: color .35s ease, background .35s ease, box-shadow .35s ease, backdrop-filter .35s ease;
+    }
+    .site-header.is-scrolled {
+      color: var(--ink);
+      background: rgba(255, 253, 249, .9);
+      box-shadow: 0 1px 0 var(--line), var(--shadow-sm);
+      backdrop-filter: blur(20px) saturate(145%);
+    }
+    .header-inner { width: min(calc(100% - 40px), 1380px); height: 100%; margin-inline: auto; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 22px; }
+    .brand { display: inline-flex; align-items: center; gap: 11px; width: fit-content; color: inherit; text-decoration: none; }
+    .brand-mark { width: 38px; height: 38px; color: var(--mint); }
+    .site-header.is-scrolled .brand-mark { color: var(--pine); }
+    .brand-mark svg { width: 100%; height: 100%; }
+    .brand-name { display: grid; gap: 1px; font-size: .76rem; font-weight: 760; letter-spacing: .16em; line-height: 1.2; text-transform: uppercase; }
+    .brand-name small { color: currentColor; font-size: .55rem; font-weight: 550; letter-spacing: .14em; opacity: .76; }
+    .nav { display: flex; align-items: center; gap: 4px; padding: 4px; border: 1px solid rgba(255,255,255,.2); border-radius: 999px; background: rgba(8,40,39,.16); backdrop-filter: blur(14px); }
+    .site-header.is-scrolled .nav { border-color: var(--line); background: rgba(255,255,255,.72); }
+    .nav a { min-height: 36px; display: inline-flex; align-items: center; padding: 8px 13px; border-radius: 999px; font-size: .68rem; font-weight: 650; text-decoration: none; transition: background .2s ease; }
+    .nav a:hover { background: rgba(255,255,255,.14); }
+    .site-header.is-scrolled .nav a:hover { background: var(--mint-pale); }
+    .header-actions { justify-self: end; display: flex; align-items: center; gap: 10px; }
+    .header-cta { min-height: 42px; display: inline-flex; align-items: center; padding: 9px 17px; border-radius: 999px; color: var(--pine-deep); background: var(--mint); font-size: .7rem; font-weight: 750; text-decoration: none; }
+    .site-header.is-scrolled .header-cta { color: #fff; background: var(--pine); }
+    .menu-button { width: 44px; height: 44px; display: none; place-items: center; border: 1px solid currentColor; border-radius: 50%; color: inherit; background: transparent; cursor: pointer; }
+    .menu-button span, .menu-button span::before, .menu-button span::after { width: 17px; height: 1.5px; display: block; content: ""; background: currentColor; transition: transform .25s ease; }
+    .menu-button span::before { transform: translateY(-5px); }
+    .menu-button span::after { transform: translateY(3.5px); }
+
+    .mobile-menu {
+      position: fixed;
+      inset: 0;
+      z-index: 95;
+      display: grid;
+      place-items: center;
+      padding: 90px 24px 30px;
+      color: #fff;
+      background: rgba(8,40,39,.98);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-12px);
+      transition: opacity .3s ease, visibility .3s, transform .3s var(--ease);
+    }
+    .mobile-menu.is-open { opacity: 1; visibility: visible; transform: none; }
+    .mobile-menu nav { display: grid; gap: 8px; text-align: center; }
+    .mobile-menu a { padding: 10px; font-size: clamp(1.5rem, 7vw, 2.4rem); font-weight: 480; text-decoration: none; }
+
+    .hero {
+      position: relative;
+      min-height: 100dvh;
+      min-height: 100svh;
+      overflow: hidden;
+      isolation: isolate;
+      color: #fff;
+      background: var(--pine-deep);
+    }
+    .hero-media { position: absolute; inset: 0; z-index: -3; }
+    .hero-media img { width: 100%; height: 100%; object-fit: cover; object-position: center 44%; }
+    .hero::before {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      content: "";
+      background:
+        radial-gradient(circle at 75% 22%, rgba(201,230,220,.12), transparent 31%),
+        linear-gradient(90deg, rgba(8,40,39,.97) 0%, rgba(8,40,39,.88) 47%, rgba(8,40,39,.46) 100%);
+    }
+    .hero::after {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      content: "";
+      opacity: .07;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+    }
+    .hero-inner {
+      min-height: 100svh;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(370px, .7fr);
+      gap: clamp(42px, 7vw, 108px);
+      align-items: center;
+      padding-top: 100px;
+      padding-bottom: 86px;
+    }
+    .hero-copy { max-width: 760px; }
+    .hero .eyebrow { color: var(--mint); }
+    .hero-title { margin: 0; font-size: clamp(3.4rem, 6.5vw, 7rem); font-weight: 420; line-height: .94; letter-spacing: -.062em; text-wrap: balance; }
+    .hero-title em { color: var(--mint); font-style: normal; }
+    .hero-deck { max-width: 650px; margin: 24px 0 0; color: rgba(255,255,255,.79); font-size: clamp(1rem, 1.35vw, 1.2rem); line-height: 1.58; }
+    .hero-benefits { display: flex; flex-wrap: wrap; gap: 9px 18px; margin: 27px 0 0; padding: 0; list-style: none; color: rgba(255,255,255,.8); font-size: .78rem; }
+    .hero-benefits li { display: flex; align-items: center; gap: 8px; }
+    .hero-benefits li::before { content: "✓"; color: var(--mint); font-weight: 800; }
+    .hero-note { display: flex; align-items: center; gap: 12px; margin: 24px 0 0; padding-top: 18px; border-top: 1px solid var(--line-light); color: rgba(255,255,255,.62); font-size: .72rem; }
+    .hero-note svg { width: 20px; height: 20px; flex: 0 0 auto; color: var(--mint); }
+
+    .form-card { padding: 28px; border: 1px solid rgba(255,255,255,.52); border-radius: 24px; color: var(--ink); background: rgba(255,255,255,.95); box-shadow: 0 32px 76px rgba(3,26,25,.3); backdrop-filter: blur(20px); }
+    .form-kicker { margin: 0 0 7px; color: var(--pine-soft); font-size: .63rem; font-weight: 760; letter-spacing: .15em; text-transform: uppercase; }
+    .form-title, .contact-form h2 { margin: 0; font-size: clamp(1.55rem, 2.4vw, 2.2rem); font-weight: 570; line-height: 1.07; letter-spacing: -.04em; }
+    .form-intro { margin: 9px 0 17px; color: var(--text); font-size: .77rem; line-height: 1.48; }
+    .field { display: grid; gap: 5px; margin-top: 10px; }
+    .field label { font-size: .66rem; font-weight: 720; }
+    .field input, .field select, .field textarea { width: 100%; min-height: 45px; padding: 10px 13px; border: 1px solid #d5dfdc; border-radius: 11px; color: var(--ink); background: #fff; transition: border-color .2s ease, box-shadow .2s ease; }
+    .field textarea { min-height: 92px; resize: vertical; }
+    .field input:focus, .field select:focus, .field textarea:focus { outline: 0; border-color: var(--pine-soft); box-shadow: 0 0 0 4px rgba(43,90,87,.1); }
+    .consent { display: grid; grid-template-columns: 16px 1fr; gap: 8px; align-items: start; margin: 12px 0; color: var(--muted); font-size: .57rem; line-height: 1.42; }
+    .consent input { width: 15px; height: 15px; margin: 1px 0 0; accent-color: var(--pine); }
+    .consent a { color: var(--pine-soft); }
+    .submit, .button { min-height: 48px; display: inline-flex; align-items: center; justify-content: center; gap: 12px; padding: 12px 20px; border: 0; border-radius: 999px; font-size: .72rem; font-weight: 760; text-decoration: none; cursor: pointer; transition: transform .25s var(--ease), box-shadow .25s ease, background .25s ease; }
+    .submit { width: 100%; justify-content: space-between; color: #fff; background: var(--pine); }
+    .submit:hover, .button:hover { transform: translateY(-2px); }
+    .submit:hover { background: var(--pine-deep); }
+    .button--pine { color: #fff; background: var(--pine); box-shadow: var(--shadow-sm); }
+    .button--light { color: var(--pine-deep); background: var(--mint); }
+    .status { min-height: 14px; margin: 7px 0 0; color: #376b57; font-size: .62rem; line-height: 1.35; }
+
+    .quick-answer { padding-block: clamp(58px, 6vw, 88px); background: var(--mint-pale); }
+    .quick-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(300px, .75fr); gap: clamp(34px, 7vw, 96px); align-items: center; }
+    .quick-answer h2 { margin: 0; font-size: clamp(1.9rem, 3.6vw, 3.6rem); font-weight: 470; line-height: 1.08; letter-spacing: -.045em; }
+    .quick-answer p { max-width: 760px; margin: 17px 0 0; color: var(--text); }
+    .quick-points { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--line); border-radius: var(--radius-md); background: rgba(255,255,255,.66); overflow: hidden; }
+    .quick-point { min-height: 112px; display: grid; align-content: center; gap: 5px; padding: 18px; border-right: 1px solid var(--line); text-align: center; }
+    .quick-point:last-child { border-right: 0; }
+    .quick-point strong { font-size: .85rem; }
+    .quick-point span { color: var(--muted); font-size: .67rem; line-height: 1.4; }
+
+    .suitability-grid { display: grid; grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr); gap: clamp(36px, 7vw, 94px); align-items: center; }
+    .image-panel { position: relative; min-height: 620px; overflow: hidden; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); }
+    .image-panel img { width: 100%; height: 100%; object-fit: cover; }
+    .image-panel::after { position: absolute; inset: 0; content: ""; background: linear-gradient(0deg, rgba(8,40,39,.66), transparent 46%); }
+    .image-caption { position: absolute; inset: auto 26px 26px; z-index: 1; max-width: 370px; padding: 18px 20px; border: 1px solid rgba(255,255,255,.26); border-radius: 17px; color: #fff; background: rgba(8,40,39,.4); backdrop-filter: blur(14px); }
+    .image-caption strong { display: block; margin-bottom: 3px; font-size: .97rem; }
+    .image-caption span { color: rgba(255,255,255,.72); font-size: .72rem; }
+    .check-list { display: grid; gap: 12px; margin: 28px 0 0; padding: 0; list-style: none; }
+    .check-list li { display: grid; grid-template-columns: 38px 1fr; gap: 14px; align-items: start; padding: 16px 18px; border: 1px solid var(--line); border-radius: var(--radius-sm); background: #fff; }
+    .check-list i { width: 38px; height: 38px; display: grid; place-items: center; border-radius: 12px; color: var(--pine); background: var(--mint-pale); font-style: normal; font-weight: 800; }
+    .check-list strong { display: block; margin-bottom: 3px; font-size: .94rem; }
+    .check-list span { display: block; color: var(--text); font-size: .78rem; line-height: 1.5; }
+    .medical-note { margin: 22px 0 0; padding: 16px 18px; border-left: 3px solid var(--coral); color: var(--text); background: rgba(232,132,109,.08); font-size: .78rem; }
+
+    .benefit-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .benefit-card { min-height: 280px; display: flex; flex-direction: column; padding: 28px; border: 1px solid var(--line); border-radius: var(--radius-md); background: rgba(255,255,255,.78); box-shadow: var(--shadow-sm); transition: transform .35s var(--ease), box-shadow .35s ease; }
+    .benefit-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+    .benefit-icon { width: 52px; height: 52px; display: grid; place-items: center; border-radius: 16px; color: var(--pine); background: var(--mint); }
+    .benefit-icon svg { width: 24px; height: 24px; }
+    .benefit-card h3 { margin: auto 0 9px; font-size: 1.26rem; font-weight: 600; line-height: 1.15; letter-spacing: -.025em; }
+    .benefit-card p { margin: 0; color: var(--text); font-size: .82rem; }
+
+    .process { overflow: hidden; }
+    .process::before { position: absolute; top: 8%; right: -10%; width: 520px; height: 520px; content: ""; border: 1px solid rgba(201,230,220,.12); border-radius: 50%; box-shadow: inset 0 0 0 80px rgba(201,230,220,.02), inset 0 0 0 160px rgba(201,230,220,.02); }
+    .timeline { position: relative; display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; margin-top: 20px; border: 1px solid var(--line-light); border-radius: var(--radius-lg); background: var(--line-light); overflow: hidden; }
+    .timeline::before { position: absolute; top: 61px; left: 10%; right: 10%; height: 2px; content: ""; background: linear-gradient(90deg, var(--mint), var(--coral)); opacity: .7; }
+    .step { position: relative; min-height: 330px; padding: 34px 24px 28px; background: var(--pine-deep); }
+    .step-number { position: relative; z-index: 1; width: 54px; height: 54px; display: grid; place-items: center; margin-bottom: 36px; border: 1px solid rgba(255,255,255,.24); border-radius: 50%; color: var(--pine-deep); background: var(--mint); font-size: .69rem; font-weight: 800; letter-spacing: .08em; }
+    .step h3 { margin: 0 0 10px; font-size: 1.08rem; font-weight: 600; line-height: 1.18; }
+    .step p { margin: 0; color: rgba(255,255,255,.62); font-size: .76rem; line-height: 1.55; }
+    .process-callout { display: grid; grid-template-columns: minmax(250px, .48fr) minmax(0, 1fr); margin-top: 18px; border: 1px solid var(--line-light); border-radius: var(--radius-md); background: rgba(255,255,255,.045); overflow: hidden; }
+    .process-photo { min-height: 250px; margin: 0; overflow: hidden; }
+    .process-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 61%; }
+    .process-callout-copy { display: flex; align-items: center; justify-content: space-between; gap: 30px; padding: 28px 30px; }
+    .process-callout p { max-width: 730px; margin: 0; color: rgba(255,255,255,.7); font-size: .83rem; }
+    .process-callout strong { color: #fff; }
+
+    .daily-grid { display: grid; grid-template-columns: minmax(320px, .72fr) minmax(0, 1.28fr); gap: clamp(34px, 7vw, 94px); align-items: start; }
+    .daily-aside { position: sticky; top: 112px; }
+    .wear-dial { position: relative; width: 220px; height: 220px; display: grid; place-items: center; margin-top: 34px; border-radius: 50%; background: conic-gradient(var(--pine) 0 330deg, rgba(18,60,59,.11) 330deg); }
+    .wear-dial::before { position: absolute; inset: 15px; content: ""; border-radius: 50%; background: var(--paper); }
+    .wear-dial div { position: relative; text-align: center; }
+    .wear-dial strong { display: block; font-size: 3.5rem; font-weight: 450; line-height: 1; letter-spacing: -.06em; }
+    .wear-dial span { display: block; max-width: 130px; margin-top: 7px; color: var(--muted); font-size: .68rem; line-height: 1.35; }
+    .aligner-photo { position: relative; min-height: 310px; margin: 26px 0 0; overflow: hidden; border-radius: var(--radius-md); background: var(--mint-pale); box-shadow: var(--shadow-sm); }
+    .aligner-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 58%; }
+    .aligner-photo figcaption { position: absolute; right: 14px; bottom: 14px; left: 14px; padding: 13px 15px; border: 1px solid rgba(255,255,255,.6); border-radius: 14px; color: var(--ink); background: rgba(255,253,249,.86); backdrop-filter: blur(14px); font-size: .68rem; line-height: 1.45; text-align: center; }
+    .aligner-photo figcaption strong { display: block; margin-bottom: 2px; font-size: .8rem; }
+    .daily-cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .daily-card { min-height: 260px; padding: 28px; border: 1px solid var(--line); border-radius: var(--radius-md); background: #fff; }
+    .daily-card span { width: 38px; height: 38px; display: grid; place-items: center; margin-bottom: 42px; border-radius: 12px; color: #fff; background: var(--pine); font-size: .72rem; font-weight: 750; }
+    .daily-card h3 { margin: 0 0 8px; font-size: 1.22rem; font-weight: 590; }
+    .daily-card p { margin: 0; color: var(--text); font-size: .8rem; }
+
+    .comparison-wrap { overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius-lg); background: #fff; box-shadow: var(--shadow-sm); }
+    .comparison-table { width: 100%; table-layout: fixed; border-collapse: collapse; }
+    .comparison-table th, .comparison-table td { padding: 18px 22px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+    .comparison-table tr:last-child td { border-bottom: 0; }
+    .comparison-table th { color: #fff; background: var(--pine); font-size: .78rem; letter-spacing: .04em; }
+    .comparison-table th:first-child { width: 27%; }
+    .comparison-table td:first-child { font-weight: 700; }
+    .comparison-table td { color: var(--text); font-size: .82rem; }
+    .comparison-table td:nth-child(2) { background: rgba(201,230,220,.18); }
+    .comparison-note { margin: 20px 0 0; color: var(--muted); font-size: .75rem; text-align: center; }
+
+    .cost-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(340px, .72fr); gap: clamp(34px, 7vw, 96px); align-items: center; }
+    .cost-factors { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 28px; }
+    .cost-factor { padding: 18px; border: 1px solid var(--line); border-radius: var(--radius-sm); background: rgba(255,255,255,.76); }
+    .cost-factor strong { display: block; margin-bottom: 4px; font-size: .87rem; }
+    .cost-factor span { display: block; color: var(--text); font-size: .73rem; }
+    .cost-panel { padding: 34px; border-radius: var(--radius-lg); color: #fff; background: var(--pine); box-shadow: var(--shadow-lg); }
+    .cost-panel p { margin: 0 0 22px; color: rgba(255,255,255,.7); font-size: .84rem; }
+    .cost-panel ul { display: grid; gap: 10px; margin: 0 0 26px; padding: 0; list-style: none; }
+    .cost-panel li { display: flex; align-items: flex-start; gap: 10px; color: rgba(255,255,255,.84); font-size: .78rem; }
+    .cost-panel li::before { content: "✓"; color: var(--mint); font-weight: 800; }
+
+    .practice-card { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(340px, .9fr); gap: 16px; }
+    .practice-story { position: relative; min-height: 560px; overflow: hidden; padding: clamp(34px, 6vw, 70px); border-radius: var(--radius-lg); color: #fff; background: var(--pine-deep); }
+    .practice-story::after { position: absolute; right: -90px; bottom: -130px; width: 360px; height: 360px; content: ""; border: 1px solid rgba(201,230,220,.18); border-radius: 50%; box-shadow: inset 0 0 0 58px rgba(201,230,220,.03), inset 0 0 0 116px rgba(201,230,220,.03); }
+    .practice-story h2 { max-width: 720px; margin: 0; font-size: clamp(2.7rem, 5vw, 5rem); font-weight: 440; line-height: 1; letter-spacing: -.055em; }
+    .practice-story h2 em { color: var(--mint); font-style: normal; }
+    .practice-story p { max-width: 690px; margin: 24px 0 0; color: rgba(255,255,255,.7); }
+    .practice-rail { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 54px; border: 1px solid var(--line-light); border-radius: 18px; background: var(--line-light); overflow: hidden; }
+    .practice-rail div { padding: 19px; background: var(--pine-deep); }
+    .practice-rail strong { display: block; margin-bottom: 4px; font-size: .8rem; }
+    .practice-rail span { color: rgba(255,255,255,.56); font-size: .67rem; }
+    .practice-side { display: grid; gap: 16px; }
+    .practice-side article { min-height: 272px; padding: 30px; border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--ivory); }
+    .practice-side article:last-child { background: var(--mint-pale); }
+    .practice-side .eyebrow { margin-bottom: 32px; }
+    .practice-side h3 { margin: 0 0 10px; font-size: 1.5rem; font-weight: 570; line-height: 1.12; }
+    .practice-side p { margin: 0; color: var(--text); font-size: .8rem; }
+
+    .faq-layout { display: grid; grid-template-columns: minmax(300px, .65fr) minmax(0, 1.35fr); gap: clamp(38px, 7vw, 96px); align-items: start; }
+    .faq-intro { position: sticky; top: 112px; }
+    .faq-list { border-top: 1px solid var(--line); }
+    .faq-item { border-bottom: 1px solid var(--line); }
+    .faq-item summary { position: relative; min-height: 80px; display: flex; align-items: center; padding: 20px 58px 20px 0; font-size: clamp(1rem, 1.45vw, 1.22rem); font-weight: 620; line-height: 1.35; list-style: none; cursor: pointer; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { position: absolute; right: 4px; width: 38px; height: 38px; display: grid; place-items: center; content: "+"; border: 1px solid var(--line); border-radius: 50%; font-size: 1.2rem; transition: transform .3s ease, background .3s ease, color .3s ease; }
+    .faq-item[open] summary::after { color: #fff; background: var(--pine); transform: rotate(45deg); }
+    .faq-answer { max-width: 760px; padding: 0 56px 24px 0; color: var(--text); font-size: .88rem; }
+    .faq-answer p { margin: 0; }
+
+    .contact-section { overflow: hidden; color: #fff; background: var(--pine-deep); }
+    .contact-grid { display: grid; grid-template-columns: minmax(0, .86fr) minmax(380px, .72fr); gap: clamp(44px, 8vw, 120px); align-items: center; }
+    .contact-copy .section-title em { color: var(--mint); }
+    .contact-copy p { max-width: 650px; color: rgba(255,255,255,.68); }
+    .contact-route { display: grid; gap: 10px; margin-top: 30px; }
+    .contact-route span { display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,.75); font-size: .8rem; }
+    .contact-route span::before { width: 7px; height: 7px; content: ""; border-radius: 50%; background: var(--coral); }
+    .contact-form { padding: 32px; border-radius: var(--radius-lg); color: var(--ink); background: #fff; box-shadow: var(--shadow-lg); }
+
+    .source-note { padding-block: 38px; border-top: 1px solid var(--line); background: var(--ivory); }
+    .source-grid { display: grid; grid-template-columns: .7fr 1.3fr; gap: 36px; }
+    .source-grid strong { font-size: .8rem; }
+    .source-grid p, .source-grid li { color: var(--muted); font-size: .68rem; line-height: 1.55; }
+    .source-grid li { min-height: 32px; display: flex; align-items: center; }
+    .source-grid a { min-height: 32px; display: inline-flex; align-items: center; }
+    .source-grid p { margin: 7px 0 0; }
+    .source-grid ul { margin: 0; padding-left: 18px; }
+    .source-grid a { color: var(--pine-soft); }
+
+    .sticky-cta { position: fixed; z-index: 80; left: 50%; bottom: max(16px, env(safe-area-inset-bottom)); width: min(calc(100% - 32px), 720px); min-height: 66px; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 8px 9px 8px 22px; border: 1px solid rgba(255,255,255,.18); border-radius: 999px; color: #fff; background: rgba(8,40,39,.91); box-shadow: 0 22px 64px rgba(0,0,0,.26); backdrop-filter: blur(18px); opacity: 0; visibility: hidden; transform: translate(-50%, 16px); transition: opacity .35s ease, visibility .35s, transform .35s var(--ease); }
+    .sticky-cta.is-visible { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
+    .sticky-copy { display: grid; line-height: 1.25; }
+    .sticky-copy strong { font-size: .86rem; }
+    .sticky-copy span { margin-top: 2px; color: rgba(255,255,255,.57); font-size: .65rem; }
+    .sticky-cta .button { min-height: 48px; white-space: nowrap; }
+
+    .site-footer { position: relative; padding: 64px var(--gutter) 34px; color: #fff; background: #061e1d; }
+    .footer-grid { display: grid; grid-template-columns: minmax(250px, 1.2fr) repeat(3, minmax(130px, .6fr)); gap: 40px; }
+    .footer-brand p { max-width: 390px; margin: 18px 0 0; color: rgba(255,255,255,.58); font-size: .78rem; }
+    .footer-col h2 { margin: 0 0 15px; color: var(--mint); font-size: .63rem; font-weight: 750; letter-spacing: .15em; text-transform: uppercase; }
+    .footer-col a, .footer-col span { display: block; width: fit-content; margin: 7px 0; color: rgba(255,255,255,.68); font-size: .75rem; text-decoration: none; }
+    .footer-col a:hover { color: #fff; }
+    .legal-details { margin-top: 42px; border-top: 1px solid rgba(255,255,255,.11); }
+    .legal-details details { border-bottom: 1px solid rgba(255,255,255,.11); }
+    .legal-details summary { padding: 14px 0; color: rgba(255,255,255,.72); font-size: .71rem; cursor: pointer; }
+    .legal-details p { max-width: 900px; margin: 0 0 16px; color: rgba(255,255,255,.5); font-size: .66rem; }
+    .footer-bottom { display: flex; justify-content: space-between; gap: 20px; margin-top: 28px; color: rgba(255,255,255,.52); font-size: .65rem; }
+
+    .has-js .reveal { opacity: 0; transform: translateY(22px); transition: opacity .72s var(--ease), transform .72s var(--ease); }
+    .has-js .reveal.in { opacity: 1; transform: none; }
+
+    @media (max-width: 1120px) {
+      .header-inner { grid-template-columns: 1fr auto; }
+      .nav { display: none; }
+      .menu-button { display: grid; }
+      .hero-inner { grid-template-columns: minmax(0, 1fr) minmax(340px, .7fr); gap: 44px; }
+      .benefit-grid { grid-template-columns: repeat(2, 1fr); }
+      .timeline { grid-template-columns: 1fr; }
+      .timeline::before { top: 46px; bottom: 46px; left: 49px; right: auto; width: 2px; height: auto; }
+      .step { min-height: 0; display: grid; grid-template-columns: 54px 1fr; column-gap: 20px; padding: 22px 24px; }
+      .step-number { grid-row: 1 / span 2; margin: 0; }
+      .practice-card { grid-template-columns: 1fr; }
+      .practice-side { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 860px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 28px; padding-top: 104px; padding-bottom: 34px; }
+      .hero-copy { margin-inline: auto; text-align: center; }
+      .hero .eyebrow, .hero-benefits, .hero-note { justify-content: center; }
+      .form-card { width: min(100%, 560px); margin-inline: auto; }
+      .quick-grid, .suitability-grid, .daily-grid, .cost-grid, .faq-layout, .contact-grid, .source-grid { grid-template-columns: 1fr; }
+      .quick-points { max-width: 620px; }
+      .image-panel { min-height: 540px; }
+      .daily-aside, .faq-intro { position: relative; top: auto; }
+      .wear-dial { margin-inline: auto; }
+      .comparison-table { table-layout: auto; }
+      .comparison-wrap { overflow-x: auto; }
+      .comparison-table { min-width: 760px; }
+      .footer-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-brand { grid-column: 1 / -1; }
+    }
+
+    @media (max-width: 640px) {
+      :root { --gutter: 18px; --section: 76px; --radius-lg: 24px; }
+      html { scroll-padding-top: 72px; }
+      body { font-size: 15px; }
+      main .container, .source-note .container { text-align: center; }
+      .site-header { height: 68px; }
+      .is-embedded .site-header { height: 102px; padding-top: 34px; }
+      .header-inner { width: calc(100% - 28px); }
+      .brand-mark { width: 34px; height: 34px; }
+      .brand-name { font-size: .69rem; }
+      .brand-name small { font-size: .45rem; }
+      .header-cta { display: none; }
+      .section-heading, .section-lede { margin-inline: auto; text-align: center; }
+      .eyebrow { justify-content: center; }
+      .section-title { font-size: clamp(2.35rem, 11.4vw, 3.25rem); }
+      .hero-media img { object-position: 57% center; }
+      .hero::before { background: linear-gradient(180deg, rgba(8,40,39,.82) 0%, rgba(8,40,39,.92) 46%, rgba(8,40,39,.98) 100%); }
+      .hero-inner { min-height: 100svh; gap: 17px; padding-top: 82px; padding-bottom: 18px; }
+      .is-embedded .hero-inner { padding-top: 116px; }
+      .hero-title { font-size: clamp(2.65rem, 13vw, 3.55rem); line-height: .98; }
+      .hero-deck { margin-top: 13px; font-size: .89rem; }
+      .hero-benefits { gap: 5px 12px; margin-top: 14px; font-size: .67rem; }
+      .hero-note { margin-top: 12px; padding-top: 10px; font-size: .6rem; }
+      .form-card, .contact-form { text-align: center; }
+      .form-card { padding: 17px 20px; border-radius: 20px; }
+      .form-title { font-size: 1.25rem; }
+      .form-intro { margin: 6px 0 10px; }
+      .field { margin-top: 7px; }
+      .field label { text-align: center; }
+      .field input, .field select, .field textarea { text-align: center; }
+      .field input, .field select { min-height: 42px; padding-block: 8px; }
+      .consent { display: flex; justify-content: center; margin-block: 7px; text-align: center; }
+      .consent span { max-width: 310px; }
+      .submit { min-height: 44px; }
+      .status { min-height: 0; margin-top: 4px; text-align: center; }
+      .quick-grid { text-align: center; }
+      .quick-points { grid-template-columns: 1fr; }
+      .quick-point { min-height: 84px; border-right: 0; border-bottom: 1px solid var(--line); }
+      .quick-point:last-child { border-bottom: 0; }
+      .image-panel { min-height: 450px; }
+      .image-caption { inset: auto 16px 16px; text-align: center; }
+      .check-list li { grid-template-columns: 1fr; justify-items: center; text-align: center; }
+      .medical-note { border-top: 3px solid var(--coral); border-left: 0; text-align: center; }
+      .benefit-grid, .daily-cards, .cost-factors, .practice-side { grid-template-columns: 1fr; }
+      .benefit-card { min-height: 240px; align-items: center; text-align: center; }
+      .timeline { border-radius: 20px; }
+      .timeline::before { display: none; }
+      .step { display: block; min-height: 0; padding: 28px 24px; text-align: center; }
+      .step-number { margin: 0 auto 18px; }
+      .process-callout { grid-template-columns: 1fr; text-align: center; }
+      .process-photo { min-height: 280px; }
+      .process-callout-copy { flex-direction: column; padding: 24px 22px; text-align: center; }
+      .daily-aside { text-align: center; }
+      .aligner-photo { width: min(100%, 420px); min-height: 360px; margin-inline: auto; }
+      .daily-card { min-height: 220px; text-align: center; }
+      .daily-card span { margin: 0 auto 26px; }
+      .comparison-wrap { margin-inline: -4px; }
+      .comparison-table th, .comparison-table td { text-align: center; }
+      .cost-panel, .practice-story, .practice-side article { text-align: center; }
+      .cost-panel ul { width: 100%; margin-inline: auto; text-align: center; }
+      .cost-panel li { justify-content: center; text-align: center; }
+      .practice-story { min-height: 520px; padding: 38px 22px; }
+      .practice-story p { margin-inline: auto; }
+      .practice-rail { grid-template-columns: 1fr; }
+      .practice-rail div { text-align: center; }
+      .faq-intro { text-align: center; }
+      .faq-item summary { justify-content: center; padding: 20px 54px; text-align: center; }
+      .faq-item summary::after { right: 8px; }
+      .faq-answer { max-width: 540px; margin-inline: auto; padding: 0 18px 24px; text-align: center; }
+      .contact-copy { text-align: center; }
+      .contact-route { justify-items: center; }
+      .contact-route span { justify-content: center; text-align: center; }
+      .contact-form { padding: 24px 20px; }
+      .source-grid { text-align: center; }
+      .source-grid ul { width: 100%; margin-inline: auto; padding: 0; list-style: none; text-align: center; }
+      .source-grid li { justify-content: center; text-align: center; }
+      .sticky-cta { width: calc(100% - 22px); min-height: 56px; bottom: max(10px, env(safe-area-inset-bottom)); padding: 6px; }
+      .sticky-copy { display: none; }
+      .sticky-cta .button { width: 100%; min-height: 44px; }
+      .footer-grid { grid-template-columns: 1fr; text-align: center; }
+      .footer-brand { grid-column: auto; }
+      .footer-brand .brand, .footer-col a, .footer-col span { margin-inline: auto; }
+      .footer-brand p { margin-inline: auto; }
+      .legal-details p { margin-inline: auto; text-align: center; }
+      .footer-bottom { flex-direction: column; align-items: center; text-align: center; }
+    }
+
+    @media (max-width: 400px), (max-height: 900px) and (max-width: 640px) {
+      .hero-inner { gap: 12px; padding-top: 74px; padding-bottom: 12px; }
+      .hero-title { font-size: 2.45rem; }
+      .hero-deck { font-size: .78rem; }
+      .hero-benefits { margin-top: 9px; font-size: .61rem; }
+      .hero-note { display: none; }
+      .form-card { padding: 14px 17px; }
+      .form-intro { display: none; }
+      .field input, .field select { min-height: 39px; }
+      .consent { font-size: .51rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+      .has-js .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Dentist",
+        "@id": "https://lumera-dental.example/#practice",
+        "name": "Lumera Dental Atelier",
+        "url": "https://lumera-dental.example/",
+        "image": "https://lumera-dental.example/invisalign-steglitz/assets/lumera-og.jpg",
+        "email": "termin@lumera-dental.example",
+        "areaServed": { "@type": "AdministrativeArea", "name": "Berlin-Steglitz" },
+        "medicalSpecialty": "Dentistry"
+      },
+      {
+        "@type": "Service",
+        "@id": "https://lumera-dental.example/invisalign-steglitz/#service",
+        "name": "Invisalign in Berlin-Steglitz",
+        "serviceType": "Zahnkorrektur mit transparenten Alignern",
+        "provider": { "@id": "https://lumera-dental.example/#practice" },
+        "areaServed": { "@type": "AdministrativeArea", "name": "Berlin-Steglitz" },
+        "description": "Persönlich begleitete Aligner-Behandlung mit Untersuchung, digitaler Planung, Kontrollen und Retention."
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://lumera-dental.example/invisalign-steglitz/#webpage",
+        "url": "https://lumera-dental.example/invisalign-steglitz/",
+        "name": "Invisalign Steglitz | Lumera Dental Atelier",
+        "about": { "@id": "https://lumera-dental.example/invisalign-steglitz/#service" },
+        "isPartOf": { "@id": "https://lumera-dental.example/#practice" },
+        "speakable": { "@type": "SpeakableSpecification", "cssSelector": ["h1", ".hero-deck", ".quick-answer"] }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://lumera-dental.example/" },
+          { "@type": "ListItem", "position": 2, "name": "Invisalign Steglitz", "item": "https://lumera-dental.example/invisalign-steglitz/" }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Was kostet Invisalign in Berlin?", "acceptedAnswer": { "@type": "Answer", "text": "Die Kosten hängen vom Umfang der Zahnbewegungen, der Zahl der benötigten Schienen, möglichen Zusatzmaßnahmen und der Behandlungsdauer ab. Eine belastbare Summe ist erst nach Untersuchung und digitaler Planung möglich." } },
+          { "@type": "Question", "name": "Wie lange dauert eine Invisalign-Behandlung?", "acceptedAnswer": { "@type": "Answer", "text": "Die Dauer ist individuell. Sie richtet sich nach Ausgangssituation, Behandlungsziel, geplanter Zahnbewegung und konsequenter Tragezeit. Nach der Diagnostik erhalten Patienten einen persönlichen Zeitplan." } },
+          { "@type": "Question", "name": "Wie viele Stunden täglich muss man Invisalign tragen?", "acceptedAnswer": { "@type": "Answer", "text": "Aligner werden in der Regel den größten Teil des Tages getragen und zum Essen sowie zur Zahnpflege herausgenommen. Die genaue tägliche Tragezeit legt die behandelnde Praxis individuell fest." } },
+          { "@type": "Question", "name": "Ist Invisalign für jede Zahnfehlstellung geeignet?", "acceptedAnswer": { "@type": "Answer", "text": "Nein. Ob eine Aligner-Behandlung geeignet ist, lässt sich erst nach persönlicher Untersuchung und Diagnostik entscheiden. Je nach Befund kann eine andere kieferorthopädische Behandlung sinnvoller sein." } },
+          { "@type": "Question", "name": "Kann man mit Invisalign essen und trinken?", "acceptedAnswer": { "@type": "Answer", "text": "Zum Essen werden die Aligner normalerweise herausgenommen. Vor dem Wiedereinsetzen sollten Zähne und Schienen gereinigt werden. Wasser kann in vielen Situationen mit eingesetzten Schienen getrunken werden; die persönliche Empfehlung der Praxis gilt." } },
+          { "@type": "Question", "name": "Wie werden Invisalign-Schienen gereinigt?", "acceptedAnswer": { "@type": "Answer", "text": "Die Schienen werden regelmäßig mit lauwarmem Wasser und nach Praxisempfehlung mit geeigneten Hilfsmitteln gereinigt. Sehr heißes Wasser kann das Material verformen." } },
+          { "@type": "Question", "name": "Was passiert nach der Invisalign-Behandlung?", "acceptedAnswer": { "@type": "Answer", "text": "Nach der aktiven Zahnbewegung folgt die Retention. Ein individuell geplanter Retainer hilft, die erreichte Zahnposition zu stabilisieren. Art und Tragedauer werden persönlich festgelegt." } },
+          { "@type": "Question", "name": "Übernimmt die Krankenkasse die Kosten für Invisalign?", "acceptedAnswer": { "@type": "Answer", "text": "Die Erstattung hängt von Versicherungsart, Tarif und medizinischer Situation ab. Patienten sollten einen schriftlichen Behandlungs- und Kostenplan vor Beginn bei ihrer Versicherung einreichen." } }
+        ]
+      }
+    ]
+  }
+  </script>
+  <script>document.documentElement.classList.add('has-js'); if (window.self !== window.top) document.documentElement.classList.add('is-embedded');</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Direkt zum Inhalt</a>
+
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#top">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22.5" stroke="currentColor"/><path d="M13 19.5C16 13.5 21.2 12.4 24 18.2C26.8 12.4 32 13.5 35 19.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M14.5 27.5C19.2 34 28.8 34 33.5 27.5" stroke="#E8846D" stroke-width="2.4" stroke-linecap="round"/><circle cx="24" cy="23.5" r="2" fill="currentColor"/></svg>
+        </span>
+        <span class="brand-name">Lumera<small>Dental Atelier · Steglitz</small></span>
+      </a>
+
+      <nav class="nav" aria-label="Hauptnavigation">
+        <a href="#eignung">Eignung</a>
+        <a href="#ablauf">Ablauf</a>
+        <a href="#alltag">Alltag</a>
+        <a href="#kosten">Kosten</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+
+      <div class="header-actions">
+        <a class="header-cta" href="#beratung">Beratung anfragen</a>
+        <button class="menu-button" type="button" aria-label="Navigation öffnen" aria-controls="mobile-menu" aria-expanded="false"><span aria-hidden="true"></span></button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <nav aria-label="Mobile Navigation">
+      <a href="#eignung">Eignung</a>
+      <a href="#ablauf">Ablauf</a>
+      <a href="#alltag">Alltag</a>
+      <a href="#kosten">Kosten</a>
+      <a href="#faq">Häufige Fragen</a>
+      <a href="#beratung">Beratung anfragen</a>
+    </nav>
+  </div>
+
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero-media"><img src="assets/lumera-hero-consultation.webp" alt="Zahnärztin im persönlichen Gespräch mit einem Patienten in einer modernen Praxis" width="1920" height="1280" fetchpriority="high"></div>
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <p class="eyebrow">Invisalign Steglitz</p>
+          <h1 class="hero-title" id="hero-title">Invisalign in Steglitz. <em>Ihr Lächeln in Bewegung.</em></h1>
+          <p class="hero-deck">Transparente Aligner, persönlich geplant und zahnärztlich begleitet – für Erwachsene, die ihre Zähne diskret korrigieren lassen möchten.</p>
+          <ul class="hero-benefits" aria-label="Vorteile der Behandlung">
+            <li>Nahezu transparent</li>
+            <li>Zum Essen herausnehmbar</li>
+            <li>Digital geplant</li>
+          </ul>
+          <p class="hero-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3 4 7v5c0 5 3.4 8.2 8 9 4.6-.8 8-4 8-9V7l-8-4Z"/><path d="m9 12 2 2 4-4"/></svg><span>Die Eignung wird immer nach persönlicher Untersuchung entschieden.</span></p>
+        </div>
+
+        <aside class="form-card" id="beratung" aria-labelledby="hero-form-title">
+          <p class="form-kicker">Persönlich beraten lassen</p>
+          <p class="form-title" id="hero-form-title" role="heading" aria-level="2">Passt Invisalign zu mir?</p>
+          <p class="form-intro">Senden Sie Ihre Kontaktdaten. Unser Praxisteam meldet sich zur Terminabstimmung.</p>
+          <form class="lead-form" action="/anfrage" method="post">
+            <div class="field"><label for="hero-name">Vor- und Nachname</label><input id="hero-name" name="name" type="text" autocomplete="name" placeholder="Ihr Name" required></div>
+            <div class="field"><label for="hero-contact">Telefon oder E-Mail</label><input id="hero-contact" name="contact" type="text" autocomplete="email" placeholder="Wie erreichen wir Sie?" required></div>
+            <div class="field"><label for="hero-goal">Was möchten Sie verändern?</label><select id="hero-goal" name="goal" required><option value="">Bitte auswählen</option><option>Eng stehende Zähne</option><option>Zahnlücke</option><option>Gedrehte oder schiefe Zähne</option><option>Bisslage prüfen lassen</option><option>Erst einmal beraten lassen</option></select></div>
+            <label class="consent"><input type="checkbox" name="consent" required><span>Ich willige ein, dass meine Angaben gemäß Art. 6 Abs. 1 lit. a DSGVO ausschließlich zur Bearbeitung und Beantwortung meiner Terminanfrage verwendet werden. Nach Abschluss werden sie gelöscht, soweit keine gesetzlichen Pflichten entgegenstehen. Hinweise zu Widerruf und Datenschutz finden Sie im <a href="#datenschutz">Datenschutz</a>.</span></label>
+            <button class="submit" type="submit"><span>Beratung anfragen</span><span aria-hidden="true">→</span></button>
+            <p class="status" aria-live="polite"></p>
+          </form>
+        </aside>
+      </div>
+    </section>
+
+    <section class="quick-answer" aria-labelledby="quick-title">
+      <div class="container quick-grid">
+        <div class="reveal">
+          <p class="eyebrow">Kurz erklärt</p>
+          <h2 id="quick-title">Was ist Invisalign?</h2>
+          <p>Invisalign ist ein System aus transparenten, herausnehmbaren Alignern. Eine Folge individuell geplanter Schienen bewegt die Zähne schrittweise in die vorgesehene Position. Ob diese Behandlung für Ihren Befund geeignet ist, wird nach Untersuchung, Diagnostik und persönlicher Beratung entschieden.</p>
+        </div>
+        <div class="quick-points reveal" aria-label="Die drei Grundprinzipien">
+          <div class="quick-point"><strong>Transparent</strong><span>Im Alltag meist unauffällig</span></div>
+          <div class="quick-point"><strong>Herausnehmbar</strong><span>Beim Essen und Zähneputzen</span></div>
+          <div class="quick-point"><strong>Begleitet</strong><span>Mit regelmäßigen Praxiskontrollen</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="eignung" aria-labelledby="eignung-title">
+      <div class="container suitability-grid">
+        <figure class="image-panel reveal">
+          <img src="assets/lumera-treatment.webp" alt="Zahnärztliche Untersuchung eines Patienten vor einer möglichen Aligner-Behandlung" width="1600" height="1200" loading="lazy" decoding="async">
+          <figcaption class="image-caption"><strong>Erst untersuchen, dann planen.</strong><span>Zähne, Zahnfleisch, Biss und Behandlungsziel gehören gemeinsam beurteilt.</span></figcaption>
+        </figure>
+        <div class="reveal">
+          <p class="eyebrow">Für wen geeignet?</p>
+          <h2 class="section-title" id="eignung-title">Passt eine transparente Schiene <em>zu Ihrer Situation?</em></h2>
+          <p class="section-lede">Aligner können bei verschiedenen Zahnfehlstellungen infrage kommen. Entscheidend sind der konkrete Befund, die Gesundheit von Zähnen und Zahnfleisch sowie die Frage, ob die geplanten Zahnbewegungen mit diesem Verfahren sinnvoll erreichbar sind.</p>
+          <ul class="check-list">
+            <li><i>01</i><div><strong>Engstände und gedrehte Zähne</strong><span>Wenn Zähne zu wenig Platz haben oder sichtbar aus der Reihe stehen, kann eine schrittweise Korrektur geprüft werden.</span></div></li>
+            <li><i>02</i><div><strong>Lücken zwischen den Zähnen</strong><span>Je nach Ursache und Größe können Aligner helfen, Zwischenräume kontrolliert zu schließen.</span></div></li>
+            <li><i>03</i><div><strong>Bestimmte Veränderungen der Bisslage</strong><span>Überbiss, Kreuzbiss oder offener Biss erfordern eine genaue Diagnostik. Nicht jeder Befund eignet sich für eine reine Aligner-Behandlung.</span></div></li>
+          </ul>
+          <p class="medical-note"><strong>Wichtig:</strong> Die Entscheidung für Invisalign darf nicht nur anhand von Fotos oder eines Online-Fragebogens getroffen werden. Eine persönliche zahnärztliche Untersuchung ist Teil einer sicheren Planung.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--ivory" aria-labelledby="benefits-title">
+      <div class="container">
+        <header class="section-heading section-heading--center reveal">
+          <p class="eyebrow">Warum Aligner?</p>
+          <h2 class="section-title" id="benefits-title">Eine Zahnkorrektur, die sich <em>in Ihren Alltag einfügt.</em></h2>
+          <p class="section-lede">Viele Erwachsene wünschen sich eine unauffällige Behandlung und zugleich persönliche Begleitung. Invisalign verbindet beides mit einem digital geplanten, schrittweisen Vorgehen.</p>
+        </header>
+        <div class="benefit-grid">
+          <article class="benefit-card reveal"><span class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 12s3-6 8-6 8 6 8 6-3 6-8 6-8-6-8-6Z"/><circle cx="12" cy="12" r="2.5"/></svg></span><h3>Diskret im Alltag</h3><p>Die transparenten Schienen sind bei normalem Gesprächsabstand meist wenig auffällig. Attachments oder andere Hilfsmittel können je nach Planung trotzdem sichtbar sein.</p></article>
+          <article class="benefit-card reveal"><span class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M6 3v8M3 3v5c0 2 1.3 3 3 3s3-1 3-3V3M17 3v18M14 9h6"/></svg></span><h3>Herausnehmbar</h3><p>Zum Essen, Trinken bestimmter Getränke und zur Zahnpflege werden die Aligner herausgenommen. Danach kommen sie gereinigt wieder zurück auf die Zähne.</p></article>
+          <article class="benefit-card reveal"><span class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 18V6l8-3 8 3v12l-8 3-8-3Z"/><path d="m4 6 8 3 8-3M12 9v12"/></svg></span><h3>Digital geplant</h3><p>Auf Basis der Diagnostik wird die geplante Zahnbewegung digital dargestellt. So lassen sich Behandlungsschritte und Ziele vor dem Start verständlich besprechen.</p></article>
+          <article class="benefit-card reveal"><span class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3 4 7v5c0 5 3.4 8.2 8 9 4.6-.8 8-4 8-9V7l-8-4Z"/><path d="m9 12 2 2 4-4"/></svg></span><h3>Persönlich kontrolliert</h3><p>Regelmäßige Termine helfen, den Sitz der Schienen, den Verlauf und die Mundgesundheit im Blick zu behalten. Bei Bedarf wird der Plan angepasst.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--dark process" id="ablauf" aria-labelledby="process-title">
+      <div class="container">
+        <header class="section-heading reveal">
+          <p class="eyebrow">Ihr Behandlungsweg</p>
+          <h2 class="section-title" id="process-title">Vom ersten Gespräch bis zur <em>stabilen Zahnposition.</em></h2>
+          <p class="section-lede">Eine sorgfältige Aligner-Behandlung endet nicht mit der letzten aktiven Schiene. Diagnostik, Mitarbeit, Kontrollen und Retention gehören zusammen.</p>
+        </header>
+        <div class="timeline reveal">
+          <article class="step"><span class="step-number">01</span><div><h3>Beratung und Untersuchung</h3><p>Wir sprechen über Ihre Wünsche, untersuchen Zähne, Zahnfleisch und Biss und klären, ob eine Aligner-Therapie grundsätzlich sinnvoll erscheint.</p></div></article>
+          <article class="step"><span class="step-number">02</span><div><h3>Scan und Diagnostik</h3><p>Ein digitaler Scan erfasst Ihre Zahnreihen. Je nach Befund können Fotos, Röntgenaufnahmen oder weitere diagnostische Schritte notwendig sein.</p></div></article>
+          <article class="step"><span class="step-number">03</span><div><h3>Persönlicher Plan</h3><p>Das Behandlungsziel, die geplanten Bewegungen, mögliche Attachments, Dauer, Kontrollen und Kosten werden nachvollziehbar besprochen.</p></div></article>
+          <article class="step"><span class="step-number">04</span><div><h3>Aligner und Kontrollen</h3><p>Sie tragen die Schienen entsprechend der persönlichen Empfehlung und wechseln sie nach Plan. Kontrolltermine begleiten den Fortschritt.</p></div></article>
+          <article class="step"><span class="step-number">05</span><div><h3>Retention</h3><p>Nach der aktiven Behandlung stabilisiert ein Retainer die neue Zahnposition. Art, Tragedauer und Kontrollen werden individuell festgelegt.</p></div></article>
+        </div>
+        <div class="process-callout reveal">
+          <figure class="process-photo"><img src="assets/lumera-digital-consultation.webp" alt="Zahnarzt erläutert einem Patienten die digitale Behandlungsplanung am Bildschirm" width="1600" height="2400" loading="lazy" decoding="async"></figure>
+          <div class="process-callout-copy"><p><strong>Ihr Plan wird gemeinsam besprochen:</strong> Digitale Darstellungen helfen, vorgesehene Schritte verständlich zu erklären. Wenn eine Schiene nicht richtig sitzt oder Beschwerden auftreten, wenden Sie sich an die Praxis.</p><a class="button button--light" href="#beratung">Termin anfragen</a></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="alltag" aria-labelledby="daily-title">
+      <div class="container daily-grid">
+        <div class="daily-aside reveal">
+          <p class="eyebrow">Invisalign im Alltag</p>
+          <h2 class="section-title" id="daily-title">Ihre Mitarbeit macht <em>den Unterschied.</em></h2>
+          <p class="section-lede">Transparente Schienen sind flexibel, brauchen aber eine verlässliche Routine. Die genaue Tragezeit und der Wechselrhythmus richten sich nach Ihrem persönlichen Plan.</p>
+          <div class="wear-dial" aria-label="Häufig empfohlene tägliche Tragezeit"><div><strong>20–22</strong><span>Stunden werden häufig empfohlen – maßgeblich ist Ihr persönlicher Plan.</span></div></div>
+          <figure class="aligner-photo"><img src="assets/lumera-aligner-closeup.webp" alt="Hand hält eine transparente Zahnschiene vor hellem Hintergrund" width="1600" height="2400" loading="lazy" decoding="async"><figcaption><strong>Transparent und herausnehmbar</strong>Die Schienen werden passend zu Ihrem Behandlungsplan gefertigt.</figcaption></figure>
+        </div>
+        <div class="daily-cards">
+          <article class="daily-card reveal"><span>01</span><h3>Essen und Trinken</h3><p>Nehmen Sie die Aligner zum Essen heraus. Bei Getränken außer Wasser kann das Herausnehmen ebenfalls sinnvoll sein. Reinigen Sie Zähne und Schienen vor dem Wiedereinsetzen entsprechend der Empfehlung Ihrer Praxis.</p></article>
+          <article class="daily-card reveal"><span>02</span><h3>Reinigung</h3><p>Spülen und reinigen Sie die Aligner regelmäßig mit lauwarmem Wasser und geeigneten Hilfsmitteln. Sehr heißes Wasser kann das Material verformen. Ihre Zahnpflege bleibt während der Behandlung besonders wichtig.</p></article>
+          <article class="daily-card reveal"><span>03</span><h3>Sprechen und Gewöhnung</h3><p>In den ersten Tagen kann sich das Sprechen ungewohnt anfühlen. Viele Menschen gewöhnen sich rasch daran. Druck beim Start eines neuen Aligners kann vorkommen; stärkere oder anhaltende Beschwerden gehören abgeklärt.</p></article>
+          <article class="daily-card reveal"><span>04</span><h3>Unterwegs</h3><p>Eine feste Routine hilft: Aufbewahrungsbox, kleine Zahnbürste und Reinigungsmöglichkeit gehören in die Tasche. Bewahren Sie Schienen nie lose in Servietten auf – dort werden sie leicht vergessen oder entsorgt.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--mint" aria-labelledby="compare-title">
+      <div class="container">
+        <header class="section-heading section-heading--center reveal"><p class="eyebrow">Behandlung vergleichen</p><h2 class="section-title" id="compare-title">Aligner oder feste Zahnspange?</h2><p class="section-lede">Beide Verfahren bewegen Zähne. Welche Lösung besser zu Ihnen passt, hängt von Befund, Ziel, Alltag und der notwendigen Kontrolle ab.</p></header>
+        <div class="comparison-wrap reveal">
+          <table class="comparison-table">
+            <thead><tr><th>Kriterium</th><th>Transparente Aligner</th><th>Feste Zahnspange</th></tr></thead>
+            <tbody>
+              <tr><td>Sichtbarkeit</td><td>Transparent und meist unauffällig; Attachments können sichtbar sein.</td><td>Brackets und Bögen sind je nach Material deutlicher sichtbar.</td></tr>
+              <tr><td>Herausnehmen</td><td>Zum Essen und zur Zahnpflege herausnehmbar.</td><td>Bleibt während der aktiven Behandlung fest auf den Zähnen.</td></tr>
+              <tr><td>Mitarbeit</td><td>Konsequente tägliche Tragezeit ist entscheidend.</td><td>Die Apparatur wirkt dauerhaft; Pflege und Termine bleiben wichtig.</td></tr>
+              <tr><td>Zahnpflege</td><td>Zähne lassen sich ohne eingesetzte Schiene wie gewohnt putzen.</td><td>Reinigung um Brackets und Bögen erfordert besondere Sorgfalt.</td></tr>
+              <tr><td>Eignung</td><td>Für viele, aber nicht alle Zahn- und Bissfehlstellungen geeignet.</td><td>Kann bei komplexeren Bewegungen je nach Befund Vorteile haben.</td></tr>
+              <tr><td>Kontrollen</td><td>Regelmäßige Kontrollen prüfen Sitz, Verlauf und Mundgesundheit.</td><td>Regelmäßige Kontrollen und Anpassungen gehören ebenfalls dazu.</td></tr>
+              <tr><td>Nach Behandlung</td><td>Retention hilft, die erreichte Position zu stabilisieren.</td><td>Auch hier ist Retention nach der aktiven Behandlung notwendig.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="comparison-note">Die Tabelle dient der Orientierung. Eine persönliche Empfehlung ist erst nach Diagnostik möglich.</p>
+      </div>
+    </section>
+
+    <section class="section section--ivory" id="kosten" aria-labelledby="cost-title">
+      <div class="container cost-grid">
+        <div class="reveal">
+          <p class="eyebrow">Kosten und Planung</p>
+          <h2 class="section-title" id="cost-title">Was kostet Invisalign <em>in Berlin?</em></h2>
+          <p class="section-lede">Eine pauschale Preisangabe wäre ohne Befund nicht belastbar. Die Kosten richten sich unter anderem nach der Komplexität der Zahnbewegungen, der Zahl der benötigten Aligner, möglichen Zusatzmaßnahmen, Kontrollen und Retention.</p>
+          <div class="cost-factors">
+            <div class="cost-factor"><strong>Ausgangssituation</strong><span>Welche Zähne sollen bewegt werden und wie komplex ist der Biss?</span></div>
+            <div class="cost-factor"><strong>Behandlungsumfang</strong><span>Wie viele Schritte, Schienen und mögliche Nachkorrekturen sind geplant?</span></div>
+            <div class="cost-factor"><strong>Begleitmaßnahmen</strong><span>Sind Attachments, weitere Diagnostik oder Vorbehandlungen erforderlich?</span></div>
+            <div class="cost-factor"><strong>Retention</strong><span>Welche Stabilisierung ist nach der aktiven Behandlung vorgesehen?</span></div>
+          </div>
+        </div>
+        <aside class="cost-panel reveal">
+          <p class="form-kicker" style="color:var(--mint)">Transparenz vor dem Start</p>
+          <h3 style="margin:0 0 14px;font-size:2rem;font-weight:520;line-height:1.08">Sie erhalten einen persönlichen Behandlungs- und Kostenplan.</h3>
+          <p>Besprechen Sie vor Beginn, welche Leistungen enthalten sind, welche Zusatzkosten möglich werden und wie mit Nachkorrekturen umgegangen wird.</p>
+          <ul><li>Schriftliche Übersicht vor Behandlungsbeginn</li><li>Tarif oder Zusatzversicherung vorab prüfen</li><li>Erstattungszusage direkt bei der Versicherung klären</li></ul>
+          <a class="button button--light" href="#beratung">Kosten persönlich besprechen</a>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="practice-title">
+      <div class="container practice-card">
+        <article class="practice-story reveal">
+          <p class="eyebrow">Lumera Dental Atelier</p>
+          <h2 id="practice-title">Persönliche Zahnmedizin mit <em>ruhigem Blick fürs Detail.</em></h2>
+          <p>Bei Lumera begleitet Sie ein festes Praxisteam vom ersten Gespräch über die digitale Planung bis zur Retention. Wir erklären Entscheidungen verständlich, prüfen den Verlauf persönlich und setzen Behandlungsschritte erst um, wenn Ziel, Nutzen, Grenzen und Kosten gemeinsam geklärt sind.</p>
+          <div class="practice-rail"><div><strong>Berlin-Steglitz</strong><span>Gut erreichbar im Bezirk</span></div><div><strong>Digitaler Scan</strong><span>Planung ohne unnötige Umwege</span></div><div><strong>Persönliche Kontrollen</strong><span>Begleitung während der Behandlung</span></div></div>
+        </article>
+        <div class="practice-side">
+          <article class="reveal"><p class="eyebrow">Beratung</p><h3>Fragen ausdrücklich erwünscht.</h3><p>Bringen Sie Ihre Erwartungen, frühere Behandlungen und vorhandene Unterlagen mit. Ein guter Plan beginnt mit einem vollständigen Bild Ihrer Situation.</p></article>
+          <article class="reveal"><p class="eyebrow">Sicherheit</p><h3>Keine Behandlung nur per Foto.</h3><p>Diagnose, Aufklärung und Therapieplanung gehören in zahnärztliche Hände. Persönliche Untersuchung und Kontrollen sind fester Teil unseres Ablaufs.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--ivory" id="faq" aria-labelledby="faq-title">
+      <div class="container faq-layout">
+        <header class="faq-intro reveal"><p class="eyebrow">Häufige Fragen</p><h2 class="section-title" id="faq-title">Was Patienten vor dem Start wissen möchten.</h2><p class="section-lede">Kurze Antworten zur ersten Orientierung. Ihre persönliche Situation klären wir im Beratungstermin.</p></header>
+        <div class="faq-list reveal">
+          <details class="faq-item"><summary>Was kostet Invisalign in Berlin?</summary><div class="faq-answer"><p>Die Kosten hängen vom Umfang der Zahnbewegungen, der Zahl der benötigten Schienen, möglichen Zusatzmaßnahmen und der Behandlungsdauer ab. Eine belastbare Summe ist erst nach Untersuchung und digitaler Planung möglich. Vor dem Start erhalten Sie einen persönlichen Behandlungs- und Kostenplan.</p></div></details>
+          <details class="faq-item"><summary>Wie lange dauert eine Invisalign-Behandlung?</summary><div class="faq-answer"><p>Die Dauer ist individuell. Sie richtet sich nach Ausgangssituation, Behandlungsziel, geplanter Zahnbewegung und konsequenter Tragezeit. Nach der Diagnostik besprechen wir einen persönlichen Zeitplan. Nachkorrekturen können die Gesamtdauer verlängern.</p></div></details>
+          <details class="faq-item"><summary>Wie viele Stunden täglich muss man Invisalign tragen?</summary><div class="faq-answer"><p>Aligner werden in der Regel den größten Teil des Tages getragen und zum Essen sowie zur Zahnpflege herausgenommen. Häufig werden rund 20 bis 22 Stunden empfohlen. Maßgeblich ist die persönliche Anweisung Ihrer behandelnden Praxis.</p></div></details>
+          <details class="faq-item"><summary>Ist Invisalign für jede Zahnfehlstellung geeignet?</summary><div class="faq-answer"><p>Nein. Ob eine Aligner-Behandlung geeignet ist, lässt sich erst nach persönlicher Untersuchung und Diagnostik entscheiden. Je nach Art und Ausprägung der Fehlstellung kann eine andere kieferorthopädische Behandlung oder eine Kombination sinnvoller sein.</p></div></details>
+          <details class="faq-item"><summary>Kann man mit Invisalign essen und trinken?</summary><div class="faq-answer"><p>Zum Essen werden die Aligner normalerweise herausgenommen. Bei Getränken außer Wasser kann das ebenfalls sinnvoll sein. Vor dem Wiedereinsetzen sollten Zähne und Schienen entsprechend der Praxisempfehlung gereinigt werden.</p></div></details>
+          <details class="faq-item"><summary>Wie werden Invisalign-Schienen gereinigt?</summary><div class="faq-answer"><p>Reinigen Sie die Schienen regelmäßig mit lauwarmem Wasser und geeigneten Hilfsmitteln. Sehr heißes Wasser kann das Material verformen. Welche Produkte Sie verwenden sollten, erklärt Ihnen das Praxisteam passend zu Ihren Alignern.</p></div></details>
+          <details class="faq-item"><summary>Was passiert nach der Invisalign-Behandlung?</summary><div class="faq-answer"><p>Nach der aktiven Zahnbewegung folgt die Retention. Ein individuell geplanter festsitzender oder herausnehmbarer Retainer hilft, die erreichte Zahnposition zu stabilisieren. Art, Tragedauer und Kontrollen werden persönlich festgelegt.</p></div></details>
+          <details class="faq-item"><summary>Übernimmt die Krankenkasse die Kosten für Invisalign?</summary><div class="faq-answer"><p>Die Erstattung hängt von Versicherungsart, Tarif und medizinischer Situation ab. Gesetzliche Krankenkassen übernehmen Aligner-Behandlungen bei Erwachsenen häufig nicht als reguläre Leistung. Reichen Sie den schriftlichen Behandlungs- und Kostenplan vor Beginn bei Ihrer Versicherung ein und lassen Sie die Erstattung direkt bestätigen.</p></div></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact-section" id="kontakt" aria-labelledby="contact-title">
+      <div class="container contact-grid">
+        <div class="contact-copy reveal">
+          <p class="eyebrow">Ihr nächster Schritt</p>
+          <h2 class="section-title" id="contact-title">Lassen Sie prüfen, ob Invisalign <em>zu Ihnen passt.</em></h2>
+          <p>Im ersten Termin sprechen wir über Ihr Ziel, untersuchen Ihre Zahn- und Bisssituation und erklären die nächsten diagnostischen Schritte. Sie erhalten eine ehrliche Einschätzung, bevor Sie sich für eine Behandlung entscheiden.</p>
+          <div class="contact-route"><span>Persönliche Untersuchung in Berlin-Steglitz</span><span>Verständliche Besprechung von Möglichkeiten und Grenzen</span><span>Individueller Plan vor Behandlungsbeginn</span></div>
+        </div>
+        <aside class="contact-form reveal" aria-labelledby="bottom-form-title">
+          <p class="form-kicker">Terminwunsch senden</p>
+          <h2 id="bottom-form-title">Beratung anfragen</h2>
+          <p class="form-intro">Wir melden uns zur Terminabstimmung. Medizinische Notfälle werden nicht über dieses Formular bearbeitet.</p>
+          <form class="lead-form" action="/anfrage" method="post">
+            <div class="field"><label for="bottom-name">Vor- und Nachname</label><input id="bottom-name" name="name" type="text" autocomplete="name" required></div>
+            <div class="field"><label for="bottom-email">E-Mail-Adresse</label><input id="bottom-email" name="email" type="email" autocomplete="email" required></div>
+            <div class="field"><label for="bottom-message">Was möchten Sie wissen?</label><textarea id="bottom-message" name="message" placeholder="Zum Beispiel: Beratung zu Engstand oder Zahnlücke"></textarea></div>
+            <label class="consent"><input type="checkbox" name="consent" required><span>Ich willige in die Verarbeitung meiner Angaben zur Bearbeitung der Terminanfrage gemäß Art. 6 Abs. 1 lit. a DSGVO ein. Die Daten werden nach Abschluss der Anfrage gelöscht, soweit keine gesetzlichen Aufbewahrungspflichten bestehen. Mehr im <a href="#datenschutz">Datenschutz</a>.</span></label>
+            <button class="submit" type="submit"><span>Terminwunsch senden</span><span aria-hidden="true">→</span></button>
+            <p class="status" aria-live="polite"></p>
+          </form>
+        </aside>
+      </div>
+    </section>
+
+    <section class="source-note" aria-labelledby="sources-title">
+      <div class="container source-grid">
+        <div><strong id="sources-title">Medizinischer Hinweis</strong><p>Diese Informationen dienen der allgemeinen Orientierung und ersetzen keine persönliche Untersuchung, Diagnose oder Aufklärung. Eignung, Risiken, Dauer, Kosten und Alternativen werden individuell geklärt.</p></div>
+        <div><strong>Fachliche Quellen</strong><ul><li><a href="https://www.invisalign.com/how-it-works" target="_blank" rel="noopener">Invisalign – Behandlungsablauf</a></li><li><a href="https://www.invisalign.com/frequently-asked-questions" target="_blank" rel="noopener">Invisalign – Häufige Fragen</a></li><li><a href="https://www.bzaek.de/presse/infodienst-klartext/klartext/klartext-10-24.html" target="_blank" rel="noopener">Bundeszahnärztekammer – zahnärztliche Begleitung bei Alignern</a></li><li><a href="https://aaoinfo.org/treatments/aligners/" target="_blank" rel="noopener">American Association of Orthodontists – Clear Aligners</a></li></ul></div>
+      </div>
+    </section>
+  </main>
+
+  <aside class="sticky-cta" id="sticky-cta" aria-label="Schnelle Terminanfrage"><span class="sticky-copy"><strong>Invisalign-Beratung in Steglitz</strong><span>Persönlich prüfen lassen</span></span><a class="button button--light" href="#beratung">Beratung anfragen</a></aside>
+
+  <footer class="site-footer" id="footer">
+    <div class="footer-grid">
+      <div class="footer-brand"><a class="brand" href="#top"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22.5" stroke="currentColor"/><path d="M13 19.5C16 13.5 21.2 12.4 24 18.2C26.8 12.4 32 13.5 35 19.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M14.5 27.5C19.2 34 28.8 34 33.5 27.5" stroke="#E8846D" stroke-width="2.4" stroke-linecap="round"/></svg></span><span class="brand-name">Lumera<small>Dental Atelier · Steglitz</small></span></a><p>Persönlich begleitete Zahnmedizin und transparente Aligner-Behandlungen in Berlin-Steglitz.</p></div>
+      <div class="footer-col"><h2>Invisalign</h2><a href="#eignung">Eignung</a><a href="#ablauf">Ablauf</a><a href="#alltag">Alltag und Pflege</a><a href="#kosten">Kosten</a></div>
+      <div class="footer-col"><h2>Praxis</h2><span>Berlin-Steglitz</span><a href="mailto:termin@lumera-dental.example">termin@lumera-dental.example</a><a href="#kontakt">Termin anfragen</a></div>
+      <div class="footer-col"><h2>Informationen</h2><a href="#faq">Häufige Fragen</a><a href="#datenschutz">Datenschutz</a><a href="#impressum">Impressum</a></div>
+    </div>
+    <div class="legal-details">
+      <details id="datenschutz"><summary>Datenschutzhinweise zur Terminanfrage</summary><p>Verantwortlich ist das Lumera Dental Atelier. Angaben aus dem Formular werden auf Grundlage Ihrer Einwilligung gemäß Art. 6 Abs. 1 lit. a DSGVO ausschließlich zur Bearbeitung Ihrer Anfrage und Terminabstimmung verarbeitet. Die Daten werden nach Abschluss der Anfrage gelöscht, soweit keine gesetzlichen Aufbewahrungspflichten bestehen. Sie können Ihre Einwilligung jederzeit mit Wirkung für die Zukunft widerrufen.</p></details>
+      <details id="impressum"><summary>Impressum</summary><p>Lumera Dental Atelier · Berlin-Steglitz · Kontakt: termin@lumera-dental.example · Verantwortlich für den Inhalt: Praxisleitung.</p></details>
+    </div>
+    <div class="footer-bottom"><span>© 2026 Lumera Dental Atelier</span><span>Invisalign® ist eine eingetragene Marke von Align Technology, Inc.</span></div>
+  </footer>
+
+  <script>
+    const header = document.getElementById('site-header');
+    const menuButton = document.querySelector('.menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const stickyCta = document.getElementById('sticky-cta');
+    const hero = document.querySelector('.hero');
+    const footer = document.getElementById('footer');
+
+    function syncScrollUi() {
+      header.classList.toggle('is-scrolled', window.scrollY > 24);
+      const passedHero = window.scrollY > hero.offsetHeight * .72;
+      const footerNear = footer.getBoundingClientRect().top < window.innerHeight + 40;
+      stickyCta.classList.toggle('is-visible', passedHero && !footerNear);
+    }
+    addEventListener('scroll', syncScrollUi, { passive: true });
+    syncScrollUi();
+
+    function closeMenu() {
+      mobileMenu.classList.remove('is-open');
+      mobileMenu.setAttribute('aria-hidden', 'true');
+      menuButton.setAttribute('aria-expanded', 'false');
+      document.body.classList.remove('menu-open');
+    }
+    menuButton.addEventListener('click', () => {
+      const open = !mobileMenu.classList.contains('is-open');
+      mobileMenu.classList.toggle('is-open', open);
+      mobileMenu.setAttribute('aria-hidden', String(!open));
+      menuButton.setAttribute('aria-expanded', String(open));
+      menuButton.setAttribute('aria-label', open ? 'Navigation schließen' : 'Navigation öffnen');
+      document.body.classList.toggle('menu-open', open);
+    });
+    mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+    addEventListener('keydown', event => { if (event.key === 'Escape') closeMenu(); });
+
+    document.querySelectorAll('.faq-item').forEach(item => item.addEventListener('toggle', () => {
+      if (!item.open) return;
+      document.querySelectorAll('.faq-item[open]').forEach(other => { if (other !== item) other.open = false; });
+    }));
+
+    document.querySelectorAll('.lead-form').forEach(form => form.addEventListener('submit', event => {
+      event.preventDefault();
+      form.querySelector('.status').textContent = 'Vielen Dank. Ihre Anfrage ist vorbereitet. Unser Praxisteam meldet sich zur Terminabstimmung.';
+    }));
+
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('in'); revealObserver.unobserve(entry.target); } });
+    }, { threshold: .12 });
+    document.querySelectorAll('.reveal').forEach(element => revealObserver.observe(element));
+  </script>
+</body>
+</html>

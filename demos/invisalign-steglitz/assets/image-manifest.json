@@ -1,0 +1,64 @@
+{
+  "images": [
+    {
+      "src": "invisalign-steglitz/assets/lumera-hero-consultation.webp",
+      "page": "https://lumera-dental.example/invisalign-steglitz",
+      "source": "https://unsplash.com/photos/dentist-talking-to-patient-in-a-modern-dental-office-Bg81yWKZlMg",
+      "source_site": "Unsplash",
+      "license": "Unsplash License",
+      "author": "Harold Hizon",
+      "role": "hero",
+      "alt": "Zahnärztin im persönlichen Gespräch mit einem Patienten in einer modernen Praxis"
+    },
+    {
+      "src": "invisalign-steglitz/assets/lumera-treatment.webp",
+      "page": "https://lumera-dental.example/invisalign-steglitz",
+      "source": "https://unsplash.com/photos/a-dentist-examining-a-patient-GxctDhxhbxM",
+      "source_site": "Unsplash",
+      "license": "Unsplash License",
+      "author": "Ozkan Guner",
+      "role": "content",
+      "alt": "Zahnärztliche Untersuchung eines Patienten vor einer möglichen Aligner-Behandlung"
+    },
+    {
+      "src": "invisalign-steglitz/assets/lumera-og.jpg",
+      "page": "https://lumera-dental.example/invisalign-steglitz",
+      "source": "https://unsplash.com/photos/dentist-talking-to-patient-in-a-modern-dental-office-Bg81yWKZlMg",
+      "source_site": "Unsplash",
+      "license": "Unsplash License",
+      "author": "Harold Hizon",
+      "role": "share-preview",
+      "alt": "Persönliches Beratungsgespräch in einer modernen Zahnarztpraxis"
+    },
+    {
+      "src": "https://lumera-dental.example/invisalign-steglitz/assets/lumera-og.jpg",
+      "page": "https://lumera-dental.example/invisalign-steglitz",
+      "source": "https://unsplash.com/photos/dentist-talking-to-patient-in-a-modern-dental-office-Bg81yWKZlMg",
+      "source_site": "Unsplash",
+      "license": "Unsplash License",
+      "author": "Harold Hizon",
+      "role": "share-preview-metadata",
+      "alt": "Persönliches Beratungsgespräch in einer modernen Zahnarztpraxis"
+    },
+    {
+      "src": "invisalign-steglitz/assets/lumera-digital-consultation.webp",
+      "page": "https://lumera-dental.example/invisalign-steglitz",
+      "source": "https://www.pexels.com/photo/dentist-having-a-discussion-with-a-patient-6627347/",
+      "source_site": "Pexels",
+      "license": "Pexels License",
+      "author": "www.kaboompics.com",
+      "role": "treatment-planning",
+      "alt": "Zahnarzt erläutert einem Patienten die digitale Behandlungsplanung am Bildschirm"
+    },
+    {
+      "src": "invisalign-steglitz/assets/lumera-aligner-closeup.webp",
+      "page": "https://lumera-dental.example/invisalign-steglitz",
+      "source": "https://www.pexels.com/photo/person-holding-clear-aligner-3845985/",
+      "source_site": "Pexels",
+      "license": "Pexels License",
+      "author": "Anna Shvets",
+      "role": "aligner-detail",
+      "alt": "Hand hält eine transparente Zahnschiene vor hellem Hintergrund"
+    }
+  ]
+}

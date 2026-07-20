@@ -1,0 +1,60 @@
+{
+  "videos": [
+    {
+      "src": "assets/media/codex-bg.mp4",
+      "poster": "assets/media/codex-bg-poster.jpg",
+      "page": "index.html",
+      "source": "Web Design Projects/codex-style-neo/codex-bg.mp4",
+      "source_site": "Digital Movement local asset library",
+      "role": "fixed-page-background"
+    }
+  ],
+  "images": [
+    {
+      "src": "assets/screens/invisalign-google-suggestions.jpg",
+      "page": "index.html",
+      "source": "User-provided screenshot from 2026-07-20",
+      "source_site": "Google",
+      "role": "section-01-search-demand",
+      "alt": "Google-Suchvorschläge für Invisalign Berlin mit Varianten zu Kosten, Bezirken und Sprache"
+    },
+    {
+      "src": "assets/screens/invisalign-google-results.jpg",
+      "page": "index.html",
+      "source": "User-provided screenshot from 2026-07-20",
+      "source_site": "Google",
+      "role": "section-01-search-results",
+      "alt": "Google-Ergebnisse für Invisalign Berlin mit mehreren sichtbaren Praxen"
+    },
+    {
+      "src": "assets/screens/invisalign-ai-recommendation.jpg",
+      "page": "index.html",
+      "source": "User-provided screenshot from 2026-07-20",
+      "source_site": "ChatGPT",
+      "role": "section-01-ai-recommendation",
+      "alt": "ChatGPT-Antwort mit konkreten Empfehlungen für Invisalign-Praxen in Berlin"
+    },
+    {
+      "src": "assets/media/dental-practice-consultation.jpg",
+      "page": "index.html",
+      "source": "https://www.pexels.com/photo/dental-clinic-3845723/",
+      "source_site": "Pexels",
+      "license": "Pexels License — free commercial use",
+      "license_url": "https://www.pexels.com/license/",
+      "author": "Anna Shvets",
+      "role": "content",
+      "alt": "Helle moderne Zahnarztpraxis während einer Behandlung"
+    },
+    {
+      "src": "assets/media/dental-practice-team.jpg",
+      "page": "index.html",
+      "source": "https://www.pexels.com/photo/dentists-and-a-patient-in-a-dental-room-5355926/",
+      "source_site": "Pexels",
+      "license": "Pexels License — free commercial use",
+      "license_url": "https://www.pexels.com/license/",
+      "author": "Tima Miroshnichenko",
+      "role": "share-preview",
+      "alt": "Zahnmedizinisches Team in einer modernen Praxis"
+    }
+  ]
+}

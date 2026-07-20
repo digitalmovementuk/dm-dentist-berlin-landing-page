@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Invisalign Berlin – Beispiel einer Behandlungsseite</title>
+  <style>
+    :root { --ink:#111113; --soft:#5e6066; --line:rgba(17,17,19,.1); --purple:#852dc1; --paper:#fff; }
+    * { box-sizing:border-box; }
+    body { margin:0; color:var(--ink); background:linear-gradient(145deg,#f8f7f3 0%,#eef1ff 52%,#f8eefe 100%); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+    .page { min-height:100vh; padding:22px clamp(20px,4vw,48px) 38px; }
+    nav { display:flex; align-items:center; justify-content:space-between; gap:20px; }
+    .brand { display:flex; align-items:center; gap:10px; font-size:14px; font-weight:700; }
+    .brand i { width:32px; height:32px; display:grid; place-items:center; border-radius:10px; color:#fff; background:#111; font-style:normal; }
+    .trust { color:var(--soft); font-size:12px; }
+    .layout { min-height:540px; display:grid; grid-template-columns:minmax(0,1.05fr) minmax(320px,.95fr); gap:clamp(28px,6vw,80px); align-items:center; padding-top:clamp(54px,8vw,90px); }
+    .eyebrow { margin:0 0 18px; color:var(--purple); font-size:11px; font-weight:700; letter-spacing:.15em; text-transform:uppercase; }
+    h1 { max-width:680px; margin:0; font-size:clamp(46px,7vw,82px); font-weight:500; line-height:.95; letter-spacing:-.055em; }
+    .lead { max-width:600px; margin:24px 0; color:var(--soft); font-size:clamp(16px,2vw,20px); line-height:1.55; }
+    .button { min-height:46px; display:inline-flex; align-items:center; gap:20px; padding:0 20px; border-radius:999px; color:#fff; background:#111; font-size:13px; font-weight:650; text-decoration:none; }
+    .facts { display:flex; flex-wrap:wrap; gap:8px; margin-top:28px; }
+    .facts span { padding:8px 11px; border:1px solid var(--line); border-radius:999px; background:rgba(255,255,255,.65); color:var(--soft); font-size:11px; }
+    .panel { padding:26px; border:1px solid rgba(255,255,255,.8); border-radius:22px; background:rgba(255,255,255,.86); box-shadow:0 38px 80px -34px rgba(20,20,50,.28); }
+    .visual { position:relative; min-height:190px; display:grid; place-items:center; overflow:hidden; border-radius:16px; background:radial-gradient(circle at 50% 18%,#fff 0 16%,transparent 17%),linear-gradient(145deg,#dce6ff,#e8d7fb); }
+    .visual::before { width:230px; height:96px; content:""; border:18px solid rgba(255,255,255,.72); border-top:0; border-radius:0 0 140px 140px; transform:translateY(-6px); box-shadow:0 24px 45px rgba(88,61,155,.13); }
+    .visual span { position:absolute; right:14px; bottom:14px; padding:7px 10px; border-radius:999px; background:#fff; color:var(--purple); font-size:10px; font-weight:700; }
+    .panel h2 { margin:24px 0 6px; font-size:22px; font-weight:600; letter-spacing:-.025em; }
+    .panel p { margin:0 0 18px; color:var(--soft); font-size:13px; line-height:1.5; }
+    .fields { display:grid; gap:9px; }
+    .field { min-height:44px; display:flex; align-items:center; padding:0 13px; border:1px solid var(--line); border-radius:11px; color:#8a8b90; background:#fafafa; font-size:12px; }
+    .submit { min-height:46px; display:flex; align-items:center; justify-content:space-between; padding:0 16px; border-radius:999px; color:#fff; background:#111; font-size:12px; font-weight:700; }
+    @media (max-width:680px) {
+      .page { padding:18px; }
+      .trust { display:none; }
+      .layout { grid-template-columns:1fr; padding-top:42px; text-align:center; }
+      h1 { font-size:48px; }
+      .lead { margin-inline:auto; }
+      .facts { justify-content:center; }
+      .panel { padding:18px; text-align:left; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <nav>
+      <div class="brand"><i>Z</i><span>Zahnarztpraxis Berlin</span></div>
+      <div class="trust">4,9 ★ · 120 Google-Bewertungen</div>
+    </nav>
+    <main class="layout">
+      <section>
+        <p class="eyebrow">Invisalign® in Berlin</p>
+        <h1>Gerade Zähne. Unsichtbar im Alltag.</h1>
+        <p class="lead">Individuelle Aligner-Behandlung für Erwachsene – verständlich erklärt und persönlich begleitet.</p>
+        <a class="button" href="#anfrage">Beratung anfragen <span>→</span></a>
+        <div class="facts"><span>3D-Scan inklusive</span><span>Flexible Termine</span><span>Finanzierung möglich</span></div>
+      </section>
+      <aside class="panel" id="anfrage">
+        <div class="visual" aria-hidden="true"><span>Nahezu unsichtbar</span></div>
+        <h2>Kostenlose Erstberatung</h2>
+        <p>Wir melden uns innerhalb eines Werktags.</p>
+        <div class="fields" aria-label="Beispiel eines Kontaktformulars">
+          <div class="field">Ihr Name</div>
+          <div class="field">Telefon oder E-Mail</div>
+          <div class="submit"><span>Termin anfragen</span><span>→</span></div>
+        </div>
+      </aside>
+    </main>
+  </div>
+</body>
+</html>
