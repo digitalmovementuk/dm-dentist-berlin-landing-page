@@ -2,6 +2,7 @@
 <html lang="de"><head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="theme-color" content="#ffffff">
   <meta name="description" content="Wir helfen Ihnen, auf Google und ChatGPT sichtbar zu werden – für neue Terminanfragen, Monat für Monat.">
   <meta name="application-name" content="Digitale Zahnärzte">
@@ -61,14 +62,14 @@
     .btn-outline:hover{background:#111;color:#fff}
     .arrow{font-size:19px;line-height:1}
     .top-strip{position:fixed;inset:0 0 auto;z-index:110;height:32px;display:flex;align-items:center;justify-content:center;gap:26px;padding:0 18px;background:#0c0c0c;color:#fff;font-size:11px;letter-spacing:.01em}.top-strip span{font-weight:600}.top-strip a{color:#ccc}.top-strip a:hover{color:#fff}.top-strip b{font-size:13px;margin-left:4px}
-    .site-header{position:fixed;inset:32px 0 auto;z-index:100;height:64px;background:rgba(255,255,255,.94);backdrop-filter:blur(18px);border-bottom:1px solid rgba(0,0,0,.08)}
+    .site-header{position:fixed;inset:32px 0 auto;z-index:100;height:92px;background:rgba(255,255,255,.94);backdrop-filter:blur(18px);border-bottom:1px solid rgba(0,0,0,.08)}
     .nav-wrap{position:relative;height:100%;display:flex;align-items:center;gap:30px;padding-inline:22px}
     .brand{width:auto;flex:none}
-    .brand-lockup{display:inline-flex;align-items:flex-end;gap:12px;white-space:nowrap}
-    .dz-wordmark{font-family:"OpenAI Sans",Arial,sans-serif;font-size:21px;font-weight:400;letter-spacing:-.045em;line-height:.94}
+    .brand-lockup{display:inline-flex;flex-direction:column;align-items:center;gap:7px;white-space:nowrap}
+    .dz-wordmark{font-family:"OpenAI Sans",Arial,sans-serif;font-size:29px;font-weight:400;letter-spacing:-.05em;line-height:.94}
     .dz-wordmark span{font-weight:300}.dz-wordmark b{font-weight:600}
-    .powered{display:inline-flex;flex-direction:column;align-items:flex-start;gap:2px;color:#666;font-size:7.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;line-height:1;padding-bottom:0}
-    .powered img{display:block;width:155px;height:auto}
+    .powered{display:inline-flex;flex-direction:row;align-items:center;gap:8px;color:#666;font-size:8px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;line-height:1;padding-bottom:0}
+    .powered img{display:block;width:158px;height:auto}
     .nav-links{position:absolute;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:28px;margin-left:0;font-size:14px}
     .nav-links a{white-space:nowrap}
     .nav-links a:hover{text-decoration:underline;text-underline-offset:4px}
@@ -76,17 +77,18 @@
     .mobile-cta{display:none}
     .menu-btn{display:none;margin-left:auto;width:42px;height:42px;border:0;border-radius:50%;background:#111;padding:8px;cursor:pointer;box-shadow:0 7px 20px rgba(0,0,0,.16)}
     .menu-btn span{display:block;width:20px;height:1.5px;background:#fff;margin:5px auto;transition:transform .22s ease}.menu-open .menu-btn span:first-child{transform:translateY(3.25px) rotate(45deg)}.menu-open .menu-btn span:last-child{transform:translateY(-3.25px) rotate(-45deg)}
-    .hero{position:relative;min-height:1200px;padding-top:96px;overflow:hidden;background:#8eacff;isolation:isolate}
-    .ambient{position:absolute;inset:96px 0 0;z-index:-3;width:100%;height:100%;object-fit:cover;object-position:center top}
+    .hero{position:relative;min-height:1200px;padding-top:124px;overflow:hidden;background:#8eacff;isolation:isolate}
+    .ambient{position:absolute;inset:124px 0 0;z-index:-3;width:100%;height:100%;object-fit:cover;object-position:center top}
     .hero::after,.final-cta::after{content:"";position:absolute;inset:0;z-index:-2;background:linear-gradient(180deg,rgba(255,255,255,.1),rgba(255,255,255,0) 56%,rgba(74,88,255,.12));pointer-events:none}
     .hero::before{content:"";position:absolute;inset:auto 0 0;height:300px;z-index:-1;background:linear-gradient(180deg,rgba(255,255,255,0),rgba(255,255,255,.8) 72%,#fff 100%);pointer-events:none}
-    .hero-inner{display:flex;flex-direction:column;align-items:center;text-align:center;min-height:1104px;padding-top:97px;padding-bottom:0}
+    .hero-inner{display:flex;flex-direction:column;align-items:center;text-align:center;min-height:1076px;padding-top:56px;padding-bottom:0}
     .hero-note{font-size:13px;margin:0 0 60px}
-    .hero-icon{width:72px;height:72px;display:grid;place-items:center;margin-bottom:40px;border-radius:18px;background:rgba(255,255,255,.88);box-shadow:0 2px 5px rgba(0,0,0,.12)}
-    .hero-icon svg{width:46px;height:46px}
+    .hero-icon{width:80px;height:80px;display:grid;place-items:center;margin-bottom:32px}
+    .hero-icon img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 8px 18px rgba(25,20,74,.14))}
     .hero .eyebrow{justify-content:center;margin-bottom:20px}
-    .hero h1{max-width:none;margin:0;font-size:62px;line-height:1;letter-spacing:-.05em;font-weight:400;white-space:nowrap}
-    .hero-lede{max-width:860px;margin:25px auto 0;font-size:17px;line-height:1.3;letter-spacing:0;white-space:nowrap}
+    .hero h1{max-width:11ch;margin:0;font-size:clamp(72px,7.4vw,106px);line-height:.9;letter-spacing:-.065em;font-weight:500;text-wrap:balance}
+    .hero-lede{max-width:820px;margin:30px auto 0;font-size:clamp(24px,2.15vw,31px);line-height:1.18;letter-spacing:-.035em;font-weight:400;text-wrap:balance}
+    .hero-lede strong{font-weight:600}
     .hero-actions{display:flex;justify-content:center;margin-top:34px}
     .hero-google-rating{display:flex;align-items:center;gap:9px;margin-top:18px;padding:7px 12px 7px 8px;border:1px solid rgba(17,17,17,.12);border-radius:999px;background:rgba(255,255,255,.72);box-shadow:0 8px 28px rgba(15,23,42,.08);backdrop-filter:blur(12px);color:#111;text-decoration:none}
     .hero-google-rating .google-g{width:26px;height:26px;flex:0 0 auto}
@@ -217,7 +219,7 @@
     .review footer{margin-top:auto;padding-top:0;font-size:14px;color:#707070}
     .review footer strong{display:block;font-weight:500;color:#111}
     .reviews-link{display:flex;justify-content:center;margin-top:38px}
-    .disclosure{font-size:12px;color:#777;margin:22px auto 0;text-align:center;max-width:760px}
+    .disclosure{font-size:12px;color:#5f6368;margin:22px auto 0;text-align:center;max-width:760px}
     .team{padding:150px 0 170px}
     .team-head{display:grid;grid-template-columns:.62fr 1.38fr;gap:80px;margin-bottom:80px}
     .team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
@@ -245,6 +247,7 @@
     .lead-form button:disabled{opacity:.65;cursor:wait}
     .form-consent{display:flex;align-items:flex-start;justify-content:center;gap:9px;margin:14px auto 0;font-size:12px;line-height:1.45;text-align:left;cursor:pointer}
     .form-consent input{appearance:auto;width:17px;height:17px;min-width:17px;margin:0;padding:0;border-radius:4px;accent-color:#111}
+    .form-consent a{text-decoration:underline;text-underline-offset:3px;font-weight:500}
     .privacy-details{width:100%;margin-top:4px;font-size:12px;line-height:1.5;text-align:left}
     .privacy-details summary{min-height:44px;display:flex;align-items:center;justify-content:center;color:#111;text-decoration:underline;text-underline-offset:3px;cursor:pointer;list-style:none}
     .privacy-details summary::-webkit-details-marker{display:none}
@@ -275,7 +278,7 @@
     .case-card,.story-media,.service-card,.launch-box,.review{border-radius:18px}
     @media(max-width:1000px){
       .nav-links{display:none}.menu-btn{display:block}.nav-cta{display:none}
-      .nav-links.open{position:fixed;display:flex;inset:96px 0 auto;transform:none;min-height:calc(100svh - 96px);background:linear-gradient(155deg,#fff 20%,#e9efff 65%,#d8ceff);flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:45px var(--pad);gap:0;font-size:clamp(28px,5vw,42px)}.nav-links.open>a:not(.btn){width:min(100%,560px);padding:14px 0;border-bottom:1px solid rgba(0,0,0,.16)}.nav-links.open .mobile-cta{margin-top:30px}
+      .nav-links.open{position:fixed;display:flex;inset:92px 0 auto;transform:none;min-height:calc(100svh - 124px);background:linear-gradient(155deg,#fff 20%,#e9efff 65%,#d8ceff);flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:45px var(--pad);gap:0;font-size:clamp(28px,5vw,42px)}.nav-links.open>a:not(.btn){width:min(100%,560px);padding:14px 0;border-bottom:1px solid rgba(0,0,0,.16)}.nav-links.open .mobile-cta{margin-top:30px}
       .nav-links.open .mobile-cta{display:inline-flex}.mobile-cta{display:none}
       .intro-grid,.journey-head,.services-top,.model-head,.process-head,.reviews-head,.team-head{grid-template-columns:1fr;gap:30px}
       .case-card{grid-template-columns:1fr}.case-visual{min-height:500px}
@@ -286,10 +289,10 @@
     }
     @media(max-width:760px){
       :root{--pad:20px}
-      body{font-size:16px}.top-strip{height:35px;gap:14px;font-size:10px}.site-header{top:35px;height:60px}.nav-wrap{padding-inline:16px}.brand{width:auto}.site-header .brand-lockup{position:absolute;left:50%;transform:translateX(-50%);gap:8px}.brand .dz-wordmark{font-size:15px}.brand .powered{gap:2px;font-size:6.5px}.brand .powered img{width:126px}.menu-btn{margin-left:auto}.nav-links.open{inset:95px 0 auto;min-height:calc(100svh - 95px)}
+      body{font-size:16px}.top-strip{height:36px;gap:14px;font-size:10px}.site-header{top:36px;height:84px}.nav-wrap{padding-inline:16px}.brand{width:auto}.site-header .brand-lockup{position:absolute;left:50%;transform:translateX(-50%);gap:6px}.brand .dz-wordmark{font-size:22px}.brand .powered{gap:6px;font-size:6px}.brand .powered img{width:116px}.menu-btn{margin-left:auto}.nav-links.open{inset:84px 0 auto;min-height:calc(100svh - 120px)}
       .eyebrow,.section-copy{text-align:center;justify-content:center;margin-inline:auto}.section-title{text-align:center;font-size:clamp(43px,13vw,62px)}
-      .hero{min-height:1100px;padding-top:95px}.ambient{inset:95px 0 0}.hero-inner{min-height:1005px;padding-top:40px;padding-bottom:0}.hero-note{margin-bottom:38px;max-width:290px}.hero-icon{width:72px;height:72px;margin-bottom:40px}.hero-icon svg{width:46px;height:46px}
-      .hero h1{font-size:36px;line-height:1;white-space:normal;text-wrap:balance}.hero-lede{font-size:18px;line-height:1.45;max-width:330px;margin-top:28px;white-space:normal}.hero-actions{width:100%;align-items:center;margin-top:32px}.hero-actions .btn{width:min(100%,300px)}
+      .hero{min-height:1120px;padding-top:120px}.ambient{inset:120px 0 0}.hero-inner{min-height:1000px;padding-top:30px;padding-bottom:0}.hero-note{margin-bottom:38px;max-width:290px}.hero-icon{width:78px;height:78px;margin-bottom:30px}
+      .hero h1{max-width:9ch;font-size:clamp(48px,13.8vw,56px);line-height:.92;white-space:normal;text-wrap:balance}.hero-lede{font-size:24px;line-height:1.24;max-width:340px;margin-top:28px;white-space:normal}.hero-actions{width:100%;align-items:center;margin-top:30px}.hero-actions .btn{width:min(100%,320px)}
       .platform-label{margin-top:56px;font-size:16px}.platform-row{display:grid;grid-template-columns:1fr 1fr;gap:72px 58px;margin:64px 0 34px;width:min(100%,310px)}
       .serp-window{width:100%;border-radius:13px 13px 0 0}.window-bar{height:37px;padding:0 11px}.window-bar i{width:7px;height:7px}.window-url{height:20px;font-size:8px}.serp-body{display:block;padding:10px}.serp-side{padding:16px 7px;text-align:center}.serp-side h2{font-size:23px}.serp-side p{font-size:12px}.serp-side .btn{align-self:center}
       .trust-inner{grid-template-columns:1fr 1fr}.trust-item:nth-child(2){border-right:0}.trust-item:nth-child(-n+2){border-bottom:1px solid var(--line)}.trust-item strong{font-size:26px}
@@ -303,16 +306,16 @@
       .team-grid{grid-template-columns:1fr;gap:42px}.person{text-align:center}.portrait{width:min(100%,360px);margin-inline:auto}.person-info h3,.person-info p{text-align:center}
       .final-cta{min-height:900px}.final-inner{padding-block:80px}.final-cta h2{font-size:clamp(58px,17vw,82px)}.lead-fields{grid-template-columns:1fr;border-radius:20px;padding:10px}.lead-form input,.lead-form button{width:100%}.form-consent input{width:17px;min-width:17px}.contact-line{flex-direction:column;gap:9px}
       .sticky-cta{width:calc(100vw - 28px);padding:8px 8px 8px 16px;gap:8px}.sticky-cta strong{font-size:12px}.sticky-cta .btn{font-size:12px;padding:7px 12px}
-      .footer-top{grid-template-columns:1fr;text-align:center;gap:38px}.footer-lockup{justify-content:center;gap:10px}.footer-lockup .dz-wordmark{font-size:24px}.footer-lockup .powered{font-size:7px;gap:2px}.footer-lockup .powered img{width:136px}.footer-brand p{margin-inline:auto}.footer-bottom{flex-direction:column;text-align:center}.footer-bottom nav{flex-wrap:wrap;justify-content:center}
+      .footer-top{grid-template-columns:1fr;text-align:center;gap:38px}.footer-lockup{flex-direction:column;align-items:center;justify-content:center;gap:10px}.footer-lockup .dz-wordmark{font-size:24px}.footer-lockup .powered{font-size:7px;gap:6px}.footer-lockup .powered img{width:136px}.footer-brand p{margin-inline:auto}.footer-bottom{flex-direction:column;text-align:center}.footer-bottom nav{flex-wrap:wrap;justify-content:center}
     }
     @media(min-width:761px) and (max-height:820px){
-      .hero-inner{padding-top:55px}.hero-icon{margin-bottom:28px}.platform-label{margin-top:38px}.platform-row{margin-top:30px}.serp-window{margin-top:70px}
+      .hero-inner{padding-top:44px}.hero-icon{width:68px;height:68px;margin-bottom:24px}.hero h1{font-size:72px}.hero-lede{font-size:23px;margin-top:20px}.hero-actions{margin-top:22px}.platform-label{margin-top:28px}.platform-row{margin-top:24px}.serp-window{margin-top:60px}
     }
     @media(max-width:760px){
       .platform-label{margin-top:34px}.platform-row{gap:42px 58px;margin-top:32px}
     }
     @media(max-width:760px) and (max-height:800px){
-      .hero-inner{padding-top:26px}.hero-icon{width:64px;height:64px;margin-bottom:26px}.hero-icon svg{width:42px;height:42px}.hero-lede{margin-top:20px}.hero-actions{margin-top:20px}.hero-google-rating{margin-top:14px}.platform-label{margin-top:18px}.platform-row{gap:26px 58px;margin-top:22px}.platform-dot{width:48px;height:48px}.platform-dot svg{width:38px;height:38px}
+      .hero-inner{padding-top:26px}.hero-icon{width:68px;height:68px;margin-bottom:22px}.hero h1{font-size:48px}.hero-lede{font-size:21px;margin-top:20px}.hero-actions{margin-top:20px}.hero-google-rating{margin-top:14px}.platform-label{margin-top:18px}.platform-row{gap:26px 58px;margin-top:22px}.platform-dot{width:48px;height:48px}.platform-dot svg{width:38px;height:38px}
     }
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}.btn,.service-card,.sticky-cta{transition:none}.ambient{display:none}.hero,.final-cta{background:linear-gradient(145deg,#7fa9ff,#b99fff)}}
   </style>
@@ -320,10 +323,10 @@
 <body>
   <a class="skip" href="#main">Zum Inhalt springen</a>
   <div class="scroll-progress" aria-hidden="true"><span></span></div>
-  <div class="top-strip"><span>Kostenloser Praxis-Check</span><a href="#kontakt">Antwort innerhalb eines Werktags <b>↗</b></a></div>
+  <div class="top-strip"><span>Kostenloser Praxis-Check</span><a href="#kontakt">Antwort in 1 Werktag <b>↗</b></a></div>
   <header class="site-header" aria-label="Hauptnavigation">
     <div class="nav-wrap">
-      <a class="brand brand-lockup" href="#top" aria-label="Digitale Zahnärzte Startseite"><span class="dz-wordmark"><span>Digitale</span> <b>Zahnärzte</b></span><span class="powered">powered by <img src="assets/brand/digital-movement-compact.svg" alt="Digital Movement" width="980" height="122"></span></a>
+      <a class="brand brand-lockup" href="#top"><span class="dz-wordmark"><span>Digitale</span> <b>Zahnärzte</b></span><span class="powered">powered by <img src="assets/brand/digital-movement-compact.svg" alt="Digital Movement" width="980" height="122"></span></a>
       <nav class="nav-links" id="nav-links" aria-label="Seitennavigation">
         <a href="#erfolg">Erfolgsgeschichte</a><a href="#so-funktioniert-es">So funktioniert es</a><a href="#leistungen">Leistungen</a><a href="#prozess">Ablauf</a><a href="#team">Team</a>
         <a class="btn mobile-cta" href="#kontakt">Praxis-Check starten</a>
@@ -335,13 +338,13 @@
 
   <main id="main">
     <section class="hero" id="top">
-      <video class="ambient" muted="" loop="" playsinline="" preload="none" poster="assets/media/codex-bg-poster.jpg" aria-hidden="true"><source data-src="assets/media/codex-bg.mp4" type="video/mp4"></video>
+      <video class="ambient" autoplay="" muted="" loop="" playsinline="" preload="none" poster="assets/media/codex-bg-poster.jpg" aria-hidden="true"><source data-desktop-src="assets/media/codex-bg.mp4" data-mobile-src="assets/media/codex-bg-mobile.m4v" type="video/mp4"></video>
       <div class="container hero-inner">
-        <div class="hero-icon" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none"><path d="M20 8c-6 0-10 6-9 13l4 27c1 6 8 8 11 2l3-8c1-3 5-3 6 0l3 8c3 6 10 4 11-2l4-27c1-7-3-13-9-13-4 0-7 3-12 3S24 8 20 8Z" fill="white" stroke="#111" stroke-width="2.5"></path><path d="M24 19c5 2 11 2 16 0" stroke="#111" stroke-width="2.5" stroke-linecap="round"></path></svg></div>
-        <h1>Praxiswachstum</h1>
-        <p class="hero-lede">Mehr Neupatienten – mit Google, KI und einer Website, die Termine gewinnt.</p>
+        <div class="hero-icon" aria-hidden="true"><img src="favicon.svg" alt="" width="64" height="64"></div>
+        <h1>Neupatienten<br>für Ihre Praxis.</h1>
+        <h2 class="hero-lede">Auf <strong>Google &amp; ChatGPT</strong> sichtbar werden.<br>Terminanfragen – Monat für Monat.</h2>
         <div class="hero-actions"><a class="btn" href="#kontakt">Kostenlosen Praxis-Check starten <span class="arrow">↗</span></a></div>
-        <a class="hero-google-rating" href="#bewertungen" aria-label="Google Reviews: 5 von 5 Sternen"><svg class="google-g" viewBox="0 0 24 24" aria-hidden="true"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg><span class="hero-google-copy"><span>Google Reviews</span><strong class="hero-google-score">5,0</strong><span class="hero-google-stars" aria-hidden="true">★★★★★</span></span></a>
+        <a class="hero-google-rating" href="#bewertungen"><svg class="google-g" viewBox="0 0 24 24" aria-hidden="true"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg><span class="hero-google-copy"><span>Google Reviews</span><strong class="hero-google-score">5,0</strong><span class="hero-google-stars" aria-hidden="true">★★★★★</span></span></a>
         <p class="platform-label">Dort sichtbar, wo Patienten suchen</p>
         <div class="platform-row" aria-label="Suchplattformen">
           <span class="platform"><span class="platform-dot" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"></path><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"></path></svg></span>Google</span>
@@ -401,14 +404,14 @@
       <div class="billing reveal"><strong>Erst live, dann Rechnung.</strong><span>Nach dem Start optimieren wir Sichtbarkeit und Anfragen laufend weiter.</span></div>
     </div></section>
 
-    <section class="reviews" id="bewertungen"><svg width="0" height="0" aria-hidden="true" style="position:absolute"><symbol id="google-g" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></symbol></svg><div class="container"><div class="reviews-head reveal"><p class="eyebrow">Kundenstimmen</p><div><h2 class="section-title">Von Kunden empfohlen.</h2><p class="section-copy">Erfahrungen aus Website, SEO und digitalem Wachstum.</p><div class="google-summary" aria-label="Google Reviews: 5 von 5 Sternen"><svg class="google-g" aria-hidden="true"><use href="#google-g"/></svg><div><strong>Google Reviews</strong><div class="google-rating-line"><span class="google-score">5,0</span><span class="google-stars" aria-hidden="true">★★★★★</span></div><small>Mehr als 100 öffentliche 5-Sterne-Bewertungen</small></div></div></div></div>
+    <section class="reviews" id="bewertungen"><svg width="0" height="0" aria-hidden="true" style="position:absolute"><symbol id="google-g" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></symbol></svg><div class="container"><div class="reviews-head reveal"><p class="eyebrow">Kundenstimmen</p><div><h2 class="section-title">Von Kunden empfohlen.</h2><p class="section-copy">Erfahrungen aus Website, SEO und digitalem Wachstum.</p><div class="google-summary"><svg class="google-g" aria-hidden="true"><use href="#google-g"/></svg><div><strong>Google Reviews</strong><div class="google-rating-line"><span class="google-score">5,0</span><span class="google-stars" aria-hidden="true">★★★★★</span></div><small>Mehr als 100 öffentliche 5-Sterne-Bewertungen</small></div></div></div></div>
       <div class="reviews-track" tabindex="0" aria-label="Sechs Google-Bewertungen">
-        <article class="review reveal"><div class="review-top"><div class="review-avatar" aria-hidden="true">JP</div><div class="review-author"><strong>Jessica Purcell</strong><div class="google-stars" aria-label="5 von 5 Sternen">★★★★★</div><span class="review-meta">Öffentliche Google-Bewertung</span></div><span class="review-google" aria-label="Google"><svg class="google-g" aria-hidden="true"><use href="#google-g"/></svg></span></div><blockquote>„Hervorragende Qualität, proaktiv und positiv – die Ergebnisse entsprachen den Zusagen.“</blockquote></article>
-        <article class="review reveal"><div class="review-top"><div class="review-avatar" aria-hidden="true">MK</div><div class="review-author"><strong>Matthew Kang</strong><div class="google-stars" aria-label="5 von 5 Sternen">★★★★★</div><span class="review-meta">Öffentliche Google-Bewertung</span></div><span class="review-google" aria-label="Google"><svg class="google-g" aria-hidden="true"><use href="#google-g"/></svg></span></div><blockquote>„Das Team hat meine Website komplett neu gestaltet und SEO mit großartigen Ergebnissen betreut.“</blockquote></article>
-        <article class="review reveal"><div class="review-top"><div class="review-avatar" aria-hidden="true">BS</div><div class="review-author"><strong>Beth Sorensen</strong><div class="google-stars" aria-label="5 von 5 Sternen">★★★★★</div><span class="review-meta">Öffentliche Google-Bewertung</span></div><span class="review-google" aria-label="Google"><svg class="google-g" aria-hidden="true"><use href="#google-g"/></svg></span></div><blockquote>„Kurz nach Website, SEO und Google Ads kamen die ersten echten Anfragen.“</blockquote></article>
-        <article class="review reveal"><div class="review-top"><div class="review-avatar" aria-hidden="true">FM</div><div class="review-author"><strong>Fabienne M</strong><div class="google-stars" aria-label="5 von 5 Sternen">★★★★★</div><span class="review-meta">Öffentliche Google-Bewertung</span></div><span class="review-google" aria-label="Google"><svg class="google-g" aria-hidden="true"><use href="#google-g"/></svg></span></div><blockquote>„Pünktlich, organisiert und effizient – ich arbeite seit Jahren mit dem Team.“</blockquote></article>
-        <article class="review reveal"><div class="review-top"><div class="review-avatar" aria-hidden="true">RS</div><div class="review-author"><strong>Ricky Sharpe</strong><div class="google-stars" aria-label="5 von 5 Sternen">★★★★★</div><span class="review-meta">Öffentliche Google-Bewertung</span></div><span class="review-google" aria-label="Google"><svg class="google-g" aria-hidden="true"><use href="#google-g"/></svg></span></div><blockquote>„Sie haben meine Website aufgebaut und reagieren immer schnell auf Fragen oder Anliegen.“</blockquote></article>
-        <article class="review reveal"><div class="review-top"><div class="review-avatar" aria-hidden="true">DT</div><div class="review-author"><strong>Damian Talbot</strong><div class="google-stars" aria-label="5 von 5 Sternen">★★★★★</div><span class="review-meta">Öffentliche Google-Bewertung</span></div><span class="review-google" aria-label="Google"><svg class="google-g" aria-hidden="true"><use href="#google-g"/></svg></span></div><blockquote>„Wir arbeiten seit über zehn Jahren mit Digital Movement und empfehlen das Team sehr.“</blockquote></article>
+        <article class="review reveal"><div class="review-top"><div class="review-avatar" aria-hidden="true">JP</div><div class="review-author"><strong>Jessica Purcell</strong><div class="google-stars" role="img" aria-label="5 von 5 Sternen">★★★★★</div><span class="review-meta">Öffentliche Google-Bewertung</span></div><span class="review-google" aria-hidden="true"><svg class="google-g"><use href="#google-g"/></svg></span></div><blockquote>„Hervorragende Qualität, proaktiv und positiv – die Ergebnisse entsprachen den Zusagen.“</blockquote></article>
+        <article class="review reveal"><div class="review-top"><div class="review-avatar" aria-hidden="true">MK</div><div class="review-author"><strong>Matthew Kang</strong><div class="google-stars" role="img" aria-label="5 von 5 Sternen">★★★★★</div><span class="review-meta">Öffentliche Google-Bewertung</span></div><span class="review-google" aria-hidden="true"><svg class="google-g"><use href="#google-g"/></svg></span></div><blockquote>„Das Team hat meine Website komplett neu gestaltet und SEO mit großartigen Ergebnissen betreut.“</blockquote></article>
+        <article class="review reveal"><div class="review-top"><div class="review-avatar" aria-hidden="true">BS</div><div class="review-author"><strong>Beth Sorensen</strong><div class="google-stars" role="img" aria-label="5 von 5 Sternen">★★★★★</div><span class="review-meta">Öffentliche Google-Bewertung</span></div><span class="review-google" aria-hidden="true"><svg class="google-g"><use href="#google-g"/></svg></span></div><blockquote>„Kurz nach Website, SEO und Google Ads kamen die ersten echten Anfragen.“</blockquote></article>
+        <article class="review reveal"><div class="review-top"><div class="review-avatar" aria-hidden="true">FM</div><div class="review-author"><strong>Fabienne M</strong><div class="google-stars" role="img" aria-label="5 von 5 Sternen">★★★★★</div><span class="review-meta">Öffentliche Google-Bewertung</span></div><span class="review-google" aria-hidden="true"><svg class="google-g"><use href="#google-g"/></svg></span></div><blockquote>„Pünktlich, organisiert und effizient – ich arbeite seit Jahren mit dem Team.“</blockquote></article>
+        <article class="review reveal"><div class="review-top"><div class="review-avatar" aria-hidden="true">RS</div><div class="review-author"><strong>Ricky Sharpe</strong><div class="google-stars" role="img" aria-label="5 von 5 Sternen">★★★★★</div><span class="review-meta">Öffentliche Google-Bewertung</span></div><span class="review-google" aria-hidden="true"><svg class="google-g"><use href="#google-g"/></svg></span></div><blockquote>„Sie haben meine Website aufgebaut und reagieren immer schnell auf Fragen oder Anliegen.“</blockquote></article>
+        <article class="review reveal"><div class="review-top"><div class="review-avatar" aria-hidden="true">DT</div><div class="review-author"><strong>Damian Talbot</strong><div class="google-stars" role="img" aria-label="5 von 5 Sternen">★★★★★</div><span class="review-meta">Öffentliche Google-Bewertung</span></div><span class="review-google" aria-hidden="true"><svg class="google-g"><use href="#google-g"/></svg></span></div><blockquote>„Wir arbeiten seit über zehn Jahren mit Digital Movement und empfehlen das Team sehr.“</blockquote></article>
       </div>
       <div class="review-controls" aria-label="Bewertungen durchblättern">
         <button class="review-arrow review-prev" type="button" aria-label="Vorherige Bewertung">←</button>
@@ -423,19 +426,39 @@
       <div class="team-grid"><article class="person reveal"><div class="portrait"><img src="assets/team/martey.jpg" alt="" aria-hidden="true" width="1000" height="1250" loading="lazy"></div><div class="person-info"><h3>Martey Quaye</h3><p>Mitgründer · Digital Strategy</p><p class="person-bio">Strategie für Website, Sichtbarkeit und nachhaltiges Wachstum.</p><a class="person-link" href="https://www.linkedin.com/in/martey-quaye-64a05017b/" target="_blank" rel="noopener" aria-label="Martey Quaye auf LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.32 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.1 20.45H3.54V9H7.1v11.45z"/></svg><span>LinkedIn</span></a></div></article><article class="person reveal"><div class="portrait"><img src="assets/team/raoul.jpg" alt="" aria-hidden="true" width="1200" height="1500" loading="lazy"></div><div class="person-info"><h3>Raoul Alex Müller</h3><p>Gründer · Account Manager &amp; Berater</p><p class="person-bio">Direkter Ansprechpartner für Strategie, Freigaben und Umsetzung.</p><a class="person-link" href="https://www.linkedin.com/in/raoulmueller" target="_blank" rel="noopener" aria-label="Raoul Müller auf LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.32 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.1 20.45H3.54V9H7.1v11.45z"/></svg><span>LinkedIn</span></a></div></article><article class="person reveal"><div class="portrait"><img src="assets/team/dean-bosilkovski.png" alt="" aria-hidden="true" width="1000" height="1250" loading="lazy"></div><div class="person-info"><h3>Dean Bosilkovski</h3><p>SEO Operations Manager</p><p class="person-bio">Koordiniert Umsetzung, Qualität und laufende Optimierung.</p><a class="person-link" href="https://www.linkedin.com/in/deanbosilkovski/" target="_blank" rel="noopener" aria-label="Dean Bosilkovski auf LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.32 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.1 20.45H3.54V9H7.1v11.45z"/></svg><span>LinkedIn</span></a></div></article></div>
     </div></section>
 
-    <section class="final-cta" id="kontakt"><video class="ambient" muted="" loop="" playsinline="" preload="none" poster="assets/media/codex-bg-poster.jpg" aria-hidden="true"><source data-src="assets/media/codex-bg.mp4" type="video/mp4"></video><div class="final-inner reveal"><p class="eyebrow">Nächster Schritt</p><h2>Praxis-Potenzial kostenlos prüfen.</h2><p class="section-copy">In einem kurzen Gespräch zeigen wir Ihre besten Wachstumschancen.</p><form class="lead-form" id="lead-form" action="https://formsubmit.co/hello@xn--digitalezahnrzte-6nb.de" method="POST" accept-charset="UTF-8"><input type="hidden" name="_subject" value="Neue Anfrage über digitalezahnärzte.de"><input type="hidden" name="_template" value="table"><input type="hidden" name="_captcha" value="false"><input type="hidden" name="_next" value="https://xn--digitalezahnrzte-6nb.de/?anfrage=gesendet#kontakt"><input type="hidden" name="_url" value="https://digitalezahnärzte.de/#kontakt"><input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none"><div class="lead-fields"><label class="sr-only" for="practice">Praxisname</label><input id="practice" name="Praxis" placeholder="Praxisname" autocomplete="organization" required=""><label class="sr-only" for="phone">Telefon</label><input id="phone" name="Telefon" type="tel" placeholder="Telefon" autocomplete="tel" required=""><button class="btn" type="submit">Gespräch anfragen ↗</button></div><label class="form-consent" for="privacy-confirm"><input id="privacy-confirm" name="Datenschutzhinweis bestätigt" type="checkbox" value="Ja" required><span>Ich habe die Datenschutzhinweise gelesen.</span></label><details class="privacy-details" id="kontakt-datenschutz"><summary>Datenschutzhinweise</summary><div class="privacy-copy"><p>Wir verarbeiten Praxisname und Telefonnummer ausschließlich, um Ihre Anfrage zu beantworten und ein mögliches Projekt vorzubereiten (Art. 6 Abs. 1 lit. b DSGVO).</p><p><strong>Verantwortlich:</strong> Digitale Zahnärzte, powered by Digital Movement UK, Potsdamer Platz 1, 10117 Berlin, <a href="mailto:hello@xn--digitalezahnrzte-6nb.de">hello@digitalezahnärzte.de</a>. Die Übermittlung erfolgt technisch über FormSubmit. Keine Werbenutzung. Löschung, sobald die Angaben nicht mehr benötigt werden und keine gesetzlichen Pflichten entgegenstehen.</p><p>Sie haben Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung, Widerspruch und Datenübertragbarkeit sowie das Recht auf Beschwerde bei einer Datenschutzaufsicht. <a href="https://formsubmit.co/privacy.pdf" target="_blank" rel="noopener">FormSubmit-Datenschutz</a> · <a href="https://digitalmovement.uk/privacy-policy/" target="_blank" rel="noopener">Vollständige Datenschutzerklärung</a></p></div></details></form><p class="form-note" aria-live="polite">Sicher senden. Wir melden uns innerhalb eines Werktags.</p><div class="contact-line"><a href="tel:+4917623296437">Telefon: +49 176 23296437</a><a href="https://wa.me/4917623296439" target="_blank" rel="noopener">WhatsApp: +49 176 23296439</a><a href="mailto:hello@xn--digitalezahnrzte-6nb.de">hello@digitalezahnärzte.de</a></div></div></section>
+    <section class="final-cta" id="kontakt">
+      <video class="ambient" muted="" loop="" playsinline="" preload="none" poster="assets/media/codex-bg-poster.jpg" aria-hidden="true"><source data-src="assets/media/codex-bg.mp4" type="video/mp4"></video>
+      <div class="final-inner reveal">
+        <p class="eyebrow">Nächster Schritt</p>
+        <h2>Praxis-Potenzial kostenlos prüfen.</h2>
+        <p class="section-copy">In einem kurzen Gespräch zeigen wir Ihre besten Wachstumschancen.</p>
+        <form class="lead-form" id="lead-form" action="https://formsubmit.co/hello@xn--digitalezahnrzte-6nb.de" method="POST" accept-charset="UTF-8">
+          <input type="hidden" name="_subject" value="Neue Anfrage über digitalezahnärzte.de">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="https://xn--digitalezahnrzte-6nb.de/?anfrage=gesendet#kontakt">
+          <input type="hidden" name="_url" value="https://digitalezahnärzte.de/#kontakt">
+          <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none">
+          <div class="lead-fields"><label class="sr-only" for="practice">Praxisname</label><input id="practice" name="Praxis" placeholder="Praxisname" autocomplete="organization" required=""><label class="sr-only" for="phone">Telefon</label><input id="phone" name="Telefon" type="tel" placeholder="Telefon" autocomplete="tel" required=""><button class="btn" type="submit">Gespräch anfragen ↗</button></div>
+          <label class="form-consent" for="privacy-confirm"><input id="privacy-confirm" name="Datenschutzhinweis bestätigt" type="checkbox" value="Ja" required><span>Ich habe die <a href="datenschutz.html" target="_blank" rel="noopener">Datenschutzerklärung</a> gelesen.</span></label>
+          <details class="privacy-details" id="kontakt-datenschutz"><summary>Datenschutzhinweise</summary><div class="privacy-copy"><p>Wir verarbeiten Praxisname und Telefonnummer, um Ihre Anfrage zu beantworten und eine mögliche Zusammenarbeit vorzubereiten (Art. 6 Abs. 1 lit. b DSGVO).</p><p><strong>Verantwortlich:</strong> Digital Movement Marketing Ltd, 128 City Road, London EC1V 2NX. Kontakt Deutschland: Raoul Ranjan Mueller, Potsdamer Platz 1, 10117 Berlin, <a href="mailto:hello@xn--digitalezahnrzte-6nb.de">hello@digitalezahnärzte.de</a>.</p><p>Die Übermittlung erfolgt technisch über FormSubmit, das Einreichungen laut eigener Dokumentation bis zu 30 Tage vorhält. Bitte keine Patienten-, Gesundheits- oder Behandlungsdaten senden. Keine Werbenutzung. <a href="datenschutz.html" target="_blank" rel="noopener">Vollständige Datenschutzerklärung</a></p></div></details>
+        </form>
+        <p class="form-note" aria-live="polite">Sicher senden. Wir melden uns innerhalb eines Werktags.</p>
+        <div class="contact-line"><a href="tel:+4917623296437">Telefon: +49 176 23296437</a><a href="https://wa.me/4917623296439" target="_blank" rel="noopener">WhatsApp: +49 176 23296439</a><a href="mailto:hello@xn--digitalezahnrzte-6nb.de">hello@digitalezahnärzte.de</a></div>
+      </div>
+    </section>
   </main>
 
   <aside class="sticky-cta" aria-label="Schnellkontakt"><strong>Kostenlosen Praxis-Check sichern</strong><a class="btn" href="#kontakt">Gespräch starten ↗</a></aside>
 
-  <footer class="site-footer"><div class="container"><div class="footer-top"><div class="footer-brand"><div class="brand-lockup footer-lockup"><span class="dz-wordmark"><span>Digitale</span> <b>Zahnärzte</b></span><span class="powered">powered by <img src="assets/brand/digital-movement-compact.svg" alt="Digital Movement" width="980" height="122"></span></div><p>Digitale Sichtbarkeit und Premium-Webdesign für Zahnarztpraxen, die planbar wachsen möchten.</p><a class="btn" href="#kontakt">Praxis-Check starten ↗</a></div><div class="footer-col"><h3>SEITE</h3><a href="#erfolg">Erfolgsgeschichte</a><a href="#so-funktioniert-es">So funktioniert es</a><a href="#leistungen">Leistungen</a><a href="#prozess">Ablauf</a><a href="#team">Projektteam</a></div><div class="footer-col"><h3>KONTAKT</h3><a href="mailto:hello@xn--digitalezahnrzte-6nb.de">hello@digitalezahnärzte.de</a><a href="tel:+4917623296437">+49 176 23296437</a><a href="https://wa.me/4917623296439" target="_blank" rel="noopener">WhatsApp: +49 176 23296439</a><a href="https://digitalezahnärzte.de/">digitalezahnärzte.de</a><span>Potsdamer Platz 1<br>10117 Berlin</span></div><div class="footer-col"><h3>STANDORTE</h3><span>Berlin</span><span>London</span><span>Auckland</span><span>Melbourne</span></div></div><div class="footer-bottom"><span>© 2026 Digitale Zahnärzte. Powered by Digital Movement.</span><nav><a href="https://digitalmovement.uk/privacy-policy/" target="_blank" rel="noopener">Datenschutz</a><a href="https://www.digitalmovement.de/" target="_blank" rel="noopener">Impressum</a></nav></div></div></footer>
+  <footer class="site-footer"><div class="container"><div class="footer-top"><div class="footer-brand"><div class="brand-lockup footer-lockup"><span class="dz-wordmark"><span>Digitale</span> <b>Zahnärzte</b></span><span class="powered">powered by <img src="assets/brand/digital-movement-compact.svg" alt="Digital Movement" width="980" height="122"></span></div><p>Digitale Sichtbarkeit und Premium-Webdesign für Zahnarztpraxen, die planbar wachsen möchten.</p><a class="btn" href="#kontakt">Praxis-Check starten ↗</a></div><div class="footer-col"><h3>SEITE</h3><a href="#erfolg">Erfolgsgeschichte</a><a href="#so-funktioniert-es">So funktioniert es</a><a href="#leistungen">Leistungen</a><a href="#prozess">Ablauf</a><a href="#team">Projektteam</a></div><div class="footer-col"><h3>KONTAKT</h3><a href="mailto:hello@xn--digitalezahnrzte-6nb.de">hello@digitalezahnärzte.de</a><a href="tel:+4917623296437">+49 176 23296437</a><a href="https://wa.me/4917623296439" target="_blank" rel="noopener">WhatsApp: +49 176 23296439</a><a href="https://digitalezahnärzte.de/">digitalezahnärzte.de</a><span>Potsdamer Platz 1<br>10117 Berlin</span></div><div class="footer-col"><h3>STANDORTE</h3><span>Berlin</span><span>London</span><span>Auckland</span><span>Melbourne</span></div></div><div class="footer-bottom"><span>© 2026 Digitale Zahnärzte. Powered by Digital Movement.</span><nav><a href="datenschutz.html">Datenschutz</a><a href="impressum.html">Impressum</a></nav></div></div></footer>
 
   <script>
     const menuButton=document.querySelector('.menu-btn');const nav=document.querySelector('.nav-links');
     menuButton.addEventListener('click',()=>{const open=nav.classList.toggle('open');document.body.classList.toggle('menu-open',open);menuButton.setAttribute('aria-expanded',String(open));menuButton.setAttribute('aria-label',open?'Menü schließen':'Menü öffnen')});
     nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');document.body.classList.remove('menu-open');menuButton.setAttribute('aria-expanded','false')}));
     const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}}),{threshold:.1,rootMargin:'0px 0px -35px'});document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-    const sticky=document.querySelector('.sticky-cta');const contact=document.querySelector('#kontakt');const quietZone=document.querySelector('#prozess');const setSticky=()=>{const y=window.scrollY;const contactTop=contact.getBoundingClientRect().top;const quietZoneReached=quietZone.getBoundingClientRect().top<window.innerHeight*.9;sticky.classList.toggle('show',y>window.innerHeight*.75&&contactTop>window.innerHeight*.72&&!quietZoneReached)};addEventListener('scroll',setSticky,{passive:true});setSticky();
+    const sticky=document.querySelector('.sticky-cta');const contact=document.querySelector('#kontakt');const quietZone=document.querySelector('#prozess');const setSticky=()=>{const y=window.scrollY;const contactTop=contact.getBoundingClientRect().top;const quietZoneReached=y>=quietZone.offsetTop-window.innerHeight*.9;sticky.classList.toggle('show',y>window.innerHeight*.75&&contactTop>window.innerHeight*.72&&!quietZoneReached)};addEventListener('scroll',setSticky,{passive:true});addEventListener('resize',setSticky,{passive:true});setSticky();
     const leadForm=document.querySelector('#lead-form');
     const leadNote=document.querySelector('#lead-form + .form-note');
     if(new URLSearchParams(location.search).get('anfrage')==='gesendet'&&leadNote)leadNote.textContent='Vielen Dank. Ihre Anfrage wurde gesendet – wir melden uns innerhalb eines Werktags.';
@@ -466,13 +489,20 @@
       const videos=[...document.querySelectorAll('video.ambient')];
       const reduceMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
       const saveData=navigator.connection&&navigator.connection.saveData;
+      const mobile=matchMedia('(max-width: 760px)').matches;
       if(reduceMotion||saveData){
         videos.forEach(video=>{video.preload='none';video.pause()});
         return;
       }
       const loadVideo=video=>{
-        const source=video.querySelector('source[data-src]');
-        if(source){source.src=source.dataset.src;source.removeAttribute('data-src');video.load()}
+        const source=video.querySelector('source[data-src],source[data-desktop-src]');
+        if(source){
+          source.src=mobile?'assets/media/codex-bg-mobile.m4v':(source.dataset.desktopSrc||source.dataset.src);
+          source.removeAttribute('data-src');
+          source.removeAttribute('data-mobile-src');
+          source.removeAttribute('data-desktop-src');
+          video.load();
+        }
       };
       const playVideo=video=>{
         video.muted=true;
@@ -482,6 +512,7 @@
         if(attempt&&typeof attempt.catch==='function')attempt.catch(()=>{});
       };
       videos.forEach(video=>{
+        video.autoplay=true;
         video.setAttribute('muted','');
         video.setAttribute('playsinline','');
         video.setAttribute('webkit-playsinline','');
@@ -489,7 +520,11 @@
       const videoObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{
         const video=entry.target;
         video.dataset.visible=String(entry.isIntersecting);
-        if(entry.isIntersecting){loadVideo(video);playVideo(video)}else video.pause();
+        if(entry.isIntersecting){
+          loadVideo(video);
+          if(video.readyState>=2)playVideo(video);
+          else video.addEventListener('canplay',()=>{if(video.dataset.visible==='true')playVideo(video)},{once:true});
+        }else video.pause();
       }),{rootMargin:'240px 0px',threshold:.01});
       videos.forEach(video=>videoObserver.observe(video));
       document.addEventListener('visibilitychange',()=>{
@@ -621,36 +656,49 @@
     }
     @media(max-width:760px){
       html{scroll-padding-top:112px}
-      body{font-size:16px;line-height:1.5}
-      .btn{min-height:48px;padding:11px 20px}
-      .top-strip{height:36px;gap:10px;padding-inline:12px;font-size:11px}
+      :root{--pad:22px}
+      body{font-size:18px;line-height:1.55}
+      .btn{min-height:52px;padding:12px 22px;font-size:16px}
+      .top-strip{height:36px;gap:10px;padding-inline:12px;font-size:12px}
+      .top-strip,.site-header,.scroll-progress{right:auto;width:100dvw;max-width:100dvw}
       .top-strip a{white-space:nowrap}
       .site-header{top:36px}
+      .brand .dz-wordmark{font-size:22px}
+      .brand .powered{gap:6px;font-size:6px}
+      .brand .powered img{width:116px}
       .menu-btn{width:44px;height:44px;flex:0 0 44px}
-      .nav-links.open{inset:96px 0 auto;min-height:calc(100svh - 96px);font-size:clamp(28px,8vw,36px)}
-      .nav-links.open>a:not(.btn){padding:13px 0}
-      .eyebrow{max-width:32ch;margin-bottom:16px;font-size:12px;line-height:1.35}
-      .eyebrow::before{width:7px;height:7px}
-      .section-title,.intro .section-title{max-width:11ch;margin-inline:auto;font-size:clamp(36px,10.5vw,46px);line-height:.98;letter-spacing:-.048em}
-      .section-copy{max-width:32ch;margin-top:20px;font-size:17px;line-height:1.45;letter-spacing:-.015em}
-      .intro,.journey,.services,.model,.process,.reviews,.team{padding:76px 0}
-      .intro-grid,.journey-head,.services-top,.model-head,.process-head,.reviews-head,.team-head{gap:14px;margin-bottom:44px}
-      .hero h1{font-size:36px;line-height:1.02}
-      .hero-lede{max-width:320px;font-size:17px;line-height:1.42}
-      .hero-actions .btn{min-height:54px}
-      .hero-google-rating{min-height:44px}
+      .nav-links.open{inset:84px 0 auto;min-height:calc(100svh - 120px);font-size:clamp(32px,9vw,42px)}
+      .nav-links.open>a:not(.btn){padding:18px 0}
+      .nav-links.open .mobile-cta{min-height:58px;margin-top:32px;font-size:17px}
+      .eyebrow{max-width:32ch;margin-bottom:18px;font-size:14px;line-height:1.4}
+      .eyebrow::before{width:8px;height:8px}
+      .section-title,.intro .section-title{max-width:11ch;margin-inline:auto;font-size:clamp(42px,12vw,52px);line-height:.98;letter-spacing:-.048em}
+      .section-copy{max-width:31ch;margin-top:22px;font-size:19px;line-height:1.48;letter-spacing:-.015em}
+      .intro,.journey,.services,.model,.process,.reviews,.team{padding:88px 0}
+      .intro-grid,.journey-head,.services-top,.model-head,.process-head,.reviews-head,.team-head{gap:16px;margin-bottom:52px}
+      .hero h1{max-width:9ch;font-size:clamp(48px,13.8vw,56px);line-height:.92}
+      .hero-lede{max-width:340px;font-size:24px;line-height:1.24}
+      .hero-actions .btn{min-height:58px;font-size:17px}
+      .hero-google-rating{min-height:50px;padding:9px 15px}
+      .hero-google-copy>span:first-child{font-size:12px}
+      .hero-google-score{font-size:16px}
+      .hero-google-stars{font-size:17px}
+      .platform-label{font-size:18px}
+      .platform-row{font-size:17px}
+      .platform-dot{width:58px;height:58px}
+      .platform-dot svg{width:46px;height:46px}
       .trust-inner{min-height:0}
-      .trust-item{min-height:116px;padding:20px 10px}
-      .trust-item strong{font-size:25px}
-      .trust-item span{max-width:15ch;font-size:12px;line-height:1.35}
+      .trust-item{min-height:132px;padding:24px 12px}
+      .trust-item strong{font-size:29px}
+      .trust-item span{max-width:15ch;font-size:14px;line-height:1.4}
       .case-card{border-radius:18px}
-      .case-client-link{display:flex;width:max-content;max-width:100%;margin:24px auto 0}
-      .case-copy{padding:30px 20px}
-      .case-copy h3{max-width:10ch;margin:0 auto 18px;font-size:36px;line-height:1}
-      .case-copy p{max-width:31ch;margin-inline:auto;font-size:16px;line-height:1.5}
-      .case-metrics{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:28px;padding-top:20px}
-      .case-metrics strong{font-size:23px}
-      .case-metrics span{display:block;font-size:10px;line-height:1.3}
+      .case-client-link{display:flex;width:max-content;max-width:100%;margin:28px auto 0}
+      .case-copy{padding:36px 24px}
+      .case-copy h3{max-width:10ch;margin:0 auto 20px;font-size:42px;line-height:1}
+      .case-copy p{max-width:29ch;margin-inline:auto;font-size:18px;line-height:1.52}
+      .case-metrics{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:32px;padding-top:24px}
+      .case-metrics strong{font-size:27px}
+      .case-metrics span{display:block;font-size:12px;line-height:1.35}
       .case-visual{min-height:330px}
       .case-visual img{top:28px}
       .stories{gap:76px}
@@ -659,23 +707,23 @@
       .story-media.contain{min-height:300px;padding:18px}
       .story-media.contain img{border-radius:11px;box-shadow:0 16px 38px rgba(28,58,91,.16)}
       .story-number{margin-bottom:14px}
-      .story-copy h3{max-width:10ch;margin:0 auto 18px;font-size:clamp(38px,10.5vw,44px);line-height:.98}
-      .story-copy>p{max-width:31ch;font-size:17px;line-height:1.45}
+      .story-copy h3{max-width:10ch;margin:0 auto 20px;font-size:clamp(42px,12vw,48px);line-height:.98}
+      .story-copy>p{max-width:29ch;font-size:19px;line-height:1.48}
       .story-points{margin-top:24px;text-align:center}
-      .story-points li{display:block;padding:12px 4px;font-size:14px;line-height:1.4}
-      .services-grid{gap:14px}
-      .service-card,.service-card:last-child{min-height:340px;padding:28px 22px;justify-content:space-between;gap:28px;border-radius:18px}
-      .service-icon{width:68px;height:68px;margin:0 auto;font-size:31px}
-      .service-card h3{max-width:10ch;margin:0 auto 14px;font-size:30px;line-height:1.04}
-      .service-card p{max-width:29ch;margin-inline:auto;line-height:1.5}
-      .service-list{max-width:30ch;margin:16px auto 0;font-size:13px;line-height:1.45;text-align:center}
+      .story-points li{display:block;padding:15px 4px;font-size:16px;line-height:1.45}
+      .services-grid{gap:18px}
+      .service-card,.service-card:last-child{min-height:380px;padding:34px 24px;justify-content:space-between;gap:30px;border-radius:20px}
+      .service-icon{width:74px;height:74px;margin:0 auto;font-size:34px}
+      .service-card h3{max-width:10ch;margin:0 auto 16px;font-size:34px;line-height:1.04}
+      .service-card p{max-width:28ch;margin-inline:auto;font-size:17px;line-height:1.52}
+      .service-list{max-width:29ch;margin:18px auto 0;font-size:15px;line-height:1.5;text-align:center}
       .model-grid{border-top-color:#484848}
-      .model-item,.model-item:nth-child(odd),.model-item:nth-child(even){padding:28px 12px}
-      .model-item h3{font-size:24px;line-height:1.08}
-      .model-item p{max-width:30ch;font-size:15px;line-height:1.5}
+      .model-item,.model-item:nth-child(odd),.model-item:nth-child(even){padding:34px 12px}
+      .model-item h3{font-size:28px;line-height:1.08}
+      .model-item p{max-width:28ch;font-size:17px;line-height:1.52}
       .timeline{display:grid;grid-template-columns:1fr;grid-auto-flow:row;gap:18px;margin:0;padding:0;border:0;overflow:visible;scroll-snap-type:none}
       .timeline::after{display:none}
-      .phase,.phase:not(:first-child){min-height:0;padding:24px 22px;border:1px solid #e2e2e2;border-radius:18px;background:#fafafa;text-align:center}
+      .phase,.phase:not(:first-child){min-height:0;padding:30px 24px;border:1px solid #e2e2e2;border-radius:20px;background:#fafafa;text-align:center}
       .phase::before,.phase:not(:first-child)::before{position:static;display:block;margin:0 auto 18px}
       .phase::after{content:"";position:absolute;top:100%;left:50%;width:1px;height:19px;background:#111;opacity:.28;transform:scaleY(0);transform-origin:top}
       .phase:last-child::after{display:none}
@@ -683,73 +731,77 @@
       .timeline.visible .phase:nth-child(1)::after{transition-delay:.25s}
       .timeline.visible .phase:nth-child(2)::after{transition-delay:.43s}
       .timeline.visible .phase:nth-child(3)::after{transition-delay:.61s}
-      .phase small{display:block;font-size:11px}
-      .phase h3{margin:12px auto 10px;font-size:20px;line-height:1.1}
-      .phase p{max-width:18ch;margin-inline:auto;font-size:14px;line-height:1.4}
+      .phase small{display:block;font-size:13px}
+      .phase h3{margin:14px auto 12px;font-size:25px;line-height:1.1}
+      .phase p{max-width:22ch;margin-inline:auto;font-size:16px;line-height:1.45}
       .billing{gap:10px;margin-top:24px;padding-top:20px}
-      .billing strong{font-size:20px}
-      .billing span{max-width:32ch;margin-inline:auto;line-height:1.45}
+      .billing strong{font-size:24px}
+      .billing span{max-width:30ch;margin-inline:auto;font-size:16px;line-height:1.5}
       .google-summary{width:min(100%,350px);flex-direction:column;gap:8px;padding:16px;text-align:center;border-radius:18px}
       .google-summary .google-g{width:40px;height:40px}
-      .google-summary strong{font-size:18px}
+      .google-summary strong{font-size:21px}
       .google-rating-line{justify-content:center}
-      .google-summary small{font-size:11px;line-height:1.35}
+      .google-summary small{font-size:13px;line-height:1.4}
       .reviews .container{padding-inline:20px}
       .reviews-track{display:grid;grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:calc(100% - 36px);gap:12px;margin-inline:-20px;padding:4px 20px 18px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scroll-padding-inline:20px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
       .reviews-track::-webkit-scrollbar{display:none}
-      .review{min-width:0;min-height:282px;padding:22px 20px;justify-content:flex-start;text-align:center;border-radius:22px;scroll-snap-align:center;scroll-snap-stop:always;opacity:1;transform:none}
+      .review{min-width:0;min-height:310px;padding:26px 22px;justify-content:flex-start;text-align:center;border-radius:22px;scroll-snap-align:center;scroll-snap-stop:always;opacity:1;transform:none}
       .review-top{position:relative;display:flex;flex-direction:column;align-items:center;gap:9px}
       .review-avatar{width:54px;height:54px}
       .review-author{padding-top:0}
-      .review-author strong{font-size:17px}
+      .review-author strong{font-size:19px}
       .review .google-stars{justify-content:center;margin-top:7px}
-      .review-meta{margin-top:6px}
+      .review-meta{margin-top:6px;font-size:12px}
       .review-google{position:absolute;top:0;right:0}
       .review-google .google-g{width:25px;height:25px}
-      .review blockquote{max-width:29ch;margin:18px auto 0;font-size:16px;line-height:1.48}
+      .review blockquote{max-width:28ch;margin:20px auto 0;font-size:18px;line-height:1.52}
       .review-controls{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:2px}
-      .review-arrow{width:44px;height:44px;display:grid;place-items:center;border:1px solid #cfd2d8;border-radius:50%;background:#fff;color:#111;font-size:21px;line-height:1;cursor:pointer}
+      .review-arrow{width:48px;height:48px;display:grid;place-items:center;border:1px solid #cfd2d8;border-radius:50%;background:#fff;color:#111;font-size:23px;line-height:1;cursor:pointer}
       .review-arrow:disabled{opacity:.35;cursor:default}
-      .review-progress{min-width:46px;font-size:14px;color:#666}
+      .review-progress{min-width:50px;font-size:16px;color:#666}
       .review-progress strong{color:#111;font-weight:600}
       .reviews-link{margin-top:24px}
-      .disclosure{max-width:31ch;margin-top:18px;font-size:11px;line-height:1.45}
+      .disclosure{max-width:29ch;margin-top:20px;font-size:13px;line-height:1.5}
       .team-grid{gap:56px}
       .portrait{width:min(76vw,300px)}
       .person-info{padding-top:14px}
-      .person-info h3{font-size:20px}
-      .person-info>p{max-width:32ch;margin-inline:auto}
-      .person-bio{min-height:0;margin-top:12px!important;padding-top:12px;font-size:14px!important;line-height:1.45!important}
-      .person-link{min-height:44px;margin-top:8px;padding:8px 12px}
+      .person-info h3{font-size:24px}
+      .person-info>p{max-width:30ch;margin-inline:auto;font-size:16px}
+      .person-bio{min-height:0;margin-top:14px!important;padding-top:14px;font-size:16px!important;line-height:1.5!important}
+      .person-link{min-height:48px;margin-top:10px;padding:10px 14px;font-size:16px}
       .final-cta{min-height:760px}
       .final-inner{padding:76px 20px}
-      .final-cta h2{max-width:10ch;font-size:clamp(43px,12vw,52px);line-height:.95;letter-spacing:-.055em}
+      .final-inner.reveal{opacity:1;transform:none;transition:none}
+      .final-cta h2{max-width:10ch;font-size:clamp(48px,13.5vw,58px);line-height:.95;letter-spacing:-.055em}
       .lead-form{width:min(100%,350px);gap:0;margin-top:30px;padding:0}
       .lead-fields{grid-template-columns:1fr;gap:8px;padding:8px;border-radius:20px}
-      .lead-form input{height:52px;font-size:16px;text-align:center}
-      .lead-form .form-consent input{width:18px;min-width:18px;height:18px;margin:0;padding:0}
-      .lead-form button{min-height:52px}
-      .form-consent{max-width:30ch;margin-top:14px;text-align:center}
-      .privacy-details{text-align:center}
-      .privacy-copy{padding:16px;text-align:left}
-      .form-note{max-width:30ch;line-height:1.4}
-      .contact-line{margin-top:22px;font-size:14px;line-height:1.45}
-      .contact-line a{min-height:44px;display:flex;align-items:center;justify-content:center}
+      .lead-form input{height:58px;font-size:18px;text-align:center}
+      .lead-form .form-consent input{width:22px;min-width:22px;height:22px;margin:0;padding:0}
+      .lead-form button{min-height:58px;font-size:17px}
+      .form-consent{max-width:29ch;margin-top:16px;font-size:15px;text-align:center}
+      .privacy-details{font-size:15px;text-align:center}
+      .privacy-details summary{min-height:48px}
+      .privacy-copy{padding:18px;font-size:15px;text-align:left}
+      .form-note{max-width:29ch;font-size:15px;line-height:1.45}
+      .contact-line{margin-top:24px;font-size:16px;line-height:1.5}
+      .contact-line a{min-height:48px;display:flex;align-items:center;justify-content:center}
       .sticky-cta{width:min(340px,calc(100vw - 32px));bottom:max(10px,env(safe-area-inset-bottom));gap:0;padding:6px;border-radius:999px}
       .sticky-cta strong{display:none}
-      .sticky-cta .btn{width:100%;min-height:48px;padding:10px 16px;font-size:14px}
+      .sticky-cta .btn{width:100%;min-height:54px;padding:12px 18px;font-size:16px}
       .menu-open .sticky-cta{display:none}
       .site-footer{padding-top:64px}
       .footer-top{gap:32px;padding-bottom:56px}
-      .footer-brand p{max-width:30ch;margin:20px auto}
-      .footer-col h3{margin-bottom:14px}
-      .footer-col a,.footer-col span{margin-bottom:9px;line-height:1.45}
+      .footer-brand p{max-width:29ch;margin:22px auto;font-size:16px;line-height:1.5}
+      .footer-col h3{margin-bottom:16px;font-size:14px}
+      .footer-col a,.footer-col span{min-height:44px;margin-bottom:7px;font-size:16px;line-height:1.45}
+      .footer-bottom{font-size:14px}
       .btn:active,.review-arrow:not(:disabled):active,.menu-btn:active{transform:scale(.97)}
+      body.is-ready .hero-icon,body.is-ready .hero h1,body.is-ready .hero-lede,body.is-ready .hero-actions,body.is-ready .hero-google-rating,body.is-ready .platform-label,body.is-ready .platform{animation:none}
     }
     @media(max-width:380px){
-      .section-title,.intro .section-title{font-size:38px}
-      .story-copy h3{font-size:38px}
-      .case-metrics strong{font-size:21px}
+      .section-title,.intro .section-title{font-size:42px}
+      .story-copy h3{font-size:42px}
+      .case-metrics strong{font-size:25px}
       .timeline .phase,.timeline .phase:not(:first-child){min-height:0;padding-inline:20px}
     }
     @media(prefers-reduced-motion:reduce){
