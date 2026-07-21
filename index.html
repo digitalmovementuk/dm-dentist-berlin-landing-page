@@ -25,11 +25,10 @@
   <meta name="twitter:description" content="Wir helfen Ihnen, auf Google und ChatGPT sichtbar zu werden. Terminanfragen Monat für Monat.">
   <meta name="twitter:image" content="https://raw.githubusercontent.com/digitalmovementuk/dm-dentist-berlin-landing-page/main/assets/brand/digitale-zahnaerzte-whatsapp-mobile-v3.jpg">
   <meta name="apple-mobile-web-app-title" content="Digitale Zahnärzte">
-  <link rel="icon" href="/favicon.ico" sizes="any">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=3">
-  <link rel="icon" type="image/png" sizes="48x48" href="/favicon.png?v=3">
-  <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512.png?v=3">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=3">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=4">
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon.png?v=4">
+  <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512.png?v=4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=4">
   <link rel="preload" as="image" href="assets/media/codex-bg-poster.jpg" fetchpriority="high">
   <title>Neupatienten für Ihre Praxis | Digitale Zahnärzte</title>
   <style>
@@ -66,7 +65,8 @@
     .nav-wrap{position:relative;height:100%;display:flex;align-items:center;gap:30px;padding-inline:22px}
     .brand{width:auto;flex:none}
     .brand-lockup{display:inline-flex;flex-direction:column;align-items:center;gap:7px;white-space:nowrap}
-    .dz-wordmark{font-family:"OpenAI Sans",Arial,sans-serif;font-size:29px;font-weight:400;letter-spacing:-.05em;line-height:.94}
+    .dz-wordmark{display:inline-flex;align-items:center;gap:9px;font-family:"OpenAI Sans",Arial,sans-serif;font-size:29px;font-weight:400;letter-spacing:-.05em;line-height:.94}
+    .dz-wordmark::before{content:"";width:30px;height:30px;flex:0 0 auto;background:url("favicon.svg") center/contain no-repeat}
     .dz-wordmark span{font-weight:300}.dz-wordmark b{font-weight:600}
     .powered{display:inline-flex;flex-direction:row;align-items:center;gap:8px;color:#666;font-size:8px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;line-height:1;padding-bottom:0}
     .powered img{display:block;width:158px;height:auto}
@@ -119,16 +119,19 @@
     .trust-item:last-child{border:0}
     .trust-item strong{font-size:30px;letter-spacing:-.04em;font-weight:500}
     .trust-item span{font-size:13px;color:#666;margin-top:4px}
-    .intro{padding:150px 0 170px}
+    .intro{position:relative;isolation:isolate;padding:104px 0 170px;background:#fff}
+    .intro::before{content:"";position:absolute;inset:0 0 auto;z-index:0;height:190px;background:linear-gradient(180deg,rgba(220,225,255,.78) 0%,rgba(242,244,255,.45) 44%,rgba(255,255,255,0) 100%);pointer-events:none}
+    .intro>.container{position:relative;z-index:1}
     .intro-grid{display:grid;grid-template-columns:.62fr 1.38fr;gap:80px;align-items:start}
     .intro .section-title{max-width:900px}
     .case-card{margin-top:110px;display:grid;grid-template-columns:1fr 1fr;min-height:600px;background:#edf1ff;border-radius:20px;overflow:hidden}
     .case-copy{padding:70px;display:flex;flex-direction:column;justify-content:space-between}
     .case-copy h3{font-size:clamp(36px,4vw,64px);line-height:.98;letter-spacing:-.05em;font-weight:400;margin:0 0 26px}
     .case-copy p{font-size:19px;max-width:570px}
-    .case-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;border-top:1px solid rgba(0,0,0,.16);padding-top:25px;margin-top:50px}
-    .case-metrics strong{display:block;font-size:29px;font-weight:500;letter-spacing:-.04em}
-    .case-metrics span{font-size:12px;color:#565656}
+    .case-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding-top:25px;margin-top:50px}
+    .case-metrics>div{padding:20px 16px;border:1px solid rgba(13,13,13,.08);border-radius:15px;background:rgba(255,255,255,.62);box-shadow:0 14px 34px rgba(31,42,92,.08)}
+    .case-metrics strong{display:block;font-size:clamp(52px,5vw,78px);font-weight:500;line-height:.82;letter-spacing:-.07em;font-variant-numeric:tabular-nums}
+    .case-metrics span{display:block;margin-top:16px;font-size:13px;line-height:1.25;color:#424242}
     .case-visual{position:relative;min-height:620px;background:#d6dcff;overflow:hidden}
     .case-visual img{position:absolute;width:88%;max-width:none;top:48px;left:6%;border-radius:12px;box-shadow:0 30px 70px rgba(10,20,80,.23)}
     .journey{padding:140px 0 170px;background:#f7f7f7}
@@ -143,6 +146,9 @@
     .media-stack{position:absolute;inset:0;padding:0;display:block;background:linear-gradient(145deg,#b8caff,#e7dcff)}
     .media-stack img{position:absolute;width:82%;height:auto;object-fit:contain;padding:0;border-radius:10px;box-shadow:0 20px 55px rgba(27,27,74,.24)}.media-stack img:first-child{left:4%;top:9%}
     .media-stack img:last-child{width:68%;right:4%;bottom:6%;transform:none}
+    .story:first-child .story-media{min-height:960px}
+    .story:first-child .media-stack img:first-child{width:94%;left:3%;top:4%}
+    .story:first-child .media-stack img:last-child{width:78%;right:3%;bottom:4%}
     .dual-phone{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:0;padding:4%;background:linear-gradient(145deg,#bbcdfd,#c7b6ff)}
     .dual-phone img:first-child{width:78%;height:auto;border-radius:10px;box-shadow:0 20px 55px rgba(27,27,74,.22)}
     .dual-phone img:last-child{width:29%;margin-left:-8%;height:auto;border-radius:16px;box-shadow:0 20px 55px rgba(27,27,74,.24)}
@@ -155,15 +161,18 @@
     .services{padding:150px 0 180px}
     .services-top{display:grid;grid-template-columns:.62fr 1.38fr;gap:80px;margin-bottom:100px}
     .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .service-card{display:flex;flex-direction:column;min-height:530px;padding:34px;border-radius:18px;background:#f1f1f1;transition:transform .25s,background .25s}
-    .service-card:hover{transform:translateY(-5px);background:#eaeaea}
-    .service-card:nth-child(2){background:#a3bfff}
-    .service-card:nth-child(3){background:#b4a7ff}
+    .service-card{position:relative;isolation:isolate;display:flex;flex-direction:column;min-height:560px;padding:34px;border-radius:18px;overflow:hidden;background:#171724;color:#fff;box-shadow:0 22px 54px rgba(22,22,44,.16);transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s ease}
+    .service-card:hover{transform:translateY(-6px);box-shadow:0 30px 70px rgba(22,22,44,.24)}
+    .service-card::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(7,8,16,.25) 0%,rgba(7,8,16,.58) 44%,rgba(7,8,16,.96) 100%);pointer-events:none}
+    .service-video{position:absolute;inset:0;z-index:0;width:100%;height:100%;object-fit:cover;transform:scale(1.02);transition:transform .8s cubic-bezier(.22,1,.36,1),filter .35s ease;filter:saturate(.92) contrast(1.05)}
+    .service-card:hover .service-video{transform:scale(1.08);filter:saturate(1.08) contrast(1.08)}
+    .service-card:nth-child(2) .service-video{filter:saturate(.45) contrast(1.08) hue-rotate(285deg)}
+    .service-card:nth-child(2):hover .service-video{filter:saturate(.58) contrast(1.1) hue-rotate(285deg)}
+    .service-copy{position:relative;z-index:2;margin-top:auto}
     .service-no{font-size:13px;font-weight:600}
-    .service-icon{display:grid;place-items:center;width:76px;height:76px;border-radius:22px;margin:auto;background:rgba(255,255,255,.52);font-size:35px}
     .service-card h3{font-size:35px;line-height:1;letter-spacing:-.045em;font-weight:400;margin:0 0 18px}
-    .service-card p{margin:0;font-size:16px;color:#353535}
-    .service-list{margin-top:18px;padding-top:18px;border-top:1px solid rgba(0,0,0,.2);font-size:13px}
+    .service-card p{margin:0;font-size:16px;color:rgba(255,255,255,.84)}
+    .service-list{margin-top:18px;padding-top:18px;border-top:1px solid rgba(255,255,255,.28);font-size:13px;color:rgba(255,255,255,.76)}
     .model{padding:150px 0;background:#0b0b0b;color:#fff}
     .model-head{display:grid;grid-template-columns:.62fr 1.38fr;gap:80px;margin-bottom:95px}
     .model .eyebrow::before{background:#fff}
@@ -259,6 +268,23 @@
     .form-note{font-size:12px;margin:13px 0 0}
     .contact-line{display:flex;justify-content:center;flex-wrap:wrap;gap:12px 28px;margin-top:28px;font-size:14px}
     .contact-line a{text-decoration:underline;text-underline-offset:4px}
+    .submission-success[hidden]{display:none}
+    .submission-success{width:min(100%,720px);display:grid;justify-items:center;gap:22px;margin-top:38px;padding:38px;border:1px solid rgba(255,255,255,.65);border-radius:26px;background:rgba(255,255,255,.86);box-shadow:0 28px 80px rgba(33,40,82,.2);backdrop-filter:blur(18px);color:#111}
+    .final-inner.is-submitted>.eyebrow,.final-inner.is-submitted>h2,.final-inner.is-submitted>.section-copy,.final-inner.is-submitted>.form-note,.final-inner.is-submitted>.contact-line{display:none}
+    .final-inner.is-submitted .submission-success{margin-top:0}
+    .success-mark{display:grid;place-items:center;width:48px;height:48px;border-radius:50%;background:#111;color:#fff;font-size:23px;font-weight:600}
+    .final-cta .submission-success h2{max-width:none;font-size:clamp(34px,4.2vw,52px);line-height:1;letter-spacing:-.045em;margin:0}
+    .submission-success h3{max-width:560px;margin:10px auto 0;font-size:18px;line-height:1.45;font-weight:400;color:#4f4f55}
+    .success-contact{width:100%;display:grid;grid-template-columns:82px 1fr;align-items:center;gap:20px;padding:20px;border:1px solid rgba(17,17,17,.1);border-radius:20px;background:#fff;text-align:left}
+    .success-contact img{width:82px;height:82px;border-radius:50%;object-fit:cover;object-position:center;filter:grayscale(100%)}
+    .success-contact-copy>span{display:block;margin-bottom:3px;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#777}
+    .success-contact-copy>strong{display:block;font-size:22px;line-height:1.1}
+    .success-contact-copy>p{margin:5px 0 13px;font-size:14px;line-height:1.4;color:#5b5b60}
+    .success-links{display:flex;flex-wrap:wrap;gap:8px}
+    .success-links a{min-height:40px;display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid #d9d9dd;border-radius:999px;background:#fafafa;font-size:13px;font-weight:500;transition:background .2s,color .2s,border-color .2s}
+    .success-links a:hover{border-color:#111;background:#111;color:#fff}
+    .success-links svg{width:17px;height:17px;flex:0 0 auto;fill:currentColor}
+    .success-proof{display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:500;text-decoration:underline;text-underline-offset:4px}
     .sticky-cta{position:fixed;z-index:90;left:50%;bottom:max(16px,env(safe-area-inset-bottom));transform:translate(-50%,130%);width:min(760px,50vw);padding:10px 10px 10px 21px;border:1px solid rgba(0,0,0,.12);border-radius:999px;background:rgba(255,255,255,.92);box-shadow:0 15px 45px rgba(0,0,0,.2);backdrop-filter:blur(16px);display:flex;align-items:center;justify-content:space-between;gap:18px;transition:transform .35s}
     .sticky-cta.show{transform:translate(-50%,0)}
     .sticky-cta strong{font-size:14px;font-weight:500}
@@ -266,7 +292,7 @@
     .site-footer{background:#fff;padding:80px 0 25px}
     .footer-top{display:grid;grid-template-columns:minmax(500px,1.65fr) repeat(3,minmax(0,1fr));gap:clamp(32px,3vw,50px);padding-bottom:75px}
     .footer-brand,.footer-col{min-width:0}
-    .footer-lockup{width:max-content;max-width:100%;flex-direction:row;align-items:flex-end;gap:14px}.footer-lockup .dz-wordmark,.footer-lockup .powered{flex:0 0 auto}.footer-lockup .dz-wordmark{font-size:29px}.footer-lockup .powered{font-size:8px;gap:3px}.footer-lockup .powered img{width:180px}
+    .footer-lockup{width:max-content;max-width:100%;flex-direction:row;align-items:center;gap:14px}.footer-lockup .dz-wordmark,.footer-lockup .powered{flex:0 0 auto}.footer-lockup .dz-wordmark{font-size:29px}.footer-lockup .dz-wordmark::before{width:36px;height:36px}.footer-lockup .powered{font-size:8px;gap:3px}.footer-lockup .powered img{width:180px}
     .footer-brand p{max-width:340px;color:#555;font-size:14px;margin:25px 0}
     .footer-col h3{font-size:13px;font-weight:600;margin:0 0 20px}
     .footer-col a,.footer-col span{display:block;font-size:14px;color:#555;margin:0 0 11px;overflow-wrap:anywhere}
@@ -304,7 +330,7 @@
       .intro,.journey,.services,.model,.process,.reviews,.team{padding:92px 0}.intro-grid,.journey-head,.services-top,.model-head,.process-head,.reviews-head,.team-head{gap:24px;margin-bottom:64px}.intro-grid{margin-bottom:64px}.intro .section-title{font-size:clamp(44px,13vw,63px)}
       .case-card{margin-top:0}.case-copy{padding:34px 22px;text-align:center}.case-copy h3{font-size:44px}.case-copy p{font-size:17px}.case-metrics{grid-template-columns:1fr;gap:16px}.case-visual{min-height:390px}.case-visual img{width:88%;left:6%;top:35px}
       .stories{gap:105px}.story,.story:nth-child(even){grid-template-columns:1fr;gap:36px}.story:nth-child(even) .story-media{order:1}.story:nth-child(even) .story-copy{order:2}.story-media{min-height:540px}.story-copy{text-align:center}.story-number{text-align:center;margin-bottom:20px}.story-copy h3{font-size:clamp(45px,13.5vw,65px)}.story-copy>p{margin-inline:auto}.story-points{text-align:left}.media-stack{display:block;padding:0}.media-stack img:first-child{width:94%;left:3%;top:7%}.media-stack img:last-child{width:78%;right:3%;bottom:5%;transform:none}.dual-phone{gap:3%;padding:5%}.dual-phone img:first-child{width:80%}.dual-phone img:last-child{width:31%;margin-left:-10%}
-      .services-grid{grid-template-columns:1fr}.service-card,.service-card:last-child{grid-column:auto;min-height:450px;text-align:center}.service-no{text-align:center}.service-icon{margin:auto}.service-card h3{font-size:34px}.service-list{text-align:center}
+      .services-grid{grid-template-columns:1fr}.service-card,.service-card:last-child{grid-column:auto;min-height:450px;text-align:center}.service-no{text-align:center}.service-card h3{font-size:34px}.service-list{text-align:center}
       .model-grid{grid-template-columns:1fr}.model-item,.model-item:nth-child(odd),.model-item:nth-child(even){grid-template-columns:1fr;padding:34px 0;text-align:center;border-right:0}.model-item>span{text-align:center}.model-item p{margin-inline:auto}
       .timeline{grid-template-columns:1fr;border-top:0;border-left:1px solid #111;margin-left:8px}.phase,.phase:not(:first-child){padding:0 0 50px 32px;border-right:0;min-height:0}.phase::before,.phase:not(:first-child)::before{left:-6px;top:2px}.phase h3{margin-top:16px}.launch-box{grid-template-columns:1fr;text-align:center;padding:28px 20px}.launch-list{grid-template-columns:1fr}.launch-list div{border-left:0;border-top:1px solid #aab4d0;padding:15px 0 0}.billing{grid-template-columns:1fr;text-align:center;padding:22px 0 0}.footnote{text-align:center}
       .google-summary{width:100%;justify-content:center;padding:14px 12px}.google-summary .google-g{width:42px;height:42px}.reviews-track{display:grid;grid-template-columns:1fr;gap:14px;margin:0;padding:0}.review{min-width:0;min-height:0;padding:22px;text-align:left;border-radius:22px}.review-avatar{width:50px;height:50px}.review-author strong{font-size:17px}.review blockquote{font-size:16px}.disclosure{text-align:center}
@@ -343,7 +369,7 @@
 
   <main id="main">
     <section class="hero" id="top">
-      <video class="ambient" autoplay="" muted="" loop="" playsinline="" preload="none" poster="assets/media/codex-bg-poster.jpg" aria-hidden="true"><source data-desktop-src="assets/media/codex-bg.mp4" data-mobile-src="assets/media/codex-bg-mobile.m4v" type="video/mp4"></video>
+      <video class="ambient" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="assets/media/codex-bg-poster.jpg" disablepictureinpicture aria-hidden="true"><source src="assets/media/codex-bg-mobile.mp4" type="video/mp4" media="(max-width: 760px)"><source src="assets/media/codex-bg.mp4" type="video/mp4"></video>
       <div class="container hero-inner">
         <div class="hero-icon" aria-hidden="true"><img src="favicon.svg" alt="" width="64" height="64"></div>
         <h1>Neupatienten<br>für Ihre Praxis.</h1>
@@ -369,7 +395,7 @@
 
     <section class="intro" id="erfolg">
       <div class="container">
-        <div class="intro-grid reveal"><p class="eyebrow">Wachstum mit SEO · Erfolgsgeschichte</p><div><h2 class="section-title">Mehr Anfragen. Mehr Behandlungen. Planbar.</h2><p class="section-copy">Website, Google und KI arbeiten gemeinsam für Ihre Wunschbehandlungen.</p><a class="btn btn-outline case-client-link" href="https://vipdentalclinic.com.au/" target="_blank" rel="noopener">Website unseres Kunden öffnen <span class="arrow">↗</span></a></div></div>
+        <div class="intro-grid reveal"><p class="eyebrow">Wachstum mit SEO · Erfolgsgeschichte</p><div><h2 class="section-title">Mehr Anfragen. Mehr Behandlungen. Planbar.</h2><p class="section-copy">Website, Google und KI arbeiten gemeinsam als Ihr Vertriebskanal.</p><a class="btn btn-outline case-client-link" href="https://vipdentalclinic.com.au/" target="_blank" rel="noopener">Website unseres Kunden öffnen <span class="arrow">↗</span></a></div></div>
         <article class="case-card reveal">
           <div class="case-copy"><div><p class="eyebrow">VIP Dental Clinic</p><h3>Sichtbarkeit, die sich auszahlt.</h3><p>Eigene SEO-optimierte Seiten für alle Behandlungen und Standorte brachten mehr Terminanfragen – ganz ohne zusätzliches Werbebudget.</p></div><div class="case-metrics"><div><strong>+72%</strong><span>Behandlungen pro Monat</span></div><div><strong>+91%</strong><span>Umsatzsteigerung</span></div><div><strong>13</strong><span>Behandlungen in Googles Top 3</span></div></div></div>
           <div class="case-visual"><img src="assets/screens/vip-dental-homepage.jpg" alt="Website der VIP Dental Clinic" width="960" height="5187" loading="lazy"></div>
@@ -393,23 +419,23 @@
     <section class="services" id="leistungen">
       <div class="container"><div class="services-top reveal"><p class="eyebrow">Ihr digitaler Vertriebskanal</p><div><h2 class="section-title">Sichtbarkeit. Website. Termine.</h2><p class="section-copy">Ein Senior-Team verbindet Strategie, Website und Sichtbarkeit.</p></div></div>
         <div class="services-grid">
-          <article class="service-card reveal"><div class="service-icon" aria-hidden="true">⌕</div><div><h3>Bei Google sichtbar</h3><p>Wir machen wichtige Behandlungen und Standorte auffindbar.</p><div class="service-list">Themenplanung · Behandlungstexte · lokale Sichtbarkeit</div></div></article>
-          <article class="service-card reveal"><div class="service-icon" aria-hidden="true">✦</div><div><h3>In KI-Antworten präsent</h3><p>Ihre Expertise wird für neue Such- und Empfehlungswege verständlich aufbereitet.</p><div class="service-list">ChatGPT · Claude · Perplexity · klare Antworten</div></div></article>
-          <article class="service-card reveal"><div class="service-icon" aria-hidden="true">↗</div><div><h3>Vertrauen und Termine</h3><p>Eine schnelle Premium-Website führt Patienten sicher zur Kontaktaufnahme.</p><div class="service-list">Webdesign · mobile Nutzung · Formulare · Doctolib</div></div></article>
+          <article class="service-card reveal"><video class="service-video" muted loop playsinline preload="none" poster="assets/media/services/google-visibility-poster.jpg" aria-hidden="true"><source data-src="assets/media/services/google-visibility.mp4" type="video/mp4"></video><div class="service-copy"><h3>Bei Google sichtbar</h3><p>Wir machen wichtige Behandlungen und Standorte auffindbar.</p><div class="service-list">Themenplanung · Behandlungstexte · lokale Sichtbarkeit</div></div></article>
+          <article class="service-card reveal"><video class="service-video" muted loop playsinline preload="none" poster="assets/media/services/ai-visibility-poster.jpg" aria-hidden="true"><source data-src="assets/media/services/ai-visibility.mp4" type="video/mp4"></video><div class="service-copy"><h3>In KI-Antworten präsent</h3><p>Ihre Expertise wird für neue Such- und Empfehlungswege verständlich aufbereitet.</p><div class="service-list">ChatGPT · Claude · Perplexity · klare Antworten</div></div></article>
+          <article class="service-card reveal"><video class="service-video" muted loop playsinline preload="none" poster="assets/media/services/website-conversion-poster.jpg" aria-hidden="true"><source data-src="assets/media/services/website-conversion.mp4" type="video/mp4"></video><div class="service-copy"><h3>Vertrauen und Termine</h3><p>Eine schnelle Premium-Website führt Patienten sicher zur Kontaktaufnahme.</p><div class="service-list">Webdesign · mobile Nutzung · Formulare · Doctolib</div></div></article>
         </div>
       </div>
     </section>
 
-    <section class="model" id="arbeitsmodell"><div class="container"><div class="model-head reveal"><p class="eyebrow">Unser Arbeitsmodell</p><div><h2 class="section-title">Klar geliefert. Senior geführt.</h2><p class="section-copy">Vier klare Prinzipien.</p></div></div>
-      <div class="model-grid"><article class="model-item reveal"><div><h3>Erst liefern.</h3><p>Die erste Rechnung folgt nach Freigabe und Veröffentlichung.</p></div></article><article class="model-item reveal"><div><h3>Sechs Monate.</h3><p>Genug Zeit, damit organische Sichtbarkeit wachsen kann.</p></div></article><article class="model-item reveal"><div><h3>Senior geführt.</h3><p>Ein Ansprechpartner steuert Strategie und Umsetzung.</p></div></article><article class="model-item reveal"><div><h3>Öffentlich bewertet.</h3><p>Mehr als 100 öffentliche 5-Sterne-Bewertungen.</p></div></article></div>
+    <section class="model" id="arbeitsmodell"><div class="container"><div class="model-head reveal"><p class="eyebrow">Unsere Zusammenarbeit</p><div><h2 class="section-title">Von Anfang an Klarheit. Professionelle Beratung und Projektumsetzung.</h2><p class="section-copy">Sie wissen jederzeit, was als Nächstes passiert.</p></div></div>
+      <div class="model-grid"><article class="model-item reveal"><div><h3>Wir liefern zuerst.</h3><p>Die erste Rechnung kommt erst, wenn Ihre neue Website freigegeben und veröffentlicht ist.</p></div></article><article class="model-item reveal"><div><h3>Sechs Monate Zusammenarbeit.</h3><p>Genug Zeit, damit Ihre Sichtbarkeit Schritt für Schritt wachsen kann.</p></div></article><article class="model-item reveal"><div><h3>Direkter Ansprechpartner.</h3><p>Ein erfahrener Ansprechpartner begleitet Strategie, Inhalte und Umsetzung.</p></div></article><article class="model-item reveal"><div><h3>Nachweislich empfohlen.</h3><p>Mehr als 100 öffentliche 5-Sterne-Bewertungen zeigen, wie Kunden unsere Arbeit erleben.</p></div></article></div>
     </div></section>
 
-    <section class="process" id="prozess"><div class="container"><div class="process-head reveal"><p class="eyebrow">Der Weg zum Start</p><div><h2 class="section-title">Sechs Wochen bis zum Start.</h2><p class="section-copy">Vier klare Schritte. Erst live, dann laufende Optimierung.</p></div></div>
+    <section class="process" id="prozess"><div class="container"><div class="process-head reveal"><p class="eyebrow">Der Weg zum Start</p><div><h2 class="section-title">Wir liefern zuerst. Noch vor der ersten Rechnung.</h2><p class="section-copy">In sechs Wochen von den ersten Prioritäten bis zur veröffentlichten Website.</p></div></div>
       <div class="timeline reveal"><article class="phase"><small>WOCHE 01</small><h3>Ziele &amp; Prioritäten</h3><p>Behandlungen, Standorte und Ziele festlegen.</p></article><article class="phase"><small>WOCHE 02</small><h3>Inhalte &amp; Seiten</h3><p>Suchthemen und Inhalte priorisieren.</p></article><article class="phase"><small>WOCHE 03–05</small><h3>Design &amp; Entwicklung</h3><p>Website und Behandlungstexte erstellen.</p></article><article class="phase"><small>WOCHE 06</small><h3>Freigabe &amp; Start</h3><p>Prüfen, freigeben und veröffentlichen.</p></article></div>
-      <div class="billing reveal"><strong>Erst live, dann Rechnung.</strong><span>Nach dem Start optimieren wir Sichtbarkeit und Anfragen laufend weiter.</span></div>
+      <div class="billing reveal"><strong>Sechs Wochen bis zum Start.</strong><span>Nach der Veröffentlichung optimieren wir Sichtbarkeit und Anfragen laufend weiter.</span></div>
     </div></section>
 
-    <section class="reviews" id="bewertungen"><svg width="0" height="0" aria-hidden="true" style="position:absolute"><symbol id="google-g" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></symbol></svg><div class="container"><div class="reviews-head reveal"><p class="eyebrow">Kundenstimmen</p><div><h2 class="section-title">Von Kunden empfohlen.</h2><p class="section-copy">Erfahrungen aus Website, SEO und digitalem Wachstum.</p><div class="google-summary"><svg class="google-g" aria-hidden="true"><use href="#google-g"/></svg><div><strong>Google Reviews</strong><div class="google-rating-line"><span class="google-score">5,0</span><span class="google-stars" aria-hidden="true">★★★★★</span></div><small>Mehr als 100 öffentliche 5-Sterne-Bewertungen</small></div></div></div></div>
+    <section class="reviews" id="bewertungen"><svg width="0" height="0" aria-hidden="true" style="position:absolute"><symbol id="google-g" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></symbol></svg><div class="container"><div class="reviews-head reveal"><p class="eyebrow">Kundenstimmen</p><div><h2 class="section-title">Von Kunden empfohlen.</h2><p class="section-copy">97% Kundenbindungsrate</p><div class="google-summary"><svg class="google-g" aria-hidden="true"><use href="#google-g"/></svg><div><strong>Google Reviews</strong><div class="google-rating-line"><span class="google-score">5,0</span><span class="google-stars" aria-hidden="true">★★★★★</span></div><small>Mehr als 100 öffentliche 5-Sterne-Bewertungen</small></div></div></div></div>
       <div class="reviews-track" tabindex="0" aria-label="Sechs Google-Bewertungen">
         <article class="review reveal"><div class="review-top"><div class="review-avatar" aria-hidden="true">JP</div><div class="review-author"><strong>Jessica Purcell</strong><div class="google-stars" role="img" aria-label="5 von 5 Sternen">★★★★★</div><span class="review-meta">Öffentliche Google-Bewertung</span></div><span class="review-google" aria-hidden="true"><svg class="google-g"><use href="#google-g"/></svg></span></div><blockquote>„Hervorragende Qualität, proaktiv und positiv – die Ergebnisse entsprachen den Zusagen.“</blockquote></article>
         <article class="review reveal"><div class="review-top"><div class="review-avatar" aria-hidden="true">MK</div><div class="review-author"><strong>Matthew Kang</strong><div class="google-stars" role="img" aria-label="5 von 5 Sternen">★★★★★</div><span class="review-meta">Öffentliche Google-Bewertung</span></div><span class="review-google" aria-hidden="true"><svg class="google-g"><use href="#google-g"/></svg></span></div><blockquote>„Das Team hat meine Website komplett neu gestaltet und SEO mit großartigen Ergebnissen betreut.“</blockquote></article>
@@ -448,6 +474,16 @@
           <label class="form-consent" for="privacy-confirm"><input id="privacy-confirm" name="Datenschutzhinweis bestätigt" type="checkbox" value="Ja" required><span>Ich habe die <a href="datenschutz.html" target="_blank" rel="noopener">Datenschutzerklärung</a> gelesen.</span></label>
           <details class="privacy-details" id="kontakt-datenschutz"><summary>Datenschutzhinweise</summary><div class="privacy-copy"><p>Wir verarbeiten Praxisname und Telefonnummer, um Ihre Anfrage zu beantworten und eine mögliche Zusammenarbeit vorzubereiten (Art. 6 Abs. 1 lit. b DSGVO).</p><p><strong>Verantwortlich:</strong> Digital Movement Marketing Ltd, 128 City Road, London EC1V 2NX. Kontakt Deutschland: Raoul Ranjan Mueller, Potsdamer Platz 1, 10117 Berlin, <a href="mailto:hello@xn--digitalezahnrzte-6nb.de">hello@digitalezahnärzte.de</a>.</p><p>Die Übermittlung erfolgt technisch über FormSubmit, das Einreichungen laut eigener Dokumentation bis zu 30 Tage vorhält. Bitte keine Patienten-, Gesundheits- oder Behandlungsdaten senden. Keine Werbenutzung. <a href="datenschutz.html" target="_blank" rel="noopener">Vollständige Datenschutzerklärung</a></p></div></details>
         </form>
+        <div class="submission-success" id="submission-success" role="status" aria-live="polite" tabindex="-1" hidden>
+          <div class="success-mark" aria-hidden="true">✓</div>
+          <div><h2>Vielen Dank für Ihre Anfrage.</h2><h3>Wir melden uns umgehend – für eine noch schnellere Kontaktaufnahme steht Ihnen Raoul Müller direkt zur Verfügung.</h3></div>
+          <div class="success-contact"><img src="assets/team/raoul.jpg" alt="Raoul Müller" width="1200" height="1500"><div class="success-contact-copy"><span>Ihr Ansprechpartner</span><strong>Raoul Müller</strong><p>Gründer · Digitale Zahnärzte</p><div class="success-links">
+            <a href="mailto:hallo@xn--digitalezahnrzte-6nb.de" aria-label="E-Mail an Raoul Müller"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5-8-5V6l8 5 8-5v2Z"/></svg><span>hallo@digitalezahnärzte.de</span></a>
+            <a href="https://wa.me/4917623296439" target="_blank" rel="noopener" aria-label="Raoul Müller über WhatsApp kontaktieren"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2a9.84 9.84 0 0 0-8.53 14.74L2 22l5.39-1.42A9.96 9.96 0 1 0 12.04 2Zm0 17.99a8.02 8.02 0 0 1-4.09-1.12l-.29-.17-3.2.84.85-3.12-.19-.32A8.04 8.04 0 1 1 12.04 20Zm4.41-6.02c-.24-.12-1.43-.71-1.65-.79-.22-.08-.38-.12-.54.12-.16.24-.62.79-.76.95-.14.16-.28.18-.52.06-.24-.12-1.02-.38-1.94-1.2a7.27 7.27 0 0 1-1.34-1.67c-.14-.24-.01-.37.11-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.19-.47-.39-.4-.54-.41h-.46c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.69 2.58 4.1 3.62.57.25 1.02.39 1.37.5.58.18 1.1.16 1.51.1.46-.07 1.43-.59 1.63-1.15.2-.57.2-1.05.14-1.15-.06-.1-.22-.16-.46-.28Z"/></svg><span>WhatsApp</span></a>
+            <a href="tel:+4917623296437" aria-label="Raoul Müller anrufen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79a15.46 15.46 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.61 21 3 13.39 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2Z"/></svg><span>+49 176 23296437</span></a>
+          </div></div></div>
+          <a class="success-proof" href="https://success.digitalmovement.uk/" target="_blank" rel="noopener">Erfahrungen mit unserem Expertenteam ansehen <span aria-hidden="true">↗</span></a>
+        </div>
         <p class="form-note" aria-live="polite">Sicher senden. Wir melden uns innerhalb eines Werktags.</p>
         <div class="contact-line"><a href="tel:+4917623296437">Telefon: +49 176 23296437</a><a href="https://wa.me/4917623296439" target="_blank" rel="noopener">WhatsApp: +49 176 23296439</a><a href="mailto:hello@xn--digitalezahnrzte-6nb.de">hello@digitalezahnärzte.de</a></div>
       </div>
@@ -465,8 +501,10 @@
     const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}}),{threshold:.1,rootMargin:'0px 0px -35px'});document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
     const sticky=document.querySelector('.sticky-cta');const contact=document.querySelector('#kontakt');const quietZone=document.querySelector('#prozess');const setSticky=()=>{const y=window.scrollY;const contactTop=contact.getBoundingClientRect().top;const quietZoneReached=y>=quietZone.offsetTop-window.innerHeight*.9;sticky.classList.toggle('show',y>window.innerHeight*.75&&contactTop>window.innerHeight*.72&&!quietZoneReached)};addEventListener('scroll',setSticky,{passive:true});addEventListener('resize',setSticky,{passive:true});setSticky();
     const leadForm=document.querySelector('#lead-form');
-    const leadNote=document.querySelector('#lead-form + .form-note');
-    if(new URLSearchParams(location.search).get('anfrage')==='gesendet'&&leadNote)leadNote.textContent='Vielen Dank. Ihre Anfrage wurde gesendet – wir melden uns innerhalb eines Werktags.';
+    const leadNote=document.querySelector('.form-note');
+    const leadSuccess=document.querySelector('#submission-success');
+    const showLeadSuccess=()=>{leadForm.hidden=true;leadForm.closest('.final-inner')?.classList.add('is-submitted');if(leadNote)leadNote.hidden=true;if(leadSuccess){leadSuccess.hidden=false;leadSuccess.focus({preventScroll:true})}};
+    if(new URLSearchParams(location.search).get('anfrage')==='gesendet')showLeadSuccess();
     leadForm.addEventListener('submit',async event=>{
       event.preventDefault();
       if(!leadForm.reportValidity())return;
@@ -480,7 +518,7 @@
         const result=await response.json();
         if(!response.ok||!(result.success===true||result.success==='true'))throw new Error('Formularversand fehlgeschlagen');
         leadForm.reset();
-        if(leadNote)leadNote.textContent='Vielen Dank. Ihre Anfrage wurde gesendet – wir melden uns innerhalb eines Werktags.';
+        showLeadSuccess();
       }catch(error){
         if(leadNote)leadNote.textContent='Das Senden hat nicht geklappt. Rufen Sie uns bitte unter +49 176 23296437 an.';
       }finally{
@@ -491,18 +529,15 @@
   </script>
   <script>
     (()=>{
-      const videos=[...document.querySelectorAll('video.ambient')];
+      const videos=[...document.querySelectorAll('video.ambient,video.service-video')];
+      const heroVideo=document.querySelector('.hero>video.ambient');
       const reduceMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
       const saveData=navigator.connection&&navigator.connection.saveData;
       const mobile=matchMedia('(max-width: 760px)').matches;
-      if(reduceMotion||saveData){
-        videos.forEach(video=>{video.preload='none';video.pause()});
-        return;
-      }
       const loadVideo=video=>{
         const source=video.querySelector('source[data-src],source[data-desktop-src]');
         if(source){
-          source.src=mobile?'assets/media/codex-bg-mobile.m4v':(source.dataset.desktopSrc||source.dataset.src);
+          source.src=mobile&&source.dataset.mobileSrc?source.dataset.mobileSrc:(source.dataset.desktopSrc||source.dataset.src);
           source.removeAttribute('data-src');
           source.removeAttribute('data-mobile-src');
           source.removeAttribute('data-desktop-src');
@@ -522,6 +557,18 @@
         video.setAttribute('playsinline','');
         video.setAttribute('webkit-playsinline','');
       });
+      if(heroVideo){
+        heroVideo.preload='auto';
+        heroVideo.dataset.visible='true';
+        heroVideo.load();
+        if(mobile||(!reduceMotion&&!saveData)){
+          if(heroVideo.readyState>=2)playVideo(heroVideo);
+          else{
+            heroVideo.addEventListener('loadeddata',()=>playVideo(heroVideo),{once:true});
+            heroVideo.addEventListener('canplay',()=>playVideo(heroVideo),{once:true});
+          }
+        }
+      }
       const videoObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{
         const video=entry.target;
         video.dataset.visible=String(entry.isIntersecting);
@@ -531,13 +578,22 @@
           else video.addEventListener('canplay',()=>{if(video.dataset.visible==='true')playVideo(video)},{once:true});
         }else video.pause();
       }),{rootMargin:'240px 0px',threshold:.01});
-      videos.forEach(video=>videoObserver.observe(video));
+      videos.forEach(video=>{
+        if(video===heroVideo||(!reduceMotion&&!saveData))videoObserver.observe(video);
+        else{video.preload='none';video.pause()}
+      });
+      const resumeVisibleVideos=()=>videos.forEach(video=>{
+        if(video.dataset.visible==='true'&&(video===heroVideo||(!reduceMotion&&!saveData)))playVideo(video);
+      });
       document.addEventListener('visibilitychange',()=>{
         videos.forEach(video=>{
           if(document.hidden)video.pause();
           else if(video.dataset.visible==='true')playVideo(video);
         });
       });
+      addEventListener('pageshow',resumeVisibleVideos);
+      document.addEventListener('touchstart',resumeVisibleVideos,{once:true,passive:true});
+      document.addEventListener('pointerdown',resumeVisibleVideos,{once:true,passive:true});
     })();
   </script>
   <script>
@@ -669,6 +725,7 @@
       .top-strip a{white-space:nowrap}
       .site-header{top:36px}
       .brand .dz-wordmark{font-size:22px}
+      .brand .dz-wordmark::before{width:25px;height:25px}
       .brand .powered{gap:6px;font-size:6px}
       .brand .powered img{width:116px}
       .menu-btn{width:44px;height:44px;flex:0 0 44px}
@@ -702,13 +759,15 @@
       .case-copy h3{max-width:10ch;margin:0 auto 20px;font-size:42px;line-height:1}
       .case-copy p{max-width:29ch;margin-inline:auto;font-size:18px;line-height:1.52}
       .case-metrics{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:32px;padding-top:24px}
-      .case-metrics strong{font-size:27px}
-      .case-metrics span{display:block;font-size:12px;line-height:1.35}
+      .case-metrics>div{padding:16px 8px;border-radius:13px}
+      .case-metrics strong{font-size:clamp(38px,11vw,44px);line-height:.86}
+      .case-metrics span{display:block;margin-top:12px;font-size:12px;line-height:1.35}
       .case-visual{min-height:330px}
       .case-visual img{top:28px}
       .stories{gap:76px}
       .story,.story:nth-child(even){gap:28px}
       .story-media{min-height:440px;border-radius:18px}
+      .story:first-child .story-media{min-height:560px}
       .story-media.contain{min-height:300px;padding:18px}
       .story-media.contain img{border-radius:11px;box-shadow:0 16px 38px rgba(28,58,91,.16)}
       .story-number{margin-bottom:14px}
@@ -717,8 +776,7 @@
       .story-points{margin-top:24px;text-align:center}
       .story-points li{display:block;padding:15px 4px;font-size:16px;line-height:1.45}
       .services-grid{gap:18px}
-      .service-card,.service-card:last-child{min-height:380px;padding:34px 24px;justify-content:space-between;gap:30px;border-radius:20px}
-      .service-icon{width:74px;height:74px;margin:0 auto;font-size:34px}
+      .service-card,.service-card:last-child{min-height:480px;padding:34px 24px;justify-content:space-between;gap:30px;border-radius:20px}
       .service-card h3{max-width:10ch;margin:0 auto 16px;font-size:34px;line-height:1.04}
       .service-card p{max-width:28ch;margin-inline:auto;font-size:17px;line-height:1.52}
       .service-list{max-width:29ch;margin:18px auto 0;font-size:15px;line-height:1.5;text-align:center}
@@ -790,6 +848,20 @@
       .form-note{max-width:29ch;font-size:15px;line-height:1.45}
       .contact-line{margin-top:24px;font-size:16px;line-height:1.5}
       .contact-line a{min-height:48px;display:flex;align-items:center;justify-content:center}
+      .intro{padding-top:76px}
+      .intro::before{height:145px}
+      .submission-success{width:100%;gap:20px;margin-top:30px;padding:28px 18px;border-radius:24px}
+      .success-mark{width:50px;height:50px}
+      .final-cta .submission-success h2{max-width:9ch;font-size:40px;line-height:1.02}
+      .submission-success h3{max-width:28ch;font-size:17px;line-height:1.5}
+      .success-contact{grid-template-columns:1fr;justify-items:center;gap:14px;padding:22px 16px;text-align:center}
+      .success-contact img{width:94px;height:94px}
+      .success-contact-copy{width:100%}
+      .success-contact-copy>strong{font-size:24px}
+      .success-contact-copy>p{font-size:15px}
+      .success-links{display:grid;grid-template-columns:1fr;width:100%;gap:8px}
+      .success-links a{min-height:50px;justify-content:center;font-size:15px}
+      .success-proof{max-width:25ch;justify-content:center;font-size:15px;line-height:1.45}
       .sticky-cta{width:min(340px,calc(100vw - 32px));bottom:max(10px,env(safe-area-inset-bottom));gap:0;padding:6px;border-radius:999px}
       .sticky-cta strong{display:none}
       .sticky-cta .btn{width:100%;min-height:54px;padding:12px 18px;font-size:16px}
