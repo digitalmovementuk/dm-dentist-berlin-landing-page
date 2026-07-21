@@ -12,19 +12,18 @@
   <meta property="og:title" content="Mehr passende Patienten für Ihre Zahnarztpraxis">
   <meta property="og:description" content="Website, Google und KI-Sichtbarkeit als klarer Weg von der Behandlungssuche zur Terminanfrage.">
   <meta property="og:url" content="https://digitalmovementuk.github.io/dm-dentist-berlin-landing-page/">
-  <meta property="og:image" content="https://digitalmovementuk.github.io/dm-dentist-berlin-landing-page/assets/media/dental-practice-team.jpg">
-  <meta property="og:image:width" content="1600">
-  <meta property="og:image:height" content="2400">
-  <meta property="og:image:alt" content="Zahnmedizinisches Team in einer modernen Praxis">
+  <meta property="og:image" content="https://digitalmovementuk.github.io/dm-dentist-berlin-landing-page/assets/brand/dm-dentist-berlin-og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Digital Movement Landingpage für SEO und Webdesign für Zahnarztpraxen">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Digitales Wachstum für Zahnarztpraxen">
   <meta name="twitter:description" content="Website, Google und KI-Sichtbarkeit für mehr passende Terminanfragen.">
-  <meta name="twitter:image" content="https://digitalmovementuk.github.io/dm-dentist-berlin-landing-page/assets/media/dental-practice-team.jpg">
+  <meta name="twitter:image" content="https://digitalmovementuk.github.io/dm-dentist-berlin-landing-page/assets/brand/dm-dentist-berlin-og.jpg">
 
   <link rel="canonical" href="https://digitalmovementuk.github.io/dm-dentist-berlin-landing-page/">
   <link rel="icon" type="image/png" href="assets/brand/favicon.png">
   <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
-  <link rel="preload" as="image" href="assets/media/codex-bg-poster.jpg" fetchpriority="high">
 
   <script>document.documentElement.classList.add('has-js');</script>
   <style>
@@ -3786,13 +3785,51 @@
     .about-dm__reviews { margin-top: clamp(32px, 4vw, 48px); }
     .about-dm__review { min-height: 176px; gap: 20px; }
 
-    .difference-grid { gap: 18px; }
-    .difference-card { min-height: 286px; padding: clamp(26px, 3vw, 38px); }
-    .difference-card__top { padding-bottom: 26px; }
-    .difference-card h3 { font-size: clamp(1.55rem, 2.25vw, 2.25rem); }
-    .difference-card p { margin-top: 13px; font-size: .84rem; line-height: 1.55; }
-    .difference-card__promise { margin-top: 18px; }
-    .difference-card__meta { margin-top: 18px; }
+    .difference-grid { position: relative; grid-template-columns: 1fr; gap: 16px; }
+    .difference-card,
+    .difference-card--delivery,
+    .difference-card--duration,
+    .difference-card--advice,
+    .difference-card--proof {
+      grid-column: 1;
+      min-height: 0;
+      display: grid;
+      grid-template-columns: 72px minmax(0, 1fr) minmax(230px, .42fr);
+      align-items: center;
+      gap: clamp(22px, 3vw, 38px);
+      padding: clamp(22px, 2.5vw, 30px);
+      overflow: hidden;
+      color: var(--ink);
+      border: 1px solid rgba(17, 17, 19, .1);
+      border-radius: 22px;
+      background: rgba(255, 255, 255, .95);
+      box-shadow: 0 24px 58px -42px rgba(17, 17, 19, .34);
+    }
+    .difference-card::before { position: absolute; inset: 0 auto 0 0; width: 4px; content: ""; background: var(--gradient); }
+    .difference-card__signal { height: 100%; display: grid; align-content: center; justify-items: center; gap: 12px; padding-right: 22px; border-right: 1px solid rgba(17, 17, 19, .1); }
+    .difference-card__number { width: 34px; height: 34px; display: grid; place-items: center; color: #fff; border-radius: 10px; background: #17131c; font-size: .68rem; }
+    .difference-card__icon { width: 42px; height: 42px; border-radius: 13px; box-shadow: none; }
+    .difference-card__body { min-width: 0; }
+    .difference-card__kicker { margin-bottom: 9px; }
+    .difference-card h3 { max-width: 680px; margin: 0; font-size: clamp(1.45rem, 2vw, 2rem); }
+    .difference-card p { max-width: 760px; margin: 10px 0 0; color: var(--ink-soft); font-size: .88rem; line-height: 1.52; }
+    .difference-card__aside { min-width: 0; display: grid; align-content: center; gap: 12px; padding: 18px; border: 1px solid rgba(116, 66, 148, .13); border-radius: 16px; background: #f8f5fa; }
+    .difference-card__meta { width: 100%; margin: 0; padding: 0; border: 0; color: #673485; background: transparent; font-size: .68rem; font-weight: 700; line-height: 1.4; text-align: center; }
+    .difference-card__promise { margin: 0; padding: 0 0 12px; border: 0; border-bottom: 1px solid rgba(116, 66, 148, .14); border-radius: 0; background: transparent; box-shadow: none; text-align: center; }
+    .difference-card__promise span { font-size: .62rem; }
+    .difference-card__promise strong { font-size: .82rem; }
+    .difference-card--proof,
+    .difference-card--proof h3 { color: var(--ink); }
+    .difference-card--proof .difference-card__number { color: #fff; }
+    .difference-card--proof .difference-card__icon { color: var(--purple); border-color: rgba(17, 17, 19, .08); background: #fff; }
+    .difference-card--proof .difference-card__kicker { color: var(--purple); }
+    .difference-card--proof p { color: var(--ink-soft); }
+    .difference-card__aside--proof { color: #fff; border-color: rgba(255, 255, 255, .08); background: #17131c; }
+    .difference-card__aside--proof .difference-proof__stat { margin: 0; align-items: center; }
+    .difference-card__aside--proof .difference-proof__stat strong { font-size: clamp(2.4rem, 4vw, 3.8rem); }
+    .difference-card__aside--proof .difference-proof__stat span { color: rgba(255, 255, 255, .62); }
+    .difference-card__aside--proof .difference-proof__link { margin-top: 2px; }
+    .difference-card__aside--proof .difference-proof__note { margin-top: 0 !important; color: rgba(255, 255, 255, .46) !important; }
 
     #ablauf { background: rgba(255, 255, 255, .94); }
     .project-grid { gap: 18px; }
@@ -3851,16 +3888,228 @@
       .about-dm__service { min-height: 100px; padding: 16px 10px; }
       .about-dm__reviews { margin-top: 28px; }
       .about-dm__review { min-height: 174px; }
-      .difference-card { padding: 26px 20px; }
-      .difference-card__top { padding-bottom: 18px; }
-      .difference-card h3 { font-size: 1.68rem; }
-      .difference-card p { font-size: .92rem; line-height: 1.55; }
-      .difference-card__promise { margin-top: 18px; }
+      .difference-card,
+      .difference-card--delivery,
+      .difference-card--duration,
+      .difference-card--advice,
+      .difference-card--proof { grid-template-columns: 1fr; justify-items: center; gap: 20px; padding: 24px 20px; text-align: center; }
+      .difference-card__signal { width: 100%; height: auto; display: flex; align-items: center; justify-content: center; gap: 10px; padding: 0 0 18px; border-right: 0; border-bottom: 1px solid rgba(17, 17, 19, .1); }
+      .difference-card__body { display: grid; justify-items: center; }
+      .difference-card h3 { font-size: 1.65rem; }
+      .difference-card p { margin-top: 12px; font-size: .94rem; line-height: 1.55; }
+      .difference-card__aside { width: 100%; justify-items: center; padding: 17px; }
+      .difference-card__promise { justify-items: center; }
+      .difference-card__meta { font-size: .76rem; }
+      .difference-card__aside--proof .difference-proof__stat { align-items: center; }
       .project-step { min-height: 70px; }
       .contact-person { min-height: 430px; }
       #team .team-member__visual { width: 176px; height: 176px; min-height: 176px; margin: 22px auto 0; }
       #team .team-member__body { padding: 18px 18px 22px; }
       #team .team-member p { font-size: .9rem; }
+    }
+
+    /* Codex editorial system — centered hero, open white canvas, large visual stages. */
+    :root {
+      --codex-blue: #b8cbff;
+      --codex-violet: #7866d8;
+      --codex-lilac: #d7d2f8;
+      --codex-stage: linear-gradient(128deg, #cddcff 0%, #8d7be0 48%, #c8d7ff 100%);
+      --codex-border: rgba(17, 17, 19, .1);
+      --codex-radius: 16px;
+    }
+    body { background: #fff; }
+    .site-background { display: none; }
+    main > section:not(.hero) {
+      content-visibility: visible;
+      contain-intrinsic-size: none;
+    }
+    .hero {
+      min-height: 100svh;
+      color: var(--ink);
+      background: linear-gradient(180deg, #fff 0%, #fbfbff 64%, #fff 100%);
+    }
+    .hero-inner {
+      width: min(calc(100% - (var(--gutter) * 2)), 1180px);
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      padding: 100px 0 32px;
+      text-align: center;
+    }
+    .hero-copy { order: 1; max-width: 980px; display: grid; justify-items: center; }
+    .hero .eyebrow { display: inline-flex; justify-content: center; margin-bottom: 18px; color: var(--purple); }
+    .hero-title { max-width: 24ch; font-size: clamp(3.5rem, 5vw, 4.8rem); font-weight: 500; line-height: .94; letter-spacing: -.055em; text-shadow: none; }
+    .hero-title .soft { color: #75757c; }
+    .hero-centered-lede { max-width: 680px; margin: 16px auto 0; color: var(--ink-soft); font-size: clamp(1rem, 1.35vw, 1.18rem); line-height: 1.55; }
+    .hero-primary-cta { min-height: 54px; margin-top: 18px; padding-inline: 26px; }
+    .hero-disclaimer {
+      position: static;
+      inset: auto;
+      order: 2;
+      align-self: center;
+      width: auto;
+      max-width: none;
+      min-height: 0;
+      display: block;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+      backdrop-filter: none;
+    }
+    .hero-disclaimer > p { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); }
+    .hero-platforms { justify-content: center; gap: 10px; }
+    .hero-platform { width: 44px; height: 44px; border-color: var(--codex-border); border-radius: 12px; background: #fff; box-shadow: 0 12px 28px -20px rgba(17, 17, 19, .35); }
+    .hero-platform svg { width: 21px; height: 21px; }
+    .hero-metrics,
+    .hero-actions,
+    .hero-google-rating,
+    .hero-contact { display: none !important; }
+    .hero-serp-window {
+      order: 3;
+      width: min(1060px, 100%);
+      height: clamp(286px, 34svh, 330px);
+      display: grid;
+      grid-template-rows: 42px minmax(0, 1fr) auto;
+      margin: 2px 0 0;
+      padding: 16px;
+      overflow: hidden;
+      border-radius: var(--codex-radius);
+      background: var(--codex-stage);
+      box-shadow: none;
+    }
+    .hero-serp-window__bar {
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 0 14px;
+      border-radius: 12px 12px 0 0;
+      background: rgba(255, 255, 255, .9);
+    }
+    .hero-serp-window__bar > span { width: 8px; height: 8px; flex: 0 0 auto; border-radius: 50%; background: #c6c6ca; }
+    .hero-serp-window__bar > span:first-child { background: #ff6b63; }
+    .hero-serp-window__bar > span:nth-child(2) { background: #ffbf36; }
+    .hero-serp-window__bar > span:nth-child(3) { background: #29c840; }
+    .hero-serp-window__bar p { min-width: 0; margin: 0 0 0 8px; overflow: hidden; color: var(--ink-faint); font-size: .67rem; text-overflow: ellipsis; white-space: nowrap; }
+    .hero-serp-window > a { min-height: 0; display: block; overflow: hidden; border-radius: 0 0 12px 12px; background: #fff; }
+    .hero-serp-window img { width: 100%; height: 100%; object-fit: cover; object-position: center 18%; }
+    .hero-serp-window figcaption { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 16px; padding: 14px 4px 0; color: #fff; text-align: left; }
+    .hero-serp-window figcaption span { display: flex; align-items: center; gap: 8px; font-size: .67rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+    .hero-serp-window figcaption i { width: 8px; height: 8px; border-radius: 50%; background: #48d17d; box-shadow: 0 0 0 5px rgba(72, 209, 125, .18); }
+    .hero-serp-window figcaption strong { font-size: .78rem; font-weight: 600; }
+    .hero-serp-window figcaption a { font-size: .7rem; font-weight: 700; text-decoration: none; }
+
+    main > section:not(.hero),
+    .dental-success,
+    .about-dm,
+    #ablauf,
+    #team,
+    .contact-section {
+      border: 0;
+      border-top: 1px solid rgba(17, 17, 19, .07);
+      background: #fff !important;
+      backdrop-filter: none;
+    }
+    main > .section:not(.hero),
+    main > .section--compact,
+    main > .contact-section,
+    .dental-success,
+    .about-dm { padding-block: clamp(104px, 10vw, 152px); }
+    main > .section:not(.hero) .section-heading,
+    .dental-success__panel,
+    .about-dm__panel {
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+    }
+    main > .section:not(.hero) .section-heading { max-width: 1020px; margin-inline: auto; padding: 0; text-align: center; }
+    main > .section:not(.hero) .section-heading .eyebrow { justify-content: center; }
+    .dental-success__panel,
+    .about-dm__panel { padding: 0; }
+    .dental-success__panel::before,
+    .about-dm__panel::before { display: none; }
+    .dental-success__eyebrow,
+    .about-dm__eyebrow { width: 100%; justify-content: center; }
+    .dental-success__section-title,
+    .about-dm h2,
+    .about-dm__lede { margin-inline: auto; text-align: center; }
+    .dental-success__summary {
+      gap: 16px;
+      padding: 20px;
+      border: 0;
+      border-radius: var(--codex-radius);
+      background: var(--codex-stage);
+      box-shadow: none;
+    }
+    .dental-success__visual,
+    .dental-success__content { border-radius: 12px; }
+    .dental-success__content { color: var(--ink); background: rgba(255, 255, 255, .9); }
+    .dental-success__content h3 { color: var(--ink); }
+    .dental-success__content h3 em { color: #7e47a6; }
+    .dental-success__lede { color: var(--ink-soft); }
+    .dental-success__metrics { color: #fff; background: #17131c; }
+    .about-dm__header { max-width: 920px; margin-inline: auto; justify-items: center; }
+    .about-dm__services,
+    .about-dm__reviews,
+    .story-scene,
+    .channel-window,
+    .difference-card,
+    .build-phase,
+    .optimise-phase,
+    .team-member,
+    .contact-person,
+    .contact-form { border-radius: var(--codex-radius); box-shadow: none; }
+    .story-phone-stage,
+    .story-responsive-preview,
+    .story-booking-preview { border: 0; background: var(--codex-stage); box-shadow: none; }
+    .story-booking-preview { padding: clamp(18px, 3vw, 30px); }
+    .difference-card { border-color: var(--codex-border); }
+    .project-grid { gap: 16px; }
+    .team-roster { gap: 16px; }
+    .contact-grid { gap: 16px; }
+
+    @media (max-width: 700px) {
+      .hero-inner { width: calc(100% - 32px); min-height: 100svh; gap: 14px; padding: 92px 0 28px; }
+      .hero-title { max-width: 10ch; font-size: clamp(2.75rem, 12.4vw, 3.35rem); line-height: .94; }
+      .hero-centered-lede { max-width: 330px; margin-top: 18px; font-size: .98rem; }
+      .hero-primary-cta { width: 100%; min-height: 54px; margin-top: 16px; padding-inline: 16px; }
+      .hero-platforms { gap: 8px; }
+      .hero-platform { width: 40px; height: 40px; }
+      .hero-serp-window { height: 262px; padding: 10px; border-radius: 14px; }
+      .hero-serp-window__bar { height: 36px; padding-inline: 10px; }
+      .hero-serp-window__bar p { font-size: .58rem; }
+      .hero-serp-window figcaption { grid-template-columns: 1fr auto; gap: 8px; padding-top: 10px; }
+      .hero-serp-window figcaption strong { display: none; }
+      .hero-serp-window figcaption span,
+      .hero-serp-window figcaption a { font-size: .6rem; }
+      main > .section:not(.hero),
+      main > .section--compact,
+      main > .contact-section,
+      .dental-success,
+      .about-dm { padding-block: 88px; }
+      .dental-success__summary { padding: 12px; }
+      .dental-success__content { padding: 28px 18px 20px; }
+      .about-dm__panel { padding-inline: 0; }
+    }
+    @media (min-width: 701px) and (max-height: 800px) {
+      .hero-serp-window { height: 236px; }
+    }
+    @media (max-width: 700px) and (max-height: 780px) {
+      .hero-inner { gap: 10px; padding: 82px 0 20px; }
+      .hero .eyebrow { margin-bottom: 10px; font-size: .66rem; }
+      .hero-title { font-size: clamp(2.35rem, 11vw, 2.75rem); }
+      .hero-centered-lede { margin-top: 11px; font-size: .9rem; line-height: 1.45; }
+      .hero-primary-cta { min-height: 50px; margin-top: 12px; font-size: .72rem; }
+      .hero-platform { width: 36px; height: 36px; }
+      .hero-platform svg { width: 18px; height: 18px; }
+      .hero-serp-window { height: 204px; }
+      .hero-serp-window figcaption { padding-top: 7px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -3898,12 +4147,6 @@
 </head>
 <body>
   <a class="skip-link" href="#main">Direkt zum Inhalt</a>
-  <div class="site-background" aria-hidden="true">
-    <video autoplay muted loop playsinline preload="auto" poster="assets/media/codex-bg-poster.jpg" disablepictureinpicture>
-      <source src="assets/media/codex-bg.mp4" type="video/mp4">
-    </video>
-  </div>
-
   <header class="site-header" id="site-header">
     <div class="header-inner">
       <a class="brand" href="#top" aria-label="Digital Movement – Startseite">
@@ -3912,7 +4155,7 @@
       </a>
 
       <nav class="nav-pills" aria-label="Hauptnavigation">
-        <a href="#erfolgsgeschichte">Success Story</a>
+        <a href="#erfolgsgeschichte">Erfolgsgeschichte</a>
         <a href="#about-dm">Über uns</a>
         <a href="#warum">Wie SEO funktioniert</a>
         <a href="#ablauf">Wie wir arbeiten</a>
@@ -3930,7 +4173,7 @@
   <div class="menu-overlay" id="menu-overlay" aria-hidden="true">
     <div>
       <nav aria-label="Vollbildnavigation">
-        <a href="#erfolgsgeschichte">Success Story</a>
+        <a href="#erfolgsgeschichte">Erfolgsgeschichte</a>
         <a href="#about-dm">Über uns</a>
         <a href="#warum">Wie SEO funktioniert</a>
         <a href="#ablauf">Wie wir arbeiten</a>
@@ -3966,7 +4209,9 @@
 
         <div class="hero-copy">
           <p class="eyebrow">SEO &amp; Webdesign für Zahnarztpraxen</p>
-          <h1 class="hero-title" id="hero-title">Mehr Neupatienten. <span class="soft">Planbares Praxiswachstum.</span></h1>
+          <h1 class="hero-title" id="hero-title">Monatliche Neupatienten. <span class="soft">Planbares Praxiswachstum.</span></h1>
+          <p class="hero-centered-lede">Wir machen Ihre wichtigsten Behandlungen bei Google und in führenden KI-Suchen sichtbar.</p>
+          <a class="button button--ink hero-primary-cta" href="#kontakt">Kostenlosen Praxis-Check starten <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
 
           <div class="hero-metrics" aria-label="Beispielhafte Ergebnisse aus Kundenprojekten">
             <div><strong>+20</strong><span>Neupatienten/ Monat</span></div>
@@ -4006,6 +4251,14 @@
             <p class="hero-form-status" id="hero-form-status" aria-live="polite"></p>
           </form>
         </aside>
+
+        <figure class="hero-serp-window" aria-labelledby="hero-serp-caption">
+          <div class="hero-serp-window__bar" aria-hidden="true"><span></span><span></span><span></span><p>google.com/search?q=zahnarzt+veneer+near+Charlottenburg</p></div>
+          <a href="https://www.google.com/search?q=zahnarzt+veneer+near+Charlottenburg" target="_blank" rel="noopener" aria-label="Google-Suche nach Zahnarzt Veneer nahe Charlottenburg öffnen">
+            <img src="assets/screens/google-veneer-charlottenburg-serp.png" alt="Google-Suchergebnisse für Zahnarzt Veneer nahe Charlottenburg" width="1440" height="913" fetchpriority="high" decoding="async">
+          </a>
+          <figcaption id="hero-serp-caption"><span><i></i>Echte Google-Suche</span><strong>Patienten vergleichen sichtbare Praxen.</strong><a href="https://www.google.com/search?q=zahnarzt+veneer+near+Charlottenburg" target="_blank" rel="noopener">In Google öffnen ↗</a></figcaption>
+        </figure>
       </div>
 
     </section>
@@ -4255,50 +4508,39 @@
 
         <div class="difference-grid">
           <article class="difference-card difference-card--delivery reveal">
-            <div class="difference-card__top">
+            <div class="difference-card__signal">
               <span class="difference-card__number">01</span>
               <span class="difference-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3h9l3 3v15H6z"/><path d="M14 3v4h4M9 13l2 2 4-5"/></svg></span>
             </div>
-            <span class="difference-card__kicker">Erst liefern, dann abrechnen</span>
-            <h3>Ihre Website ist fertig, bevor die erste Rechnung kommt.</h3>
-            <p>In rund sechs Wochen erstellen wir Ihre komplette Praxis-Website und alle vereinbarten Seiten für Ihre wichtigsten Behandlungen. Erst nach Ihrer Prüfung, Freigabe und Veröffentlichung stellen wir die erste Rechnung.</p>
-            <div class="difference-card__promise" role="note"><span>Wichtig</span><strong>Wir liefern erst vollständig – und stellen dann die erste Rechnung.</strong></div>
-            <span class="difference-card__meta">Fertigstellung in rund sechs Wochen</span>
+            <div class="difference-card__body"><span class="difference-card__kicker">Erst liefern, dann abrechnen</span><h3>Ihre Website ist fertig, bevor die erste Rechnung kommt.</h3><p>In rund sechs Wochen erstellen wir Ihre komplette Praxis-Website und alle vereinbarten Seiten für Ihre wichtigsten Behandlungen. Erst nach Ihrer Prüfung, Freigabe und Veröffentlichung stellen wir die erste Rechnung.</p></div>
+            <div class="difference-card__aside"><div class="difference-card__promise" role="note"><span>Wichtig</span><strong>Wir liefern erst vollständig – und stellen dann die erste Rechnung.</strong></div><span class="difference-card__meta">Fertigstellung in rund sechs Wochen</span></div>
           </article>
 
           <article class="difference-card difference-card--duration reveal reveal-delay-1">
-            <div class="difference-card__top">
+            <div class="difference-card__signal">
               <span class="difference-card__number">02</span>
               <span class="difference-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3 2"/></svg></span>
             </div>
-            <span class="difference-card__kicker">Überschaubare Laufzeit</span>
-            <h3>Nur sechs Monate Mindestlaufzeit.</h3>
-            <p>Für Google optimierte Behandlungsseiten brauchen meist drei bis sechs Monate, bis sich Rankings entwickeln können. Unsere Laufzeit gibt den neuen Seiten diese Zeit – ohne unnötig lange Bindung.</p>
-            <span class="difference-card__meta">Mindestlaufzeit: sechs Monate</span>
+            <div class="difference-card__body"><span class="difference-card__kicker">Überschaubare Laufzeit</span><h3>Nur sechs Monate Mindestlaufzeit.</h3><p>Für Google optimierte Behandlungsseiten brauchen meist drei bis sechs Monate, bis sich Rankings entwickeln können. Unsere Laufzeit gibt den neuen Seiten diese Zeit – ohne unnötig lange Bindung.</p></div>
+            <div class="difference-card__aside"><span class="difference-card__meta">Mindestlaufzeit: sechs Monate</span></div>
           </article>
 
           <article class="difference-card difference-card--advice reveal">
-            <div class="difference-card__top">
+            <div class="difference-card__signal">
               <span class="difference-card__number">03</span>
               <span class="difference-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19V9l8-5 8 5v10"/><path d="M8 19v-5h8v5M8 10h8"/></svg></span>
             </div>
-            <span class="difference-card__kicker">Senior-Beratung</span>
-            <h3>Erfahrung für nachhaltiges Praxiswachstum.</h3>
-            <p>Bei uns arbeiten ausschließlich erfahrene Senior-Fachleute. Ihr fester Ansprechpartner bringt mehr als zehn Jahre Projekterfahrung mit – einschließlich Erfahrung in führenden Beratungshäusern. Wir verbinden Website, Sichtbarkeit, Prozesse und Unternehmensziele zu einem umsetzbaren Wachstumsplan.</p>
-            <span class="difference-card__meta">10+ Jahre Projekterfahrung</span>
+            <div class="difference-card__body"><span class="difference-card__kicker">Senior-Beratung</span><h3>Erfahrung für nachhaltiges Praxiswachstum.</h3><p>Bei uns arbeiten ausschließlich erfahrene Senior-Fachleute. Ihr fester Ansprechpartner bringt mehr als zehn Jahre Projekterfahrung mit – einschließlich Erfahrung in führenden Beratungshäusern. Wir verbinden Website, Sichtbarkeit, Prozesse und Unternehmensziele zu einem umsetzbaren Wachstumsplan.</p></div>
+            <div class="difference-card__aside"><span class="difference-card__meta">10+ Jahre Projekterfahrung</span></div>
           </article>
 
           <article class="difference-card difference-card--proof reveal reveal-delay-1">
-            <div class="difference-card__top">
+            <div class="difference-card__signal">
               <span class="difference-card__number">04</span>
               <span class="difference-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m12 3 2.7 5.5 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></svg></span>
             </div>
-            <span class="difference-card__kicker">Beratung &amp; Kundenservice</span>
-            <h3>Ausgezeichnet und öffentlich bewertet.</h3>
-            <p>Digital Movement Australia wurde mehrfach ausgezeichnet und wird von Kunden für Beratung, Umsetzung und Betreuung bewertet.</p>
-            <div class="difference-proof__stat"><strong>5,0 ★</strong><span>aus mehr als 100 öffentlichen Google-Bewertungen</span></div>
-            <a class="difference-proof__link" href="https://success.digitalmovement.uk/" target="_blank" rel="noopener">Projekte und Bewertungen ansehen</a>
-            <p class="difference-proof__note">Bewertungen und Auszeichnungen beziehen sich auf Digital Movement Australia.</p>
+            <div class="difference-card__body"><span class="difference-card__kicker">Beratung &amp; Kundenservice</span><h3>Ausgezeichnet und öffentlich bewertet.</h3><p>Digital Movement Australia wurde mehrfach ausgezeichnet und wird von Kunden für Beratung, Umsetzung und Betreuung bewertet.</p></div>
+            <div class="difference-card__aside difference-card__aside--proof"><div class="difference-proof__stat"><strong>5,0 ★</strong><span>aus mehr als 100 öffentlichen Google-Bewertungen</span></div><a class="difference-proof__link" href="https://success.digitalmovement.uk/" target="_blank" rel="noopener">Projekte und Bewertungen ansehen</a><p class="difference-proof__note">Bewertungen und Auszeichnungen beziehen sich auf Digital Movement Australia.</p></div>
           </article>
         </div>
       </div>
@@ -4774,7 +5016,7 @@
         header.classList.toggle('is-cta-visible', !heroCtaIsVisible);
         setHeader();
       }, { threshold: [0, .12, .5] });
-      document.querySelectorAll('.hero-actions, .hero-lead-form').forEach(function (element) {
+      document.querySelectorAll('.hero-primary-cta, .hero-actions, .hero-lead-form').forEach(function (element) {
         heroCtaVisibility.set(element, false);
         heroCtaObserver.observe(element);
       });
