@@ -3171,58 +3171,61 @@
     .dental-success__panel::before { position:absolute; inset:0 0 auto; height:4px; content:""; background:var(--gradient); }
     .dental-success__eyebrow { display:inline-flex; align-items:center; gap:10px; margin:0 0 17px; color:var(--purple); font-size:.72rem; font-weight:750; letter-spacing:.13em; text-transform:uppercase; }
     .dental-success__eyebrow::before { width:8px; height:8px; border-radius:50%; content:""; background:var(--gradient); box-shadow:0 0 0 6px rgba(116,66,148,.08); }
-    .dental-success__section-title { max-width:760px; margin:0 0 clamp(26px,4vw,42px); font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; font-size:clamp(2.45rem,4.8vw,5.15rem); font-weight:520; line-height:.96; letter-spacing:-.055em; text-wrap:balance; }
+    .dental-success__section-title { max-width:900px; margin:0 0 clamp(32px,4vw,48px); font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; font-size:clamp(2.75rem,4.4vw,4.7rem); font-weight:520; line-height:.96; letter-spacing:-.055em; text-wrap:balance; }
     .dental-success__section-title em { color:transparent; font-style:normal; background:var(--gradient); background-clip:text; -webkit-background-clip:text; }
-    .dental-success__summary { display:grid; grid-template-columns:minmax(0,1.08fr) minmax(360px,.92fr); overflow:hidden; border:1px solid rgba(17,17,19,.1); border-radius:22px; background:#17131c; }
-    .dental-success__visual { position:relative; min-height:440px; margin:0; overflow:hidden; background:#111; }
-    .dental-success__visual::after { position:absolute; inset:0; content:""; background:linear-gradient(90deg,rgba(18,14,23,.1),rgba(18,14,23,.58)); pointer-events:none; }
+    .dental-success__summary { display:grid; grid-template-columns:minmax(0,1.05fr) minmax(400px,.95fr); min-height:580px; overflow:hidden; border:1px solid rgba(17,17,19,.1); border-radius:24px; background:#17131c; box-shadow:0 28px 64px -48px rgba(17,17,19,.72); }
+    .dental-success__visual { position:relative; min-height:580px; margin:0; overflow:hidden; background:#111; }
+    .dental-success__visual::after { position:absolute; inset:0; content:""; background:linear-gradient(90deg,rgba(18,14,23,.04),rgba(18,14,23,.28)); pointer-events:none; }
     .dental-success__visual img { width:100%; height:100%; position:absolute; inset:0; object-fit:cover; object-position:center top; }
-    .dental-success__visual figcaption { position:absolute; z-index:1; right:20px; bottom:18px; left:20px; color:#fff; font-size:.66rem; font-weight:700; letter-spacing:.09em; text-transform:uppercase; }
-    .dental-success__content { display:grid; align-content:center; gap:26px; padding:clamp(28px,4vw,54px); color:#fff; }
-    .dental-success__content h3 { max-width:500px; margin:0; font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; font-size:clamp(2.4rem,4.3vw,4.7rem); font-weight:520; line-height:.95; letter-spacing:-.055em; text-wrap:balance; }
+    .dental-success__visual figcaption { position:absolute; z-index:1; right:22px; bottom:20px; left:22px; color:#fff; font-size:.66rem; font-weight:750; letter-spacing:.1em; text-shadow:0 2px 10px rgba(0,0,0,.5); text-transform:uppercase; }
+    .dental-success__content { display:grid; align-content:center; gap:22px; padding:clamp(32px,3.5vw,48px); color:#fff; }
+    .dental-success__content h3 { max-width:510px; margin:0; font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; font-size:clamp(2.5rem,3.25vw,3.65rem); font-weight:520; line-height:.96; letter-spacing:-.055em; text-wrap:balance; }
     .dental-success__content h3 em { color:#d6a7f3; font-style:normal; }
-    .dental-success__lede { max-width:500px; margin:0; color:rgba(255,255,255,.7); font-size:1rem; line-height:1.55; }
-    .dental-success__metrics { display:grid; gap:11px; padding:15px; border:1px solid rgba(255,255,255,.13); border-radius:16px; background:rgba(255,255,255,.055); }
+    .dental-success__lede { max-width:510px; margin:0; color:rgba(255,255,255,.72); font-size:1rem; line-height:1.52; }
+    .dental-success__metrics { display:grid; gap:12px; padding:16px; border:1px solid rgba(255,255,255,.13); border-radius:16px; background:rgba(255,255,255,.055); }
     .dental-success__metrics > p { grid-column:1 / -1; margin:0; color:#d9c5e4; font-size:.61rem; font-weight:750; letter-spacing:.12em; text-transform:uppercase; }
     .dental-success__metrics-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px; }
-    .dental-success__metric { display:grid; align-content:start; gap:7px; min-height:92px; padding:14px 10px; border:1px solid rgba(255,255,255,.12); border-radius:11px; background:rgba(0,0,0,.16); }
+    .dental-success__metric { display:grid; align-content:start; gap:8px; min-width:0; min-height:94px; padding:14px 11px; border:1px solid rgba(255,255,255,.12); border-radius:11px; background:rgba(0,0,0,.16); }
     .dental-success__metric:first-child { border-color:rgba(255,202,66,.42); background:linear-gradient(145deg,rgba(255,202,66,.15),rgba(255,255,255,.04)); }
-    .dental-success__metric strong { color:#ffca42; font-family:Inter,sans-serif; font-size:clamp(1.65rem,2.6vw,2.3rem); font-weight:580; letter-spacing:-.055em; line-height:.9; }
-    .dental-success__metric span { color:rgba(255,255,255,.72); font-size:.66rem; font-weight:700; letter-spacing:.06em; line-height:1.25; text-transform:uppercase; }
-    .dental-success details { margin-top:18px; border:1px solid rgba(17,17,19,.1); border-radius:18px; background:#fbfaf7; }
-    .dental-success summary { min-height:62px; display:flex; align-items:center; justify-content:space-between; gap:18px; padding:0 22px; list-style:none; color:var(--ink); font-size:.9rem; font-weight:750; cursor:pointer; }
+    .dental-success__metric strong { color:#ffca42; font-family:Inter,sans-serif; font-size:clamp(1.35rem,1.65vw,1.7rem); font-weight:620; letter-spacing:-.045em; line-height:.98; }
+    .dental-success__metric span { color:rgba(255,255,255,.72); font-size:.59rem; font-weight:720; letter-spacing:.055em; line-height:1.28; text-transform:uppercase; }
+    .dental-success details { margin-top:16px; overflow:hidden; border:1px solid rgba(17,17,19,.11); border-radius:16px; background:#fbfaf7; transition:border-color .25s var(--ease),box-shadow .25s var(--ease); }
+    .dental-success details[open] { border-color:rgba(116,66,148,.25); box-shadow:0 20px 42px -38px rgba(71,37,96,.55); }
+    .dental-success summary { min-height:64px; display:flex; align-items:center; justify-content:space-between; gap:18px; padding:0 20px; list-style:none; color:var(--ink); font-size:.88rem; font-weight:750; cursor:pointer; }
+    .dental-success summary:focus-visible { outline:2px solid var(--purple); outline-offset:-4px; border-radius:14px; }
     .dental-success summary::-webkit-details-marker { display:none; }
     .dental-success summary::after { width:30px; height:30px; display:grid; flex:0 0 auto; place-items:center; border:1px solid rgba(17,17,19,.14); border-radius:50%; content:"+"; color:var(--purple); font-size:1.25rem; font-weight:400; transition:transform .25s var(--ease), background .25s var(--ease); }
     .dental-success details[open] summary::after { color:#fff; background:var(--purple); transform:rotate(45deg); }
-    .dental-success__details { display:grid; grid-template-columns:minmax(0,1.15fr) minmax(260px,.85fr); gap:24px; padding:0 22px 22px; }
-    .dental-success__details h3 { margin:0 0 12px; font-size:1.12rem; font-weight:700; letter-spacing:-.025em; }
+    .dental-success__details { display:grid; grid-template-columns:minmax(0,1.2fr) minmax(280px,.8fr); gap:24px; padding:4px 20px 20px; border-top:1px solid rgba(17,17,19,.08); }
+    .dental-success__details > * { padding-top:20px; }
+    .dental-success__details h3 { margin:0 0 14px; font-size:1.12rem; font-weight:700; letter-spacing:-.025em; }
     .dental-success__slug-list { display:grid; gap:8px; margin:0; padding:0; list-style:none; }
     .dental-success__slug-list a { min-height:43px; display:flex; align-items:center; justify-content:space-between; gap:14px; padding:10px 12px; border:1px solid rgba(17,17,19,.1); border-radius:10px; color:var(--ink); background:#fff; font-family:"JetBrains Mono",ui-monospace,monospace; font-size:.74rem; font-weight:600; text-decoration:none; transition:border-color .25s var(--ease),transform .25s var(--ease); }
     .dental-success__slug-list a::after { content:"↗"; color:var(--purple); font-family:Inter,sans-serif; font-size:1rem; }
     .dental-success__slug-list a:hover,.dental-success__slug-list a:focus-visible { border-color:rgba(116,66,148,.48); outline:0; transform:translateX(3px); }
-    .dental-success__detail-copy { padding:18px; border-radius:14px; background:linear-gradient(135deg,#f5eef9,#fff8e9); }
+    .dental-success__detail-copy { align-self:start; padding:20px; border:1px solid rgba(116,66,148,.12); border-radius:14px; background:linear-gradient(135deg,#f5eef9,#fff8e9); }
     .dental-success__detail-copy p { margin:0; color:var(--ink-soft); font-size:.89rem; line-height:1.52; }
-    .dental-success__source { margin:15px 0 0; color:var(--ink-faint); font-size:.66rem; line-height:1.45; }
+    .dental-success__source { margin:14px 0 0; color:var(--ink-faint); font-size:.66rem; line-height:1.45; }
     .dental-success__source a { color:var(--ink-soft); font-weight:700; text-decoration-color:rgba(17,17,19,.28); text-underline-offset:3px; }
     @media (max-width:800px) {
       .dental-success { padding-block:68px 14px; }
       .dental-success__panel { padding:34px 16px 18px; border-radius:24px; text-align:center; }
       .dental-success__eyebrow { justify-content:center; }
-      .dental-success__section-title { margin-bottom:28px; font-size:clamp(2.45rem,12.4vw,3.55rem); }
+      .dental-success__section-title { max-width:330px; margin:0 auto 28px; font-size:clamp(2.35rem,11vw,2.9rem); line-height:.98; }
       .dental-success__summary { grid-template-columns:1fr; border-radius:18px; }
-      .dental-success__visual { min-height:286px; }
+      .dental-success__visual { min-height:274px; }
       .dental-success__visual::after { background:linear-gradient(180deg,rgba(18,14,23,.05),rgba(18,14,23,.55)); }
-      .dental-success__content { justify-items:center; padding:28px 20px 24px; }
-      .dental-success__content h3 { font-size:clamp(2.45rem,12.4vw,3.55rem); }
-      .dental-success__lede { font-size:1rem; }
+      .dental-success__content { justify-items:center; gap:22px; padding:30px 20px 22px; }
+      .dental-success__content h3 { max-width:285px; font-size:clamp(2.25rem,10.5vw,2.8rem); line-height:.98; }
+      .dental-success__lede { max-width:290px; font-size:.96rem; line-height:1.58; }
       .dental-success__metrics { width:100%; padding:12px; }
       .dental-success__metrics > p { text-align:center; }
-      .dental-success__metrics-grid { gap:6px; }
-      .dental-success__metric { justify-items:center; min-height:84px; padding:13px 5px; }
-      .dental-success__metric strong { font-size:1.55rem; }
-      .dental-success__metric span { font-size:.57rem; }
-      .dental-success summary { min-height:58px; padding:0 15px; text-align:left; font-size:.82rem; }
-      .dental-success__details { grid-template-columns:1fr; gap:18px; padding:0 14px 14px; text-align:left; }
+      .dental-success__metrics-grid { grid-template-columns:1fr; gap:7px; }
+      .dental-success__metric { grid-template-columns:minmax(100px,.8fr) minmax(0,1.2fr); align-items:center; justify-items:start; min-height:64px; padding:12px 14px; text-align:left; }
+      .dental-success__metric strong { font-size:1.35rem; }
+      .dental-success__metric span { font-size:.61rem; }
+      .dental-success summary { min-height:64px; padding:0 14px 0 16px; text-align:left; font-size:.8rem; line-height:1.3; }
+      .dental-success__details { grid-template-columns:1fr; gap:0; padding:4px 14px 14px; text-align:left; }
       .dental-success__details h3 { text-align:center; }
       .dental-success__slug-list a { font-size:.67rem; }
       .dental-success__detail-copy { text-align:center; }
@@ -3807,7 +3810,7 @@
     <section class="dental-success" id="erfolgsgeschichte" aria-labelledby="dental-success-title">
       <div class="container">
         <div class="dental-success__panel">
-          <p class="dental-success__eyebrow reveal">Dental Success Story · Australien</p>
+          <p class="dental-success__eyebrow reveal">Erfolgsgeschichte · Australien</p>
           <h2 class="dental-success__section-title reveal" id="dental-success-title">SEO gewinnt Patienten, <em>während Sie behandeln.</em></h2>
           <div class="dental-success__summary reveal reveal-delay-1">
             <figure class="dental-success__visual">
@@ -3815,7 +3818,7 @@
               <figcaption>VIP Dental Clinic · Miranda</figcaption>
             </figure>
             <div class="dental-success__content">
-              <h3>Jede Behandlung. Jeder Ort. <em>Eine eigene Seite.</em></h3>
+              <h3>Für jede Behandlung. Für jeden Ort. <em>Eine eigene Seite.</em></h3>
               <p class="dental-success__lede">Wir erstellen für wichtige Behandlungen und relevante Orte eigene Seiten – optimiert für Google und KI-Suche. Das Ergebnis: mehr Sichtbarkeit, mehr Website-Besuche, mehr Terminanfragen und mehr Umsatz. Ganz ohne zusätzliches Ads-Budget.</p>
               <div class="dental-success__metrics" aria-label="Kernmetriken des Projekts">
                 <p>So wächst die Praxis organisch</p>
@@ -3828,7 +3831,7 @@
             </div>
           </div>
           <details class="reveal reveal-delay-2">
-            <summary>Weitere Informationen: 5 Seiten und Projektansatz</summary>
+            <summary>5 SEO-Seiten und Projektansatz ansehen</summary>
             <div class="dental-success__details">
               <section aria-labelledby="dental-pages-title">
                 <h3 id="dental-pages-title">Live geschaltete Seiten</h3>
