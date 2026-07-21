@@ -3363,6 +3363,16 @@
     }
     .about-dm__reviews-actions { display: flex; align-items: center; gap: 13px; }
     .about-dm__reviews-actions > span { color: #ffca42; font-size: .88rem; letter-spacing: .1em; }
+    .about-dm__reviews-actions .about-dm__google {
+      width: 22px;
+      height: 22px;
+      display: inline-grid;
+      place-items: center;
+      padding: 3px;
+      border-radius: 7px;
+      background: #fff;
+    }
+    .about-dm__google svg { width: 100%; height: 100%; }
     .about-dm__reviews-toggle {
       min-height: 34px;
       padding: 0 12px;
@@ -3385,7 +3395,7 @@
       width: max-content;
       display: flex;
       gap: 16px;
-      animation: about-dm-review-slide 21s cubic-bezier(.65, 0, .35, 1) infinite;
+      animation: about-dm-review-slide 49s cubic-bezier(.65, 0, .35, 1) infinite;
       will-change: transform;
     }
     .about-dm__reviews:hover .about-dm__reviews-track,
@@ -3393,7 +3403,7 @@
     .about-dm__reviews.is-paused .about-dm__reviews-track { animation-play-state: paused; }
     .about-dm__review {
       width: min(340px, calc(100vw - 100px));
-      min-height: 164px;
+      min-height: 214px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -3417,10 +3427,14 @@
     .about-dm__reviews-note { margin: 18px 0 0; color: rgba(255, 255, 255, .52); font-size: .67rem; line-height: 1.45; }
     .about-dm__reviews-note a { color: rgba(255, 255, 255, .9); font-weight: 700; text-decoration-color: rgba(255, 255, 255, .34); text-underline-offset: 3px; }
     @keyframes about-dm-review-slide {
-      0%, 25% { transform: translateX(0); }
-      33%, 58% { transform: translateX(calc(-1 * var(--review-shift))); }
-      66%, 91% { transform: translateX(calc(-2 * var(--review-shift))); }
-      100% { transform: translateX(0); }
+      0%, 11% { transform: translateX(0); }
+      14%, 25% { transform: translateX(calc(-1 * var(--review-shift))); }
+      28%, 39% { transform: translateX(calc(-2 * var(--review-shift))); }
+      42%, 53% { transform: translateX(calc(-3 * var(--review-shift))); }
+      56%, 67% { transform: translateX(calc(-4 * var(--review-shift))); }
+      70%, 81% { transform: translateX(calc(-5 * var(--review-shift))); }
+      84%, 95% { transform: translateX(calc(-6 * var(--review-shift))); }
+      100% { transform: translateX(calc(-7 * var(--review-shift))); }
     }
 
     @media (max-width: 900px) {
@@ -3452,7 +3466,7 @@
       .about-dm__reviews-head { align-items: center; flex-direction: column; gap: 16px; margin-bottom: 18px; }
       .about-dm__reviews-head > div:first-child { text-align: center; }
       .about-dm__reviews h3 { font-size: 1.55rem; }
-      .about-dm__review { width: min(300px, calc(100vw - 112px)); min-height: 154px; padding: 18px; }
+      .about-dm__review { width: min(300px, calc(100vw - 112px)); min-height: 218px; padding: 18px; }
       .about-dm__reviews-track { --review-shift: calc(min(300px, 100vw - 112px) + 16px); }
       .about-dm__reviews-window { width: min(100%, calc(100vw - 112px)); margin-inline: auto; }
       .about-dm__review p { font-size: .94rem; }
@@ -3728,24 +3742,24 @@
       <div class="container">
         <div class="about-dm__panel">
           <header class="about-dm__header reveal">
-            <p class="about-dm__eyebrow">What we do</p>
-            <h2 id="about-dm-title">We help businesses <em>grow and scale successfully since 2018.</em></h2>
-            <p class="about-dm__lede">We do this via SEO, AI Search (GEO), Paid Ads, CRM automations, and Web Development.</p>
+            <p class="about-dm__eyebrow">Was wir tun</p>
+            <h2 id="about-dm-title">Wir helfen Unternehmen, <em>seit 2018 erfolgreich zu wachsen und zu skalieren.</em></h2>
+            <p class="about-dm__lede">Mit SEO, KI-Suche (GEO), bezahlten Anzeigen, CRM-Automatisierungen und Webentwicklung.</p>
           </header>
 
-          <div class="about-dm__services reveal reveal-delay-1" aria-label="Digital Movement services">
+          <div class="about-dm__services reveal reveal-delay-1" aria-label="Leistungen von Digital Movement">
             <div class="about-dm__service"><span>01</span><strong>SEO</strong></div>
-            <div class="about-dm__service"><span>02</span><strong>AI Search (GEO)</strong></div>
-            <div class="about-dm__service"><span>03</span><strong>Paid Ads</strong></div>
-            <div class="about-dm__service"><span>04</span><strong>CRM Automations</strong></div>
-            <div class="about-dm__service"><span>05</span><strong>Web Development</strong></div>
+            <div class="about-dm__service"><span>02</span><strong>KI-Suche (GEO)</strong></div>
+            <div class="about-dm__service"><span>03</span><strong>Bezahlte Anzeigen</strong></div>
+            <div class="about-dm__service"><span>04</span><strong>CRM-Automatisierungen</strong></div>
+            <div class="about-dm__service"><span>05</span><strong>Webentwicklung</strong></div>
           </div>
 
           <div class="about-dm__proof reveal reveal-delay-2" aria-label="Digital Movement Kennzahlen und Standorte">
             <div class="about-dm__stats">
-              <div><strong>100+</strong><span>5-star Google reviews</span></div>
-              <div><strong>+300</strong><span>clients</span></div>
-              <div><strong>Est. 2018</strong><span>digital growth, globally</span></div>
+              <div><strong>100+</strong><span>5‑Sterne‑Google-Bewertungen</span></div>
+              <div><strong>+300</strong><span>Kunden</span></div>
+              <div><strong>Seit 2018</strong><span>Digitales Wachstum, international</span></div>
             </div>
             <div class="about-dm__footprint" aria-label="Digital Movement locations">
               <span>London</span><i aria-hidden="true"></i><span>Auckland</span><i aria-hidden="true"></i><span>Berlin</span><i aria-hidden="true"></i><span>Melbourne</span>
@@ -3755,25 +3769,34 @@
           <section class="about-dm__reviews reveal reveal-delay-3" aria-labelledby="about-dm-reviews-title">
             <div class="about-dm__reviews-head">
               <div>
-                <p>Google reviews</p>
-                <h3 id="about-dm-reviews-title">Rated 5.0 by 100+ clients.</h3>
+                <p>Google-Bewertungen</p>
+                <h3 id="about-dm-reviews-title">5,0 Sterne aus 100+ Bewertungen.</h3>
               </div>
               <div class="about-dm__reviews-actions">
+                <span class="about-dm__google" aria-label="Google"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg></span>
                 <span aria-label="5 von 5 Sternen">★★★★★</span>
-                <button class="about-dm__reviews-toggle" type="button" aria-pressed="false" aria-label="Automatischen Review-Slider pausieren">Pause</button>
+                <button class="about-dm__reviews-toggle" type="button" aria-pressed="false" aria-label="Automatischen Bewertungs-Slider pausieren">Pausieren</button>
               </div>
             </div>
             <div class="about-dm__reviews-window" aria-roledescription="carousel" aria-label="Auswahl öffentlicher Google-Bewertungen">
               <div class="about-dm__reviews-track">
-                <article class="about-dm__review"><p>“Great quality service … outcomes as promised.”</p><footer><strong>Jessica Purcell</strong><span>Google review</span></footer></article>
-                <article class="about-dm__review"><p>“We started getting real leads not long after.”</p><footer><strong>Matthew Kang</strong><span>Google review</span></footer></article>
-                <article class="about-dm__review"><p>“Quick to respond to any questions or concerns.”</p><footer><strong>Fabienne M</strong><span>Google review</span></footer></article>
-                <article class="about-dm__review" aria-hidden="true"><p>“Great quality service … outcomes as promised.”</p><footer><strong>Jessica Purcell</strong><span>Google review</span></footer></article>
-                <article class="about-dm__review" aria-hidden="true"><p>“We started getting real leads not long after.”</p><footer><strong>Matthew Kang</strong><span>Google review</span></footer></article>
-                <article class="about-dm__review" aria-hidden="true"><p>“Quick to respond to any questions or concerns.”</p><footer><strong>Fabienne M</strong><span>Google review</span></footer></article>
+                <article class="about-dm__review"><p>„Hervorragende Qualität, proaktiv und positiv – die Ergebnisse entsprachen den Zusagen. Ich empfehle Stuart und das Team sehr.“</p><footer><strong>Jessica Purcell</strong><span>Google-Bewertung</span></footer></article>
+                <article class="about-dm__review"><p>„Stuart, Dean und das Team haben meine Website komplett neu gestaltet und Google Ads sowie SEO mit großartigen Ergebnissen betreut.“</p><footer><strong>Matthew Kang</strong><span>Google-Bewertung</span></footer></article>
+                <article class="about-dm__review"><p>„Dean und das Team haben eine großartige Website erstellt, SEO und Google Ads eingerichtet – kurz darauf kamen echte Anfragen.“</p><footer><strong>Beth Sorensen</strong><span>Google-Bewertung</span></footer></article>
+                <article class="about-dm__review"><p>„Pünktlich, organisiert und effizient – ich arbeite seit Jahren mit dem Team und kann die Agentur uneingeschränkt empfehlen.“</p><footer><strong>Fabienne M</strong><span>Google-Bewertung</span></footer></article>
+                <article class="about-dm__review"><p>„Marty und das Team sind großartig. Sie haben meine Website aufgebaut und reagieren immer schnell auf Fragen oder Anliegen.“</p><footer><strong>Ricky Sharpe</strong><span>Google-Bewertung</span></footer></article>
+                <article class="about-dm__review"><p>„Wir arbeiten seit über zehn Jahren mit Digital Movement und empfehlen das Team sehr. Schon zu Beginn sahen wir einen deutlichen Aufschwung.“</p><footer><strong>Damian Talbot</strong><span>Google-Bewertung</span></footer></article>
+                <article class="about-dm__review"><p>„Das Team hat sich Zeit genommen, mein Unternehmen zu verstehen, und daraus eine schöne Website gemacht.“</p><footer><strong>Beatrice King</strong><span>Google-Bewertung</span></footer></article>
+                <article class="about-dm__review" aria-hidden="true"><p>„Hervorragende Qualität, proaktiv und positiv – die Ergebnisse entsprachen den Zusagen. Ich empfehle Stuart und das Team sehr.“</p><footer><strong>Jessica Purcell</strong><span>Google-Bewertung</span></footer></article>
+                <article class="about-dm__review" aria-hidden="true"><p>„Stuart, Dean und das Team haben meine Website komplett neu gestaltet und Google Ads sowie SEO mit großartigen Ergebnissen betreut.“</p><footer><strong>Matthew Kang</strong><span>Google-Bewertung</span></footer></article>
+                <article class="about-dm__review" aria-hidden="true"><p>„Dean und das Team haben eine großartige Website erstellt, SEO und Google Ads eingerichtet – kurz darauf kamen echte Anfragen.“</p><footer><strong>Beth Sorensen</strong><span>Google-Bewertung</span></footer></article>
+                <article class="about-dm__review" aria-hidden="true"><p>„Pünktlich, organisiert und effizient – ich arbeite seit Jahren mit dem Team und kann die Agentur uneingeschränkt empfehlen.“</p><footer><strong>Fabienne M</strong><span>Google-Bewertung</span></footer></article>
+                <article class="about-dm__review" aria-hidden="true"><p>„Marty und das Team sind großartig. Sie haben meine Website aufgebaut und reagieren immer schnell auf Fragen oder Anliegen.“</p><footer><strong>Ricky Sharpe</strong><span>Google-Bewertung</span></footer></article>
+                <article class="about-dm__review" aria-hidden="true"><p>„Wir arbeiten seit über zehn Jahren mit Digital Movement und empfehlen das Team sehr. Schon zu Beginn sahen wir einen deutlichen Aufschwung.“</p><footer><strong>Damian Talbot</strong><span>Google-Bewertung</span></footer></article>
+                <article class="about-dm__review" aria-hidden="true"><p>„Das Team hat sich Zeit genommen, mein Unternehmen zu verstehen, und daraus eine schöne Website gemacht.“</p><footer><strong>Beatrice King</strong><span>Google-Bewertung</span></footer></article>
               </div>
             </div>
-            <p class="about-dm__reviews-note">Public reviews refer to Digital Movement Australia. <a href="https://success.digitalmovement.uk/" target="_blank" rel="noopener">Read all reviews ↗</a></p>
+            <p class="about-dm__reviews-note">Deutsche Übersetzungen öffentlicher Google-Bewertungen für Digital Movement Australia. <a href="https://success.digitalmovement.uk/" target="_blank" rel="noopener">Alle Bewertungen lesen ↗</a></p>
           </div>
         </div>
       </div>
@@ -4646,13 +4669,13 @@
           reviews.classList.add('is-paused');
           reviewsToggle.textContent = 'Abspielen';
           reviewsToggle.setAttribute('aria-pressed', 'true');
-          reviewsToggle.setAttribute('aria-label', 'Automatischen Review-Slider abspielen');
+          reviewsToggle.setAttribute('aria-label', 'Automatischen Bewertungs-Slider abspielen');
         }
         reviewsToggle.addEventListener('click', function () {
           var isPaused = reviews.classList.toggle('is-paused');
-          reviewsToggle.textContent = isPaused ? 'Abspielen' : 'Pause';
+          reviewsToggle.textContent = isPaused ? 'Abspielen' : 'Pausieren';
           reviewsToggle.setAttribute('aria-pressed', String(isPaused));
-          reviewsToggle.setAttribute('aria-label', isPaused ? 'Automatischen Review-Slider abspielen' : 'Automatischen Review-Slider pausieren');
+          reviewsToggle.setAttribute('aria-label', isPaused ? 'Automatischen Bewertungs-Slider abspielen' : 'Automatischen Bewertungs-Slider pausieren');
         });
       }
 
