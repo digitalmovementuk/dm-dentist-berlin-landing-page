@@ -3664,6 +3664,74 @@
     body.menu-open .site-header.is-scrolled { background: transparent; box-shadow: none; backdrop-filter: none; }
 
     /* Executive clarity pass: fewer, calmer surfaces and a consistent reading rhythm. */
+    /* Type scale: one hierarchy for every section, card and action. */
+    :root {
+      --font-ui: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --type-label: .72rem;
+      --type-section: clamp(2.75rem, 4.4vw, 4.7rem);
+      --type-feature: clamp(2.15rem, 3.25vw, 3.65rem);
+      --type-card: clamp(1.55rem, 2.25vw, 2.25rem);
+      --type-lede: clamp(1rem, 1.25vw, 1.16rem);
+      --type-copy: .92rem;
+    }
+    body,
+    button,
+    input,
+    textarea,
+    select { font-family: var(--font-ui); }
+    .eyebrow,
+    .dental-success__eyebrow,
+    .about-dm__eyebrow,
+    .hero-contact__label,
+    .phase-badge,
+    .difference-card__kicker {
+      font-family: var(--font-ui);
+      font-size: var(--type-label);
+      font-weight: 700;
+      letter-spacing: .14em;
+      line-height: 1.25;
+    }
+    .section-title,
+    .dental-success__section-title,
+    .about-dm h2 {
+      font-family: var(--font-ui);
+      font-size: var(--type-section);
+      font-weight: 520;
+      line-height: .96;
+      letter-spacing: -.055em;
+      text-wrap: balance;
+    }
+    .section-lede,
+    .dental-success__lede,
+    .about-dm__lede {
+      font-size: var(--type-lede);
+      line-height: 1.55;
+    }
+    .story-scene h2,
+    .dental-success__content h3 {
+      font-family: var(--font-ui);
+      font-size: var(--type-feature);
+      font-weight: 520;
+      line-height: .98;
+      letter-spacing: -.055em;
+    }
+    .difference-card h3,
+    .optimise-phase h3,
+    .contact-form h3 {
+      font-family: var(--font-ui);
+      font-size: var(--type-card);
+      font-weight: 520;
+      line-height: 1.04;
+      letter-spacing: -.045em;
+    }
+    .difference-card p,
+    .team-member p,
+    .project-step small,
+    .contact-form__lede { font-size: var(--type-copy); line-height: 1.55; }
+    .button,
+    .sticky-contact-button,
+    .story-progress__title,
+    .story-progress__item { font-family: var(--font-ui); font-weight: 700; }
     #erfolgsgeschichte,
     #about-dm,
     #warum,
@@ -3679,15 +3747,6 @@
     .contact-section .section-heading { margin-bottom: clamp(40px, 5vw, 64px); }
     .section-title { max-width: 1000px; text-wrap: balance; }
     .section-lede { max-width: 700px; }
-    .section-title,
-    .dental-success__section-title,
-    .about-dm h2 {
-      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      font-weight: 520;
-      line-height: .96;
-      letter-spacing: -.055em;
-      text-wrap: balance;
-    }
     .section-title em,
     .section-title .muted,
     .about-dm h2 em {
@@ -3755,6 +3814,14 @@
     .contact-form { padding: clamp(26px, 3.5vw, 42px); }
 
     @media (max-width: 700px) {
+      :root {
+        --type-label: .7rem;
+        --type-section: clamp(2.35rem, 11vw, 2.9rem);
+        --type-feature: clamp(2rem, 10vw, 2.65rem);
+        --type-card: 1.7rem;
+        --type-lede: 1rem;
+        --type-copy: .94rem;
+      }
       #erfolgsgeschichte,
       #about-dm,
       #warum,
