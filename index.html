@@ -3298,6 +3298,130 @@
       border-radius: 50%;
       background: var(--purple);
     }
+    .about-dm__proof {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 28px;
+      align-items: end;
+      margin-top: 28px;
+      padding-top: 28px;
+      border-top: 1px solid rgba(17, 17, 19, .1);
+    }
+    .about-dm__stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 28px;
+    }
+    .about-dm__stats > div { display: grid; gap: 5px; }
+    .about-dm__stats strong {
+      color: var(--ink);
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: clamp(1.28rem, 1.8vw, 1.75rem);
+      font-weight: 600;
+      letter-spacing: -.045em;
+      line-height: 1;
+    }
+    .about-dm__stats span {
+      color: var(--ink-soft);
+      font-size: .68rem;
+      font-weight: 650;
+      letter-spacing: .075em;
+      text-transform: uppercase;
+    }
+    .about-dm__reviews {
+      margin-top: clamp(42px, 5vw, 64px);
+      padding: clamp(22px, 3vw, 34px);
+      overflow: hidden;
+      border: 1px solid rgba(17, 17, 19, .1);
+      border-radius: 24px;
+      background: #17131c;
+      box-shadow: 0 30px 72px -50px rgba(17, 17, 19, .58);
+    }
+    .about-dm__reviews-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+    .about-dm__reviews-head p {
+      margin: 0 0 8px;
+      color: #d9c5e4;
+      font-size: .66rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .about-dm__reviews h3 {
+      margin: 0;
+      color: #fff;
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: clamp(1.45rem, 2.4vw, 2.35rem);
+      font-weight: 500;
+      letter-spacing: -.035em;
+      line-height: 1;
+    }
+    .about-dm__reviews-actions { display: flex; align-items: center; gap: 13px; }
+    .about-dm__reviews-actions > span { color: #ffca42; font-size: .88rem; letter-spacing: .1em; }
+    .about-dm__reviews-toggle {
+      min-height: 34px;
+      padding: 0 12px;
+      border: 1px solid rgba(255, 255, 255, .18);
+      border-radius: 999px;
+      color: rgba(255, 255, 255, .86);
+      background: transparent;
+      font: inherit;
+      font-size: .62rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+    .about-dm__reviews-toggle:hover,
+    .about-dm__reviews-toggle:focus-visible { border-color: rgba(255, 255, 255, .72); outline: 0; }
+    .about-dm__reviews-window { max-width: 1052px; overflow: hidden; }
+    .about-dm__reviews-track {
+      --review-shift: 356px;
+      width: max-content;
+      display: flex;
+      gap: 16px;
+      animation: about-dm-review-slide 21s cubic-bezier(.65, 0, .35, 1) infinite;
+      will-change: transform;
+    }
+    .about-dm__reviews:hover .about-dm__reviews-track,
+    .about-dm__reviews:focus-within .about-dm__reviews-track,
+    .about-dm__reviews.is-paused .about-dm__reviews-track { animation-play-state: paused; }
+    .about-dm__review {
+      width: min(340px, calc(100vw - 100px));
+      min-height: 164px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 28px;
+      padding: 22px;
+      border: 1px solid rgba(255, 255, 255, .13);
+      border-radius: 18px;
+      color: #fff;
+      background: rgba(255, 255, 255, .07);
+    }
+    .about-dm__review p {
+      margin: 0;
+      font-size: 1rem;
+      font-weight: 500;
+      line-height: 1.45;
+      letter-spacing: -.015em;
+    }
+    .about-dm__review footer { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; }
+    .about-dm__review strong { font-size: .76rem; font-weight: 700; }
+    .about-dm__review footer span { color: rgba(255, 255, 255, .53); font-size: .62rem; font-weight: 650; letter-spacing: .08em; text-transform: uppercase; }
+    .about-dm__reviews-note { margin: 18px 0 0; color: rgba(255, 255, 255, .52); font-size: .67rem; line-height: 1.45; }
+    .about-dm__reviews-note a { color: rgba(255, 255, 255, .9); font-weight: 700; text-decoration-color: rgba(255, 255, 255, .34); text-underline-offset: 3px; }
+    @keyframes about-dm-review-slide {
+      0%, 25% { transform: translateX(0); }
+      33%, 58% { transform: translateX(calc(-1 * var(--review-shift))); }
+      66%, 91% { transform: translateX(calc(-2 * var(--review-shift))); }
+      100% { transform: translateX(0); }
+    }
 
     @media (max-width: 900px) {
       .about-dm__services { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -3305,6 +3429,7 @@
       .about-dm__service:nth-child(2n) { border-right: 0; }
       .about-dm__service:nth-last-child(-n+2) { border-bottom: 0; }
       .about-dm__service:last-child { grid-column: 1 / -1; min-height: 108px; border-top: 1px solid rgba(17, 17, 19, .1); }
+      .about-dm__proof { grid-template-columns: 1fr; align-items: start; }
     }
 
     @media (max-width: 700px) {
@@ -3318,6 +3443,20 @@
       .about-dm__service strong { max-width: 130px; font-size: .94rem; }
       .about-dm__service:last-child { min-height: 96px; }
       .about-dm__footprint { justify-content: center; gap: 8px 12px; margin-top: 24px; font-size: .66rem; line-height: 1.5; }
+      .about-dm__proof { gap: 22px; margin-top: 24px; padding-top: 24px; }
+      .about-dm__stats { justify-content: center; gap: 20px; }
+      .about-dm__stats > div { justify-items: center; }
+      .about-dm__stats strong { font-size: 1.36rem; }
+      .about-dm__stats span { font-size: .58rem; }
+      .about-dm__reviews { margin-top: 38px; padding: 20px 14px 18px; border-radius: 20px; }
+      .about-dm__reviews-head { align-items: center; flex-direction: column; gap: 16px; margin-bottom: 18px; }
+      .about-dm__reviews-head > div:first-child { text-align: center; }
+      .about-dm__reviews h3 { font-size: 1.55rem; }
+      .about-dm__review { width: min(300px, calc(100vw - 112px)); min-height: 154px; padding: 18px; }
+      .about-dm__reviews-track { --review-shift: calc(min(300px, 100vw - 112px) + 16px); }
+      .about-dm__reviews-window { width: min(100%, calc(100vw - 112px)); margin-inline: auto; }
+      .about-dm__review p { font-size: .94rem; }
+      .about-dm__reviews-note { text-align: center; }
     }
 
     /* Separate explanation and evidence into distinct, calmer surfaces. */
@@ -3590,7 +3729,7 @@
         <div class="about-dm__panel">
           <header class="about-dm__header reveal">
             <p class="about-dm__eyebrow">What we do</p>
-            <h2 id="about-dm-title">We help businesses <em>grow and scale.</em></h2>
+            <h2 id="about-dm-title">We help businesses <em>grow and scale successfully since 2018.</em></h2>
             <p class="about-dm__lede">We do this via SEO, AI Search (GEO), Paid Ads, CRM automations, and Web Development.</p>
           </header>
 
@@ -3602,8 +3741,39 @@
             <div class="about-dm__service"><span>05</span><strong>Web Development</strong></div>
           </div>
 
-          <div class="about-dm__footprint reveal reveal-delay-2" aria-label="Digital Movement locations">
-            <strong>Est. 2018</strong><i aria-hidden="true"></i><span>Global footprint</span><i aria-hidden="true"></i><span>London</span><i aria-hidden="true"></i><span>Auckland</span><i aria-hidden="true"></i><span>Berlin</span><i aria-hidden="true"></i><span>Melbourne</span>
+          <div class="about-dm__proof reveal reveal-delay-2" aria-label="Digital Movement Kennzahlen und Standorte">
+            <div class="about-dm__stats">
+              <div><strong>100+</strong><span>5-star Google reviews</span></div>
+              <div><strong>+300</strong><span>clients</span></div>
+              <div><strong>Est. 2018</strong><span>digital growth, globally</span></div>
+            </div>
+            <div class="about-dm__footprint" aria-label="Digital Movement locations">
+              <span>London</span><i aria-hidden="true"></i><span>Auckland</span><i aria-hidden="true"></i><span>Berlin</span><i aria-hidden="true"></i><span>Melbourne</span>
+            </div>
+          </div>
+
+          <section class="about-dm__reviews reveal reveal-delay-3" aria-labelledby="about-dm-reviews-title">
+            <div class="about-dm__reviews-head">
+              <div>
+                <p>Google reviews</p>
+                <h3 id="about-dm-reviews-title">Rated 5.0 by 100+ clients.</h3>
+              </div>
+              <div class="about-dm__reviews-actions">
+                <span aria-label="5 von 5 Sternen">★★★★★</span>
+                <button class="about-dm__reviews-toggle" type="button" aria-pressed="false" aria-label="Automatischen Review-Slider pausieren">Pause</button>
+              </div>
+            </div>
+            <div class="about-dm__reviews-window" aria-roledescription="carousel" aria-label="Auswahl öffentlicher Google-Bewertungen">
+              <div class="about-dm__reviews-track">
+                <article class="about-dm__review"><p>“Great quality service … outcomes as promised.”</p><footer><strong>Jessica Purcell</strong><span>Google review</span></footer></article>
+                <article class="about-dm__review"><p>“We started getting real leads not long after.”</p><footer><strong>Matthew Kang</strong><span>Google review</span></footer></article>
+                <article class="about-dm__review"><p>“Quick to respond to any questions or concerns.”</p><footer><strong>Fabienne M</strong><span>Google review</span></footer></article>
+                <article class="about-dm__review" aria-hidden="true"><p>“Great quality service … outcomes as promised.”</p><footer><strong>Jessica Purcell</strong><span>Google review</span></footer></article>
+                <article class="about-dm__review" aria-hidden="true"><p>“We started getting real leads not long after.”</p><footer><strong>Matthew Kang</strong><span>Google review</span></footer></article>
+                <article class="about-dm__review" aria-hidden="true"><p>“Quick to respond to any questions or concerns.”</p><footer><strong>Fabienne M</strong><span>Google review</span></footer></article>
+              </div>
+            </div>
+            <p class="about-dm__reviews-note">Public reviews refer to Digital Movement Australia. <a href="https://success.digitalmovement.uk/" target="_blank" rel="noopener">Read all reviews ↗</a></p>
           </div>
         </div>
       </div>
@@ -4171,9 +4341,11 @@
       var stickyCta = document.getElementById('sticky-cta');
       var contact = document.getElementById('kontakt');
       var footer = document.querySelector('.site-footer');
+      var reviewsSection = document.querySelector('.about-dm__reviews');
       var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       var contactVisible = false;
       var footerVisible = false;
+      var reviewsVisible = false;
       var heroCtaVisibility = new Map();
       var heroCtaIsVisible = true;
 
@@ -4185,7 +4357,7 @@
         var footerRect = footer.getBoundingClientRect();
         var contactApproaching = contactRect.top < window.innerHeight * .88 && contactRect.bottom > 0;
         var footerApproaching = footerRect.top < window.innerHeight && footerRect.bottom > 0;
-        stickyCta.classList.toggle('is-visible', !heroCtaIsVisible && !contactVisible && !footerVisible && !contactApproaching && !footerApproaching);
+        stickyCta.classList.toggle('is-visible', !heroCtaIsVisible && !contactVisible && !footerVisible && !reviewsVisible && !contactApproaching && !footerApproaching);
       }
 
       function closeMenu() {
@@ -4240,11 +4412,13 @@
         entries.forEach(function (entry) {
           if (entry.target === contact) contactVisible = entry.isIntersecting;
           if (entry.target === footer) footerVisible = entry.isIntersecting;
+          if (entry.target === reviewsSection) reviewsVisible = entry.isIntersecting;
         });
         setHeader();
       }, { threshold: .05 });
       visibilityObserver.observe(contact);
       visibilityObserver.observe(footer);
+      if (reviewsSection) visibilityObserver.observe(reviewsSection);
 
       var heroCtaObserver = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
@@ -4464,6 +4638,23 @@
         status.textContent = 'Ihr E-Mail-Programm wird mit der vorbereiteten Anfrage geöffnet.';
         window.location.href = 'mailto:alex@digitalmovement.uk?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
       });
+
+      var reviews = document.querySelector('.about-dm__reviews');
+      var reviewsToggle = document.querySelector('.about-dm__reviews-toggle');
+      if (reviews && reviewsToggle) {
+        if (reducedMotion) {
+          reviews.classList.add('is-paused');
+          reviewsToggle.textContent = 'Abspielen';
+          reviewsToggle.setAttribute('aria-pressed', 'true');
+          reviewsToggle.setAttribute('aria-label', 'Automatischen Review-Slider abspielen');
+        }
+        reviewsToggle.addEventListener('click', function () {
+          var isPaused = reviews.classList.toggle('is-paused');
+          reviewsToggle.textContent = isPaused ? 'Abspielen' : 'Pause';
+          reviewsToggle.setAttribute('aria-pressed', String(isPaused));
+          reviewsToggle.setAttribute('aria-label', isPaused ? 'Automatischen Review-Slider abspielen' : 'Automatischen Review-Slider pausieren');
+        });
+      }
 
       var heroVideo = document.querySelector('.site-background video');
       if (heroVideo) {
