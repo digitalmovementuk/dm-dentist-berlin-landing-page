@@ -87,7 +87,7 @@
     .hero-icon{width:80px;height:80px;display:grid;place-items:center;margin-bottom:32px}
     .hero-icon img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 8px 18px rgba(25,20,74,.14))}
     .hero .eyebrow{justify-content:center;margin-bottom:20px}
-    .hero h1{max-width:11ch;margin:0;font-size:clamp(72px,7.4vw,106px);line-height:.9;letter-spacing:-.065em;font-weight:500;text-wrap:balance}
+    .hero h1{max-width:1140px;margin:0;font-size:clamp(64px,6.2vw,90px);line-height:.94;letter-spacing:-.06em;font-weight:500;text-wrap:balance}
     .hero-lede{max-width:820px;margin:30px auto 0;font-size:clamp(24px,2.15vw,31px);line-height:1.18;letter-spacing:-.035em;font-weight:400;text-wrap:balance}
     .hero-lede strong{font-weight:600}
     .hero-actions{display:flex;justify-content:center;margin-top:34px}
@@ -327,9 +327,9 @@
       body{font-size:16px}.top-strip{height:36px;gap:14px;font-size:10px}.site-header{top:36px;height:84px}.nav-wrap{padding-inline:16px}.brand{width:auto}.site-header .brand-lockup{position:absolute;left:50%;transform:translateX(-50%);gap:6px}.brand .dz-wordmark{font-size:22px}.brand .powered{gap:6px;font-size:6px}.brand .powered img{width:116px}.menu-btn{margin-left:auto}.nav-links.open{inset:84px 0 auto;min-height:calc(100svh - 120px)}
       .eyebrow,.section-copy{text-align:center;justify-content:center;margin-inline:auto}.section-title{text-align:center;font-size:clamp(43px,13vw,62px)}
       .hero{min-height:1120px;padding-top:120px}.ambient{inset:120px 0 0}.hero-inner{min-height:1000px;padding-top:30px;padding-bottom:0}.hero-note{margin-bottom:38px;max-width:290px}.hero-icon{width:78px;height:78px;margin-bottom:30px}
-      .hero h1{max-width:9ch;font-size:clamp(48px,13.8vw,56px);line-height:.92;white-space:normal;text-wrap:balance}.hero-lede{font-size:24px;line-height:1.24;max-width:340px;margin-top:28px;white-space:normal}.hero-actions{width:100%;align-items:center;margin-top:30px}.hero-actions .btn{width:min(100%,320px)}
-      .platform-label{margin-top:56px;font-size:16px}.platform-row{display:grid;grid-template-columns:1fr 1fr;gap:72px 58px;margin:64px 0 34px;width:min(100%,310px)}
-      .serp-window{width:100%;border-radius:13px 13px 0 0}.window-bar{height:37px;padding:0 11px}.window-bar i{width:7px;height:7px}.window-url{height:20px;font-size:8px}.serp-body{display:block;padding:10px}.serp-side{padding:16px 7px;text-align:center}.serp-side h2{font-size:23px}.serp-side p{font-size:12px}.serp-side .btn{align-self:center}
+      .hero h1{max-width:340px;font-size:clamp(44px,12vw,50px);line-height:.96;white-space:normal;text-wrap:balance}.hero-lede{font-size:24px;line-height:1.24;max-width:340px;margin-top:28px;white-space:normal}.hero-actions{width:100%;align-items:center;margin-top:30px}.hero-actions .btn{width:min(100%,320px)}
+      .platform-label{max-width:340px;margin-top:56px;font-size:16px}.platform-row{display:grid;grid-template-columns:1fr 1fr;gap:72px 58px;margin:64px 0 34px;width:min(100%,310px)}
+      .serp-window{width:100%;margin-top:42px;border-radius:13px 13px 0 0}.window-bar{height:37px;padding:0 11px}.window-bar i{width:7px;height:7px}.window-url{height:20px;font-size:8px}.serp-body{display:flex;flex-direction:column;padding:18px}.serp-side{display:contents;text-align:center}.serp-side h2{order:1;max-width:330px;margin:10px auto 16px;font-size:clamp(34px,9.5vw,38px);line-height:1;letter-spacing:-.045em;text-wrap:balance}.serp-side p{order:2;max-width:31ch;margin:0 auto 24px;font-size:17px;line-height:1.45}.serp-shot{order:3}.serp-shot img{width:175%;max-width:none}.serp-side .btn{order:4;align-self:center;margin-top:22px}
       .trust-inner{grid-template-columns:1fr 1fr}.trust-item:nth-child(2){border-right:0}.trust-item:nth-child(-n+2){border-bottom:1px solid var(--line)}.trust-item strong{font-size:26px}
       .intro,.journey,.services,.model,.process,.reviews,.team{padding:92px 0}.intro-grid,.journey-head,.services-top,.model-head,.process-head,.reviews-head,.team-head{gap:24px;margin-bottom:64px}.intro-grid{margin-bottom:64px}.intro .section-title{font-size:clamp(44px,13vw,63px)}
       .case-card{margin-top:0}.case-copy{padding:34px 22px;text-align:center}.case-copy h3{font-size:44px}.case-copy p{font-size:17px}.case-metrics{grid-template-columns:1fr;gap:16px}.case-visual{min-height:390px}.case-visual img{width:88%;left:6%;top:35px}
@@ -376,11 +376,10 @@
       <video class="ambient" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="assets/media/codex-bg-poster.jpg" disablepictureinpicture aria-hidden="true"><source src="assets/media/codex-bg-mobile.mp4" type="video/mp4" media="(max-width: 760px)"><source src="assets/media/codex-bg.mp4" type="video/mp4"></video>
       <div class="container hero-inner">
         <div class="hero-icon" aria-hidden="true"><img src="favicon.svg" alt="" width="64" height="64"></div>
-        <h1>Neupatienten<br>für Ihre Praxis.</h1>
-        <h2 class="hero-lede">Auf <strong>Google &amp; ChatGPT</strong> sichtbar werden.<br>Terminanfragen – Monat für Monat.</h2>
-        <div class="hero-actions"><a class="btn" href="#kontakt">Kostenlosen Praxis-Check starten <span class="arrow">↗</span></a></div>
+        <h1>Neupatienten für Ihre Praxis –<br>über Google und ChatGPT.</h1>
+        <div class="hero-actions"><a class="btn" href="#kontakt">Praxis-Check starten <span class="arrow">↗</span></a></div>
         <a class="hero-google-rating" href="#bewertungen"><svg class="google-g" viewBox="0 0 24 24" aria-hidden="true"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg><span class="hero-google-copy"><span>Google Reviews</span><strong class="hero-google-score">5,0</strong><span class="hero-google-stars" aria-hidden="true">★★★★★</span></span></a>
-        <p class="platform-label">Dort sichtbar, wo Patienten suchen</p>
+        <p class="platform-label">Wir machen Ihre Praxis dort sichtbar, wo Ihre Patienten suchen.</p>
         <div class="platform-row" aria-label="Suchplattformen">
           <span class="platform"><span class="platform-dot" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"></path><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"></path></svg></span>Google</span>
           <span class="platform"><span class="platform-dot" aria-hidden="true"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M11.248 18.25q-.825 0-1.568-.314a4.3 4.3 0 0 1-1.32-.874 4 4 0 0 1-1.304.214 4 4 0 0 1-2.046-.544 4.27 4.27 0 0 1-1.518-1.485 4 4 0 0 1-.56-2.095q0-.48.131-1.04A4.4 4.4 0 0 1 2.04 10.71a4.07 4.07 0 0 1 .017-3.4 4.2 4.2 0 0 1 1.056-1.418 3.8 3.8 0 0 1 1.6-.842 3.9 3.9 0 0 1 .76-1.683q.593-.759 1.451-1.188a4.04 4.04 0 0 1 1.832-.429q.825 0 1.567.313.742.314 1.32.875a4 4 0 0 1 1.304-.215q1.106 0 2.046.545a4.14 4.14 0 0 1 1.501 1.485q.578.941.578 2.095 0 .48-.132 1.04.66.61 1.023 1.419.363.792.363 1.666 0 .892-.38 1.717a4.3 4.3 0 0 1-1.072 1.435 3.8 3.8 0 0 1-1.584.825 3.8 3.8 0 0 1-.775 1.683 4.06 4.06 0 0 1-1.436 1.188 4.04 4.04 0 0 1-1.832.429m-4.076-2.062q.825 0 1.435-.347l3.103-1.782a.36.36 0 0 0 .164-.313v-1.42L7.881 14.62a.67.67 0 0 1-.726 0l-3.118-1.798a.5.5 0 0 1-.017.115v.198q0 .841.396 1.551.413.693 1.139 1.089a3.2 3.2 0 0 0 1.617.412m.165-2.69a.4.4 0 0 0 .181.05q.083 0 .165-.05l1.238-.71-3.977-2.31a.7.7 0 0 1-.363-.643v-3.58q-.825.362-1.32 1.122a2.9 2.9 0 0 0-.495 1.65q0 .809.413 1.55.412.743 1.072 1.123zm3.91 3.663q.875 0 1.585-.396a2.96 2.96 0 0 0 1.534-2.64v-3.564a.32.32 0 0 0-.165-.297l-1.254-.726v4.604a.7.7 0 0 1-.363.643l-3.119 1.799a3 3 0 0 0 1.783.577m.627-6.039V8.878L10.01 7.822 8.129 8.878v2.244l1.881 1.056zM7.057 5.859a.7.7 0 0 1 .363-.644l3.119-1.798a3 3 0 0 0-1.782-.578q-.874 0-1.584.396A2.96 2.96 0 0 0 6.05 4.324a3.07 3.07 0 0 0-.396 1.551v3.547q0 .199.165.314l1.237.726zm8.383 7.887q.825-.364 1.303-1.123.495-.758.495-1.65a3.15 3.15 0 0 0-.412-1.55q-.413-.743-1.073-1.123l-3.086-1.782q-.099-.065-.181-.049a.3.3 0 0 0-.165.05l-1.238.692 3.993 2.327a.6.6 0 0 1 .264.264.64.64 0 0 1 .1.363zm-3.317-8.382a.63.63 0 0 1 .726 0l3.135 1.831v-.297q0-.792-.396-1.501a2.86 2.86 0 0 0-1.105-1.155q-.71-.43-1.65-.43-.825 0-1.436.347L8.294 5.941a.36.36 0 0 0-.165.314v1.418z"></path></svg></span>ChatGPT</span>
@@ -390,8 +389,8 @@
         <div class="serp-window" aria-label="Beispiel einer Google-Suche">
           <div class="window-bar"><i></i><i></i><i></i><span class="window-url">google.de/search?q=veneers+berlin+charlottenburg</span></div>
           <div class="serp-body">
-            <div class="serp-shot"><img src="assets/screens/google-veneer-charlottenburg-serp.png" alt="Echte Google-Suchergebnisse für eine Zahnbehandlung in Berlin" width="1600" height="1012" loading="lazy" decoding="async"></div>
-            <div class="serp-side"><small>ECHTE GOOGLE-SUCHE</small><h2>Patienten vergleichen sichtbare Praxen.</h2><p>Wer mit der passenden Behandlung im richtigen Moment erscheint, wird angefragt.</p><a class="btn" href="#kontakt">Potenzial prüfen <span class="arrow">↗</span></a></div>
+            <div class="serp-shot"><img src="assets/screens/google-veneer-charlottenburg-serp.png" alt="Google-Suche nach Zahnarzt Veneers in Berlin-Charlottenburg mit sichtbaren Praxis-Ergebnissen" width="1600" height="1012" loading="lazy" decoding="async"></div>
+            <div class="serp-side"><h2>Neupatienten vergleichen Praxen über die Google-Suche.</h2><p>Wer bei den wichtigsten Suchanfragen auf Seite 1 bei Google erscheint, wird gesehen und angeklickt.</p><a class="btn" href="#kontakt">Praxis-Check starten <span class="arrow">↗</span></a></div>
           </div>
         </div>
       </div>
@@ -503,7 +502,7 @@
     menuButton.addEventListener('click',()=>{const open=nav.classList.toggle('open');document.body.classList.toggle('menu-open',open);menuButton.setAttribute('aria-expanded',String(open));menuButton.setAttribute('aria-label',open?'Menü schließen':'Menü öffnen')});
     nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');document.body.classList.remove('menu-open');menuButton.setAttribute('aria-expanded','false')}));
     const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}}),{threshold:.1,rootMargin:'0px 0px -35px'});document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-    const sticky=document.querySelector('.sticky-cta');const contact=document.querySelector('#kontakt');const quietZone=document.querySelector('#prozess');const setSticky=()=>{const y=window.scrollY;const contactTop=contact.getBoundingClientRect().top;const quietZoneReached=y>=quietZone.offsetTop-window.innerHeight*.9;sticky.classList.toggle('show',y>window.innerHeight*.75&&contactTop>window.innerHeight*.72&&!quietZoneReached)};addEventListener('scroll',setSticky,{passive:true});addEventListener('resize',setSticky,{passive:true});setSticky();
+    const sticky=document.querySelector('.sticky-cta');const hero=document.querySelector('.hero');const contact=document.querySelector('#kontakt');const quietZone=document.querySelector('#prozess');const setSticky=()=>{const y=window.scrollY;const contactTop=contact.getBoundingClientRect().top;const heroPassed=y>=hero.offsetTop+hero.offsetHeight;const quietZoneReached=y>=quietZone.offsetTop-window.innerHeight*.9;sticky.classList.toggle('show',heroPassed&&contactTop>window.innerHeight*.72&&!quietZoneReached)};addEventListener('scroll',setSticky,{passive:true});addEventListener('resize',setSticky,{passive:true});setSticky();
     const leadForm=document.querySelector('#lead-form');
     const leadNote=document.querySelector('.form-note');
     const leadSuccess=document.querySelector('#submission-success');
@@ -742,7 +741,7 @@
       .section-copy{max-width:31ch;margin-top:22px;font-size:19px;line-height:1.48;letter-spacing:-.015em}
       .intro,.journey,.services,.model,.process,.reviews,.team{padding:88px 0}
       .intro-grid,.journey-head,.services-top,.model-head,.process-head,.reviews-head,.team-head{gap:16px;margin-bottom:52px}
-      .hero h1{max-width:9ch;font-size:clamp(48px,13.8vw,56px);line-height:.92}
+      .hero h1{max-width:340px;font-size:clamp(44px,12vw,50px);line-height:.96}
       .hero-lede{max-width:340px;font-size:24px;line-height:1.24}
       .hero-actions .btn{min-height:58px;font-size:17px}
       .hero-google-rating{min-height:50px;padding:9px 15px}
@@ -750,9 +749,10 @@
       .hero-google-score{font-size:16px}
       .hero-google-stars{font-size:17px}
       .platform-label{font-size:18px}
-      .platform-row{font-size:17px}
-      .platform-dot{width:58px;height:58px}
-      .platform-dot svg{width:46px;height:46px}
+      .platform-row{grid-template-columns:repeat(4,minmax(0,1fr));width:100%;gap:14px;margin-top:32px;font-size:13px}
+      .platform{min-width:0;gap:8px}
+      .platform-dot{width:44px;height:44px}
+      .platform-dot svg{width:38px;height:38px}
       .trust-inner{min-height:0}
       .trust-item{min-height:132px;padding:24px 12px}
       .trust-item strong{font-size:29px}
