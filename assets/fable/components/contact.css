@@ -1,0 +1,400 @@
+/* ============================================================
+   FABLE · Final contact hub + footer
+   Deep Night conversion band: calendar card + compact form,
+   four channel tiles, privacy reassurance. Footer below.
+   ============================================================ */
+
+.section--contact {
+  background: var(--color-night);
+  color: var(--color-white);
+}
+
+.section--contact .kicker {
+  color: var(--color-periwinkle);
+}
+
+.section--contact h2 {
+  color: var(--color-white);
+}
+
+.section--contact .section-head p {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+  align-items: start;
+}
+
+.contact-card {
+  background: var(--color-white);
+  color: var(--color-ink);
+  border-radius: var(--radius-card);
+  padding: var(--space-4);
+}
+
+.contact-card .card-kicker {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-purple);
+  margin-bottom: var(--space-1);
+}
+
+.contact-card h3 {
+  margin-bottom: var(--space-3);
+}
+
+/* ---- Calendar card (visual placeholder until provider is confirmed) ---- */
+
+.calendar-preview {
+  border: var(--border-hairline);
+  border-radius: var(--radius-control);
+  padding: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  margin-bottom: var(--space-2);
+}
+
+.calendar-days span {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1.2;
+  border-radius: 10px;
+  background: var(--color-mist);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+.calendar-days span.is-active {
+  background: var(--color-purple);
+  color: var(--color-white);
+}
+
+.calendar-slots {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.calendar-slots span {
+  padding: 10px 8px;
+  border: var(--border-hairline);
+  border-radius: 9px;
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--color-muted);
+}
+
+.calendar-cta {
+  width: 100%;
+}
+
+.calendar-note {
+  margin-top: var(--space-2);
+  font-size: 0.875rem;
+  color: var(--color-muted);
+}
+
+/* ---- Form card ---- */
+
+.form-grid {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.field {
+  display: grid;
+  gap: 6px;
+}
+
+.field label {
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--color-ink);
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  min-height: 48px;
+  border: 1px solid #c9d3e4;
+  border-radius: var(--radius-control);
+  padding: 12px 14px;
+  font-family: var(--font-body);
+  font-size: 1rem; /* 16px prevents iOS zoom */
+  color: var(--color-ink);
+  background: var(--color-white);
+}
+
+.field textarea {
+  min-height: 96px;
+  resize: vertical;
+}
+
+.field input:focus-visible,
+.field textarea:focus-visible {
+  outline: 2px solid var(--color-purple);
+  outline-offset: 1px;
+}
+
+.field.has-error input,
+.field.has-error textarea {
+  border-color: var(--color-error);
+  border-width: 2px;
+}
+
+.field-error {
+  display: none;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-error);
+}
+
+.field.has-error .field-error {
+  display: block;
+}
+
+.consent {
+  display: grid;
+  grid-template-columns: 22px 1fr;
+  gap: 10px;
+  align-items: start;
+}
+
+.consent input {
+  width: 22px;
+  height: 22px;
+  min-height: 22px;
+  margin: 2px 0 0;
+  accent-color: var(--color-purple);
+}
+
+.consent label {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--color-ink);
+}
+
+.consent a {
+  color: var(--color-purple);
+  font-weight: 600;
+}
+
+.consent.has-error label {
+  color: var(--color-error);
+}
+
+.form-summary {
+  display: none;
+  border: 2px solid var(--color-error);
+  border-radius: var(--radius-control);
+  background: var(--color-error-surface);
+  color: var(--color-error-ink);
+  font-size: 0.9375rem;
+  padding: 12px 14px;
+}
+
+.form-summary.is-visible {
+  display: block;
+}
+
+.form-submit {
+  width: 100%;
+}
+
+.form-submit:disabled {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.form-status {
+  display: none;
+  border-radius: var(--radius-control);
+  padding: var(--space-3);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.form-status.is-visible {
+  display: block;
+}
+
+.form-status--success {
+  background: var(--color-success-surface);
+  border: 1px solid var(--color-success);
+  color: var(--color-success-ink);
+}
+
+.form-status--error {
+  background: var(--color-error-surface);
+  border: 1px solid var(--color-error);
+  color: var(--color-error-ink);
+}
+
+.privacy-note {
+  margin-top: var(--space-2);
+  font-size: 0.875rem;
+  color: var(--color-muted);
+}
+
+/* ---- Channel tiles ---- */
+
+.channel-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+}
+
+.channel {
+  display: grid;
+  gap: 4px;
+  justify-items: center;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: var(--radius-control);
+  padding: var(--space-3) var(--space-2);
+  color: var(--color-white);
+  text-decoration: none;
+  transition: background-color var(--dur-fast) var(--ease-standard),
+    border-color var(--dur-fast) var(--ease-standard);
+}
+
+.channel:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.channel:focus-visible {
+  outline: 2px solid var(--color-white);
+  outline-offset: 3px;
+}
+
+.channel svg {
+  width: 22px;
+  height: 22px;
+  margin-bottom: 4px;
+}
+
+.channel strong {
+  font-family: var(--font-display);
+  font-size: 0.9375rem;
+}
+
+.channel span {
+  font-size: 0.8125rem;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+/* ---- Footer ---- */
+
+.site-footer {
+  background: #030816;
+  color: rgba(255, 255, 255, 0.72);
+  padding: var(--space-6) 0;
+}
+
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  font-size: 0.9375rem;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.footer-brand .brand-name {
+  color: var(--color-white);
+  font-size: 1.0625rem;
+}
+
+.footer-brand img {
+  height: 16px;
+  width: auto;
+}
+
+.footer-brand .brand-endorsement {
+  border-left-color: rgba(255, 255, 255, 0.35);
+}
+
+.footer-brand .powered {
+  font-size: 0.5rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.footer-links {
+  display: flex;
+  gap: var(--space-3);
+}
+
+.footer-links a {
+  color: rgba(255, 255, 255, 0.72);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  min-height: var(--touch-min);
+  display: inline-flex;
+  align-items: center;
+}
+
+.footer-links a:hover {
+  color: var(--color-white);
+}
+
+.footer-contact {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* ---- Responsive ---- */
+
+@media (max-width: 1099px) {
+  .channel-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 759px) {
+  .contact-grid {
+    grid-template-columns: 1fr; /* calendar stacks before the form */
+    gap: var(--space-3);
+  }
+
+  .contact-card {
+    padding: var(--space-3);
+  }
+
+  /* form copy stays left-aligned for readability */
+  .channel-row {
+    grid-template-columns: 1fr;
+  }
+
+  .section--contact {
+    padding-bottom: calc(var(--space-section) + 72px); /* clearance above safe area */
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+}

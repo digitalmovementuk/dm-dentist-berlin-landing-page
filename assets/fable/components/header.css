@@ -1,0 +1,121 @@
+/* ============================================================
+   FABLE · Overlay header
+   Transparent over the light hero media; gains a mist surface
+   and hairline once the page scrolls.
+   ============================================================ */
+
+.site-header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 30;
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+  transition: background-color var(--dur-medium) var(--ease-standard),
+    box-shadow var(--dur-medium) var(--ease-standard);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.site-header.is-scrolled {
+  background: rgba(245, 247, 252, 0.88);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  box-shadow: inset 0 -1px 0 var(--color-rule);
+}
+
+/* ---- Brand lockup: Digitale Zahnärzte + DM endorsement ---- */
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+  min-height: var(--touch-min);
+}
+
+.brand-name {
+  font-family: var(--font-display);
+  font-size: 1.3125rem;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  color: var(--color-purple);
+  white-space: nowrap;
+}
+
+.brand-name strong {
+  font-weight: 800;
+}
+
+.brand-endorsement {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding-left: 14px;
+  border-left: 1px solid rgba(50, 31, 79, 0.3);
+}
+
+.brand-endorsement .powered {
+  font-family: var(--font-display);
+  font-size: 0.5625rem; /* 9px */
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #435163;
+}
+
+.brand-endorsement img {
+  height: 20px; /* wordmark stays legible on 1x displays */
+  width: auto;
+}
+
+.header-cta {
+  min-height: var(--cta-h-compact);
+  padding: 0 22px;
+  font-size: 0.9375rem;
+}
+
+@media (max-width: 759px) {
+  .site-header {
+    height: var(--header-h-mobile);
+  }
+
+  /* stacked card-style lockup: name above, endorsement below */
+  .brand {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3px;
+  }
+
+  .brand-name {
+    font-size: 0.9375rem;
+  }
+
+  .brand-endorsement {
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  .brand-endorsement .powered {
+    font-size: 0.4375rem; /* 7px */
+  }
+
+  .brand-endorsement img {
+    height: 9px;
+  }
+
+  .header-cta {
+    min-height: 40px;
+    padding: 0 13px;
+    font-size: 0.75rem;
+    white-space: nowrap;
+  }
+}

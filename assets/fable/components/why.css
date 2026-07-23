@@ -1,0 +1,111 @@
+/* ============================================================
+   FABLE · Why section — the online patient journey
+   One connected journey line: Suchen → Vertrauen → Kontakt
+   aufnehmen. Ink hairline + purple nodes (the DM gradient is
+   reserved for the growth-system rail).
+   ============================================================ */
+
+.journey {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+}
+
+/* continuous connecting line through all three node centres */
+.journey::before {
+  content: '';
+  position: absolute;
+  top: 21px;
+  left: calc(100% / 6);
+  right: calc(100% / 6);
+  height: 1px;
+  background: rgba(16, 43, 64, 0.28);
+}
+
+.moment {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-inline: var(--space-2);
+}
+
+.moment-node {
+  position: relative;
+  z-index: 1;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--color-white);
+  border: 1.5px solid var(--color-purple);
+  display: grid;
+  place-items: center;
+  font-family: var(--font-display);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--color-purple);
+  margin-bottom: var(--space-3);
+}
+
+/* direction arrows sitting on the line between moments */
+.moment:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 17px;
+  right: calc(-1 * var(--space-4) / 2 - 4px);
+  width: 9px;
+  height: 9px;
+  border-top: 1.5px solid rgba(16, 43, 64, 0.45);
+  border-right: 1.5px solid rgba(16, 43, 64, 0.45);
+  transform: rotate(45deg);
+}
+
+.moment h3 {
+  margin-bottom: var(--space-1);
+}
+
+.moment p {
+  color: var(--color-muted);
+  font-size: 1rem; /* body copy stays >=16px per type rules */
+  line-height: 1.55;
+  max-width: 30ch;
+}
+
+/* ---- Mobile + narrow tablet: one connected vertical rail ---- */
+
+@media (max-width: 759px) {
+  .journey {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    justify-items: center;
+  }
+
+  .journey::before {
+    top: 21px;
+    bottom: 21px;
+    left: 50%;
+    right: auto;
+    width: 1px;
+    height: auto;
+    transform: translateX(-0.5px);
+  }
+
+  .moment {
+    padding-inline: 0;
+    background: var(--color-white); /* masks the rail behind text; rail shows in gaps */
+  }
+
+  .moment:not(:last-child)::after {
+    top: auto;
+    right: auto;
+    bottom: calc(-1 * var(--space-6) / 2 - 4px);
+    left: 50%;
+    transform: translateX(-50%) rotate(135deg);
+  }
+
+  .moment-node {
+    box-shadow: 0 0 0 8px var(--color-white);
+  }
+}

@@ -1,0 +1,136 @@
+/* ============================================================
+   FABLE · Floating CTA
+   Rounded Deep Night panel with side margins and safe-area
+   spacing. Appears after the hero, hides at the slice end
+   (later: before the contact hub/footer). Never edge-to-edge.
+   ============================================================ */
+
+.floating-cta {
+  position: fixed;
+  left: 50%;
+  bottom: calc(14px + env(safe-area-inset-bottom, 0px));
+  z-index: 20;
+  transform: translate(-50%, 16px);
+  width: min(600px, calc(100% - 32px));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  padding: 10px 10px 10px 24px;
+  background: rgba(7, 17, 43, 0.92);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--radius-pill);
+  box-shadow: 0 18px 48px -12px rgba(3, 8, 22, 0.5);
+  color: var(--color-white);
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden; /* leaves the tab order while hidden */
+  transition: opacity var(--dur-medium) var(--ease-standard),
+    transform var(--dur-medium) var(--ease-standard),
+    visibility 0s linear var(--dur-medium);
+}
+
+.floating-cta.is-active {
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+  transition-delay: 0s;
+  transform: translate(-50%, 0);
+}
+
+.floating-cta .fc-label {
+  font-family: var(--font-display);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.floating-cta .fc-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.fc-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: var(--touch-min);
+  padding: 0 20px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  font-weight: 700;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: transform var(--dur-fast) var(--ease-standard),
+    background-color var(--dur-fast) var(--ease-standard);
+}
+
+.fc-btn--book {
+  background: var(--color-white);
+  color: var(--color-night);
+}
+
+.fc-btn--book:hover {
+  background: var(--color-mist);
+  transform: translateY(-1px);
+}
+
+.fc-btn--whatsapp {
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  color: var(--color-white);
+}
+
+.fc-btn--whatsapp:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-1px);
+}
+
+.fc-btn:active {
+  transform: none;
+}
+
+.fc-btn:focus-visible {
+  outline: 2px solid var(--color-white);
+  outline-offset: 3px;
+}
+
+.fc-btn .btn-icon {
+  width: 16px;
+  height: 16px;
+  flex: none;
+}
+
+@media (max-width: 759px) {
+  .floating-cta {
+    padding: 8px;
+    gap: 8px;
+  }
+
+  .floating-cta .fc-label {
+    display: none;
+  }
+
+  .floating-cta .fc-actions {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+  }
+
+  .fc-btn {
+    width: 100%;
+    padding: 0 12px;
+    font-size: 0.8125rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .floating-cta {
+    transition: opacity var(--dur-medium) var(--ease-standard);
+    transform: translate(-50%, 0);
+  }
+}

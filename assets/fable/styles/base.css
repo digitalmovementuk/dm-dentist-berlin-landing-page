@@ -1,0 +1,244 @@
+/* ============================================================
+   FABLE BASE — reset, typography, layout primitives, motion
+   Scope: Fable experiment only.
+   ============================================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--color-white);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+img,
+video,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  color: var(--color-ink);
+  margin: 0;
+  overflow-wrap: break-word;
+}
+
+h1 {
+  font-size: var(--text-display-1);
+  line-height: var(--leading-display);
+  letter-spacing: var(--tracking-display);
+  font-weight: 700;
+  text-wrap: balance;
+}
+
+h2 {
+  font-size: var(--text-display-2);
+  line-height: var(--leading-display-2);
+  letter-spacing: var(--tracking-h2);
+  font-weight: 700;
+  text-wrap: balance;
+}
+
+h3 {
+  font-size: var(--text-h3);
+  line-height: var(--leading-h3);
+  letter-spacing: -0.015em;
+  font-weight: 700;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-purple);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ---- Skip link ---- */
+
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 40;
+  transform: translateY(-64px);
+  background: var(--color-night);
+  color: var(--color-white);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--text-small);
+  padding: 12px 20px;
+  border-radius: var(--radius-pill);
+  text-decoration: none;
+  transition: transform var(--dur-fast) var(--ease-standard);
+}
+
+.skip-link:focus-visible {
+  transform: none;
+  outline: 2px solid var(--color-white);
+  outline-offset: 2px;
+}
+
+/* ---- Layout primitives ---- */
+
+.container {
+  width: min(var(--width-content), calc(100% - 2 * var(--gutter)));
+  margin-inline: auto;
+}
+
+.section {
+  padding-block: var(--space-section);
+}
+
+.section--mist {
+  background: var(--color-mist);
+}
+
+.kicker {
+  display: block;
+  font-family: var(--font-display);
+  font-size: var(--text-label);
+  font-weight: 700;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--color-purple);
+  margin-bottom: var(--space-3);
+}
+
+.section-head {
+  max-width: var(--width-prose);
+  margin-bottom: clamp(var(--space-6), 6vw, var(--space-10));
+}
+
+.section-head p {
+  font-size: var(--text-lede);
+  line-height: var(--leading-lede);
+  color: var(--color-muted);
+  margin-top: var(--space-3);
+  max-width: 60ch;
+}
+
+/* ---- Buttons ---- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: var(--cta-h);
+  padding: 0 28px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform var(--dur-fast) var(--ease-standard),
+    box-shadow var(--dur-fast) var(--ease-standard),
+    background-color var(--dur-fast) var(--ease-standard),
+    border-color var(--dur-fast) var(--ease-standard);
+}
+
+.btn--primary {
+  background: var(--color-night);
+  color: var(--color-white);
+}
+
+.btn--primary:hover {
+  background: var(--color-ink);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-1);
+}
+
+.btn--secondary {
+  background: var(--color-white);
+  color: var(--color-ink);
+  border-color: #c9d3e4;
+}
+
+.btn--secondary:hover {
+  border-color: var(--color-purple);
+  background: #fbfcff;
+  transform: translateY(-1px);
+}
+
+.btn:active {
+  transform: translateY(0) scale(0.99);
+  box-shadow: none;
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--color-purple);
+  outline-offset: 3px;
+}
+
+.btn .btn-icon {
+  width: 18px;
+  height: 18px;
+  flex: none;
+}
+
+/* ---- Scroll reveal ---- */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity var(--dur-reveal) var(--ease-out),
+    transform var(--dur-reveal) var(--ease-out);
+  transition-delay: calc(var(--ri, 0) * 70ms);
+}
+
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+/* No JS: everything stays visible */
+.no-js .reveal {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---- Reduced motion ---- */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .btn,
+  .btn:hover {
+    transition: none;
+    transform: none;
+  }
+}

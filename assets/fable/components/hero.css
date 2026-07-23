@@ -1,0 +1,440 @@
+/* ============================================================
+   FABLE · Hero
+   Light editorial hero: ink typography over the airy Codex
+   media through a mist veil (no dark generic overlay).
+   Desktop ≥1100px: message left, Suche→Seite→Anfrage schematic right.
+   Mobile: centred, bottom-anchored single column.
+   ============================================================ */
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: var(--color-mist);
+  padding-top: calc(var(--header-h) + var(--space-2));
+  padding-bottom: var(--space-8);
+}
+
+/* ---- Media stack: poster below, video fades in above ---- */
+
+.hero-media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-media img,
+.hero-media video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 60% 42%;
+}
+
+.hero-media video {
+  opacity: 0;
+  transition: opacity 400ms var(--ease-standard);
+}
+
+.hero-media.is-playing video {
+  opacity: 1;
+}
+
+/* ---- Mist veil: wash + directional legibility gradient ---- */
+
+.hero-veil {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: var(--veil-wash);
+}
+
+.hero-veil::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--veil-desktop);
+}
+
+/* soft melt into the editorial page below */
+.hero-veil::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 112px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0), var(--color-white));
+}
+
+/* ---- Content ---- */
+
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: var(--space-8);
+  align-items: center;
+}
+
+.hero-copy {
+  max-width: var(--width-hero-copy);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-copy {
+    animation: hero-rise var(--dur-hero) var(--ease-out) both;
+  }
+
+  .hero-schematic {
+    animation: hero-rise var(--dur-hero) var(--ease-out) 90ms both;
+  }
+}
+
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-size: var(--text-label);
+  font-weight: 700;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--color-purple);
+}
+
+.hero-eyebrow::before {
+  content: '';
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--grad-dm);
+}
+
+.hero h1 {
+  margin-block: var(--space-3) var(--space-3);
+}
+
+.hero-lede {
+  font-size: var(--text-lede);
+  line-height: var(--leading-lede);
+  color: var(--color-ink);
+  max-width: 34rem;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) 12px;
+  margin-top: var(--space-4);
+}
+
+.hero-direct {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 8px;
+  margin-top: var(--space-3);
+  font-size: var(--text-small);
+  color: var(--color-ink);
+}
+
+.hero-direct a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--touch-min);
+  font-weight: 600;
+  color: var(--color-ink);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: rgba(16, 43, 64, 0.35);
+}
+
+.hero-direct a:hover {
+  text-decoration-color: var(--color-ink);
+}
+
+.hero-direct .sep {
+  color: rgba(16, 43, 64, 0.4);
+}
+
+/* ---- Google review widget (approved DM reviews, no invented numbers) ---- */
+
+.hero-proof {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: var(--space-4);
+  padding-top: var(--space-3);
+  border-top: 1px solid rgba(16, 43, 64, 0.14);
+}
+
+.hero-proof .stars {
+  display: inline-flex;
+  gap: 2px;
+  color: var(--color-star);
+}
+
+.hero-proof .stars svg {
+  width: 15px;
+  height: 15px;
+}
+
+.hero-proof .proof-label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+/* ---- Schematic: Suche → Behandlungsseite → Anfrage ---- */
+
+.hero-schematic {
+  justify-self: end;
+  width: min(100%, 416px);
+  background: var(--color-white);
+  border: var(--border-hairline);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-2);
+  padding: var(--space-3);
+}
+
+.schematic-step {
+  border: var(--border-hairline);
+  border-radius: var(--radius-control);
+  padding: 14px 16px;
+  background: var(--color-white);
+}
+
+.schematic-step .step-tag {
+  font-family: var(--font-display);
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.schematic-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--color-mist);
+  border-radius: var(--radius-pill);
+  padding: 10px 16px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-ink);
+}
+
+.schematic-search svg {
+  width: 15px;
+  height: 15px;
+  flex: none;
+  color: var(--color-muted);
+}
+
+.schematic-page-title {
+  font-family: var(--font-display);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--color-ink);
+}
+
+.schematic-lines {
+  display: grid;
+  gap: 6px;
+  margin-block: 10px 12px;
+}
+
+.schematic-lines span {
+  height: 6px;
+  border-radius: 3px;
+  background: #e7ebf4;
+}
+
+.schematic-lines span:last-child {
+  width: 72%;
+}
+
+.schematic-page .mini-btn {
+  display: inline-flex;
+  align-items: center;
+  border-radius: var(--radius-pill);
+  background: var(--color-ink);
+  color: var(--color-white);
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 7px 14px;
+}
+
+.schematic-result {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--color-pale-violet);
+  border-color: transparent;
+}
+
+.schematic-result svg {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  color: var(--color-purple);
+}
+
+.schematic-result .result-label {
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--color-purple);
+}
+
+/* gradient thread connecting the three schematic steps */
+.schematic-link {
+  display: flex;
+  justify-content: center;
+  padding: 4px 0;
+}
+
+.schematic-link span {
+  width: 2px;
+  height: 18px;
+  border-radius: 1px;
+  background: var(--grad-dm);
+}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+
+/* Short desktop viewports (e.g. 1366×768): tighter vertical rhythm
+   so the full hero composition stays inside the first viewport */
+@media (min-width: 1100px) and (max-height: 820px) {
+  .hero {
+    padding-top: var(--header-h);
+  }
+
+  .hero h1 {
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    margin-block: var(--space-2) var(--space-2);
+  }
+
+  .hero-actions {
+    margin-top: var(--space-3);
+  }
+
+  .hero-proof {
+    margin-top: var(--space-3);
+    padding-top: var(--space-2);
+  }
+}
+
+/* Tablet + mobile: single centred column, no schematic */
+@media (max-width: 1099px) {
+  .hero-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-schematic {
+    display: none;
+  }
+
+  .hero-copy {
+    max-width: 34rem;
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  .hero-veil::before {
+    background: var(--veil-mobile);
+  }
+
+  .hero-actions,
+  .hero-direct {
+    justify-content: center;
+  }
+
+  .hero-proof {
+    display: flex;
+    justify-content: center;
+    border-top: 0;
+    padding-top: 0;
+  }
+}
+
+/* Mobile: bottom-anchored, full-width CTAs */
+@media (max-width: 759px) {
+  .hero {
+    align-items: flex-end;
+    padding-top: calc(var(--header-h-mobile) + var(--space-2));
+    padding-bottom: calc(var(--space-5) + env(safe-area-inset-bottom, 0px));
+  }
+
+  .hero h1 {
+    margin-block: var(--space-2) var(--space-2);
+    font-size: clamp(2rem, 9vw, 2.25rem); /* 32–36px: H1 wraps in 3–5 lines */
+  }
+
+  .hero-lede {
+    font-size: 1.0625rem;
+  }
+
+  .hero-proof .proof-label {
+    font-size: 0.75rem;
+  }
+
+  .hero-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-top: var(--space-3);
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+  }
+
+  .hero-direct {
+    margin-top: var(--space-2);
+  }
+
+  .hero-proof {
+    margin-top: var(--space-3);
+    flex-direction: column;
+    gap: 6px;
+  }
+}
+
+/* Narrow phones: keep the WhatsApp CTA on one line */
+@media (max-width: 479px) {
+  .hero-actions .btn--secondary {
+    font-size: 0.875rem;
+  }
+}
+
+/* Reduced motion: static poster only (video is also blocked in JS) */
+@media (prefers-reduced-motion: reduce) {
+  .hero-media video {
+    display: none;
+  }
+}

@@ -1,0 +1,184 @@
+/* ============================================================
+   FABLE · Scope — what Digitale Zahnärzte takes over
+   Five outputs joined by one vertical rail (one managed system),
+   with the approved VPI Dental Clinic result card on the right.
+   Mist surface.
+   ============================================================ */
+
+.scope-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: var(--space-8);
+  align-items: start;
+}
+
+/* ---- The five outputs as one connected system ---- */
+
+.scope-list {
+  position: relative;
+}
+
+/* vertical rail joining the five number chips */
+.scope-list::before {
+  content: '';
+  position: absolute;
+  top: 22px;
+  bottom: 22px;
+  left: 21px;
+  width: 1px;
+  background: rgba(16, 43, 64, 0.24);
+}
+
+.scope-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: var(--space-3);
+  padding-block: var(--space-3);
+}
+
+.scope-item + .scope-item {
+  border-top: var(--border-hairline);
+}
+
+.scope-num {
+  position: relative;
+  z-index: 1;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--color-white);
+  border: 1.5px solid var(--color-purple);
+  display: grid;
+  place-items: center;
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--color-purple);
+}
+
+.scope-item h3 {
+  font-size: 1.25rem;
+  margin-bottom: 4px;
+}
+
+.scope-item p {
+  color: var(--color-muted);
+  font-size: 1rem;
+  line-height: 1.55;
+  max-width: 44ch;
+}
+
+/* ---- VPI Dental Clinic result card (approved proof) ---- */
+
+.proof-card {
+  position: sticky;
+  top: calc(var(--header-h) + var(--space-3));
+  contain: paint;
+  background: var(--color-night);
+  color: var(--color-white);
+  border-radius: var(--radius-card);
+  padding: var(--space-5);
+  overflow: hidden;
+  box-shadow: var(--shadow-2);
+}
+
+/* one restrained gradient aura, clipped to the card */
+.proof-card::before {
+  content: '';
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: var(--grad-dm);
+  filter: blur(90px);
+  opacity: 0.32;
+  right: -120px;
+  top: -120px;
+}
+
+.proof-card > * {
+  position: relative;
+}
+
+.proof-card .kicker {
+  color: var(--color-periwinkle);
+}
+
+.proof-card h3 {
+  color: var(--color-white);
+  font-size: 1.5rem;
+  margin-bottom: var(--space-1);
+}
+
+.proof-card .proof-sub {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 1rem;
+  margin-bottom: var(--space-4);
+}
+
+.proof-stats {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.proof-stat {
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  padding-top: var(--space-3);
+}
+
+.proof-stat strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 2.6vw, 2.75rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.proof-stat span {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 1rem;
+}
+
+/* ---- Responsive ---- */
+
+@media (max-width: 1099px) {
+  .scope-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  .proof-card {
+    position: static;
+  }
+}
+
+@media (max-width: 759px) {
+  /* dense list copy stays left-aligned; the rail keeps the system connected */
+  .scope-item {
+    grid-template-columns: 36px 1fr;
+    gap: var(--space-2);
+  }
+
+  .scope-num {
+    width: 36px;
+    height: 36px;
+    font-size: 0.8125rem;
+  }
+
+  .scope-list::before {
+    left: 17px;
+    top: 18px;
+    bottom: 18px;
+  }
+
+  .scope-item h3 {
+    font-size: 1.125rem;
+  }
+
+  .proof-card {
+    padding: var(--space-4);
+    text-align: center;
+  }
+}

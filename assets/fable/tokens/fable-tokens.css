@@ -1,0 +1,117 @@
+/* ============================================================
+   FABLE DESIGN TOKENS — Digitale Zahnärzte
+   Independent token set for the Fable design experiment.
+   Scope: /design-experiments/fable/ only. Never imported by
+   production code or by the Sol experiment.
+   Breakpoints (used in media queries, mirrored here for docs):
+     --bp-mobile-max: 759px   (mobile ends)
+     --bp-tablet-min: 760px   (tablet begins)
+     --bp-desktop-min: 1100px (desktop hero two-column begins)
+   ============================================================ */
+
+:root {
+  /* ---- Colour · approved brand palette ---- */
+  --color-ink: #102b40;            /* DZ Ink — primary text, main CTA */
+  --color-purple: #321f4f;         /* Endorsement Purple — lockup, kickers, nodes */
+  --color-night: #07112b;          /* Deep Night — floating CTA panel, high-contrast surface */
+  --color-white: #ffffff;
+  --color-periwinkle: #bcc8ff;     /* Soft Periwinkle — subtle accents */
+  --grad-dm: linear-gradient(100deg, #ffb23d 0%, #f05f22 32%, #ec178d 68%, #9a2fc6 100%);
+  --color-star: #ffb23d;           /* DM Yellow, used for the Google stars only */
+
+  /* ---- Colour · form state feedback ---- */
+  --color-error: #b3261e;          /* error borders, inline messages */
+  --color-error-surface: #fdf1f0;
+  --color-error-ink: #7f1d16;
+  --color-success: #2e7d32;
+  --color-success-surface: #eef7ef;
+  --color-success-ink: #1d4d20;
+
+  /* ---- Colour · support neutrals (proposed, need visual approval) ---- */
+  --color-mist: #f5f7fc;           /* alternating light section surface */
+  --color-pale-violet: #f1eefa;    /* reserved for later sections */
+  --color-muted: #617080;          /* secondary text — AA on white and mist only */
+  --color-rule: #dde3ec;           /* hairline borders */
+
+  /* ---- Typography ---- */
+  --font-display: 'Plus Jakarta Sans', 'Helvetica Neue', Arial, sans-serif;
+  --font-body: 'Inter Tight', 'Helvetica Neue', Arial, sans-serif;
+
+  --text-display-1: clamp(2.625rem, 4.5vw, 4.25rem);  /* H1 · 42–68px; capped so 1728px keeps 4–5 balanced lines */
+  --text-display-2: clamp(2.125rem, 3.4vw, 3.5rem);   /* H2 · 34–56px */
+  --text-h3: 1.375rem;                                /* 22px */
+  --text-lede: clamp(1.0625rem, 1.45vw, 1.25rem);     /* 17–20px */
+  --text-body: 1.0625rem;                             /* 17px */
+  --text-small: 0.9375rem;                            /* 15px */
+  --text-label: 0.75rem;                              /* 12px caps kickers */
+  --text-micro: 0.6875rem;                            /* 11px fine print */
+
+  --leading-display: 1.02;
+  --leading-display-2: 1.08;
+  --leading-h3: 1.25;
+  --leading-body: 1.6;
+  --leading-lede: 1.55;
+
+  --tracking-display: -0.035em;
+  --tracking-h2: -0.025em;
+  --tracking-caps: 0.12em;
+
+  /* ---- Content widths ---- */
+  --width-content: 1216px;         /* max useful content width (spec: 1180–1240) */
+  --width-prose: 42rem;            /* ~672px comfortable paragraph measure */
+  --width-hero-copy: 40rem;
+
+  /* ---- Spacing · 8px rhythm ---- */
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-5: 40px;
+  --space-6: 48px;
+  --space-8: 64px;
+  --space-10: 80px;
+  --space-12: 96px;
+  --space-16: 128px;
+  --space-section: clamp(88px, 10vw, 152px);
+  --gutter: clamp(20px, 4.5vw, 48px);
+
+  /* ---- Borders, radii, shadows ---- */
+  --border-hairline: 1px solid var(--color-rule);
+  --radius-control: 12px;
+  --radius-card: 20px;
+  --radius-pill: 999px;
+  --shadow-1: 0 8px 24px -12px rgba(16, 43, 64, 0.18);
+  --shadow-2: 0 24px 48px -20px rgba(16, 43, 64, 0.28);
+
+  /* ---- Hero media veil (mist veil, not a dark overlay) ---- */
+  --veil-wash: rgba(247, 249, 255, 0.42);
+  --veil-desktop: linear-gradient(
+    100deg,
+    rgba(245, 247, 252, 0.94) 0%,
+    rgba(245, 247, 252, 0.86) 38%,
+    rgba(245, 247, 252, 0.32) 64%,
+    rgba(245, 247, 252, 0) 82%
+  );
+  --veil-mobile: linear-gradient(
+    180deg,
+    rgba(245, 247, 252, 0.62) 0%,
+    rgba(245, 247, 252, 0.4) 26%,
+    rgba(245, 247, 252, 0.88) 58%,
+    rgba(247, 249, 255, 0.96) 100%
+  );
+
+  /* ---- Motion ---- */
+  --dur-fast: 160ms;               /* hover, focus, active */
+  --dur-medium: 240ms;             /* floating CTA, header state */
+  --dur-reveal: 480ms;             /* section reveal */
+  --dur-hero: 560ms;               /* hero content rise on load */
+  --ease-out: cubic-bezier(0.22, 0.61, 0.21, 1);
+  --ease-standard: cubic-bezier(0.2, 0.6, 0.2, 1);
+
+  /* ---- Component sizes ---- */
+  --header-h: 88px;
+  --header-h-mobile: 64px;
+  --cta-h: 52px;
+  --cta-h-compact: 44px;
+  --touch-min: 44px;
+}
