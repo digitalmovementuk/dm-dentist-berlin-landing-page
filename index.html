@@ -3,6 +3,21 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<script>
+/* Runs before first paint so there is no light/dark flash. Order: a saved
+   manual choice always wins; otherwise the theme follows local clock time
+   as a stand-in for sunrise/sunset (06:00–19:59 light, 20:00–05:59 dark). */
+(function () {
+  var KEY = "dm-dental-theme";
+  function autoTheme() {
+    var h = new Date().getHours();
+    return (h >= 6 && h < 20) ? "light" : "dark";
+  }
+  var saved = null;
+  try { saved = localStorage.getItem(KEY); } catch (e) {}
+  document.documentElement.setAttribute("data-theme", saved === "light" || saved === "dark" ? saved : autoTheme());
+})();
+</script>
 <title>Digital Movement für Zahnarztpraxen | Sichtbarkeit bei Google und in KI-Suchen</title>
 <meta name="description" content="Digital Movement macht die Behandlungen Ihrer Praxis bei Google und in KI-Suchen sichtbar und baut eine Website, die Interessenten zur Anfrage führt. Erstgespräch anfragen.">
 <meta name="dm-lead-endpoint" content="">
@@ -66,26 +81,59 @@
    ========================================================================== */
 
 :root {
-  --ink: #0d1828;
-  --paper: #f4f2ed;
   --white: #fff;
-  --blue: #0a66c2;
-  --violet: #7627c7;
-  --orange: #e8a21a;
-  --pink: #ec178d;
-  --green: #05603a;
-  --yellow: #f5c629;
+  /* The dental accent hues themselves stay identical in both themes — this
+     is one clinic brand shown at two brightness levels, not two brands.
+     Only the surface/text roles below invert per theme. */
+  --ink: #082a33;
+  --paper: #f1f6f5;
+  --blue: #0e6c93;
+  --violet: #0b5f58;
+  --orange: #f08a6c;
+  --pink: #22c3d6;
+  --yellow: #a8e6da;
+  --green: #0b6b4f;
+  --surface: #fff;
   --font-display-stack: "Plus Jakarta Sans", Arial, sans-serif;
   --font-body-stack: "Inter Tight", Arial, sans-serif;
   --font-mono-stack: "JetBrains Mono", monospace;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+/* Two brightness modes, switched by [data-theme] on <html>, both in the same
+   dental teal/aqua/coral palette. --chrome/--on-chrome carry the page-wide
+   bar colour (header, hero, footer, the alternating section) and its text;
+   --chip-bg/--chip-fg carry the primary-button colour, always the inverse
+   of --chrome. */
+:root[data-theme="light"] {
+  --surface-tint: #e9f3f1;
+  --muted: #4a5c60;
+  --aside-muted: #1d3a42;
+  --chrome: var(--paper);
+  --on-chrome: var(--ink);
+  --chip-bg: var(--ink);
+  --chip-fg: #fff;
+  --focus-base: var(--violet);
+  --focus-alt: var(--yellow);
+}
+
+:root[data-theme="dark"] {
+  --surface-tint: var(--ink);
+  --muted: #9fb8bb;
+  --aside-muted: #cfe4e2;
+  --chrome: var(--ink);
+  --on-chrome: #fff;
+  --chip-bg: #fff;
+  --chip-fg: var(--ink);
+  --focus-base: var(--pink);
+  --focus-alt: var(--violet);
+}
+
 * { box-sizing: border-box; }
 
 html {
   scroll-behavior: smooth;
-  background: var(--ink);
+  background: var(--chrome);
   scroll-padding-top: 96px;
 }
 
@@ -107,27 +155,29 @@ a { color: inherit; text-decoration: none; }
 img { display: block; }
 
 :focus-visible {
-  outline: 3px solid var(--yellow);
+  outline: 3px solid var(--focus-base);
   outline-offset: 4px;
 }
 
-/* The yellow ring is only readable on the ink surfaces. Light surfaces (the
-   paper shell, the white trust section, the yellow contact shell, the paper
-   dialog) switch to --violet, which the system already uses as its accent on
-   light backgrounds. */
-.section-shell--light :focus-visible,
-.section-shell--checkout :focus-visible,
-.trust-section :focus-visible {
-  outline-color: var(--violet);
+/* Light theme: the base ring (violet) already reads on the page's light
+   surfaces, so only the blocks that stay ink need the alternate ring. */
+[data-theme="light"] .checkout-receipt :focus-visible,
+[data-theme="light"] .confirmation :focus-visible,
+[data-theme="light"] .summary-cta:focus-visible,
+[data-theme="light"] .checkout-submit:focus-visible,
+[data-theme="light"] .trust-section__head > a:focus-visible,
+[data-theme="light"] .header-cta:focus-visible,
+[data-theme="light"] .hero__cta:focus-visible,
+[data-theme="light"] .mobile-cta-bar :focus-visible {
+  outline-color: var(--focus-alt);
 }
 
-/* Ink blocks inside those light shells go back to yellow. */
-.checkout-receipt :focus-visible,
-.confirmation :focus-visible,
-.summary-cta:focus-visible,
-.checkout-submit:focus-visible,
-.trust-section__head > a:focus-visible {
-  outline-color: var(--yellow);
+/* Dark theme: the base ring (yellow) reads on the page's dark surfaces, so
+   only the light sections need the alternate ring. */
+[data-theme="dark"] .section-shell--light :focus-visible,
+[data-theme="dark"] .section-shell--checkout :focus-visible,
+[data-theme="dark"] .trust-section :focus-visible {
+  outline-color: var(--focus-alt);
 }
 
 /* Pressed feedback on every primary action. */
@@ -155,7 +205,7 @@ img { display: block; }
 
 .skip-link:focus { transform: translateY(0); }
 
-::selection { background: var(--pink); color: white; }
+::selection { background: var(--pink); color: var(--ink); }
 
 /* ---------- Header ---------- */
 
@@ -171,11 +221,12 @@ img { display: block; }
   align-items: center;
   gap: 28px;
   padding: 0 clamp(20px, 3vw, 54px);
-  /* Solid fallback first: browsers without color-mix() still get the dark bar
-     the white type is designed against. */
-  background: rgb(13 24 40 / 90%);
-  background: color-mix(in srgb, var(--ink) 90%, transparent);
-  color: white;
+  /* Solid fallback first: browsers without color-mix() still get the bar
+     the type is designed against. */
+  background: rgb(241 246 245 / 90%);
+  background: color-mix(in srgb, var(--chrome) 90%, transparent);
+  border-bottom: 1px solid rgb(8 42 51 / 10%);
+  color: var(--on-chrome);
   backdrop-filter: blur(18px);
 }
 
@@ -189,11 +240,10 @@ img { display: block; }
 /* PAGE ADDITION — the Digitale Zahnärzte brand lockup, ported from the first
    published version of this site (DM UK Dentist Berlin Landing Page/site,
    assets/fable/components/header.css). The wordmark is set type rather than an
-   image file, and it is white here because this bar sits on --ink. The Digital
-   Movement mark uses the real negative artwork, so its gradient icon survives
-   instead of being flattened by a brightness/invert filter. */
+   image file, and it is ink here because this bar is light. The Digital
+   Movement mark uses the standard positive artwork for the same reason. */
 .brand-name {
-  color: white;
+  color: var(--on-chrome);
   font-family: var(--font-display-stack);
   font-size: 21px;
   font-weight: 500;
@@ -208,13 +258,13 @@ img { display: block; }
   flex-direction: column;
   gap: 3px;
   padding-left: 14px;
-  border-left: 1px solid rgb(255 255 255 / 30%);
+  border-left: 1px solid rgb(8 42 51 / 20%);
 }
 
-/* Reference value is #435163 on a light bar. This bar is --ink, so the label
-   takes the system's existing muted-on-dark value #aeb7c4. */
+/* Reference value is #435163 on a light bar. This bar is light too, so the
+   label takes the muted-on-light value. */
 .brand-endorsement .powered {
-  color: #aeb7c4;
+  color: var(--muted);
   font-family: var(--font-display-stack);
   font-size: 9px;
   font-weight: 700;
@@ -227,6 +277,18 @@ img { display: block; }
   height: 20px;
   object-fit: contain;
 }
+
+/* Theme-paired artwork: two <img> per mark, one per theme, toggled by
+   [data-theme] rather than the OS-level prefers-color-scheme so the mark
+   always follows this page's own toggle. display:contents keeps the
+   wrapper out of the layout entirely. */
+.logo-swap { display: contents; }
+/* [data-logo] bumps specificity above .hero__platform img / .brand-endorsement
+   img, which would otherwise win the display tie-break by source order and
+   show both logo variants at once. */
+.logo-swap img[data-logo] { display: none; }
+:root[data-theme="light"] .logo-swap img[data-logo="light"] { display: block; }
+:root[data-theme="dark"] .logo-swap img[data-logo="dark"] { display: block; }
 
 .site-header nav {
   display: flex;
@@ -241,7 +303,7 @@ img { display: block; }
 .site-header nav a {
   position: relative;
   padding: 10px 0;
-  color: #cfd5df;
+  color: var(--muted);
 }
 
 .site-header nav a::after {
@@ -250,7 +312,7 @@ img { display: block; }
   bottom: 4px;
   left: 0;
   height: 3px;
-  background: linear-gradient(90deg, var(--yellow), var(--pink));
+  background: linear-gradient(90deg, var(--violet), var(--pink));
   content: "";
   transform: scaleX(0);
   transform-origin: right;
@@ -263,23 +325,56 @@ img { display: block; }
 }
 
 /* PAGE ADDITION — header CTA replaces the reference cart menu.
-   Keeps the identical .cart-button visual contract: white block, ink text,
+   On the light bar the block inverts: ink block, white text, same
    46px min-height, weight 800. */
+.header-actions {
+  display: flex;
+  align-items: center;
+  justify-self: end;
+  gap: 12px;
+}
+
 .header-cta {
   display: flex;
   min-height: 46px;
   align-items: center;
-  justify-self: end;
   gap: 12px;
   padding: 0 16px;
   border: 0;
-  background: white;
-  color: var(--ink);
+  background: var(--chip-bg);
+  color: var(--chip-fg);
   font-weight: 800;
   transition: background 200ms ease;
 }
 
-.header-cta:hover { background: var(--yellow); }
+.header-cta:hover { background: var(--violet); }
+[data-theme="dark"] .header-cta:hover { background: var(--yellow); }
+
+/* ---------- Theme toggle ---------- */
+
+.theme-toggle {
+  display: grid;
+  flex: 0 0 auto;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  border: 1px solid rgb(8 42 51 / 16%);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--ink);
+  cursor: pointer;
+  transition: background 200ms ease, border-color 200ms ease, transform 150ms ease;
+}
+
+.theme-toggle:hover { border-color: var(--violet); }
+.theme-toggle:active { transform: scale(0.94); }
+
+.theme-toggle__icon { display: none; }
+
+/* Light theme: show the sun (click to switch to dark). */
+:root[data-theme="light"] .theme-toggle__icon--sun { display: block; }
+/* Dark theme: show the moon (click to switch to light). */
+:root[data-theme="dark"] .theme-toggle__icon--moon { display: block; }
 .header-cta .header-cta__short { display: none; }
 
 /* ---------- Hero ---------- */
@@ -289,10 +384,21 @@ img { display: block; }
   min-height: 100svh;
   overflow: hidden;
   background:
-    radial-gradient(circle at 78% 27%, rgb(118 39 199 / 23%), transparent 29%),
-    radial-gradient(circle at 20% 87%, rgb(236 23 141 / 18%), transparent 27%),
-    var(--ink);
-  color: white;
+    radial-gradient(circle at 78% 27%, rgb(11 95 88 / 13%), transparent 32%),
+    radial-gradient(circle at 20% 87%, rgb(34 195 214 / 16%), transparent 30%),
+    var(--chrome);
+  color: var(--on-chrome);
+}
+
+/* The two radial glows and the corner rule read differently on each theme's
+   base tone, so they are restated in full rather than token-mixed. */
+/* Same two glows as the light theme, in the same aqua/teal hues, just
+   brighter so they still read against the dark ink base. */
+[data-theme="dark"] .hero {
+  background:
+    radial-gradient(circle at 78% 27%, rgb(34 195 214 / 22%), transparent 32%),
+    radial-gradient(circle at 20% 87%, rgb(11 95 88 / 32%), transparent 30%),
+    var(--chrome);
 }
 
 .hero::after {
@@ -301,7 +407,7 @@ img { display: block; }
   bottom: 0;
   width: 22vw;
   height: 10px;
-  background: linear-gradient(90deg, var(--yellow), var(--pink), var(--violet));
+  background: linear-gradient(90deg, var(--violet), var(--pink), var(--blue));
   content: "";
 }
 
@@ -316,10 +422,15 @@ img { display: block; }
   font-weight: 800;
   letter-spacing: -0.09em;
   line-height: 0.8;
-  opacity: 0.16;
+  opacity: 0.5;
   pointer-events: none;
-  -webkit-text-stroke: 1px rgb(255 255 255 / 34%);
+  -webkit-text-stroke: 1px rgb(8 42 51 / 16%);
   white-space: nowrap;
+}
+
+[data-theme="dark"] .hero__ghost {
+  opacity: 0.16;
+  -webkit-text-stroke: 1px rgb(255 255 255 / 34%);
 }
 
 .hero__field {
@@ -331,17 +442,17 @@ img { display: block; }
 
 .hero__field span:first-child {
   position: absolute;
-  top: 0;
+  top: 14%;
   right: 14%;
   width: clamp(80px, 8vw, 130px);
   height: 62%;
   background: linear-gradient(
     180deg,
-    rgb(245 198 41 / 92%),
-    rgb(232 162 26 / 55%),
-    rgb(236 23 141 / 12%)
+    rgb(168 230 218 / 55%),
+    rgb(34 195 214 / 30%),
+    rgb(11 95 88 / 8%)
   );
-  mix-blend-mode: screen;
+  mix-blend-mode: multiply;
   transform-origin: top;
   animation: field-y 7s ease-in-out infinite;
 }
@@ -352,9 +463,26 @@ img { display: block; }
   bottom: 16%;
   width: 39%;
   height: clamp(64px, 6vw, 100px);
-  background: linear-gradient(90deg, rgb(118 39 199 / 18%), var(--pink));
+  background: linear-gradient(90deg, rgb(11 95 88 / 10%), var(--pink));
   transform-origin: right;
   animation: field-x 8s ease-in-out 0.5s infinite;
+}
+
+/* Same mint/aqua/teal hues as the light theme's field spans, just switched
+   to "screen" blending (which lightens) instead of "multiply" (which
+   darkens), so the glow still lifts off the dark ink base. */
+[data-theme="dark"] .hero__field span:first-child {
+  background: linear-gradient(
+    180deg,
+    rgb(168 230 218 / 85%),
+    rgb(34 195 214 / 50%),
+    rgb(11 95 88 / 15%)
+  );
+  mix-blend-mode: screen;
+}
+
+[data-theme="dark"] .hero__field span:last-child {
+  background: linear-gradient(90deg, rgb(11 95 88 / 25%), var(--pink));
 }
 
 @keyframes field-y {
@@ -383,7 +511,7 @@ img { display: block; }
   display: flex;
   justify-content: space-between;
   gap: 24px;
-  color: #b7c0cd;
+  color: var(--muted);
   font-family: var(--font-mono-stack);
   font-size: clamp(10px, 0.8vw, 12px);
   letter-spacing: 0.1em;
@@ -422,14 +550,26 @@ img { display: block; }
   max-width: 100%;
   background: linear-gradient(
     90deg,
-    var(--yellow) 0%,
-    var(--orange) 28%,
-    var(--pink) 63%,
-    #a656ff 100%
+    var(--blue) 0%,
+    #0d8f8c 45%,
+    var(--violet) 100%
   );
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
+}
+
+/* The light theme's gradient is tuned dark-on-light; against the dark ink
+   base it needs the brighter end of the same mint/aqua/blue family. */
+[data-theme="dark"] .gradient-word {
+  background: linear-gradient(
+    90deg,
+    var(--yellow) 0%,
+    var(--pink) 55%,
+    #5ec8e6 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
 }
 
 .hero__aside { padding-bottom: clamp(3px, 0.8vw, 12px); }
@@ -437,7 +577,7 @@ img { display: block; }
 .hero__aside p {
   max-width: 330px;
   margin: 0 0 28px;
-  color: #d6dbe3;
+  color: var(--aside-muted);
   font-size: clamp(18px, 1.5vw, 25px);
   line-height: 1.22;
 }
@@ -449,13 +589,14 @@ img { display: block; }
   justify-content: space-between;
   gap: 18px;
   padding: 0 20px;
-  background: white;
-  color: var(--ink);
+  background: var(--chip-bg);
+  color: var(--chip-fg);
   font-weight: 850;
   transition: background 200ms ease, color 200ms ease;
 }
 
-.hero__cta:hover { background: var(--yellow); }
+.hero__cta:hover { background: var(--violet); }
+[data-theme="dark"] .hero__cta:hover { background: var(--yellow); }
 
 /* PAGE ADDITION — tertiary text link under the hero CTA. */
 .hero__link {
@@ -464,7 +605,7 @@ img { display: block; }
   gap: 8px;
   margin-top: 10px;
   padding: 8px 0;
-  color: #cfd5df;
+  color: var(--muted);
   font-family: var(--font-mono-stack);
   font-size: 11px;
   font-weight: 700;
@@ -475,7 +616,8 @@ img { display: block; }
   transition: color 200ms ease;
 }
 
-.hero__link:hover { color: var(--yellow); }
+.hero__link:hover { color: var(--violet); }
+[data-theme="dark"] .hero__link:hover { color: var(--yellow); }
 
 .hero__proofline {
   display: flex;
@@ -483,7 +625,7 @@ img { display: block; }
   gap: 8px 14px;
   margin-top: 10px;
   padding: 7px 0;
-  color: #aeb8c7;
+  color: var(--muted);
   font-family: var(--font-mono-stack);
   font-size: 9px;
   font-weight: 700;
@@ -492,7 +634,8 @@ img { display: block; }
   text-transform: uppercase;
 }
 
-.hero__proofline span:last-child { color: var(--yellow); }
+.hero__proofline span:last-child { color: var(--violet); }
+[data-theme="dark"] .hero__proofline span:last-child { color: var(--yellow); }
 
 .hero__foot {
   display: flex;
@@ -504,7 +647,7 @@ img { display: block; }
 /* PAGE ADDITION — the four places the headline is about, directly under the H1,
    each as its own mark plus the platform name. Same icon-and-name pairing as
    the V4 Digitale Zahnärzte business card. No tile behind the marks: the icons
-   are the reversed artwork, so they sit on the hero itself. */
+   are the standard artwork, so they sit on the light hero itself. */
 .hero__headline-block {
   display: grid;
   gap: clamp(26px, 3.4vh, 44px);
@@ -517,7 +660,7 @@ img { display: block; }
 }
 
 .hero__platforms-label {
-  color: #aeb7c4;
+  color: var(--muted);
   font-family: var(--font-mono-stack);
   font-size: 10px;
   letter-spacing: 0.06em;
@@ -535,7 +678,7 @@ img { display: block; }
   display: flex;
   align-items: center;
   gap: 9px;
-  color: white;
+  color: var(--on-chrome);
   font-family: var(--font-mono-stack);
   font-size: 12px;
   font-weight: 700;
@@ -556,7 +699,7 @@ img { display: block; }
 .hero__services {
   display: flex;
   gap: clamp(18px, 3vw, 46px);
-  color: #aeb7c4;
+  color: var(--muted);
   font-family: var(--font-mono-stack);
   font-size: 10px;
   letter-spacing: 0.06em;
@@ -576,11 +719,13 @@ img { display: block; }
   margin-left: auto;
 }
 
-.section-shell--dark { background: var(--ink); color: white; }
+/* Was the ink shell. On the light page it is the soft mint surface that
+   separates the services and FAQ sections from the paper and white ones. */
+.section-shell--dark { background: var(--surface-tint); color: var(--on-chrome); }
 
 .section-shell--light {
   background:
-    linear-gradient(90deg, rgb(13 24 40 / 4%) 1px, transparent 1px) 0 0 / 120px 120px,
+    linear-gradient(90deg, rgb(8 42 51 / 4%) 1px, transparent 1px) 0 0 / 120px 120px,
     var(--paper);
 }
 
@@ -615,11 +760,11 @@ img { display: block; }
   text-transform: uppercase;
 }
 
-.section-intro h2 span { color: var(--pink); }
+.section-intro h2 span { color: var(--violet); }
+[data-theme="dark"] .section-intro h2 span { color: var(--pink); }
 .section-shell--light .section-intro h2 span { color: var(--violet); }
-/* Reference uses --pink on the yellow shell, which reaches 2.56:1. --violet
-   is the rule the system already applies to its other light shell and
-   reaches 4.50:1 on --yellow. */
+/* --pink (aqua) is too light on the mint shell, so the deep-teal --violet
+   carries the highlighted words there. */
 .section-shell--checkout .section-intro h2 span { color: var(--violet); }
 
 .section-intro__copy p {
@@ -753,7 +898,7 @@ img { display: block; }
   background: rgb(0 0 0 / 13%);
 }
 
-.service-panel--orange .service-step { background: rgb(13 24 40 / 9%); }
+.service-panel--orange .service-step { background: rgb(8 42 51 / 9%); }
 
 .service-step > span {
   padding-top: 3px;
@@ -872,7 +1017,7 @@ img { display: block; }
   bottom: 0;
   left: 40px;
   width: 4px;
-  background: rgb(13 24 40 / 11%);
+  background: rgb(8 42 51 / 11%);
   content: "";
 }
 
@@ -887,7 +1032,7 @@ img { display: block; }
   height: 84px;
   place-items: center;
   background: var(--step-accent, var(--ink));
-  box-shadow: 6px 6px 0 rgb(13 24 40 / 10%);
+  box-shadow: 6px 6px 0 rgb(8 42 51 / 10%);
   color: white;
   font-family: var(--font-display-stack);
   font-size: 34px;
@@ -900,8 +1045,11 @@ img { display: block; }
 .process-step--orange { --step-accent: var(--orange); }
 .process-step--pink { --step-accent: var(--pink); }
 
-/* --orange is the one accent light enough to need ink type on it. */
-.process-step--orange .process-marker { color: var(--ink); }
+/* --orange (coral) and --pink (aqua) are light enough to need ink type on
+   them in both themes: this rail always sits in the paper section, which
+   keeps the same light surface regardless of the page-wide theme. */
+.process-step--orange .process-marker,
+.process-step--pink .process-marker { color: var(--ink); }
 
 /* Two columns for the description and the task list, then the result band
    runs the full width underneath as the row's closing beat. */
@@ -911,7 +1059,7 @@ img { display: block; }
   gap: clamp(22px, 2.4vw, 36px) clamp(22px, 2.6vw, 44px);
   padding: clamp(24px, 2.6vw, 40px);
   background: white;
-  box-shadow: 10px 10px 0 rgb(13 24 40 / 8%);
+  box-shadow: 10px 10px 0 rgb(8 42 51 / 8%);
   transition: transform 300ms var(--ease), box-shadow 300ms var(--ease);
 }
 
@@ -922,7 +1070,7 @@ img { display: block; }
 }
 
 .process-step:hover .process-card {
-  box-shadow: 14px 14px 0 rgb(13 24 40 / 11%);
+  box-shadow: 14px 14px 0 rgb(8 42 51 / 11%);
   transform: translateY(-4px);
 }
 
@@ -1077,7 +1225,7 @@ img { display: block; }
   flex-direction: column;
   padding: clamp(24px, 3vw, 42px);
   background: var(--paper);
-  box-shadow: 8px 8px 0 rgb(13 24 40 / 8%);
+  box-shadow: 8px 8px 0 rgb(8 42 51 / 8%);
 }
 
 /* Reference uses --orange here, which reaches only 1.95:1 on --paper and
@@ -1132,8 +1280,13 @@ img { display: block; }
 
 .faq-item {
   padding: 6px 24px 20px;
-  background: rgb(255 255 255 / 7%);
+  background: var(--surface);
 }
+
+/* The light theme pops each question into a solid white card against the
+   mint shell; the dark theme keeps the original's low-key overlay so the
+   items still read as part of the ink shell rather than as floating cards. */
+[data-theme="dark"] .faq-item { background: rgb(255 255 255 / 7%); }
 
 .faq-question { margin: 0; }
 
@@ -1149,7 +1302,7 @@ img { display: block; }
 .faq-item p {
   max-width: 720px;
   margin: 14px 0 0;
-  color: #cbd2dc;
+  color: var(--muted);
   font-size: 16px;
   line-height: 1.5;
 }
@@ -1216,7 +1369,7 @@ img { display: block; }
   padding: 16px;
   border: 0;
   outline: 0;
-  background: #ebe9e3;
+  background: #e4edeb;
   color: var(--ink);
   font-size: 17px;
 }
@@ -1496,8 +1649,9 @@ footer {
   align-items: center;
   gap: 28px;
   padding: 40px clamp(20px, 5vw, 80px);
-  background: var(--ink);
-  color: white;
+  border-top: 1px solid rgb(8 42 51 / 12%);
+  background: var(--chrome);
+  color: var(--on-chrome);
   font-size: 13px;
 }
 
@@ -1513,7 +1667,7 @@ footer {
   object-fit: contain;
 }
 
-footer p { margin: 0; color: #aab3c0; text-align: center; }
+footer p { margin: 0; color: var(--muted); text-align: center; }
 
 .footer-links {
   display: flex;
@@ -1774,14 +1928,14 @@ footer p { margin: 0; color: #aab3c0; text-align: center; }
   .process-marker {
     width: 66px;
     height: 66px;
-    box-shadow: 5px 5px 0 rgb(13 24 40 / 10%);
+    box-shadow: 5px 5px 0 rgb(8 42 51 / 10%);
     font-size: 27px;
   }
 
   .process-card {
     width: 100%;
     padding: 26px 20px;
-    box-shadow: 8px 8px 0 rgb(13 24 40 / 8%);
+    box-shadow: 8px 8px 0 rgb(8 42 51 / 8%);
   }
 
   .process-card__main { justify-items: center; }
@@ -1939,11 +2093,16 @@ footer p { margin: 0; color: #aab3c0; text-align: center; }
 }
 
 @media (max-width: 420px) {
-  /* Below this the two-brand lockup and the CTA cannot both sit on one line,
-     so the wordmark stacks. */
+  /* Below this the two-brand lockup, the theme toggle and the CTA no longer
+     fit on one line, so the secondary "powered by" mark drops (it stays on
+     desktop, tablet and the footer) and the toggle shrinks. */
   .brand-name { font-size: 14px; line-height: 0.98; white-space: normal; }
 
-  .brand-endorsement img { height: 13px; }
+  .brand-endorsement { display: none; }
+
+  .header-actions { gap: 8px; }
+
+  .theme-toggle { width: 38px; height: 38px; }
 
   .header-cta { padding: 0 12px; font-size: 13px; }
 }
@@ -1984,7 +2143,10 @@ footer p { margin: 0; color: #aab3c0; text-align: center; }
     <span class="brand-name">Digitale <strong>Zahnärzte</strong></span>
     <span class="brand-endorsement">
       <span class="powered">powered by</span>
-      <img src="assets/logo-digital-movement-negative.svg" alt="Digital Movement" width="107" height="23">
+      <span class="logo-swap">
+        <img data-logo="light" src="assets/logo-digital-movement.svg" alt="Digital Movement" width="107" height="23">
+        <img data-logo="dark" src="assets/logo-digital-movement-negative.svg" alt="Digital Movement" width="107" height="23">
+      </span>
     </span>
   </a>
 
@@ -1994,11 +2156,18 @@ footer p { margin: 0; color: #aab3c0; text-align: center; }
     <a href="#fragen">Fragen</a>
   </nav>
 
-  <a class="header-cta" href="#kontakt">
-    <span class="header-cta__long">Erstgespräch anfragen</span>
-    <span class="header-cta__short">Erstgespräch</span>
-    <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="none"><path d="M4 12h15M14 6l6 6-6 6" stroke="currentColor" stroke-width="2"/></svg>
-  </a>
+  <div class="header-actions">
+    <button type="button" class="theme-toggle" data-theme-toggle aria-pressed="false" aria-label="Dunkles Design einschalten">
+      <svg class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="none"><circle cx="12" cy="12" r="4.6" stroke="currentColor" stroke-width="2"/><path d="M12 2.5v3M12 18.5v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2.5 12h3M18.5 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <svg class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.8 6.8 0 0 0 10.5 10.5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+    </button>
+
+    <a class="header-cta" href="#kontakt">
+      <span class="header-cta__long">Erstgespräch anfragen</span>
+      <span class="header-cta__short">Erstgespräch</span>
+      <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="none"><path d="M4 12h15M14 6l6 6-6 6" stroke="currentColor" stroke-width="2"/></svg>
+    </a>
+  </div>
 </header>
 
 <main id="top" tabindex="-1">
@@ -2027,9 +2196,9 @@ footer p { margin: 0; color: #aab3c0; text-align: center; }
             <span class="hero__platforms-label">Mehr Anfragen durch Sichtbarkeit bei</span>
             <span class="hero__platforms-list">
               <span class="hero__platform"><img src="assets/logo-google-g.png" alt="" width="192" height="192"><span>Google</span></span>
-              <span class="hero__platform"><img src="assets/logo-chatgpt-white.svg" alt="" width="180" height="180"><span>ChatGPT</span></span>
+              <span class="hero__platform"><span class="logo-swap"><img data-logo="light" src="assets/logo-chatgpt-ink.svg" alt="" width="180" height="180"><img data-logo="dark" src="assets/logo-chatgpt-white.svg" alt="" width="180" height="180"></span><span>ChatGPT</span></span>
               <span class="hero__platform"><img src="assets/logo-claude-icon.svg" alt="" width="200" height="200"><span>Claude</span></span>
-              <span class="hero__platform hero__platform--perplexity"><img src="assets/logo-perplexity-white.svg" alt="" width="102" height="151"><span>Perplexity</span></span>
+              <span class="hero__platform hero__platform--perplexity"><span class="logo-swap"><img data-logo="light" src="assets/logo-perplexity.svg" alt="" width="102" height="151"><img data-logo="dark" src="assets/logo-perplexity-white.svg" alt="" width="102" height="151"></span><span>Perplexity</span></span>
             </span>
           </div>
         </div>
@@ -2135,7 +2304,7 @@ bei Google</h3>
           <h3 class="service-title">Sichtbarkeit
 in KI-Suchen</h3>
           <div class="platform-strip platform-strip--logos">
-            <span class="platform-logo" title="ChatGPT"><img src="assets/logo-chatgpt.svg" alt="ChatGPT" width="24" height="24"></span>
+            <span class="platform-logo" title="ChatGPT"><img src="assets/logo-chatgpt-ink.svg" alt="ChatGPT" width="24" height="24"></span>
             <span class="platform-logo" title="Claude"><img src="assets/logo-claude.svg" alt="Claude" width="24" height="24"></span>
             <span class="platform-logo" title="Perplexity"><img src="assets/logo-perplexity.svg" alt="Perplexity" width="24" height="24"></span>
             <span class="platform-logo" title="Google AI"><img src="assets/logo-google.webp" alt="Google AI" width="24" height="24"></span>
@@ -2588,7 +2757,10 @@ und Anfragen</h3>
     <span class="brand-name">Digitale <strong>Zahnärzte</strong></span>
     <span class="brand-endorsement">
       <span class="powered">powered by</span>
-      <img src="assets/logo-digital-movement-negative.svg" alt="Digital Movement" width="107" height="23">
+      <span class="logo-swap">
+        <img data-logo="light" src="assets/logo-digital-movement.svg" alt="Digital Movement" width="107" height="23">
+        <img data-logo="dark" src="assets/logo-digital-movement-negative.svg" alt="Digital Movement" width="107" height="23">
+      </span>
     </span>
   </div>
   <p>Raoul Alex Müller · <a href="mailto:alex@digitalmovement.uk">alex@digitalmovement.uk</a></p>
@@ -2613,6 +2785,48 @@ und Anfragen</h3>
   "use strict";
 
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---------- Theme toggle ---------- */
+  (function () {
+    var KEY = "dm-dental-theme";
+    var root = document.documentElement;
+    var toggle = document.querySelector("[data-theme-toggle]");
+
+    function autoTheme() {
+      var h = new Date().getHours();
+      return (h >= 6 && h < 20) ? "light" : "dark";
+    }
+
+    function applyLabel(theme) {
+      if (!toggle) return;
+      toggle.setAttribute("aria-pressed", theme === "dark" ? "true" : "false");
+      toggle.setAttribute("aria-label", theme === "dark" ? "Helles Design einschalten" : "Dunkles Design einschalten");
+    }
+
+    applyLabel(root.getAttribute("data-theme"));
+
+    if (toggle) {
+      toggle.addEventListener("click", function () {
+        var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+        root.setAttribute("data-theme", next);
+        applyLabel(next);
+        try { localStorage.setItem(KEY, next); } catch (e) {}
+      });
+    }
+
+    /* Once the visitor picks a theme by hand it stays put; only re-run the
+       clock while no manual choice has been saved yet. */
+    setInterval(function () {
+      var saved = null;
+      try { saved = localStorage.getItem(KEY); } catch (e) {}
+      if (saved === "light" || saved === "dark") return;
+      var theme = autoTheme();
+      if (root.getAttribute("data-theme") !== theme) {
+        root.setAttribute("data-theme", theme);
+        applyLabel(theme);
+      }
+    }, 5 * 60 * 1000);
+  })();
 
   /* ---------- Scroll reveal ---------- */
   var revealTargets = document.querySelectorAll("[data-reveal]");
