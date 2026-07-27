@@ -21,6 +21,35 @@
 <title>Digital Movement für Zahnarztpraxen | Sichtbarkeit bei Google und in KI-Suchen</title>
 <meta name="description" content="Digital Movement macht die Behandlungen Ihrer Praxis bei Google und in KI-Suchen sichtbar und baut eine Website, die Interessenten zur Anfrage führt. Erstgespräch anfragen.">
 <meta name="dm-lead-endpoint" content="https://leads.digitalmovement.uk/send.php">
+<!-- Fill in once the GA4 property exists (Admin -> Data Streams -> Web -> Measurement ID). Blank = analytics stays off, no broken calls. -->
+<meta name="dm-ga-measurement-id" content="">
+<script>
+/* GA4 loader, gated on the meta tag above so a missing ID is a no-op rather
+   than a broken script tag. Consent Mode v2 defaults to denied: GA still
+   gets cookieless, modelled pings, but no cookie is set and no personal
+   data is stored until a consent banner (not yet built on this page)
+   explicitly grants it. Swap the "denied" defaults once that banner ships. */
+(function () {
+  var id = document.querySelector('meta[name="dm-ga-measurement-id"]').content;
+  if (!id) return;
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  window.gtag = gtag;
+  gtag("consent", "default", {
+    ad_storage: "denied",
+    analytics_storage: "denied",
+    ad_user_data: "denied",
+    ad_personalization: "denied",
+    wait_for_update: 500
+  });
+  gtag("js", new Date());
+  gtag("config", id, { anonymize_ip: true });
+  var s = document.createElement("script");
+  s.async = true;
+  s.src = "https://www.googletagmanager.com/gtag/js?id=" + id;
+  document.head.appendChild(s);
+})();
+</script>
 
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
@@ -3034,6 +3063,11 @@ und Anfragen</h3>
         ? "Ihr E-Mail-Programm hat sich mit der fertigen Anfrage geöffnet. Senden Sie die Nachricht ab, dann melden wir uns mit Terminvorschlägen."
         : "Ihre Anfrage ist eingegangen. Wir melden uns mit Terminvorschlägen für das Erstgespräch.";
       confirmation.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+      // Only counts once the lead actually reached alex@digitalmovement.uk,
+      // not on the mailto fallback (no delivery confirmation there).
+      if (mode === "endpoint" && typeof gtag === "function") {
+        gtag("event", "generate_lead", { form_id: "lead-form" });
+      }
     };
 
     if (endpoint) {
