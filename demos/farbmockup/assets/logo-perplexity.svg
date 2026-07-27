@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 270 270" role="img" aria-labelledby="title">
+  <title id="title">Perplexity</title>
+  <rect width="270" height="270" rx="24" fill="#18181b"/>
+  <g fill="#fff">
+    <path d="M97.1 55.6 128.5 81V55.5h12V81l31.5-25.7v29.2h13.5v90H172v29.6l-31.2-27.5v29.5h-12v-29.5l-31.2 27.5-.3-29.6H83.8v-90h13.5V55.5l-.2.1Zm0 41H101l27.8 20.7V96.6H97.1Zm43.7 0v20.7l27.8-20.7h-27.8Zm-44 11.7v54.3l32-28.1v-26.2h-32Zm44 0v26.2l32 28.1v-54.3h-32Zm-12 40.5-22.6 19.8v17.2l22.6-20v-17Zm12 0v17l22.6 20v-17.2l-22.6-19.8Z"/>
+  </g>
+</svg>
