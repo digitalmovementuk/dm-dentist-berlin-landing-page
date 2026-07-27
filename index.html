@@ -20,7 +20,7 @@
 </script>
 <title>Digital Movement für Zahnarztpraxen | Sichtbarkeit bei Google und in KI-Suchen</title>
 <meta name="description" content="Digital Movement macht die Behandlungen Ihrer Praxis bei Google und in KI-Suchen sichtbar und baut eine Website, die Interessenten zur Anfrage führt. Erstgespräch anfragen.">
-<meta name="dm-lead-endpoint" content="">
+<meta name="dm-lead-endpoint" content="https://leads.digitalmovement.uk/send.php">
 
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
@@ -1347,6 +1347,15 @@ img { display: block; }
 
 .checkout-form label:not(.consent) { display: grid; gap: 8px; }
 
+.hp-field {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
 .field-row {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -2649,6 +2658,13 @@ und Anfragen</h3>
           <strong>Wohin dürfen wir antworten?</strong>
         </div>
 
+        <!-- Honeypot: hidden from people, visible to most bots. Left blank
+             by real visitors, so the backend rejects anything that fills it. -->
+        <label class="hp-field" aria-hidden="true">
+          Firma-Website
+          <input type="text" name="company_website" tabindex="-1" autocomplete="off">
+        </label>
+
         <div class="field-row">
           <label>
             <span>Vorname</span>
@@ -3007,7 +3023,8 @@ und Anfragen</h3>
       email: data.get("email"),
       phone: data.get("phone") || "",
       city: data.get("city") || "",
-      message: data.get("message") || ""
+      message: data.get("message") || "",
+      company_website: data.get("company_website") || ""
     };
 
     var finish = function (mode) {
