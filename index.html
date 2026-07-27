@@ -171,6 +171,9 @@ img { display: block; }
   align-items: center;
   gap: 28px;
   padding: 0 clamp(20px, 3vw, 54px);
+  /* Solid fallback first: browsers without color-mix() still get the dark bar
+     the white type is designed against. */
+  background: rgb(13 24 40 / 90%);
   background: color-mix(in srgb, var(--ink) 90%, transparent);
   color: white;
   backdrop-filter: blur(18px);
@@ -1948,6 +1951,14 @@ footer p { margin: 0; color: #aab3c0; text-align: center; }
 @media (max-width: 380px) {
   .hero__line { font-size: 2.9rem; }
   .checkout-next li { grid-template-columns: 1fr; gap: 2px; }
+}
+
+@media (max-width: 344px) {
+  .brand-name { font-size: 13px; }
+  .brand-endorsement { padding-left: 7px; }
+  .brand-endorsement .powered { display: none; }
+  .brand-endorsement img { height: 11px; }
+  .header-cta { padding: 0 10px; font-size: 12px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
