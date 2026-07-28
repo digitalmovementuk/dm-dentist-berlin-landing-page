@@ -25,10 +25,14 @@
 <meta name="dm-ga-measurement-id" content="G-16ZG8GFH67">
 <script>
 /* GA4 loader, gated on the meta tag above so a missing ID is a no-op rather
-   than a broken script tag. Consent Mode v2 defaults to denied, so nothing is
-   stored until the visitor accepts in the banner at the foot of the page. A
-   previously saved "granted" choice is re-applied here, before the tag loads,
-   so returning visitors are measured from their very first pageview. */
+   than a broken script tag. Consent Mode v2 defaults to denied across both
+   categories, so nothing is stored until the visitor chooses in the banner
+   at the foot of the page. A previously saved choice is re-applied here,
+   before the tag loads, so returning visitors are measured (or not) from
+   their very first pageview. Two categories: "statistik" gates GA itself;
+   "marketing" gates ad_storage/ad_user_data/ad_personalization, which
+   nothing reads yet but will the moment a Google Ads or Meta tag is added —
+   visitors who already answered won't need to be asked again. */
 (function () {
   var id = document.querySelector('meta[name="dm-ga-measurement-id"]').content;
   if (!id) return;
@@ -42,10 +46,28 @@
     ad_personalization: "denied",
     wait_for_update: 500
   });
-  var saved = null;
-  try { saved = localStorage.getItem("dm-dental-consent"); } catch (e) {}
-  if (saved === "granted") {
-    gtag("consent", "update", { analytics_storage: "granted" });
+
+  function parseConsent(raw) {
+    if (!raw) return null;
+    if (raw === "granted") return { statistik: true, marketing: false };
+    if (raw === "denied") return { statistik: false, marketing: false };
+    try {
+      var obj = JSON.parse(raw);
+      if (obj && typeof obj.statistik === "boolean" && typeof obj.marketing === "boolean") return obj;
+    } catch (e) {}
+    return null;
+  }
+
+  var raw = null;
+  try { raw = localStorage.getItem("dm-dental-consent"); } catch (e) {}
+  var saved = parseConsent(raw);
+  if (saved) {
+    gtag("consent", "update", {
+      analytics_storage: saved.statistik ? "granted" : "denied",
+      ad_storage: saved.marketing ? "granted" : "denied",
+      ad_user_data: saved.marketing ? "granted" : "denied",
+      ad_personalization: saved.marketing ? "granted" : "denied"
+    });
   }
   gtag("js", new Date());
   gtag("config", id, { anonymize_ip: true });
@@ -1739,11 +1761,16 @@ img { display: block; }
 .consent-banner__actions {
   display: flex;
   flex: 0 0 auto;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
   gap: 10px;
 }
 
-/* Both choices share size and weight; only the fill differs, so neither
-   option is visually privileged (a DSGVO requirement). */
+/* "Alle ablehnen" and "Alle akzeptieren" share size and weight; only the
+   fill differs, so neither is visually privileged (a DSGVO requirement).
+   "Einstellungen" is deliberately the odd one out — a plain text button —
+   so the two decisive choices stay visually dominant. */
 .consent-btn {
   min-height: 46px;
   padding: 0 22px;
@@ -1762,14 +1789,79 @@ img { display: block; }
   color: var(--chip-fg);
 }
 
+.consent-btn--text {
+  min-height: auto;
+  padding: 0;
+  border: 0;
+  color: var(--violet);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+[data-theme="dark"] .consent-btn--text { color: var(--yellow); }
+
 .consent-btn--ghost:hover { background: rgb(8 42 51 / 8%); }
 [data-theme="dark"] .consent-btn--ghost:hover { background: rgb(255 255 255 / 12%); }
 .consent-btn--solid:hover { border-color: var(--violet); background: var(--violet); color: #fff; }
+.consent-btn--text:hover { color: var(--on-chrome); }
+
+.consent-settings {
+  width: min(100%, 1180px);
+  margin: 16px auto 0;
+  padding-top: 16px;
+  border-top: 1px solid rgb(8 42 51 / 14%);
+}
+
+[data-theme="dark"] .consent-settings { border-top-color: rgb(255 255 255 / 16%); }
+
+.consent-settings[hidden] { display: none; }
+
+.consent-settings__row {
+  display: grid;
+  grid-template-columns: 26px 1fr;
+  align-items: start;
+  gap: 12px;
+  padding: 10px 0;
+}
+
+.consent-settings__row input {
+  width: 26px;
+  height: 26px;
+  margin: 0;
+  accent-color: var(--violet);
+}
+
+.consent-settings__row strong {
+  display: block;
+  color: var(--on-chrome);
+  font-family: var(--font-body-stack);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.consent-settings__row small {
+  display: block;
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+[data-theme="dark"] .consent-settings__row small { color: #cfe4e2; }
+
+.consent-settings__actions {
+  margin-top: 6px;
+  text-align: right;
+}
 
 @media (max-width: 760px) {
   .consent-banner { padding-bottom: calc(16px + env(safe-area-inset-bottom, 0px)); }
   .consent-banner__inner { flex-direction: column; align-items: stretch; gap: 14px; }
-  .consent-btn { flex: 1; padding: 0 12px; }
+  .consent-banner__actions { justify-content: center; }
+  .consent-btn:not(.consent-btn--text) { flex: 1; padding: 0 12px; }
+  .consent-btn--text { flex-basis: 100%; text-align: center; order: 3; }
+  .consent-settings__actions { text-align: stretch; }
+  .consent-settings__actions .consent-btn { width: 100%; }
 }
 
 /* ---------- Footer ---------- */
@@ -2908,6 +3000,7 @@ und Anfragen</h3>
     <a href="https://www.instagram.com/digitalmovement.uk/" target="_blank" rel="noreferrer">Instagram</a>
     <a href="datenschutz.html">Datenschutz</a>
     <a href="impressum.html">Impressum</a>
+    <button type="button" id="cookie-settings-link">Cookie-Einstellungen</button>
   </div>
 </footer>
 
@@ -2919,23 +3012,54 @@ und Anfragen</h3>
   <b><svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="none"><path d="M4 12h15M14 6l6 6-6 6" stroke="currentColor" stroke-width="2"/></svg></b>
 </a>
 
-<!-- Cookie consent (DSGVO/TTDSG). Analytics stays off until "Akzeptieren" is
-     pressed: Consent Mode defaults to denied in <head>, and only this banner
-     ever grants it. Reject and accept carry equal visual weight, as required. -->
+<!-- Cookie consent (DSGVO/TTDSG). Two purposes, chosen separately: Statistik
+     (Google Analytics) and Marketing (ad_storage/ad_user_data/ad_personalization
+     — unused today, ready for Google Ads or a Meta Pixel later). Consent Mode
+     defaults to denied in <head>; only this banner ever grants either. "Alle
+     ablehnen" and "Alle akzeptieren" carry equal visual weight, as required;
+     "Einstellungen" opens per-purpose toggles for a granular choice. -->
 <div class="consent-banner" id="consent-banner" role="dialog" aria-modal="false"
      aria-labelledby="consent-title" aria-describedby="consent-text" hidden>
   <div class="consent-banner__inner">
     <div class="consent-banner__copy">
-      <strong id="consent-title">Cookies für Statistik</strong>
+      <strong id="consent-title">Cookies &amp; Einwilligung</strong>
       <p id="consent-text">
-        Wir nutzen Google Analytics, um zu verstehen, wie diese Seite genutzt wird.
-        Das ist freiwillig; ohne Ihre Zustimmung werden keine Statistik-Cookies gesetzt.
+        Wir nutzen Cookies für Statistik (Google Analytics) und, nur mit Ihrer
+        Zustimmung, für Marketing. Beides ist freiwillig und einzeln wählbar.
         Mehr dazu im <a href="datenschutz.html">Datenschutzhinweis</a>.
       </p>
     </div>
     <div class="consent-banner__actions">
-      <button type="button" class="consent-btn consent-btn--ghost" data-consent="denied">Ablehnen</button>
-      <button type="button" class="consent-btn consent-btn--solid" data-consent="granted">Akzeptieren</button>
+      <button type="button" class="consent-btn consent-btn--ghost" data-consent-action="reject-all">Alle ablehnen</button>
+      <button type="button" class="consent-btn consent-btn--text" data-consent-action="toggle-settings" aria-expanded="false" aria-controls="consent-settings">Einstellungen</button>
+      <button type="button" class="consent-btn consent-btn--solid" data-consent-action="accept-all">Alle akzeptieren</button>
+    </div>
+  </div>
+
+  <div class="consent-settings" id="consent-settings" hidden>
+    <label class="consent-settings__row">
+      <input type="checkbox" checked disabled>
+      <span>
+        <strong>Notwendig</strong>
+        <small>Speichert Ihre Cookie-Auswahl. Kann nicht deaktiviert werden.</small>
+      </span>
+    </label>
+    <label class="consent-settings__row">
+      <input type="checkbox" data-consent-category="statistik">
+      <span>
+        <strong>Statistik</strong>
+        <small>Google Analytics — hilft uns zu verstehen, wie die Seite genutzt wird.</small>
+      </span>
+    </label>
+    <label class="consent-settings__row">
+      <input type="checkbox" data-consent-category="marketing">
+      <span>
+        <strong>Marketing</strong>
+        <small>Für Anzeigen, z. B. Google Ads. Aktuell ohne Wirkung, bis diese eingerichtet sind.</small>
+      </span>
+    </label>
+    <div class="consent-settings__actions">
+      <button type="button" class="consent-btn consent-btn--solid" data-consent-action="save-selection">Auswahl speichern</button>
     </div>
   </div>
 </div>
@@ -2950,25 +3074,98 @@ und Anfragen</h3>
   (function () {
     var KEY = "dm-dental-consent";
     var banner = document.getElementById("consent-banner");
+    var settingsPanel = document.getElementById("consent-settings");
+    var settingsToggle = banner ? banner.querySelector('[data-consent-action="toggle-settings"]') : null;
+    var statistikBox = document.querySelector('[data-consent-category="statistik"]');
+    var marketingBox = document.querySelector('[data-consent-category="marketing"]');
+    var footerLink = document.getElementById("cookie-settings-link");
     if (!banner) return;
 
-    var saved = null;
-    try { saved = localStorage.getItem(KEY); } catch (e) {}
+    function parseConsent(raw) {
+      if (!raw) return null;
+      if (raw === "granted") return { statistik: true, marketing: false };
+      if (raw === "denied") return { statistik: false, marketing: false };
+      try {
+        var obj = JSON.parse(raw);
+        if (obj && typeof obj.statistik === "boolean" && typeof obj.marketing === "boolean") return obj;
+      } catch (e) {}
+      return null;
+    }
+
+    function readSaved() {
+      var raw = null;
+      try { raw = localStorage.getItem(KEY); } catch (e) {}
+      return parseConsent(raw);
+    }
+
+    function apply(state) {
+      try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {}
+      if (typeof gtag === "function") {
+        gtag("consent", "update", {
+          analytics_storage: state.statistik ? "granted" : "denied",
+          ad_storage: state.marketing ? "granted" : "denied",
+          ad_user_data: state.marketing ? "granted" : "denied",
+          ad_personalization: state.marketing ? "granted" : "denied"
+        });
+      }
+    }
+
+    function setPanelCheckboxes(state) {
+      if (statistikBox) statistikBox.checked = !!state.statistik;
+      if (marketingBox) marketingBox.checked = !!state.marketing;
+    }
+
+    function closeSettings() {
+      if (!settingsPanel) return;
+      settingsPanel.hidden = true;
+      if (settingsToggle) settingsToggle.setAttribute("aria-expanded", "false");
+    }
 
     // Only ask visitors who have not answered yet. The head script has
-    // already re-applied a saved "granted" choice by this point.
-    if (saved !== "granted" && saved !== "denied") banner.hidden = false;
+    // already re-applied a saved choice by this point.
+    var saved = readSaved();
+    if (!saved) banner.hidden = false;
+    setPanelCheckboxes(saved || { statistik: false, marketing: false });
 
     banner.addEventListener("click", function (event) {
-      var btn = event.target.closest("[data-consent]");
+      var btn = event.target.closest("[data-consent-action]");
       if (!btn) return;
-      var choice = btn.getAttribute("data-consent");
-      try { localStorage.setItem(KEY, choice); } catch (e) {}
-      if (choice === "granted" && typeof gtag === "function") {
-        gtag("consent", "update", { analytics_storage: "granted" });
+      var action = btn.getAttribute("data-consent-action");
+
+      if (action === "reject-all") {
+        apply({ statistik: false, marketing: false });
+        closeSettings();
+        banner.hidden = true;
+      } else if (action === "accept-all") {
+        apply({ statistik: true, marketing: true });
+        closeSettings();
+        banner.hidden = true;
+      } else if (action === "toggle-settings") {
+        var willOpen = settingsPanel.hidden;
+        setPanelCheckboxes(readSaved() || { statistik: false, marketing: false });
+        settingsPanel.hidden = !willOpen;
+        settingsToggle.setAttribute("aria-expanded", willOpen ? "true" : "false");
+      } else if (action === "save-selection") {
+        apply({
+          statistik: !!(statistikBox && statistikBox.checked),
+          marketing: !!(marketingBox && marketingBox.checked)
+        });
+        closeSettings();
+        banner.hidden = true;
       }
-      banner.hidden = true;
     });
+
+    // Lets a visitor who already answered come back and change their mind —
+    // required in practice, not just at first visit.
+    if (footerLink) {
+      footerLink.addEventListener("click", function () {
+        setPanelCheckboxes(readSaved() || { statistik: false, marketing: false });
+        banner.hidden = false;
+        settingsPanel.hidden = false;
+        if (settingsToggle) settingsToggle.setAttribute("aria-expanded", "true");
+        banner.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "end" });
+      });
+    }
   })();
 
   /* ---------- Theme toggle ---------- */
