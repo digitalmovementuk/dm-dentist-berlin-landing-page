@@ -1717,6 +1717,18 @@ img { display: block; }
   border-top: 1px solid rgb(8 42 51 / 14%);
   background: var(--surface);
   box-shadow: 0 -12px 40px rgb(8 42 51 / 12%);
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 320ms var(--ease), transform 320ms var(--ease);
+}
+
+/* Arrives a beat after the hero settles rather than competing with it for
+   the first glance — a genuine attention-timing improvement, not a choice
+   asymmetry: both buttons below stay identical in size and weight. */
+.consent-banner.is-visible { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .consent-banner { transition: none; }
 }
 
 [data-theme="dark"] .consent-banner {
@@ -3024,9 +3036,9 @@ und Anfragen</h3>
     <div class="consent-banner__copy">
       <strong id="consent-title">Cookies &amp; Einwilligung</strong>
       <p id="consent-text">
-        Wir nutzen Cookies für Statistik (Google Analytics) und, nur mit Ihrer
-        Zustimmung, für Marketing. Beides ist freiwillig und einzeln wählbar.
-        Mehr dazu im <a href="datenschutz.html">Datenschutzhinweis</a>.
+        Wir nutzen Google Analytics, um zu verstehen, wie diese Seite ankommt.
+        Freiwillig, einzeln wählbar, jederzeit in der Fußzeile änderbar —
+        Details im <a href="datenschutz.html">Datenschutzhinweis</a>.
       </p>
     </div>
     <div class="consent-banner__actions">
@@ -3121,10 +3133,23 @@ und Anfragen</h3>
       if (settingsToggle) settingsToggle.setAttribute("aria-expanded", "false");
     }
 
+    // Fades/slides in rather than snapping into place. Purely about not
+    // stepping on the hero's first impression — the choice itself (button
+    // size, order, wording) is untouched by this.
+    function showBanner() {
+      banner.hidden = false;
+      requestAnimationFrame(function () { banner.classList.add("is-visible"); });
+    }
+    function hideBanner() {
+      banner.classList.remove("is-visible");
+      window.setTimeout(function () { banner.hidden = true; }, reduce ? 0 : 260);
+    }
+
     // Only ask visitors who have not answered yet. The head script has
-    // already re-applied a saved choice by this point.
+    // already re-applied a saved choice by this point. A short delay lets
+    // the hero register before anything asks for a decision.
     var saved = readSaved();
-    if (!saved) banner.hidden = false;
+    if (!saved) window.setTimeout(showBanner, 1200);
     setPanelCheckboxes(saved || { statistik: false, marketing: false });
 
     banner.addEventListener("click", function (event) {
@@ -3135,11 +3160,11 @@ und Anfragen</h3>
       if (action === "reject-all") {
         apply({ statistik: false, marketing: false });
         closeSettings();
-        banner.hidden = true;
+        hideBanner();
       } else if (action === "accept-all") {
         apply({ statistik: true, marketing: true });
         closeSettings();
-        banner.hidden = true;
+        hideBanner();
       } else if (action === "toggle-settings") {
         var willOpen = settingsPanel.hidden;
         setPanelCheckboxes(readSaved() || { statistik: false, marketing: false });
@@ -3151,16 +3176,17 @@ und Anfragen</h3>
           marketing: !!(marketingBox && marketingBox.checked)
         });
         closeSettings();
-        banner.hidden = true;
+        hideBanner();
       }
     });
 
     // Lets a visitor who already answered come back and change their mind —
-    // required in practice, not just at first visit.
+    // required in practice, not just at first visit. Deliberate re-open,
+    // so it shows immediately rather than on the first-visit delay.
     if (footerLink) {
       footerLink.addEventListener("click", function () {
         setPanelCheckboxes(readSaved() || { statistik: false, marketing: false });
-        banner.hidden = false;
+        showBanner();
         settingsPanel.hidden = false;
         if (settingsToggle) settingsToggle.setAttribute("aria-expanded", "true");
         banner.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "end" });
