@@ -41,4 +41,34 @@
   const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}}),{threshold:.08,rootMargin:'0px 0px -30px'});
   document.querySelectorAll('.reveal').forEach(element=>observer.observe(element));
   update();
+
+  /* Theme toggle — same localStorage key as the homepage, so a visitor's
+     manual choice follows them across the homepage and the legal pages. */
+  (()=>{
+    const KEY='dm-dental-theme';
+    const root=document.documentElement;
+    const themeToggle=document.querySelector('[data-theme-toggle]');
+    const autoTheme=()=>{const h=new Date().getHours();return(h>=6&&h<20)?'light':'dark'};
+    const applyLabel=theme=>{
+      if(!themeToggle)return;
+      themeToggle.setAttribute('aria-pressed',theme==='dark'?'true':'false');
+      themeToggle.setAttribute('aria-label',theme==='dark'?'Helles Design einschalten':'Dunkles Design einschalten');
+    };
+    applyLabel(root.getAttribute('data-theme'));
+    if(themeToggle){
+      themeToggle.addEventListener('click',()=>{
+        const next=root.getAttribute('data-theme')==='dark'?'light':'dark';
+        root.setAttribute('data-theme',next);
+        applyLabel(next);
+        try{localStorage.setItem(KEY,next)}catch(e){}
+      });
+    }
+    setInterval(()=>{
+      let saved=null;
+      try{saved=localStorage.getItem(KEY)}catch(e){}
+      if(saved==='light'||saved==='dark')return;
+      const theme=autoTheme();
+      if(root.getAttribute('data-theme')!==theme){root.setAttribute('data-theme',theme);applyLabel(theme)}
+    },5*60*1000);
+  })();
 })();

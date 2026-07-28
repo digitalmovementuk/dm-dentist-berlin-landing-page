@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /demos/
 
 Sitemap: https://xn--digitalezahnrzte-6nb.de/sitemap.xml
