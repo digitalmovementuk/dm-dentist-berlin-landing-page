@@ -2573,7 +2573,11 @@ footer p { margin: 0; color: var(--muted); text-align: center; }
 
           <a href="#leistungen" class="hero__link">Leistungen ansehen</a>
 
-          <a class="hero__proofline" href="https://success.digitalmovement.uk/" target="_blank" rel="noreferrer" aria-label="Erfolgsgeschichten und Google-Bewertungen von Digital Movement ansehen">
+          <!-- The accessible name must start with the visible text verbatim (WCAG 2.5.3
+               Label in Name), so voice-control users can activate the link by saying what
+               they see. The extra context follows the dash. Do not add a further <span>
+               here: dark-theme rules target span:last-child. -->
+          <a class="hero__proofline" href="https://success.digitalmovement.uk/" target="_blank" rel="noreferrer" aria-label="Seit 2018 300+ Kunden 5,0 ★ · 102 Reviews – Erfolgsgeschichten und Google-Bewertungen von Digital Movement ansehen">
             <span>Seit 2018</span>
             <span>300+ Kunden</span>
             <span>5,0 ★ · 102 Reviews</span>
