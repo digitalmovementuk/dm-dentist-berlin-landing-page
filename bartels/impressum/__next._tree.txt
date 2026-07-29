@@ -1,0 +1,10 @@
+:HL["/bartels/_next/static/chunks/2wxl91eikxqcg.css","style"]
+:HL["/bartels/_next/static/media/2fe89d53234c61d4-s.p.1u30mmyq6lnsd.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/bartels/_next/static/media/5307092570128b5a-s.p.16191ingcc7md.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/bartels/_next/static/media/68757d6cddeff913-s.p.1i-sca43-qwng.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/bartels/_next/static/media/99e609270109b47d-s.p.40sczeszzbjw1.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/bartels/_next/static/media/b67966e0b83b2cd0-s.p.0fuf3937kiol3.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/bartels/_next/static/media/c7f47671e39f7787-s.p.0klc_mi0-5f4_.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/bartels/_next/static/media/effe91970fc4db64-s.p.0oace-s_gkfks.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/bartels/_next/static/media/f06bf9da926bae75-s.p.2874ccu1_u7jf.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"impressum","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"Y2f580PB7cK2SQJYIXYu0"}
