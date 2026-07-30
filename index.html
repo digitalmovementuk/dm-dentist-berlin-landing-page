@@ -647,13 +647,17 @@ html[data-version="einfach"] #einfach-wrap { display: block; }
   text-transform: uppercase;
 }
 
+/* Two pillars of near-equal height (headline block left, form card right),
+   centred against each other. The old align-items:end was tuned for a short
+   aside (one paragraph + one button); with the full form it dumped all the
+   free space above the headline and pushed it below the fold. */
 .hero__content {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(230px, 23vw);
-  align-items: end;
-  gap: clamp(30px, 6vw, 100px);
+  grid-template-columns: minmax(0, 1fr) minmax(300px, min(25vw, 420px));
+  align-items: center;
+  gap: clamp(30px, 5vw, 84px);
   margin: auto 0;
-  padding: clamp(34px, 6vh, 78px) 0;
+  padding: clamp(24px, 4vh, 56px) 0;
 }
 
 .hero__headline { margin: 0; }
@@ -701,43 +705,12 @@ html[data-version="einfach"] #einfach-wrap { display: block; }
   -webkit-background-clip: text;
 }
 
-.hero__aside { padding-bottom: clamp(3px, 0.8vw, 12px); }
+.hero__aside { min-width: 0; }
 
-.hero__aside p {
-  max-width: 330px;
-  margin: 0 0 28px;
-  color: var(--aside-muted);
-  font-size: clamp(18px, 1.5vw, 25px);
-  line-height: 1.22;
-}
-
-/* PAGE ADDITION — the full contact form embedded directly in the hero
-   (two-pillar hero pattern), sized for the narrow hero__aside column
-   rather than the wide bottom checkout layout it shares styling with. */
-.hero-form {
-  width: 100%;
-  max-width: 330px;
-  padding: 20px;
-  gap: 14px;
-  box-shadow: 0 20px 50px rgb(8 42 51 / 12%);
-}
-.hero-form .checkout-form__head,
-.hero-form .receipt-terms { display: none; }
-.hero-form input:not([type="checkbox"]),
-.hero-form textarea { min-height: 50px; font-size: 16px; }
-.hero-form .checkout-submit { min-height: 54px; font-size: 15px; }
-.hero-form .consent span { font-size: 12px; line-height: 1.4; }
-
-.hero-form__done {
-  max-width: 330px;
-  margin: 0 0 10px;
-  padding: 16px 18px;
-  background: var(--chip-bg);
-  color: var(--chip-fg);
-  font-weight: 700;
-  font-size: 15px;
-  line-height: 1.4;
-}
+/* PAGE ADDITION — the hero form card's styles live directly AFTER the shared
+   .checkout-form base further down. Same specificity as the base, so the
+   variant must come later in source order to win the cascade (the earlier
+   placement here silently lost every sizing override). */
 
 .hero__cta {
   display: flex;
@@ -760,7 +733,8 @@ html[data-version="einfach"] #einfach-wrap { display: block; }
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  margin-top: 10px;
+  /* Clears the form card's 10px offset shadow below it. */
+  margin-top: 20px;
   padding: 8px 0;
   color: var(--muted);
   font-family: var(--font-mono-stack);
@@ -807,7 +781,19 @@ html[data-version="einfach"] #einfach-wrap { display: block; }
    are the standard artwork, so they sit on the light hero itself. */
 .hero__headline-block {
   display: grid;
-  gap: clamp(26px, 3.4vh, 44px);
+  gap: clamp(20px, 3vh, 36px);
+}
+
+/* PAGE ADDITION — the lead paragraph sits under the H1 (left pillar), not in
+   the form column: the classic lead-gen hero order (headline, support copy,
+   trust logos | form), and it keeps the form column short enough that the
+   whole hero clears a 1366×768 fold. */
+.hero__lead {
+  max-width: 46ch;
+  margin: 0;
+  color: var(--aside-muted);
+  font-size: clamp(17px, 1.35vw, 21px);
+  line-height: 1.45;
 }
 
 .hero__platforms {
@@ -1643,6 +1629,73 @@ html[data-version="einfach"] #einfach-wrap { display: block; }
 .checkout-submit:hover { background: var(--violet); }
 .checkout-submit:disabled { cursor: wait; opacity: 0.65; }
 
+/* PAGE ADDITION — the hero's two-pillar form card. Variant of .checkout-form,
+   deliberately placed AFTER the shared base: equal specificity, so only
+   source order lets the compact sizing win. The card speaks the hero's own
+   language — the same violet→pink→blue rule as .hero::after runs along its
+   top edge, and the offset shadow in --pink matches .checkout-receipt and
+   .confirmation (no soft SaaS drop-shadow; the site's shadows are hard).
+   The card stays white in both themes (forms stay light site-wide), so its
+   text is pinned to --ink rather than inheriting the hero's --on-chrome,
+   which is white in dark mode. */
+.hero-form {
+  position: relative;
+  width: 100%;
+  padding: 26px 20px 20px;
+  gap: 12px;
+  box-shadow: 10px 10px 0 var(--pink);
+  color: var(--ink);
+  text-align: left;
+}
+
+.hero-form::before,
+.hero-form__done::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 6px;
+  background: linear-gradient(90deg, var(--violet), var(--pink), var(--blue));
+  content: "";
+}
+
+.hero-form__head {
+  margin: 0;
+  color: var(--violet);
+  font-family: var(--font-mono-stack);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.hero-form label:not(.consent) { gap: 6px; }
+
+.hero-form input:not([type="checkbox"]) { min-height: 46px; font-size: 16px; }
+
+.hero-form .consent { margin-top: 0; }
+
+.hero-form .checkout-submit { min-height: 52px; margin-top: 2px; font-size: 15px; }
+
+/* Post-submit confirmation in the same card language as the form it
+   replaces (chip colours: ink card in light theme, white card in dark). */
+.hero-form__done {
+  position: relative;
+  margin: 0;
+  padding: 24px 20px 20px;
+  background: var(--chip-bg);
+  box-shadow: 10px 10px 0 var(--pink);
+  color: var(--chip-fg);
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+/* White card inside a dark hero: the dark theme's base focus ring (--pink)
+   would sit on white here, so use the alternate ring — same handling as the
+   checkout section gets in dark mode. */
+[data-theme="dark"] .hero-form :focus-visible { outline-color: var(--focus-alt); }
+
 .checkout-receipt {
   background: var(--ink);
   box-shadow: 18px 18px 0 var(--pink);
@@ -2059,6 +2112,10 @@ footer p { margin: 0; color: var(--muted); text-align: center; }
   animation: aside-in 720ms var(--ease) 500ms both;
 }
 
+/* The lead paragraph used to ride the aside's entrance; in the headline
+   column it gets the same fade-up beat, timed after the H1 lines land. */
+.hero__lead { animation: fade-up 700ms var(--ease) 380ms both; }
+
 @keyframes aside-in {
   from { opacity: 0; transform: translateX(30px); }
   to { opacity: 1; transform: none; }
@@ -2150,12 +2207,16 @@ footer p { margin: 0; color: var(--muted); text-align: center; }
 
   .hero__aside { display: grid; justify-items: center; padding: 0; }
 
-  .hero__aside p { max-width: 310px; margin-bottom: 22px; font-size: 18px; }
+  .hero__lead { max-width: 340px; font-size: 17px; }
 
   .hero__cta { width: min(100%, 300px); }
 
   .hero-form,
-  .hero-form__done { width: 100%; max-width: 400px; }
+  .hero-form__done {
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 8px 8px 0 var(--pink);
+  }
 
   .hero__proofline { justify-content: center; margin-top: 14px; text-align: center; }
 
@@ -2665,6 +2726,8 @@ footer p { margin: 0; color: var(--muted); text-align: center; }
             <div class="hero__line"><span style="--line-delay:220ms">UND KI.</span></div>
           </h1>
 
+          <p class="hero__lead">Zahnarzt-Marketing aus einer Hand: mehr Anfragen für die Behandlungen, mit denen Ihre Praxis wachsen soll, und eine Website, die Interessenten dorthin führt.</p>
+
           <div class="hero__platforms">
             <span class="hero__platforms-label">Mehr Anfragen durch Sichtbarkeit bei</span>
             <span class="hero__platforms-list">
@@ -2677,9 +2740,9 @@ footer p { margin: 0; color: var(--muted); text-align: center; }
         </div>
 
         <div class="hero__aside">
-          <p>Zahnarzt-Marketing aus einer Hand: mehr Anfragen für die Behandlungen, mit denen Ihre Praxis wachsen soll, und eine Website, die Interessenten dorthin führt.</p>
-
           <form class="checkout-form hero-form" id="hero-lead-form" novalidate>
+            <p class="hero-form__head">Unverbindliches Erstgespräch</p>
+
             <label class="hp-field" aria-hidden="true">
               Firma-Website
               <input type="text" name="company_website" tabindex="-1" autocomplete="off">
