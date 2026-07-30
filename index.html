@@ -4,18 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <script>
-/* Runs before first paint so there is no light/dark flash. Order: a saved
-   manual choice always wins; otherwise the theme follows local clock time
-   as a stand-in for sunrise/sunset (06:00–19:59 light, 20:00–05:59 dark). */
+/* Runs before first paint so there is no light/dark flash. A saved manual
+   choice always wins; otherwise the page always starts in light theme. */
 (function () {
   var KEY = "dm-dental-theme";
-  function autoTheme() {
-    var h = new Date().getHours();
-    return (h >= 6 && h < 20) ? "light" : "dark";
-  }
   var saved = null;
   try { saved = localStorage.getItem(KEY); } catch (e) {}
-  document.documentElement.setAttribute("data-theme", saved === "light" || saved === "dark" ? saved : autoTheme());
+  document.documentElement.setAttribute("data-theme", saved === "dark" ? "dark" : "light");
 })();
 </script>
 <title>Zahnarzt Marketing: SEO, KI-Suche, Website | Digitale Zahnärzte</title>
@@ -2555,8 +2550,8 @@ footer p { margin: 0; color: var(--muted); text-align: center; }
 
   <div class="header-actions">
     <a class="version-link" href="/demos/low-cognitive-load/">
-      <span class="version-link__long">Low-Cognitive-Load</span>
-      <span class="version-link__short">LCL</span>
+      <span class="version-link__long">Einfache Seite</span>
+      <span class="version-link__short">Einfach</span>
     </a>
 
     <button type="button" class="theme-toggle" data-theme-toggle aria-pressed="false" aria-label="Dunkles Design einschalten">
@@ -3090,8 +3085,9 @@ und Anfragen</h3>
 
         <div class="field-row">
           <label>
-            <span>Telefon <b>optional</b></span>
-            <input name="phone" type="tel" autocomplete="tel" placeholder="+49 …">
+            <span>Telefon</span>
+            <input name="phone" type="tel" autocomplete="tel" required aria-describedby="err-phone" placeholder="+49 …">
+            <span class="field-error" id="err-phone" hidden></span>
           </label>
           <label>
             <span>Ort <b>optional</b></span>
@@ -3372,11 +3368,6 @@ und Anfragen</h3>
     var root = document.documentElement;
     var toggle = document.querySelector("[data-theme-toggle]");
 
-    function autoTheme() {
-      var h = new Date().getHours();
-      return (h >= 6 && h < 20) ? "light" : "dark";
-    }
-
     function applyLabel(theme) {
       if (!toggle) return;
       toggle.setAttribute("aria-pressed", theme === "dark" ? "true" : "false");
@@ -3393,19 +3384,6 @@ und Anfragen</h3>
         try { localStorage.setItem(KEY, next); } catch (e) {}
       });
     }
-
-    /* Once the visitor picks a theme by hand it stays put; only re-run the
-       clock while no manual choice has been saved yet. */
-    setInterval(function () {
-      var saved = null;
-      try { saved = localStorage.getItem(KEY); } catch (e) {}
-      if (saved === "light" || saved === "dark") return;
-      var theme = autoTheme();
-      if (root.getAttribute("data-theme") !== theme) {
-        root.setAttribute("data-theme", theme);
-        applyLabel(theme);
-      }
-    }, 5 * 60 * 1000);
   })();
 
   /* ---------- Scroll reveal ---------- */
@@ -3511,6 +3489,7 @@ und Anfragen</h3>
     lastName: "Bitte tragen Sie Ihren Nachnamen ein.",
     practice: "Bitte tragen Sie den Namen Ihrer Praxis ein.",
     email: "Bitte tragen Sie Ihre E-Mail-Adresse ein.",
+    phone: "Bitte tragen Sie Ihre Telefonnummer ein.",
     consent: "Bitte bestätigen Sie den Datenschutzhinweis."
   };
 
@@ -3544,7 +3523,7 @@ und Anfragen</h3>
 
   function validate(data) {
     var problems = [];
-    ["firstName", "lastName", "practice", "email"].forEach(function (name) {
+    ["firstName", "lastName", "practice", "email", "phone"].forEach(function (name) {
       if (!String(data.get(name) || "").trim()) problems.push([name, fieldLabels[name]]);
     });
     var email = String(data.get("email") || "").trim();

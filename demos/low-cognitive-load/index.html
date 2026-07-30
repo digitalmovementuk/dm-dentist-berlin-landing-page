@@ -7,24 +7,21 @@
 <script>
 /* Gleicher Mechanismus wie auf der Hauptversion (selber localStorage-Key),
    damit die Theme-Wahl seitenübergreifend erhalten bleibt. Läuft vor dem
-   ersten Rendern, damit es nicht kurz hell aufblitzt. */
+   ersten Rendern. Eine gespeicherte manuelle Wahl gewinnt immer; sonst
+   startet die Seite immer im Hellmodus. */
 (function () {
   var KEY = "dm-dental-theme";
-  function autoTheme() {
-    var h = new Date().getHours();
-    return (h >= 6 && h < 20) ? "light" : "dark";
-  }
   var saved = null;
   try { saved = localStorage.getItem(KEY); } catch (e) {}
-  document.documentElement.setAttribute("data-theme", saved === "light" || saved === "dark" ? saved : autoTheme());
+  document.documentElement.setAttribute("data-theme", saved === "dark" ? "dark" : "light");
 })();
 </script>
 <title>Digitale Zahnärzte — SEO, KI-Sichtbarkeit & Webdesign für Zahnarztpraxen</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23F1F6F5'/%3E%3Crect x='2' y='2' width='60' height='60' rx='8' fill='none' stroke='%230E6C93' stroke-width='2'/%3E%3Ctext x='32' y='42' font-family='Georgia,Cambria,serif' font-size='28' font-weight='700' fill='%23082A33' text-anchor='middle'%3EDZ%3C/text%3E%3C/svg%3E">
-<meta name="description" content="SEO, KI-Sichtbarkeit und Webdesign für Zahnarztpraxen. Kostenloses Erstgespräch mit Gründer Raoul Müller – direkt, ohne Callcenter.">
+<meta name="description" content="SEO, KI-Sichtbarkeit und Webdesign für Zahnarztpraxen. Unverbindliches Erstgespräch mit Gründer Raoul Müller.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Digitale Zahnärzte — Der Behandlungsplan für Ihre Praxis-Sichtbarkeit">
-<meta property="og:description" content="SEO, KI-Sichtbarkeit und Webdesign für Zahnarztpraxen. Kostenloses Erstgespräch mit Gründer Raoul Müller – direkt, ohne Callcenter.">
+<meta property="og:description" content="SEO, KI-Sichtbarkeit und Webdesign für Zahnarztpraxen. Unverbindliches Erstgespräch mit Gründer Raoul Müller.">
 <style>
 /* ============================================================
    DER BEHANDLUNGSPLAN — Produktion
@@ -332,7 +329,7 @@ label{
   margin-bottom:6px;
 }
 
-input{
+input,textarea{
   appearance:none;
   -webkit-appearance:none;
   display:block;
@@ -347,7 +344,12 @@ input{
   border:1px solid var(--rand);
   border-radius:6px;
 }
-input:focus-visible{
+textarea{
+  height:auto;
+  padding:12px 14px;
+  resize:vertical;
+}
+input:focus-visible,textarea:focus-visible{
   border-color:var(--blau);
   outline:2px solid var(--blau);
   outline-offset:2px;
@@ -584,7 +586,7 @@ details > p{padding:0 0 16px 28px;margin:0}
     <span class="label">Version:</span>
     <a href="/">Vollständiges Design</a>
     <span aria-hidden="true">·</span>
-    <strong>Low-Cognitive-Load</strong>
+    <strong>Einfache Seite</strong>
   </div>
   <button type="button" class="dienstleiste__theme" data-theme-toggle aria-pressed="false" aria-label="Dunkles Design einschalten">
     <svg class="theme-icon theme-icon--sun" aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" fill="none"><circle cx="12" cy="12" r="4.6" stroke="currentColor" stroke-width="2"/><path d="M12 2.5v3M12 18.5v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2.5 12h3M18.5 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
@@ -625,20 +627,32 @@ details > p{padding:0 0 16px 28px;margin:0}
       </div>
 
       <form class="karte" id="erstgespraech" novalidate onsubmit="event.preventDefault()">
-        <h2 class="karte-titel">Kostenloses Erstgespräch</h2>
-        <p class="karte-intro">15 Minuten am Telefon. Sie sprechen direkt mit Raoul <span class="nb">Müller</span> – nicht mit einem Callcenter.</p>
+        <h2 class="karte-titel">Unverbindliches Erstgespräch</h2>
+        <p class="karte-intro">Sie sprechen direkt mit Raoul <span class="nb">Müller</span>.</p>
 
         <div class="feld">
           <label for="name-1">Name</label>
           <input id="name-1" name="name" type="text" autocomplete="name" autocapitalize="words" spellcheck="false" required>
         </div>
         <div class="feld">
+          <label for="praxis-1">Praxis</label>
+          <input id="praxis-1" name="praxis" type="text" autocomplete="organization" required>
+        </div>
+        <div class="feld">
           <label for="mail-1">E-Mail</label>
           <input id="mail-1" name="email" type="email" autocomplete="email" inputmode="email" autocapitalize="off" autocorrect="off" spellcheck="false" required>
         </div>
         <div class="feld">
-          <label for="tel-1">Telefon (optional)</label>
-          <input id="tel-1" name="tel" type="tel" autocomplete="tel" inputmode="tel">
+          <label for="tel-1">Telefon</label>
+          <input id="tel-1" name="tel" type="tel" autocomplete="tel" inputmode="tel" required>
+        </div>
+        <div class="feld">
+          <label for="ort-1">Ort (optional)</label>
+          <input id="ort-1" name="ort" type="text" autocomplete="address-level2">
+        </div>
+        <div class="feld">
+          <label for="nachricht-1">Worum geht es? (optional)</label>
+          <textarea id="nachricht-1" name="nachricht" rows="3"></textarea>
         </div>
 
         <button class="knopf" type="submit">Erstgespräch anfragen</button>
@@ -680,45 +694,8 @@ details > p{padding:0 0 16px 28px;margin:0}
   <div class="huelle">
     <h2>Preise</h2>
     <div class="mass">
-
-      <div class="block">
-        <div class="preis-kopf">
-          <h3>SEO Basic</h3>
-          <span class="preis">499 €/Monat</span>
-        </div>
-        <p>Der Einstieg: Grundlagen in Ordnung bringen, bevor Größeres ansteht.</p>
-        <p class="umfang">Enthält: Eine neue Behandlungsseite pro Monat · Google-Unternehmensprofil gepflegt · Monatsbericht</p>
-      </div>
-
-      <div class="block">
-        <div class="preis-kopf">
-          <h3>SEO Standard</h3>
-          <span class="preis">2.499 €/Monat</span>
-        </div>
-        <p>Das Arbeitspaket für Praxen, die gezielt einzelne Behandlungen ausbauen.</p>
-        <p class="umfang">Enthält: Laufend neue Behandlungsseiten · Sichtbarkeit in KI-Suche inklusive · Monatsbericht mit nächsten Schritten</p>
-      </div>
-
-      <div class="block">
-        <div class="preis-kopf">
-          <h3>SEO Max</h3>
-          <span class="preis">4.990 €/Monat</span>
-        </div>
-        <p>Für umkämpfte Lagen, mehrere Standorte oder ambitionierte Ziele.</p>
-        <p class="umfang">Enthält: Alles aus Standard · Mehr Seiten, höheres Tempo · Eigener Plan je Standort</p>
-      </div>
-
-      <div class="block">
-        <div class="preis-kopf">
-          <h3>Website</h3>
-          <span class="preis">7.499 € einmalig</span>
-        </div>
-        <p>Eine neue Praxis-Website – einzeln buchbar oder als Fundament für eines der SEO-Pakete.</p>
-      </div>
-
-      <p class="preis-fuss">Welches Paket zu Ihrer Praxis passt, ergibt sich aus der Potenzialanalyse – nicht aus diesem Preisblatt.</p>
-      <p class="preis-fuss">Alle Preise zzgl. MwSt.</p>
-
+      <p>Der Preis richtet sich nach Behandlungsspektrum, Region und Umfang Ihrer Praxis. Im Erstgespräch bekommen Sie eine konkrete Spanne und sehen, was darin enthalten ist.</p>
+      <p class="preis-fuss">Vorher legen wir uns bewusst nicht fest – jede Praxis startet von einem anderen Punkt aus.</p>
     </div>
   </div>
 </section>
@@ -757,6 +734,31 @@ details > p{padding:0 0 16px 28px;margin:0}
   </div>
 </section>
 
+<!-- ===================== BEWERTUNGEN ===================== -->
+<section>
+  <div class="huelle">
+    <h2>5,0 auf Google</h2>
+    <div class="mass">
+      <p class="beleg">102 Bewertungen · öffentliche Google-Bewertungen von Digital Movement Australia</p>
+
+      <div class="block">
+        <p lang="en">„Great quality service, proactive, positive and easy to deal with.“</p>
+        <p class="umfang">Jessica Purcell · Google Review · 2026</p>
+      </div>
+
+      <div class="block">
+        <p lang="en">„I started getting real leads not long after.“</p>
+        <p class="umfang">Beth Sorensen · Google Review · 2025</p>
+      </div>
+
+      <div class="block">
+        <p lang="en">„I couldn't be happier with the redesign.“</p>
+        <p class="umfang">Malin Burnand · Google Review · 2025</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ===================== WAS WIR NICHT VERSPRECHEN ===================== -->
 <section>
   <div class="huelle">
@@ -780,7 +782,8 @@ details > p{padding:0 0 16px 28px;margin:0}
       <div>
         <p>Raoul <span class="nb">Müller</span> hat Digital Movement 2018 gegründet. Bei Digitale Zahnärzte gibt es keine Übergabe an ein Team im Hintergrund. Er führt das Erstgespräch, erstellt den Befund und verantwortet die laufende Arbeit an Ihrer Sichtbarkeit.</p>
         <p>Sie erreichen ihn direkt, per E-Mail oder im vereinbarten Gespräch. Hat er eine Frage zu Ihrer Praxis, ruft er an, statt zu raten. Und läuft etwas nicht wie geplant, erfahren Sie es von ihm – bevor es im Monatsbericht steht.</p>
-        <p class="kontaktzeile">Raoul Müller, Gründer · Digital Movement Ltd. · Berlin</p>
+        <p class="kontaktzeile">Raoul Müller, Gründer · Digital Movement · Berlin</p>
+        <p class="kontaktzeile"><a href="mailto:hallo@digitalezahnärzte.de">hallo@digitalezahnärzte.de</a> · <a href="tel:+4917682360647">+49 176 82360647</a></p>
       </div>
     </div>
   </div>
@@ -794,12 +797,12 @@ details > p{padding:0 0 16px 28px;margin:0}
 
       <details>
         <summary>Wann sehen wir erste Ergebnisse?</summary>
-        <p>Erste Bewegung zeigt sich meist nach zwei bis drei Monaten, ein belastbares Bild nach etwa sechs. SEO ist eher Kieferorthopädie als Füllung – es wirkt über Zeit.</p>
+        <p>Erste Bewegung bei der Sichtbarkeit zeigt sich meist innerhalb der ersten Monate. Wie schnell es geht, hängt von Wettbewerb, Standort und Ausgangslage ab – feste Zeitpunkte sagen wir bewusst nicht zu.</p>
       </details>
 
       <details>
         <summary>Was kostet das?</summary>
-        <p>Zwischen 499 € und 4.990 € pro Monat, je nach Paket; eine neue Website kostet einmalig 7.499 €. Alle Preise zzgl. MwSt.</p>
+        <p>Das richtet sich nach Behandlungsspektrum, Region und Umfang Ihrer Praxis. Im Erstgespräch bekommen Sie eine konkrete Spanne und sehen, was darin enthalten ist – vorher legen wir uns bewusst nicht fest.</p>
       </details>
 
       <details>
@@ -819,7 +822,7 @@ details > p{padding:0 0 16px 28px;margin:0}
 
       <details>
         <summary>Was passiert im Erstgespräch?</summary>
-        <p>15 Minuten, drei Themen: wo Ihre Praxis steht, welche Behandlungen wachsen sollen und ob sich eine Potenzialanalyse lohnt. Verkauft wird dabei nichts – entschieden wird nach dem Befund.</p>
+        <p>Wir sehen uns Ihre heutige Sichtbarkeit an, benennen die größten Lücken und sagen Ihnen, welche Behandlungen wir zuerst angehen würden. Verkauft wird dabei nichts – Sie entscheiden danach, ob es weitergeht.</p>
       </details>
 
     </div>
@@ -837,19 +840,31 @@ details > p{padding:0 0 16px 28px;margin:0}
       </div>
 
       <form class="karte" novalidate onsubmit="event.preventDefault()">
-        <p class="karte-intro" style="margin-top:0">15 Minuten am Telefon, direkt mit Raoul <span class="nb">Müller</span>.</p>
+        <p class="karte-intro" style="margin-top:0">Direkt mit Raoul <span class="nb">Müller</span>, unverbindlich.</p>
 
         <div class="feld">
           <label for="name-2">Name</label>
           <input id="name-2" name="name" type="text" autocomplete="name" autocapitalize="words" spellcheck="false" required>
         </div>
         <div class="feld">
+          <label for="praxis-2">Praxis</label>
+          <input id="praxis-2" name="praxis" type="text" autocomplete="organization" required>
+        </div>
+        <div class="feld">
           <label for="mail-2">E-Mail</label>
           <input id="mail-2" name="email" type="email" autocomplete="email" inputmode="email" autocapitalize="off" autocorrect="off" spellcheck="false" required>
         </div>
         <div class="feld">
-          <label for="tel-2">Telefon (optional)</label>
-          <input id="tel-2" name="tel" type="tel" autocomplete="tel" inputmode="tel">
+          <label for="tel-2">Telefon</label>
+          <input id="tel-2" name="tel" type="tel" autocomplete="tel" inputmode="tel" required>
+        </div>
+        <div class="feld">
+          <label for="ort-2">Ort (optional)</label>
+          <input id="ort-2" name="ort" type="text" autocomplete="address-level2">
+        </div>
+        <div class="feld">
+          <label for="nachricht-2">Worum geht es? (optional)</label>
+          <textarea id="nachricht-2" name="nachricht" rows="3"></textarea>
         </div>
 
         <button class="knopf" type="submit">Erstgespräch anfragen</button>
@@ -865,7 +880,8 @@ details > p{padding:0 0 16px 28px;margin:0}
 
 <footer class="fuss">
   <div class="huelle">
-    <p>Digitale Zahnärzte ist eine Marke der Digital Movement Ltd. Ihr Ansprechpartner sitzt in Berlin.</p>
+    <p>Digitale Zahnärzte ist eine Marke der Digital Movement Marketing Ltd.</p>
+    <p>Raoul Müller · <a href="mailto:hallo@digitalezahnärzte.de">hallo@digitalezahnärzte.de</a> · Berlin</p>
     <p><a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutzerklärung</a></p>
   </div>
 </footer>
