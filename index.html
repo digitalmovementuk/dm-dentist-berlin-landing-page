@@ -11,6 +11,14 @@
   var saved = null;
   try { saved = localStorage.getItem(KEY); } catch (e) {}
   document.documentElement.setAttribute("data-theme", saved === "dark" ? "dark" : "light");
+
+  /* Version (Vollständiges Design vs. Einfache Seite) — same idea: a saved
+     manual choice wins, otherwise always start on the full design. The
+     einfach version is embedded via <iframe> so the URL never changes. */
+  var VKEY = "dm-dental-version";
+  var savedVersion = null;
+  try { savedVersion = localStorage.getItem(VKEY); } catch (e) {}
+  document.documentElement.setAttribute("data-version", savedVersion === "einfach" ? "einfach" : "full");
 })();
 </script>
 <title>Zahnarzt Marketing: SEO, KI-Suche, Website | Digitale Zahnärzte</title>
@@ -152,6 +160,7 @@
   --font-body-stack: "Inter Tight", Arial, sans-serif;
   --font-mono-stack: "JetBrains Mono", monospace;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --vbar-h: 40px;
 }
 
 /* Two brightness modes, switched by [data-theme] on <html>, both in the same
@@ -188,7 +197,7 @@
 html {
   scroll-behavior: smooth;
   background: var(--chrome);
-  scroll-padding-top: 96px;
+  scroll-padding-top: calc(96px + var(--vbar-h));
 }
 
 body {
@@ -263,10 +272,76 @@ img { display: block; }
 
 /* ---------- Header ---------- */
 
+/* ---------- Version-Leiste ----------
+   Einzige feste Leiste ganz oben, immer sichtbar, steuert Version (volles
+   Design vs. eingebettete einfache Seite) und Theme, ohne Navigation —
+   die URL bleibt immer digitalezahnärzte.de. */
+.version-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  width: 100%;
+  height: var(--vbar-h);
+  padding: 0 16px;
+  background: var(--ink);
+  color: #fff;
+  font-family: var(--font-mono-stack);
+  font-size: 10px;
+  letter-spacing: 0.04em;
+}
+.version-bar__label { opacity: 0.6; text-transform: uppercase; }
+.version-bar__sep { opacity: 0.4; }
+.version-bar__option {
+  border: 0;
+  background: none;
+  color: rgba(255, 255, 255, 0.65);
+  font: inherit;
+  letter-spacing: inherit;
+  cursor: pointer;
+  padding: 4px 2px;
+}
+.version-bar__option[aria-pressed="true"] {
+  color: #fff;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.version-bar .theme-toggle {
+  width: 24px;
+  height: 24px;
+  margin-left: 6px;
+  border-color: rgba(255, 255, 255, 0.3);
+  background: transparent;
+  color: #fff;
+}
+.version-bar .theme-toggle:hover { border-color: #fff; }
+.version-bar .theme-toggle__icon { width: 13px; height: 13px; }
+
+#einfach-wrap {
+  display: none;
+  position: fixed;
+  top: var(--vbar-h);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 60;
+  background: #f1f6f5;
+}
+#einfach-frame { display: block; width: 100%; height: 100%; border: 0; }
+
+html[data-version="einfach"] #site-content { display: none; }
+html[data-version="einfach"] #einfach-wrap { display: block; }
+
 .site-header {
   position: fixed;
   z-index: 80;
-  top: 0;
+  top: var(--vbar-h);
   left: 0;
   display: grid;
   width: 100%;
@@ -422,31 +497,6 @@ img { display: block; }
 
 .theme-toggle:hover { border-color: var(--violet); }
 .theme-toggle:active { transform: scale(0.94); }
-
-/* Version-Umschalter — führt zur Low-Cognitive-Load-Vorschau. Selbes
-   Element wie dort (gleicher Inhalt, eigener Stil dieser Seite). */
-.version-link {
-  display: inline-flex;
-  flex: 0 0 auto;
-  align-items: center;
-  height: 44px;
-  padding: 0 16px;
-  border: 1px solid rgb(8 42 51 / 16%);
-  border-radius: 999px;
-  background: var(--surface);
-  color: var(--ink);
-  font-family: var(--font-mono-stack);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  text-decoration: none;
-  white-space: nowrap;
-  transition: background 200ms ease, border-color 200ms ease;
-}
-
-.version-link:hover { border-color: var(--violet); }
-.version-link__short { display: none; }
 
 .theme-toggle__icon { display: none; }
 
@@ -659,6 +709,34 @@ img { display: block; }
   color: var(--aside-muted);
   font-size: clamp(18px, 1.5vw, 25px);
   line-height: 1.22;
+}
+
+/* PAGE ADDITION — the full contact form embedded directly in the hero
+   (two-pillar hero pattern), sized for the narrow hero__aside column
+   rather than the wide bottom checkout layout it shares styling with. */
+.hero-form {
+  width: 100%;
+  max-width: 330px;
+  padding: 20px;
+  gap: 14px;
+  box-shadow: 0 20px 50px rgb(8 42 51 / 12%);
+}
+.hero-form .checkout-form__head,
+.hero-form .receipt-terms { display: none; }
+.hero-form input:not([type="checkbox"]),
+.hero-form textarea { min-height: 50px; font-size: 16px; }
+.hero-form .checkout-submit { min-height: 54px; font-size: 15px; }
+.hero-form .consent span { font-size: 12px; line-height: 1.4; }
+
+.hero-form__done {
+  max-width: 330px;
+  margin: 0 0 10px;
+  padding: 16px 18px;
+  background: var(--chip-bg);
+  color: var(--chip-fg);
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 1.4;
 }
 
 .hero__cta {
@@ -2010,7 +2088,7 @@ footer p { margin: 0; color: var(--muted); text-align: center; }
 @media (max-width: 760px) {
   body { font-size: 16px; }
 
-  html { scroll-padding-top: 80px; }
+  html { scroll-padding-top: calc(80px + var(--vbar-h)); }
 
   .site-header { height: 64px; gap: 12px; padding: 0 14px; }
 
@@ -2075,6 +2153,9 @@ footer p { margin: 0; color: var(--muted); text-align: center; }
   .hero__aside p { max-width: 310px; margin-bottom: 22px; font-size: 18px; }
 
   .hero__cta { width: min(100%, 300px); }
+
+  .hero-form,
+  .hero-form__done { width: 100%; max-width: 400px; }
 
   .hero__proofline { justify-content: center; margin-top: 14px; text-align: center; }
 
@@ -2361,19 +2442,11 @@ footer p { margin: 0; color: var(--muted); text-align: center; }
 
   .header-actions { gap: 8px; }
 
-  .theme-toggle { width: 38px; height: 38px; }
-
-  .version-link { height: 38px; padding: 0 12px; font-size: 9px; }
-  .version-link__long { display: none; }
-  .version-link__short { display: inline; }
-
   .header-cta { padding: 0 12px; font-size: 13px; }
 }
 
 @media (max-width: 400px) {
   .header-actions { gap: 6px; }
-  .theme-toggle { width: 34px; height: 34px; }
-  .version-link { height: 34px; padding: 0 9px; }
   .header-cta { padding: 0 8px; font-size: 12px; }
   .header-cta svg { display: none; }
 }
@@ -2530,6 +2603,19 @@ footer p { margin: 0; color: var(--muted); text-align: center; }
 <body>
 <a class="skip-link" href="#top">Zum Inhalt springen</a>
 
+<div class="version-bar" id="version-bar">
+  <span class="version-bar__label">Version:</span>
+  <button type="button" class="version-bar__option" data-set-version="full" aria-pressed="true">Vollständiges Design</button>
+  <span class="version-bar__sep" aria-hidden="true">·</span>
+  <button type="button" class="version-bar__option" data-set-version="einfach" aria-pressed="false">Einfache Seite</button>
+
+  <button type="button" class="theme-toggle" data-theme-toggle aria-pressed="false" aria-label="Dunkles Design einschalten">
+    <svg class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" fill="none"><circle cx="12" cy="12" r="4.6" stroke="currentColor" stroke-width="2"/><path d="M12 2.5v3M12 18.5v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2.5 12h3M18.5 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    <svg class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" fill="none"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.8 6.8 0 0 0 10.5 10.5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+  </button>
+</div>
+
+<div id="site-content">
 <header class="site-header">
   <a href="#top" class="brand-lockup" aria-label="Digitale Zahnärzte, powered by Digital Movement. Zum Seitenanfang">
     <span class="brand-name">Digitale <strong>Zahnärzte</strong></span>
@@ -2549,16 +2635,6 @@ footer p { margin: 0; color: var(--muted); text-align: center; }
   </nav>
 
   <div class="header-actions">
-    <a class="version-link" href="/demos/low-cognitive-load/">
-      <span class="version-link__long">Einfache Seite</span>
-      <span class="version-link__short">Einfach</span>
-    </a>
-
-    <button type="button" class="theme-toggle" data-theme-toggle aria-pressed="false" aria-label="Dunkles Design einschalten">
-      <svg class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="none"><circle cx="12" cy="12" r="4.6" stroke="currentColor" stroke-width="2"/><path d="M12 2.5v3M12 18.5v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2.5 12h3M18.5 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-      <svg class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.8 6.8 0 0 0 10.5 10.5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
-    </button>
-
     <a class="header-cta" href="#kontakt">
       <span class="header-cta__long">Erstgespräch anfragen</span>
       <span class="header-cta__short">Erstgespräch</span>
@@ -2603,10 +2679,46 @@ footer p { margin: 0; color: var(--muted); text-align: center; }
         <div class="hero__aside">
           <p>Zahnarzt-Marketing aus einer Hand: mehr Anfragen für die Behandlungen, mit denen Ihre Praxis wachsen soll, und eine Website, die Interessenten dorthin führt.</p>
 
-          <a href="#kontakt" class="hero__cta">
-            Unverbindliches Erstgespräch anfragen
-            <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="none" style="transform:rotate(90deg)"><path d="M4 12h15M14 6l6 6-6 6" stroke="currentColor" stroke-width="2"/></svg>
-          </a>
+          <form class="checkout-form hero-form" id="hero-lead-form" novalidate>
+            <label class="hp-field" aria-hidden="true">
+              Firma-Website
+              <input type="text" name="company_website" tabindex="-1" autocomplete="off">
+            </label>
+
+            <label>
+              <span>Vollständiger Name</span>
+              <input name="name" autocomplete="name" required aria-describedby="err-name-hero" placeholder="Vor- und Nachname">
+              <span class="field-error" id="err-name-hero" data-err="name" hidden></span>
+            </label>
+
+            <label>
+              <span>Telefon</span>
+              <input name="phone" type="tel" autocomplete="tel" required aria-describedby="err-phone-hero" placeholder="+49 …">
+              <span class="field-error" id="err-phone-hero" data-err="phone" hidden></span>
+            </label>
+
+            <label>
+              <span>E-Mail</span>
+              <input name="email" type="email" autocomplete="email" required aria-describedby="err-email-hero" placeholder="name@praxis.de">
+              <span class="field-error" id="err-email-hero" data-err="email" hidden></span>
+            </label>
+
+            <label class="consent">
+              <input type="checkbox" name="consent" required aria-describedby="err-consent-hero">
+              <span>Ich habe den <a href="datenschutz.html" target="_blank" rel="noreferrer">Datenschutzhinweis</a> gelesen und bin mit der Verarbeitung meiner Angaben zur Bearbeitung dieser Anfrage einverstanden.
+                <span class="field-error" id="err-consent-hero" data-err="consent" hidden></span>
+              </span>
+            </label>
+
+            <p class="form-error" role="alert" tabindex="-1" hidden></p>
+
+            <button type="submit" class="checkout-submit">
+              <span>Erstgespräch anfragen</span>
+              <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="none"><path d="M4 12h15M14 6l6 6-6 6" stroke="currentColor" stroke-width="2"/></svg>
+            </button>
+          </form>
+
+          <p class="hero-form__done" id="hero-form-done" hidden>Danke. Ihre Anfrage ist eingegangen — wir melden uns mit Terminvorschlägen für das Erstgespräch.</p>
 
           <a href="#leistungen" class="hero__link">Leistungen ansehen</a>
 
@@ -3058,52 +3170,28 @@ und Anfragen</h3>
           <input type="text" name="company_website" tabindex="-1" autocomplete="off">
         </label>
 
-        <div class="field-row">
-          <label>
-            <span>Vorname</span>
-            <input name="firstName" autocomplete="given-name" required aria-describedby="err-firstName" placeholder="Vorname">
-            <span class="field-error" id="err-firstName" hidden></span>
-          </label>
-          <label>
-            <span>Nachname</span>
-            <input name="lastName" autocomplete="family-name" required aria-describedby="err-lastName" placeholder="Nachname">
-            <span class="field-error" id="err-lastName" hidden></span>
-          </label>
-        </div>
+        <label>
+          <span>Vollständiger Name</span>
+          <input name="name" autocomplete="name" required aria-describedby="err-name" placeholder="Vor- und Nachname">
+          <span class="field-error" id="err-name" data-err="name" hidden></span>
+        </label>
 
         <label>
-          <span>Praxis</span>
-          <input name="practice" autocomplete="organization" required aria-describedby="err-practice" placeholder="Name der Praxis">
-          <span class="field-error" id="err-practice" hidden></span>
+          <span>Telefon</span>
+          <input name="phone" type="tel" autocomplete="tel" required aria-describedby="err-phone" placeholder="+49 …">
+          <span class="field-error" id="err-phone" data-err="phone" hidden></span>
         </label>
 
         <label>
           <span>E-Mail</span>
           <input name="email" type="email" autocomplete="email" required aria-describedby="err-email" placeholder="name@praxis.de">
-          <span class="field-error" id="err-email" hidden></span>
-        </label>
-
-        <div class="field-row">
-          <label>
-            <span>Telefon</span>
-            <input name="phone" type="tel" autocomplete="tel" required aria-describedby="err-phone" placeholder="+49 …">
-            <span class="field-error" id="err-phone" hidden></span>
-          </label>
-          <label>
-            <span>Ort <b>optional</b></span>
-            <input name="city" autocomplete="address-level2" placeholder="Ort der Praxis">
-          </label>
-        </div>
-
-        <label>
-          <span>Worum geht es? <b>optional</b></span>
-          <textarea name="message" rows="4" placeholder="Zum Beispiel: Wir möchten mehr Anfragen für Implantologie und Kieferorthopädie."></textarea>
+          <span class="field-error" id="err-email" data-err="email" hidden></span>
         </label>
 
         <label class="consent">
           <input type="checkbox" name="consent" required aria-describedby="err-consent">
           <span>Ich habe den <a href="datenschutz.html" target="_blank" rel="noreferrer">Datenschutzhinweis</a> gelesen und bin mit der Verarbeitung meiner Angaben zur Bearbeitung dieser Anfrage einverstanden.
-            <span class="field-error" id="err-consent" hidden></span>
+            <span class="field-error" id="err-consent" data-err="consent" hidden></span>
           </span>
         </label>
 
@@ -3191,6 +3279,11 @@ und Anfragen</h3>
   </span>
   <b><svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="none"><path d="M4 12h15M14 6l6 6-6 6" stroke="currentColor" stroke-width="2"/></svg></b>
 </a>
+</div>
+
+<div id="einfach-wrap">
+  <iframe id="einfach-frame" src="/demos/low-cognitive-load/" title="Digitale Zahnärzte — Einfache Seite" loading="eager"></iframe>
+</div>
 
 <!-- Cookie consent (DSGVO/TTDSG). Two purposes, chosen separately: Statistik
      (Google Analytics) and Marketing (ad_storage/ad_user_data/ad_personalization
@@ -3367,11 +3460,20 @@ und Anfragen</h3>
     var KEY = "dm-dental-theme";
     var root = document.documentElement;
     var toggle = document.querySelector("[data-theme-toggle]");
+    var frame = document.getElementById("einfach-frame");
 
     function applyLabel(theme) {
       if (!toggle) return;
       toggle.setAttribute("aria-pressed", theme === "dark" ? "true" : "false");
       toggle.setAttribute("aria-label", theme === "dark" ? "Helles Design einschalten" : "Dunkles Design einschalten");
+    }
+
+    // Same-origin iframe: push the theme straight into its <html> so both
+    // versions always match, without waiting on its own localStorage read.
+    function syncFrameTheme(theme) {
+      try {
+        if (frame && frame.contentDocument) frame.contentDocument.documentElement.setAttribute("data-theme", theme);
+      } catch (e) {}
     }
 
     applyLabel(root.getAttribute("data-theme"));
@@ -3381,9 +3483,40 @@ und Anfragen</h3>
         var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
         root.setAttribute("data-theme", next);
         applyLabel(next);
+        syncFrameTheme(next);
         try { localStorage.setItem(KEY, next); } catch (e) {}
       });
     }
+
+    if (frame) {
+      frame.addEventListener("load", function () { syncFrameTheme(root.getAttribute("data-theme")); });
+    }
+  })();
+
+  /* ---------- Version toggle ----------
+     Switches between the full design and the embedded einfache Seite
+     in place — no navigation, the URL never changes. */
+  (function () {
+    var VKEY = "dm-dental-version";
+    var root = document.documentElement;
+    var buttons = document.querySelectorAll("[data-set-version]");
+
+    function applyVersion(version) {
+      root.setAttribute("data-version", version);
+      buttons.forEach(function (btn) {
+        btn.setAttribute("aria-pressed", btn.getAttribute("data-set-version") === version ? "true" : "false");
+      });
+    }
+
+    applyVersion(root.getAttribute("data-version"));
+
+    buttons.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var version = btn.getAttribute("data-set-version");
+        applyVersion(version);
+        try { localStorage.setItem(VKEY, version); } catch (e) {}
+      });
+    });
   })();
 
   /* ---------- Scroll reveal ---------- */
@@ -3471,158 +3604,176 @@ und Anfragen</h3>
     update();
   }
 
-  /* ---------- Lead form ---------- */
-  var form = document.getElementById("lead-form");
-  var layout = document.getElementById("contact-layout");
-  var confirmation = document.getElementById("lead-confirmation");
-  var confirmationCopy = document.getElementById("confirmation-copy");
-  var errorBox = document.getElementById("form-error");
+  /* ---------- Lead forms ----------
+     Two independent forms share this wiring — the bottom checkout form
+     and the form embedded in the hero. Each form is scoped to itself via
+     .closest()/.querySelector(), so nothing here reaches across into the
+     other form or relies on document-wide unique IDs beyond each field's
+     own aria-describedby target. */
   var endpointMeta = document.querySelector('meta[name="dm-lead-endpoint"]');
   var endpoint = endpointMeta ? endpointMeta.getAttribute("content") : "";
 
-  var submitButton = form.querySelector(".checkout-submit");
-  var submitLabel = document.getElementById("submit-label");
-  var submitIdleLabel = submitLabel.textContent;
-
   var fieldLabels = {
-    firstName: "Bitte tragen Sie Ihren Vornamen ein.",
-    lastName: "Bitte tragen Sie Ihren Nachnamen ein.",
-    practice: "Bitte tragen Sie den Namen Ihrer Praxis ein.",
+    name: "Bitte tragen Sie Ihren vollständigen Namen ein.",
     email: "Bitte tragen Sie Ihre E-Mail-Adresse ein.",
     phone: "Bitte tragen Sie Ihre Telefonnummer ein.",
     consent: "Bitte bestätigen Sie den Datenschutzhinweis."
   };
 
-  function setFieldError(name, message) {
-    var field = form.querySelector('[name="' + name + '"]');
-    var slot = document.getElementById("err-" + name);
-    if (slot) {
-      slot.textContent = message || "";
-      slot.hidden = !message;
-    }
-    if (field) {
-      if (message) field.setAttribute("aria-invalid", "true");
-      else field.removeAttribute("aria-invalid");
-    }
-  }
-
-  function clearErrors() {
-    Object.keys(fieldLabels).forEach(function (name) { setFieldError(name, ""); });
-    errorBox.hidden = true;
-  }
-
-  // Clear a field's error as soon as the visitor corrects it.
-  form.addEventListener("input", function (event) {
-    var name = event.target.name;
-    if (name && event.target.getAttribute("aria-invalid") === "true") setFieldError(name, "");
-  });
-
-  form.addEventListener("change", function (event) {
-    if (event.target.name === "consent" && event.target.checked) setFieldError("consent", "");
-  });
-
-  function validate(data) {
-    var problems = [];
-    ["firstName", "lastName", "practice", "email", "phone"].forEach(function (name) {
-      if (!String(data.get(name) || "").trim()) problems.push([name, fieldLabels[name]]);
-    });
-    var email = String(data.get("email") || "").trim();
-    if (email && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
-      problems.push(["email", "Diese E-Mail-Adresse sieht nicht vollständig aus."]);
-    }
-    if (!data.get("consent")) problems.push(["consent", fieldLabels.consent]);
-    return problems;
-  }
-
-  function setSending(sending) {
-    submitButton.disabled = sending;
-    submitLabel.textContent = sending ? "Wird gesendet …" : submitIdleLabel;
-  }
-
-  form.addEventListener("submit", function (event) {
-    event.preventDefault();
-    clearErrors();
-
-    var data = new FormData(form);
-    var problems = validate(data);
-
-    if (problems.length) {
-      problems.forEach(function (p) { setFieldError(p[0], p[1]); });
-      errorBox.textContent = problems.length === 1
-        ? "Bitte prüfen Sie die rot markierte Angabe."
-        : "Bitte prüfen Sie die " + problems.length + " rot markierten Angaben.";
-      errorBox.hidden = false;
-      var firstField = form.querySelector('[name="' + problems[0][0] + '"]');
-      if (firstField) firstField.focus();
-      return;
-    }
-
-    setSending(true);
-
-    var payload = {
-      firstName: data.get("firstName"),
-      lastName: data.get("lastName"),
-      practice: data.get("practice"),
-      email: data.get("email"),
-      phone: data.get("phone") || "",
-      city: data.get("city") || "",
-      message: data.get("message") || "",
-      company_website: data.get("company_website") || ""
-    };
-
-    var finish = function (mode) {
-      layout.hidden = true;
-      confirmation.hidden = false;
-      confirmationCopy.textContent = mode === "email"
-        ? "Ihr E-Mail-Programm hat sich mit der fertigen Anfrage geöffnet. Senden Sie die Nachricht ab, dann melden wir uns mit Terminvorschlägen."
-        : "Ihre Anfrage ist eingegangen. Wir melden uns mit Terminvorschlägen für das Erstgespräch.";
-      confirmation.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
-      // Only counts once the lead actually reached alex@digitalmovement.uk,
-      // not on the mailto fallback (no delivery confirmation there).
-      if (mode === "endpoint" && typeof gtag === "function") {
-        gtag("event", "generate_lead", { form_id: "lead-form" });
-      }
-    };
-
-    if (endpoint) {
-      fetch(endpoint, {
-        method: "POST",
-        headers: { "Content-Type": "text/plain;charset=utf-8" },
-        body: JSON.stringify(payload)
-      }).then(function (response) {
-        if (!response.ok) throw new Error("bad status");
-        setSending(false);
-        finish("endpoint");
-      })["catch"](function () {
-        // Say what happened and let the visitor try again, rather than
-        // silently switching channel.
-        setSending(false);
-        errorBox.innerHTML =
-          'Das Senden hat gerade nicht geklappt. Bitte versuchen Sie es noch einmal ' +
-          'oder schreiben Sie direkt an <a href="mailto:hallo@xn--digitalezahnrzte-6nb.de">hallo@digitalezahnärzte.de</a>.';
-        errorBox.hidden = false;
-        errorBox.focus();
-      });
-      return;
-    }
-
-    openMailFallback(payload);
-    setSending(false);
-    finish("email");
-  });
-
   function openMailFallback(payload) {
-    var lines = ["Praxis: " + payload.practice];
-    if (payload.city) lines.push("Ort: " + payload.city);
-    lines.push("Name: " + payload.firstName + " " + payload.lastName);
-    lines.push("E-Mail: " + payload.email);
-    if (payload.phone) lines.push("Telefon: " + payload.phone);
-    lines.push("", payload.message || "(keine Nachricht)");
+    var lines = ["Name: " + payload.name, "E-Mail: " + payload.email, "Telefon: " + payload.phone];
     window.location.href =
       "mailto:hallo@xn--digitalezahnrzte-6nb.de?subject=" +
-      encodeURIComponent("Erstgespräch anfragen: " + payload.practice) +
+      encodeURIComponent("Erstgespräch anfragen: " + payload.name) +
       "&body=" + encodeURIComponent(lines.join("\n"));
   }
+
+  function wireLeadForm(formId, onDone) {
+    var form = document.getElementById(formId);
+    if (!form) return;
+
+    var errorBox = form.querySelector(".form-error");
+    var submitButton = form.querySelector(".checkout-submit");
+    var submitLabel = submitButton.querySelector("span");
+    var submitIdleLabel = submitLabel.textContent;
+
+    function setFieldError(name, message) {
+      var field = form.querySelector('[name="' + name + '"]');
+      var slot = form.querySelector('[data-err="' + name + '"]');
+      if (slot) {
+        slot.textContent = message || "";
+        slot.hidden = !message;
+      }
+      if (field) {
+        if (message) field.setAttribute("aria-invalid", "true");
+        else field.removeAttribute("aria-invalid");
+      }
+    }
+
+    function clearErrors() {
+      Object.keys(fieldLabels).forEach(function (name) { setFieldError(name, ""); });
+      if (errorBox) errorBox.hidden = true;
+    }
+
+    form.addEventListener("input", function (event) {
+      var name = event.target.name;
+      if (name && event.target.getAttribute("aria-invalid") === "true") setFieldError(name, "");
+    });
+
+    form.addEventListener("change", function (event) {
+      if (event.target.name === "consent" && event.target.checked) setFieldError("consent", "");
+    });
+
+    function validate(data) {
+      var problems = [];
+      ["name", "email", "phone"].forEach(function (name) {
+        if (!String(data.get(name) || "").trim()) problems.push([name, fieldLabels[name]]);
+      });
+      var email = String(data.get("email") || "").trim();
+      if (email && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+        problems.push(["email", "Diese E-Mail-Adresse sieht nicht vollständig aus."]);
+      }
+      if (!data.get("consent")) problems.push(["consent", fieldLabels.consent]);
+      return problems;
+    }
+
+    function setSending(sending) {
+      submitButton.disabled = sending;
+      submitLabel.textContent = sending ? "Wird gesendet …" : submitIdleLabel;
+    }
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      clearErrors();
+
+      var data = new FormData(form);
+      var problems = validate(data);
+
+      if (problems.length) {
+        problems.forEach(function (p) { setFieldError(p[0], p[1]); });
+        if (errorBox) {
+          errorBox.textContent = problems.length === 1
+            ? "Bitte prüfen Sie die rot markierte Angabe."
+            : "Bitte prüfen Sie die " + problems.length + " rot markierten Angaben.";
+          errorBox.hidden = false;
+        }
+        var firstField = form.querySelector('[name="' + problems[0][0] + '"]');
+        if (firstField) firstField.focus();
+        return;
+      }
+
+      setSending(true);
+
+      var payload = {
+        name: data.get("name"),
+        email: data.get("email"),
+        phone: data.get("phone") || "",
+        company_website: data.get("company_website") || ""
+      };
+
+      var finish = function (mode) {
+        onDone(mode);
+        // Only counts once the lead actually reached alex@digitalmovement.uk,
+        // not on the mailto fallback (no delivery confirmation there).
+        if (mode === "endpoint" && typeof gtag === "function") {
+          gtag("event", "generate_lead", { form_id: formId });
+        }
+      };
+
+      if (endpoint) {
+        fetch(endpoint, {
+          method: "POST",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify(payload)
+        }).then(function (response) {
+          if (!response.ok) throw new Error("bad status");
+          setSending(false);
+          finish("endpoint");
+        })["catch"](function () {
+          // Say what happened and let the visitor try again, rather than
+          // silently switching channel.
+          setSending(false);
+          if (errorBox) {
+            errorBox.innerHTML =
+              'Das Senden hat gerade nicht geklappt. Bitte versuchen Sie es noch einmal ' +
+              'oder schreiben Sie direkt an <a href="mailto:hallo@xn--digitalezahnrzte-6nb.de">hallo@digitalezahnärzte.de</a>.';
+            errorBox.hidden = false;
+            errorBox.focus();
+          }
+        });
+        return;
+      }
+
+      openMailFallback(payload);
+      setSending(false);
+      finish("email");
+    });
+  }
+
+  // Bottom checkout form — swaps the whole two-column layout for the
+  // existing rich confirmation panel (receipt-style "what happens next").
+  wireLeadForm("lead-form", function (mode) {
+    var layout = document.getElementById("contact-layout");
+    var confirmation = document.getElementById("lead-confirmation");
+    var confirmationCopy = document.getElementById("confirmation-copy");
+    layout.hidden = true;
+    confirmation.hidden = false;
+    confirmationCopy.textContent = mode === "email"
+      ? "Ihr E-Mail-Programm hat sich mit der fertigen Anfrage geöffnet. Senden Sie die Nachricht ab, dann melden wir uns mit Terminvorschlägen."
+      : "Ihre Anfrage ist eingegangen. Wir melden uns mit Terminvorschlägen für das Erstgespräch.";
+    confirmation.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+  });
+
+  // Hero form — simpler inline swap, no separate confirmation section.
+  wireLeadForm("hero-lead-form", function (mode) {
+    var heroForm = document.getElementById("hero-lead-form");
+    var done = document.getElementById("hero-form-done");
+    heroForm.hidden = true;
+    done.hidden = false;
+    done.textContent = mode === "email"
+      ? "Ihr E-Mail-Programm hat sich mit der fertigen Anfrage geöffnet. Senden Sie die Nachricht ab, dann melden wir uns mit Terminvorschlägen."
+      : "Danke. Ihre Anfrage ist eingegangen — wir melden uns mit Terminvorschlägen für das Erstgespräch.";
+  });
 })();
 </script>
 </body>
