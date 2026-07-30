@@ -1,0 +1,899 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,follow">
+<script>
+/* Gleicher Mechanismus wie auf der Hauptversion (selber localStorage-Key),
+   damit die Theme-Wahl seitenübergreifend erhalten bleibt. Läuft vor dem
+   ersten Rendern, damit es nicht kurz hell aufblitzt. */
+(function () {
+  var KEY = "dm-dental-theme";
+  function autoTheme() {
+    var h = new Date().getHours();
+    return (h >= 6 && h < 20) ? "light" : "dark";
+  }
+  var saved = null;
+  try { saved = localStorage.getItem(KEY); } catch (e) {}
+  document.documentElement.setAttribute("data-theme", saved === "light" || saved === "dark" ? saved : autoTheme());
+})();
+</script>
+<title>Digitale Zahnärzte — SEO, KI-Sichtbarkeit & Webdesign für Zahnarztpraxen</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23F1F6F5'/%3E%3Crect x='2' y='2' width='60' height='60' rx='8' fill='none' stroke='%230E6C93' stroke-width='2'/%3E%3Ctext x='32' y='42' font-family='Georgia,Cambria,serif' font-size='28' font-weight='700' fill='%23082A33' text-anchor='middle'%3EDZ%3C/text%3E%3C/svg%3E">
+<meta name="description" content="SEO, KI-Sichtbarkeit und Webdesign für Zahnarztpraxen. Kostenloses Erstgespräch mit Gründer Raoul Müller – direkt, ohne Callcenter.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Digitale Zahnärzte — Der Behandlungsplan für Ihre Praxis-Sichtbarkeit">
+<meta property="og:description" content="SEO, KI-Sichtbarkeit und Webdesign für Zahnarztpraxen. Kostenloses Erstgespräch mit Gründer Raoul Müller – direkt, ohne Callcenter.">
+<style>
+/* ============================================================
+   DER BEHANDLUNGSPLAN — Produktion
+   Konzept, Farben, Typo, Copy: Fable 5
+   Layout, Umsetzung, Kritik: Opus 5
+   Befund · Plan · Kosten · Termin
+   ============================================================ */
+
+:root{
+  /* Farben von digitalezahnärzte.de (Live-Site, Hellmodus) übernommen — Typo/Layout unverändert */
+  --papier:#F1F6F5;
+  --weiss:#FFFFFF;
+  --linie:#DCE6E4;
+  --rand:#6E8E8B;      /* nur Rahmen — 3,56:1 auf Weiß, erfüllt 1.4.11 */
+  --rand-text:#4A5C60; /* Live-Site: gedämpfte Nav-/Meta-Farbe — 6,4:1 auf Papier */
+  --text:#1F343A;      /* 12,0:1 auf Papier */
+  --tinte:#082A33;      /* Live-Site: Haupt-Textfarbe — 13,9:1 auf Papier */
+  --blau:#0E6C93;      /* Live-Site: Gradient-Start (Blau) — 5,4:1 auf Papier */
+  --blau-tief:#0B5F58; /* Live-Site: Gradient-Ende (Tanne) */
+
+  --serif:Charter,"Bitstream Charter","Sitka Text",Cambria,Georgia,serif;
+  --sans:-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+
+  --mass:38rem;
+  --container:1080px;
+}
+
+/* Dunkelmodus — gleiche Logik wie die Live-Site: Papier und Tinte tauschen
+   die Rollen, die Akzentfarbe bleibt dieselbe Markenfamilie (hier: das
+   helle Türkis aus der Live-Site-Palette, da das ursprüngliche Blau auf
+   dunklem Grund zu wenig Kontrast hätte — 7,1:1 statt 2,6:1). */
+:root[data-theme="dark"]{
+  --papier:#082A33;
+  --weiss:#0F3846;
+  --linie:#1C4552;
+  --rand:#3D6672;      /* nur Rahmen — 3,4:1 auf --weiss */
+  --rand-text:#9FB8BB; /* = Live-Site Dunkelmodus --muted */
+  --text:#D7E4E3;
+  --tinte:#F1F6F5;      /* = Live-Site --paper */
+  --blau:#22C3D6;      /* = Live-Site --pink (Akzent-Cyan) — 7,1:1 auf Papier */
+  --blau-tief:#6FE0EE;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms !important; animation-iteration-count:1 !important;
+    transition-duration:.01ms !important; scroll-behavior:auto !important;
+  }
+}
+
+body{
+  margin:0;
+  background:var(--papier);
+  color:var(--text);
+  font-family:var(--serif);
+  font-size:19px;
+  line-height:1.6;
+  hyphens:auto;
+  -webkit-hyphens:auto;
+  hyphenate-limit-chars:6 3 3;
+  overflow-wrap:break-word;
+}
+
+/* ---------- Grundtypografie ---------- */
+
+h1,h2,h3{
+  color:var(--tinte);
+  font-weight:700;
+  margin:0;
+}
+h1{font-size:44px;line-height:1.2}
+h2{font-size:30px;line-height:1.2}
+h3{font-size:23px;line-height:1.3}
+
+/* Überschriften und Auszeichnungen nie trennen — ein getrenntes
+   H1 liest sich wie ein Fehler, nicht wie Typografie. */
+h1,h2,h3,summary,.lead,.preis,a{
+  hyphens:manual;
+  -webkit-hyphens:manual;
+}
+h1,h2{text-wrap:balance}
+p{text-wrap:pretty}
+
+p{margin:0 0 16px}
+p:last-child{margin-bottom:0}
+
+strong{color:var(--tinte);font-weight:700}
+
+.nb{hyphens:manual;-webkit-hyphens:manual}
+
+/* ---------- Dienstleiste (Version- und Theme-Umschalter) ----------
+   Gleiche Steuerelemente wie auf der Live-Version (Version-Umschalter +
+   Theme-Umschalter), im eigenen Papier/Tinte-Stil dieser Seite. */
+.dienstleiste{
+  position:sticky;
+  top:0;
+  z-index:50;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:16px;
+  flex-wrap:wrap;
+  padding:8px 16px;
+  background:#051D24;
+  font-family:var(--sans);
+  font-size:13px;
+  line-height:1.4;
+}
+.dienstleiste__version{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-wrap:wrap;
+  justify-content:center;
+  color:#F1F6F5;
+}
+.dienstleiste__version .label{opacity:.65}
+.dienstleiste__version strong{color:#fff;font-weight:700}
+.dienstleiste__version a{
+  color:#F1F6F5;
+  font-weight:600;
+  text-decoration:underline;
+  text-underline-offset:2px;
+  padding:4px 2px;
+}
+.dienstleiste__version a:hover{color:#fff}
+.dienstleiste__theme{
+  display:grid;
+  flex:0 0 auto;
+  width:30px;
+  height:30px;
+  place-items:center;
+  border:1px solid rgba(241,246,245,.32);
+  border-radius:999px;
+  background:transparent;
+  color:#F1F6F5;
+  cursor:pointer;
+  transition:border-color 150ms ease;
+}
+.dienstleiste__theme:hover{border-color:#fff}
+.theme-icon{display:none}
+:root[data-theme="light"] .theme-icon--sun{display:block}
+:root[data-theme="dark"] .theme-icon--moon{display:block}
+
+.logo-swap{display:contents}
+.logo-swap img[data-logo]{display:none}
+:root[data-theme="light"] .logo-swap img[data-logo="light"]{display:block}
+:root[data-theme="dark"] .logo-swap img[data-logo="dark"]{display:block}
+
+a{
+  color:var(--blau);
+  text-decoration:underline;
+  text-underline-offset:2px;
+}
+a:hover{color:var(--blau-tief)}
+
+:focus-visible{
+  outline:2px solid var(--blau);
+  outline-offset:2px;
+}
+
+.klein{
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.5;
+}
+
+/* ---------- Gerüst ---------- */
+
+.huelle{
+  max-width:var(--container);
+  margin:0 auto;
+  padding:0 32px;
+}
+
+.mass{max-width:var(--mass)}
+
+section{
+  border-top:1px solid var(--linie);
+  padding:88px 0;
+}
+
+h2 + *{margin-top:40px}
+
+/* ---------- Kopf ---------- */
+
+.kopf{
+  padding:12px 0;
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px 24px;
+}
+.marke{
+  display:flex;
+  align-items:baseline;
+  flex-wrap:wrap;
+  gap:10px;
+  min-width:0;
+}
+.wortmarke{
+  font-size:20px;
+  font-weight:700;
+  color:var(--tinte);
+  hyphens:manual;
+  -webkit-hyphens:manual;
+}
+.powered-by{
+  font-family:var(--sans);
+  font-size:11px;
+  letter-spacing:.02em;
+  color:var(--rand-text);
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+}
+.powered-by img{height:11px;width:auto;display:block;position:relative;top:1px}
+.kopf-cta{
+  font-family:var(--sans);
+  font-size:16px;
+  font-weight:600;
+  color:var(--blau);
+  text-decoration:none;
+  display:inline-block;
+  padding:12px 4px;
+  border-bottom:1px solid currentColor;
+  white-space:nowrap;
+}
+.kopf-cta:hover{color:var(--blau-tief)}
+
+/* ---------- Hero ---------- */
+
+.hero{border-top:0;padding-top:20px;padding-bottom:8px}
+
+.hero-raster{
+  display:grid;
+  grid-template-columns:1fr 400px;
+  gap:64px;
+  align-items:start;
+}
+
+.hero h1{margin-bottom:24px}
+
+.lead{
+  font-size:21px;
+  line-height:1.5;
+  margin-bottom:24px;
+}
+
+.beleg{
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.5;
+  margin-bottom:32px;
+}
+
+/* Vertrauensblock — Belege ohne erfundene Zahlen: Arbeitsweise
+   statt Behauptung. */
+.vertrauen{border-top:1px solid var(--linie);padding-top:24px}
+.vertrauen p{
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.5;
+  margin:0 0 12px;
+}
+.vertrauen p:last-child{margin-bottom:0}
+
+/* ---------- Formular ---------- */
+
+.karte{
+  background:var(--weiss);
+  border:1px solid var(--linie);
+  border-radius:6px;
+  padding:20px;
+}
+
+.karte-titel{
+  font-size:23px;
+  line-height:1.3;
+  font-weight:700;
+  color:var(--tinte);
+  margin:0 0 8px;
+}
+.karte-intro{
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.5;
+  margin-bottom:18px;
+}
+
+.feld{margin-bottom:14px}
+
+label{
+  display:block;
+  font-family:var(--sans);
+  font-size:16px;
+  font-weight:400;      /* niemals fett — Penzo: 50 ms vs. 80 ms */
+  line-height:1.4;
+  color:var(--tinte);
+  margin-bottom:6px;
+}
+
+input{
+  appearance:none;
+  -webkit-appearance:none;
+  display:block;
+  width:100%;
+  height:52px;
+  padding:0 14px;
+  font-family:var(--sans);
+  font-size:17px;       /* ≥16px, sonst zoomt iOS Safari */
+  line-height:1.4;
+  color:var(--tinte);
+  background:var(--weiss);
+  border:1px solid var(--rand);
+  border-radius:6px;
+}
+input:focus-visible{
+  border-color:var(--blau);
+  outline:2px solid var(--blau);
+  outline-offset:2px;
+}
+
+.knopf{
+  display:block;
+  width:100%;
+  height:56px;
+  font-family:var(--sans);
+  font-size:18px;
+  font-weight:600;
+  letter-spacing:.01em;
+  color:var(--weiss);
+  background:var(--blau);
+  border:0;
+  border-radius:6px;
+  cursor:pointer;
+  transition:background .15s ease;
+}
+.knopf:hover{background:var(--blau-tief)}
+.knopf:focus-visible{outline-color:var(--tinte)}
+
+.helfer,.dsgvo{
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.5;
+  margin:12px 0 0;
+  color:var(--rand-text);
+}
+
+/* ---------- Listenblöcke ---------- */
+
+.block + .block{margin-top:32px}
+.block h3{margin-bottom:8px}
+
+.schritt-nr{
+  font-family:var(--sans);
+  font-size:16px;
+  font-weight:600;
+  color:var(--text);
+}
+
+/* Entscheidungspunkt — der einzige nicht-klickbare blaue Akzent */
+.entscheidung{
+  border-left:3px solid var(--blau);
+  padding-left:16px;
+  margin:32px 0;
+}
+
+/* ---------- Preise ---------- */
+
+.preis-kopf{
+  display:flex;
+  align-items:baseline;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-bottom:8px;
+}
+.preis{
+  font-family:var(--sans);
+  font-size:28px;
+  font-weight:600;
+  line-height:1.2;
+  color:var(--tinte);
+  font-variant-numeric:tabular-nums;
+}
+.umfang{
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.5;
+  margin-top:8px;
+}
+.preis-fuss{
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.5;
+  margin-top:32px;
+}
+
+/* ---------- Gründer ---------- */
+
+.gruender{
+  display:grid;
+  grid-template-columns:160px 1fr;
+  gap:32px;
+  align-items:start;
+  max-width:var(--mass);
+}
+.portrait{
+  width:160px;
+  height:200px;
+  border:1px solid var(--linie);
+  border-radius:6px;
+  background:var(--weiss);
+  overflow:hidden;
+}
+.portrait img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.bildunterschrift,.kontaktzeile{
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.5;
+}
+.bildunterschrift{margin-top:8px}
+.kontaktzeile{margin-top:16px}
+
+/* ---------- FAQ ---------- */
+
+details{border-bottom:1px solid var(--linie)}
+details:first-of-type{border-top:1px solid var(--linie)}
+
+summary{
+  font-size:23px;
+  font-weight:700;
+  line-height:1.3;
+  color:var(--tinte);
+  padding:16px 0;
+  cursor:pointer;
+  list-style:none;
+  display:flex;
+  gap:12px;
+}
+summary::-webkit-details-marker{display:none}
+summary::before{
+  content:"+";
+  color:var(--blau);
+  font-family:var(--sans);
+  font-weight:600;
+  flex:0 0 16px;
+}
+details[open] summary::before{content:"–"}
+
+details > p{padding:0 0 16px 28px;margin:0}
+
+/* ---------- Fuß ---------- */
+
+.fuss{
+  border-top:1px solid var(--linie);
+  padding:32px 0 64px;
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.5;
+}
+.fuss p{margin:0 0 8px}
+
+/* ============================================================
+   DESKTOP-SCHIENE ab 1024px
+   Ein Behandlungs- und Kostenplan IST ein zweispaltiges,
+   liniertes Dokument. Die linke Schiene gibt dem Auge einen
+   wiederkehrenden Anker und füllt das Blatt.
+   ============================================================ */
+
+@media (min-width:1024px){
+  section:not(.hero):not(.abschluss) > .huelle{
+    display:grid;
+    grid-template-columns:200px minmax(0,1fr);
+    gap:64px;
+    align-items:start;
+  }
+  section:not(.hero):not(.abschluss) > .huelle > h2{grid-column:1;margin-top:0}
+  section:not(.hero):not(.abschluss) > .huelle > *:not(h2){grid-column:2;margin-top:0}
+}
+
+/* ============================================================
+   TABLET
+   ============================================================ */
+
+@media (max-width:1023px){
+  h1{font-size:36px}
+  .hero-raster{grid-template-columns:1fr;gap:40px}
+  .gruender{grid-template-columns:1fr;gap:24px}
+}
+
+/* ============================================================
+   MOBIL — muss zuletzt stehen, sonst gewinnt die Quellreihenfolge
+   Typskala/Abstände/Buttongrößen: bizee.com-Konvention
+   ============================================================ */
+
+@media (max-width:759px){
+
+  body{font-size:18px}
+
+  .huelle{padding:0 20px}
+
+  section{padding:56px 0}
+
+  .block + .block{margin-top:22px}
+  .entscheidung{margin:22px 0}
+  .preis-fuss{margin-top:22px}
+  .gruender{gap:16px}
+
+  .kopf{padding:14px 0}
+  .wortmarke{font-size:18px}
+  .kopf-cta{font-size:15px}
+
+  h1{font-size:40px;line-height:1.15;text-align:left}
+  h2{font-size:28px;text-align:center}
+  h3,.karte-titel{font-size:22px}
+  summary{font-size:21px}
+
+  .lead{font-size:18px;text-align:left}
+
+  h2 + *{margin-top:22px}
+
+  .hero{padding-top:24px;padding-bottom:56px}
+
+  .beleg,.vertrauen{text-align:left}
+
+  .karte-titel,.karte-intro{text-align:left}
+
+  .knopf{height:56px;font-size:16px}
+
+  .portrait{width:100%;max-width:200px;height:240px;margin:0 auto}
+  .gruender{text-align:left}
+  .bildunterschrift{text-align:center}
+
+  .karte{padding:20px}
+
+  /* Sektionsüberschriften + Intros zentriert, Fließtext/Karten/Listen linksbündig — bizee-Muster */
+  section:not(.hero) > .huelle > h2{text-align:center}
+  .preis-fuss{text-align:left}
+}
+</style>
+</head>
+<body>
+
+<div class="dienstleiste" role="note">
+  <div class="dienstleiste__version">
+    <span class="label">Version:</span>
+    <a href="/">Vollständiges Design</a>
+    <span aria-hidden="true">·</span>
+    <strong>Low-Cognitive-Load</strong>
+  </div>
+  <button type="button" class="dienstleiste__theme" data-theme-toggle aria-pressed="false" aria-label="Dunkles Design einschalten">
+    <svg class="theme-icon theme-icon--sun" aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" fill="none"><circle cx="12" cy="12" r="4.6" stroke="currentColor" stroke-width="2"/><path d="M12 2.5v3M12 18.5v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2.5 12h3M18.5 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    <svg class="theme-icon theme-icon--moon" aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" fill="none"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.8 6.8 0 0 0 10.5 10.5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+  </button>
+</div>
+
+<header class="kopf huelle">
+  <div class="marke">
+    <span class="wortmarke">Digitale Zahnärzte</span>
+    <span class="powered-by">powered by
+      <span class="logo-swap">
+        <img data-logo="light" src="assets/logo-digital-movement.svg" alt="Digital Movement" width="66" height="14">
+        <img data-logo="dark" src="assets/logo-digital-movement-negative.svg" alt="Digital Movement" width="66" height="14">
+      </span>
+    </span>
+  </div>
+  <a class="kopf-cta" href="#erstgespraech">Erstgespräch anfragen</a>
+</header>
+
+<main>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero">
+  <div class="huelle">
+    <div class="hero-raster">
+
+      <div>
+        <h1>Mehr Anfragen aus Google und KI-Suche.</h1>
+        <p class="lead mass">SEO, KI-Sichtbarkeit und Webdesign für Zahnarztpraxen – damit Sie gefunden werden, wenn jemand in Ihrer Stadt nach Implantaten, Alignern oder einfach einem neuen Zahnarzt sucht.</p>
+        <p class="beleg">Digital Movement betreut seit 2018 über 300 Kunden · 5,0 ★ bei Google (102 Bewertungen)</p>
+
+        <div class="vertrauen">
+          <p><strong>Erst der Befund, dann der Plan.</strong> Vor jedem Vertrag steht eine Potenzialanalyse. Was erreichbar ist – und was nicht – wissen Sie, bevor Sie unterschreiben.</p>
+          <p><strong>Zahlen statt Zusagen.</strong> Was Ihr Budget bewirkt, sehen Sie jeden Monat schwarz auf weiß – nicht erst nach einem Jahr.</p>
+          <p><strong>Nur Zahnarztpraxen.</strong> Von der Einzelpraxis bis zum MVZ – Sie müssen uns nicht erklären, was eine PZR ist.</p>
+        </div>
+      </div>
+
+      <form class="karte" id="erstgespraech" novalidate onsubmit="event.preventDefault()">
+        <h2 class="karte-titel">Kostenloses Erstgespräch</h2>
+        <p class="karte-intro">15 Minuten am Telefon. Sie sprechen direkt mit Raoul <span class="nb">Müller</span> – nicht mit einem Callcenter.</p>
+
+        <div class="feld">
+          <label for="name-1">Name</label>
+          <input id="name-1" name="name" type="text" autocomplete="name" autocapitalize="words" spellcheck="false" required>
+        </div>
+        <div class="feld">
+          <label for="mail-1">E-Mail</label>
+          <input id="mail-1" name="email" type="email" autocomplete="email" inputmode="email" autocapitalize="off" autocorrect="off" spellcheck="false" required>
+        </div>
+        <div class="feld">
+          <label for="tel-1">Telefon (optional)</label>
+          <input id="tel-1" name="tel" type="tel" autocomplete="tel" inputmode="tel">
+        </div>
+
+        <button class="knopf" type="submit">Erstgespräch anfragen</button>
+        <p class="helfer">Wir antworten innerhalb eines Werktags.</p>
+        <p class="dsgvo">Wir nutzen Ihre Angaben nur zur Beantwortung dieser Anfrage (Art. 6 Abs. 1 lit. b DSGVO) – Details in der <a href="/datenschutz.html">Datenschutzerklärung</a>.</p>
+      </form>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== LEISTUNGEN ===================== -->
+<section>
+  <div class="huelle">
+    <h2>Leistungen</h2>
+    <div class="mass">
+
+      <div class="block">
+        <h3>Sichtbarkeit bei Google</h3>
+        <p>Ob Prophylaxe, Wurzelbehandlung oder Angstpatienten – wer eine Behandlung sucht, vergleicht die ersten Ergebnisse und klickt selten weiter. Wir arbeiten daran, dass Ihre Praxis bei genau diesen Suchen auftaucht: mit einer eigenen Seite je Behandlung und sauberer technischer Basis.</p>
+      </div>
+
+      <div class="block">
+        <h3>Sichtbarkeit in der KI-Suche</h3>
+        <p>Immer mehr Patienten fragen ChatGPT oder die KI-Übersicht bei Google, welche Praxis für sie infrage kommt. Diese Systeme zitieren Quellen. Wir bereiten Ihre Inhalte so auf, dass Ihre Praxis dazugehört – mit klaren Fakten zu Leistungen und Standort.</p>
+      </div>
+
+      <div class="block">
+        <h3>Website und Anfragen</h3>
+        <p>Sichtbarkeit endet nicht beim Klick. Ihre Website muss schnell laden, auf dem Handy funktionieren und den Weg zur Anfrage kurz halten – sonst war der Aufwand davor umsonst. Deshalb gehören Website und Sichtbarkeit bei uns zusammen.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PREISE ===================== -->
+<section>
+  <div class="huelle">
+    <h2>Preise</h2>
+    <div class="mass">
+
+      <div class="block">
+        <div class="preis-kopf">
+          <h3>SEO Basic</h3>
+          <span class="preis">499 €/Monat</span>
+        </div>
+        <p>Der Einstieg: Grundlagen in Ordnung bringen, bevor Größeres ansteht.</p>
+        <p class="umfang">Enthält: Eine neue Behandlungsseite pro Monat · Google-Unternehmensprofil gepflegt · Monatsbericht</p>
+      </div>
+
+      <div class="block">
+        <div class="preis-kopf">
+          <h3>SEO Standard</h3>
+          <span class="preis">2.499 €/Monat</span>
+        </div>
+        <p>Das Arbeitspaket für Praxen, die gezielt einzelne Behandlungen ausbauen.</p>
+        <p class="umfang">Enthält: Laufend neue Behandlungsseiten · Sichtbarkeit in KI-Suche inklusive · Monatsbericht mit nächsten Schritten</p>
+      </div>
+
+      <div class="block">
+        <div class="preis-kopf">
+          <h3>SEO Max</h3>
+          <span class="preis">4.990 €/Monat</span>
+        </div>
+        <p>Für umkämpfte Lagen, mehrere Standorte oder ambitionierte Ziele.</p>
+        <p class="umfang">Enthält: Alles aus Standard · Mehr Seiten, höheres Tempo · Eigener Plan je Standort</p>
+      </div>
+
+      <div class="block">
+        <div class="preis-kopf">
+          <h3>Website</h3>
+          <span class="preis">7.499 € einmalig</span>
+        </div>
+        <p>Eine neue Praxis-Website – einzeln buchbar oder als Fundament für eines der SEO-Pakete.</p>
+      </div>
+
+      <p class="preis-fuss">Welches Paket zu Ihrer Praxis passt, ergibt sich aus der Potenzialanalyse – nicht aus diesem Preisblatt.</p>
+      <p class="preis-fuss">Alle Preise zzgl. MwSt.</p>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ABLAUF ===================== -->
+<section>
+  <div class="huelle">
+    <h2>Ablauf</h2>
+    <div class="mass">
+
+      <div class="block">
+        <h3><span class="schritt-nr">1 · </span>Potenzialanalyse</h3>
+        <p>Wir prüfen Rankings, Wettbewerb am Standort und den Zustand Ihrer Website. Sie erhalten einen schriftlichen Befund mit einer klaren Empfehlung: welches Paket sinnvoll ist und womit wir anfangen würden.</p>
+      </div>
+
+      <div class="entscheidung">
+        <p>Hier entscheiden Sie, ob es weitergeht. Fällt der Befund ernüchternd aus, sagen wir Ihnen das – und Sie sparen sich das Budget.</p>
+      </div>
+
+      <div class="block">
+        <h3><span class="schritt-nr">2 · </span>Behandlungsseiten</h3>
+        <p>Für jede Behandlung, die wachsen soll, entsteht eine eigene Seite: fachlich sauber, verständlich geschrieben und auf die Suchanfragen Ihrer Region ausgerichtet.</p>
+      </div>
+
+      <div class="block">
+        <h3><span class="schritt-nr">3 · </span>Website und Anfragewege</h3>
+        <p>Wir beseitigen, was Besucher kostet – von der Ladezeit bis zum Formular. Reicht das nicht, bauen wir neu.</p>
+      </div>
+
+      <div class="block">
+        <h3><span class="schritt-nr">4 · </span>Messung und Monatsbericht</h3>
+        <p>Sie sehen, was sich bewegt hat: Sichtbarkeit, Besucher, Anfragen. Kurz, konkret, ohne Agentur-Deutsch.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== WAS WIR NICHT VERSPRECHEN ===================== -->
+<section>
+  <div class="huelle">
+    <h2>Was wir nicht versprechen</h2>
+    <div class="mass">
+      <p>Feste Platzierungen bei Google garantieren wir nicht – das kann niemand, auch wenn manche Agentur es in den Vertrag schreibt. Eine bestimmte Zahl neuer Patienten versprechen wir ebenso wenig: Dafür spielen Standort, Wettbewerb und Bewertungslage zu stark mit. Was wir zusagen, ist das Handwerk – sauber ausgeführt und so dokumentiert, dass Sie jeden Schritt nachvollziehen können.</p>
+      <p>Dazu gehört auch das Werberecht: Für die Website einer Zahnarztpraxis gilt das Heilmittelwerbegesetz – auch dann, wenn eine Agentur die Texte schreibt. Heilungsversprechen oder Superlative bauen wir deshalb nicht ein, egal wie gut sie konvertieren würden. Ihre Kammer liest mit; wir schreiben entsprechend.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== MIT WEM SIE SPRECHEN ===================== -->
+<section>
+  <div class="huelle">
+    <h2>Mit wem Sie sprechen</h2>
+    <div class="gruender">
+      <div>
+        <div class="portrait"><img src="assets/founder-raoul.jpg" alt="Raoul Müller, Gründer von Digitale Zahnärzte" width="160" height="200"></div>
+        <p class="bildunterschrift">Raoul Müller, Gründer</p>
+      </div>
+      <div>
+        <p>Raoul <span class="nb">Müller</span> hat Digital Movement 2018 gegründet. Bei Digitale Zahnärzte gibt es keine Übergabe an ein Team im Hintergrund. Er führt das Erstgespräch, erstellt den Befund und verantwortet die laufende Arbeit an Ihrer Sichtbarkeit.</p>
+        <p>Sie erreichen ihn direkt, per E-Mail oder im vereinbarten Gespräch. Hat er eine Frage zu Ihrer Praxis, ruft er an, statt zu raten. Und läuft etwas nicht wie geplant, erfahren Sie es von ihm – bevor es im Monatsbericht steht.</p>
+        <p class="kontaktzeile">Raoul Müller, Gründer · Digital Movement Ltd. · Berlin</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FAQ ===================== -->
+<section>
+  <div class="huelle">
+    <h2>Häufige Fragen</h2>
+    <div class="mass">
+
+      <details>
+        <summary>Wann sehen wir erste Ergebnisse?</summary>
+        <p>Erste Bewegung zeigt sich meist nach zwei bis drei Monaten, ein belastbares Bild nach etwa sechs. SEO ist eher Kieferorthopädie als Füllung – es wirkt über Zeit.</p>
+      </details>
+
+      <details>
+        <summary>Was kostet das?</summary>
+        <p>Zwischen 499 € und 4.990 € pro Monat, je nach Paket; eine neue Website kostet einmalig 7.499 €. Alle Preise zzgl. MwSt.</p>
+      </details>
+
+      <details>
+        <summary>Wie viel Zeit kostet uns das?</summary>
+        <p>Wenig. Am meisten am Anfang – für das Erstgespräch, die Freigabe des Plans und fachliche Rückfragen. Danach reicht in der Regel ein kurzer Abstimmungstermin pro Monat.</p>
+      </details>
+
+      <details>
+        <summary>Wir haben schon eine Website.</summary>
+        <p>Dann bauen wir darauf auf. Neu gebaut wird nur, wenn Reparieren unterm Strich teurer wäre – und das sagen wir Ihnen, bevor Kosten entstehen.</p>
+      </details>
+
+      <details>
+        <summary>Sind DSGVO und Heilmittelwerberecht abgedeckt?</summary>
+        <p>Formulare, Tracking und Einwilligungen setzen wir DSGVO-konform auf; Texte bleiben im Rahmen des Heilmittelwerbegesetzes. Die abschließende rechtliche Prüfung ersetzt das nicht – die gehört weiterhin in anwaltliche Hände.</p>
+      </details>
+
+      <details>
+        <summary>Was passiert im Erstgespräch?</summary>
+        <p>15 Minuten, drei Themen: wo Ihre Praxis steht, welche Behandlungen wachsen sollen und ob sich eine Potenzialanalyse lohnt. Verkauft wird dabei nichts – entschieden wird nach dem Befund.</p>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ZWEITES FORMULAR ===================== -->
+<section class="abschluss">
+  <div class="huelle">
+    <div class="hero-raster">
+
+      <div>
+        <h2>Sprechen wir über Ihre Praxis.</h2>
+        <p class="lead mass" style="margin-top:40px">Der letzte Punkt auf jedem Behandlungsplan ist der Termin. Dieser hier verpflichtet Sie zu nichts.</p>
+      </div>
+
+      <form class="karte" novalidate onsubmit="event.preventDefault()">
+        <p class="karte-intro" style="margin-top:0">15 Minuten am Telefon, direkt mit Raoul <span class="nb">Müller</span>.</p>
+
+        <div class="feld">
+          <label for="name-2">Name</label>
+          <input id="name-2" name="name" type="text" autocomplete="name" autocapitalize="words" spellcheck="false" required>
+        </div>
+        <div class="feld">
+          <label for="mail-2">E-Mail</label>
+          <input id="mail-2" name="email" type="email" autocomplete="email" inputmode="email" autocapitalize="off" autocorrect="off" spellcheck="false" required>
+        </div>
+        <div class="feld">
+          <label for="tel-2">Telefon (optional)</label>
+          <input id="tel-2" name="tel" type="tel" autocomplete="tel" inputmode="tel">
+        </div>
+
+        <button class="knopf" type="submit">Erstgespräch anfragen</button>
+        <p class="helfer">Wir antworten innerhalb eines Werktags.</p>
+        <p class="dsgvo">Wir nutzen Ihre Angaben nur zur Beantwortung dieser Anfrage (Art. 6 Abs. 1 lit. b DSGVO) – Details in der <a href="/datenschutz.html">Datenschutzerklärung</a>.</p>
+      </form>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="fuss">
+  <div class="huelle">
+    <p>Digitale Zahnärzte ist eine Marke der Digital Movement Ltd. Ihr Ansprechpartner sitzt in Berlin.</p>
+    <p><a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutzerklärung</a></p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var KEY = "dm-dental-theme";
+  var root = document.documentElement;
+  var toggle = document.querySelector("[data-theme-toggle]");
+
+  function applyLabel(theme) {
+    if (!toggle) return;
+    toggle.setAttribute("aria-pressed", theme === "dark" ? "true" : "false");
+    toggle.setAttribute("aria-label", theme === "dark" ? "Helles Design einschalten" : "Dunkles Design einschalten");
+  }
+
+  applyLabel(root.getAttribute("data-theme"));
+
+  if (toggle) {
+    toggle.addEventListener("click", function () {
+      var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      root.setAttribute("data-theme", next);
+      applyLabel(next);
+      try { localStorage.setItem(KEY, next); } catch (e) {}
+    });
+  }
+})();
+</script>
+
+</body>
+</html>

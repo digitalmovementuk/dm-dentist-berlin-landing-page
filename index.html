@@ -428,6 +428,31 @@ img { display: block; }
 .theme-toggle:hover { border-color: var(--violet); }
 .theme-toggle:active { transform: scale(0.94); }
 
+/* Version-Umschalter — führt zur Low-Cognitive-Load-Vorschau. Selbes
+   Element wie dort (gleicher Inhalt, eigener Stil dieser Seite). */
+.version-link {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  height: 44px;
+  padding: 0 16px;
+  border: 1px solid rgb(8 42 51 / 16%);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--ink);
+  font-family: var(--font-mono-stack);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 200ms ease, border-color 200ms ease;
+}
+
+.version-link:hover { border-color: var(--violet); }
+.version-link__short { display: none; }
+
 .theme-toggle__icon { display: none; }
 
 /* Light theme: show the sun (click to switch to dark). */
@@ -2343,7 +2368,19 @@ footer p { margin: 0; color: var(--muted); text-align: center; }
 
   .theme-toggle { width: 38px; height: 38px; }
 
+  .version-link { height: 38px; padding: 0 12px; font-size: 9px; }
+  .version-link__long { display: none; }
+  .version-link__short { display: inline; }
+
   .header-cta { padding: 0 12px; font-size: 13px; }
+}
+
+@media (max-width: 400px) {
+  .header-actions { gap: 6px; }
+  .theme-toggle { width: 34px; height: 34px; }
+  .version-link { height: 34px; padding: 0 9px; }
+  .header-cta { padding: 0 8px; font-size: 12px; }
+  .header-cta svg { display: none; }
 }
 
 @media (max-width: 380px) {
@@ -2517,6 +2554,11 @@ footer p { margin: 0; color: var(--muted); text-align: center; }
   </nav>
 
   <div class="header-actions">
+    <a class="version-link" href="/demos/low-cognitive-load/">
+      <span class="version-link__long">Low-Cognitive-Load</span>
+      <span class="version-link__short">LCL</span>
+    </a>
+
     <button type="button" class="theme-toggle" data-theme-toggle aria-pressed="false" aria-label="Dunkles Design einschalten">
       <svg class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="none"><circle cx="12" cy="12" r="4.6" stroke="currentColor" stroke-width="2"/><path d="M12 2.5v3M12 18.5v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2.5 12h3M18.5 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
       <svg class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.8 6.8 0 0 0 10.5 10.5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
