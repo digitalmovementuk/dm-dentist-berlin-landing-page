@@ -492,11 +492,32 @@ input:focus-visible,textarea:focus-visible{
 
 .gruender{
   display:grid;
-  grid-template-columns:160px 1fr;
+  grid-template-columns:1fr 160px;
   gap:32px;
   align-items:start;
   max-width:var(--mass);
 }
+/* Foto steht rechts, der Text links — die Reihenfolge im Quelltext bleibt
+   Foto zuerst, damit es auf dem Handy oben steht. */
+.gruender-foto{grid-column:2;grid-row:1}
+.gruender-text{grid-column:1;grid-row:1}
+
+.linkedin-link{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:32px;
+  height:32px;
+  margin-top:10px;
+  border-radius:50%;
+  background:var(--tinte);
+  color:var(--weiss);
+  text-decoration:none;
+}
+.linkedin-link svg{width:16px;height:16px;fill:currentColor}
+/* Nur die Flaeche wechselt — das Icon bleibt --weiss, damit der Kontrast
+   in beiden Themes stimmt. */
+.linkedin-link:hover{background:var(--blau);color:var(--weiss)}
 /* Rundes Portrait — das Bild bringt seinen eigenen freigestellten Kreis
    mit (transparentes PNG/WebP), deshalb hier kein Rahmen und kein
    Hintergrund: die Ecken sollen nichts zeigen, in beiden Themes. */
@@ -585,6 +606,10 @@ details > p{padding:0 0 16px 28px;margin:0}
   h1{font-size:36px}
   .hero-raster{grid-template-columns:1fr;gap:40px}
   .gruender{grid-template-columns:1fr;gap:24px}
+  /* Einspaltig: Quelltextreihenfolge gilt wieder, Foto also oben. */
+  .gruender-foto,.gruender-text{grid-column:1}
+  .gruender-foto{grid-row:auto}
+  .gruender-text{grid-row:auto}
 }
 
 /* ============================================================
@@ -631,6 +656,7 @@ details > p{padding:0 0 16px 28px;margin:0}
 
   .portrait{width:140px;height:140px;margin:0 auto}
   .gruender{text-align:left}
+  .gruender-foto{text-align:center}
   .bildunterschrift{text-align:center}
 
   .karte{padding:20px}
@@ -854,7 +880,7 @@ details > p{padding:0 0 16px 28px;margin:0}
   <div class="huelle">
     <h2>Mit wem Sie sprechen</h2>
     <div class="gruender">
-      <div>
+      <div class="gruender-foto">
         <div class="portrait">
           <picture>
             <source srcset="assets/founder-raoul-round.webp" type="image/webp">
@@ -862,8 +888,9 @@ details > p{padding:0 0 16px 28px;margin:0}
           </picture>
         </div>
         <p class="bildunterschrift">Raoul Müller, Gründer</p>
+        <a class="linkedin-link" href="https://www.linkedin.com/in/raoulmueller/" target="_blank" rel="noopener" aria-label="Raoul Müller auf LinkedIn (öffnet in neuem Tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 8.25H3.25V21H6.5V8.25ZM4.88 3A1.88 1.88 0 1 0 4.88 6.75 1.88 1.88 0 0 0 4.88 3ZM21 13.7c0-3.84-2.05-5.63-4.79-5.63-2.2 0-3.19 1.21-3.74 2.07V8.25H9.22V21h3.25v-6.31c0-1.66.31-3.27 2.37-3.27 2.03 0 2.05 1.9 2.05 3.38V21H21v-7.3Z"/></svg></a>
       </div>
-      <div>
+      <div class="gruender-text">
         <p>Raoul <span class="nb">Müller</span> hat Digital Movement 2018 gegründet. Bei Digitale Zahnärzte gibt es keine Übergabe an ein Team im Hintergrund. Er führt das Erstgespräch, erstellt den Befund und verantwortet die laufende Arbeit an Ihrer Sichtbarkeit.</p>
         <p>Sie erreichen ihn direkt, per E-Mail oder im vereinbarten Gespräch. Hat er eine Frage zu Ihrer Praxis, ruft er an, statt zu raten. Und läuft etwas nicht wie geplant, erfahren Sie es von ihm – bevor es im Monatsbericht steht.</p>
         <p class="kontaktzeile">Raoul Müller, Gründer · Digital Movement · Berlin</p>
