@@ -416,6 +416,50 @@ input:focus-visible,textarea:focus-visible{
   color:var(--rand-text);
 }
 
+/* ---------- Einwilligung ---------- */
+
+.einwilligung{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  margin:18px 0 20px;
+}
+.einwilligung input[type=checkbox]{
+  appearance:none;
+  -webkit-appearance:none;
+  flex:0 0 auto;
+  width:24px;
+  height:24px;
+  margin:2px 0 0;
+  padding:0;
+  background:var(--weiss);
+  border:1px solid var(--rand);   /* ≥3:1 — WCAG 1.4.11 */
+  border-radius:4px;
+  cursor:pointer;
+}
+.einwilligung input[type=checkbox]:checked{
+  background:var(--blau) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%23fff' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round' d='M3.5 8.4l3 3 6-6.4'/%3E%3C/svg%3E") center no-repeat;
+  border-color:var(--blau);
+}
+.einwilligung label{
+  margin:0;
+  font-size:16px;
+  line-height:1.5;
+  color:var(--rand-text);
+  cursor:pointer;
+}
+
+/* Honigtopf — Spamschutz ohne Drittanbieter-Request.
+   Kein reCAPTCHA: das setzt Einwilligung nach §25 TDDDG voraus
+   und stellt damit ein Cookie-Banner vor das eigene Formular. */
+.honigtopf{
+  position:absolute;
+  left:-9999px;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+}
+
 /* ---------- Listenblöcke ---------- */
 
 .block + .block{margin-top:32px}
@@ -796,9 +840,19 @@ details > p{padding:0 0 16px 28px;margin:0}
           <input id="mail-1" name="email" type="email" autocomplete="email" inputmode="email" autocapitalize="off" autocorrect="off" spellcheck="false" required>
         </div>
 
+        <div class="honigtopf" aria-hidden="true">
+          <label for="firma-1">Firma</label>
+          <input id="firma-1" name="firma" type="text" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div class="einwilligung">
+          <input id="einwilligung-1" name="einwilligung" type="checkbox" required aria-describedby="datenschutz-1">
+          <label for="einwilligung-1">Ich willige ein, dass meine Angaben zur Bearbeitung dieser Anfrage verarbeitet werden.</label>
+        </div>
+
         <button class="knopf" type="submit">Erstgespräch anfragen</button>
         <p class="helfer">Wir antworten innerhalb eines Werktags.</p>
-        <p class="dsgvo">Wir nutzen Ihre Angaben nur zur Beantwortung dieser Anfrage (Art. 6 Abs. 1 lit. b DSGVO) – Details in der <a href="/datenschutz.html">Datenschutzerklärung</a>.</p>
+        <p class="dsgvo" id="datenschutz-1">Wir nutzen Ihre Angaben nur für diese Anfrage. Mehr dazu: <a href="datenschutz-anfrage.html">Datenschutz bei Anfragen</a>.</p>
       </form>
 
     </div>
@@ -1069,9 +1123,19 @@ details > p{padding:0 0 16px 28px;margin:0}
           <input id="mail-2" name="email" type="email" autocomplete="email" inputmode="email" autocapitalize="off" autocorrect="off" spellcheck="false" required>
         </div>
 
+        <div class="honigtopf" aria-hidden="true">
+          <label for="firma-2">Firma</label>
+          <input id="firma-2" name="firma" type="text" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div class="einwilligung">
+          <input id="einwilligung-2" name="einwilligung" type="checkbox" required aria-describedby="datenschutz-2">
+          <label for="einwilligung-2">Ich willige ein, dass meine Angaben zur Bearbeitung dieser Anfrage verarbeitet werden.</label>
+        </div>
+
         <button class="knopf" type="submit">Erstgespräch anfragen</button>
         <p class="helfer">Wir antworten innerhalb eines Werktags.</p>
-        <p class="dsgvo">Wir nutzen Ihre Angaben nur zur Beantwortung dieser Anfrage (Art. 6 Abs. 1 lit. b DSGVO) – Details in der <a href="/datenschutz.html">Datenschutzerklärung</a>.</p>
+        <p class="dsgvo" id="datenschutz-2">Wir nutzen Ihre Angaben nur für diese Anfrage. Mehr dazu: <a href="datenschutz-anfrage.html">Datenschutz bei Anfragen</a>.</p>
       </form>
 
     </div>

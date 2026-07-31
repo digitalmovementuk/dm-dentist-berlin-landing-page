@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Datenschutz bei Anfragen | Digitale Zahnärzte</title>
+<meta name="description" content="Wie Digitale Zahnärzte die Angaben aus dem Anfrageformular verarbeitet: Zweck, Rechtsgrundlage, Löschfrist, Widerruf und Ihre Rechte.">
+<meta name="robots" content="index,follow">
+<script>
+/* Gleicher localStorage-Key wie die Hauptseite, damit die Theme-Wahl
+   erhalten bleibt. Laeuft vor dem ersten Rendern. */
+(function () {
+  var KEY = "dm-dental-theme";
+  var saved = null;
+  try { saved = localStorage.getItem(KEY); } catch (e) {}
+  document.documentElement.setAttribute("data-theme", saved === "dark" ? "dark" : "light");
+})();
+</script>
+<style>
+:root{
+  --papier:#F1F6F5;
+  --weiss:#FFFFFF;
+  --linie:#DCE6E4;
+  --rand-text:#4A5C60;
+  --text:#1F343A;
+  --tinte:#082A33;
+  --blau:#0E6C93;
+  --blau-tief:#0B5F58;
+
+  --serif:Charter,"Bitstream Charter","Sitka Text",Cambria,Georgia,serif;
+  --sans:-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --mass:38rem;
+}
+:root[data-theme="dark"]{
+  --papier:#082A33;
+  --weiss:#0F3846;
+  --linie:#1C4552;
+  --rand-text:#9FB8BB;
+  --text:#D7E4E3;
+  --tinte:#F1F6F5;
+  --blau:#22C3D6;
+  --blau-tief:#6FE0EE;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+
+body{
+  margin:0;
+  background:var(--papier);
+  color:var(--text);
+  font-family:var(--serif);
+  font-size:19px;
+  line-height:1.6;
+  hyphens:auto;
+  -webkit-hyphens:auto;
+  overflow-wrap:break-word;
+}
+
+.huelle{
+  max-width:var(--mass);
+  margin:0 auto;
+  padding:0 32px;
+}
+
+h1,h2{color:var(--tinte);font-weight:700;margin:0;hyphens:manual;-webkit-hyphens:manual;text-wrap:balance}
+h1{font-size:36px;line-height:1.2;margin-bottom:8px}
+h2{font-size:21px;line-height:1.3;margin:36px 0 10px}
+
+p{margin:0 0 16px;text-wrap:pretty}
+p:last-child{margin-bottom:0}
+
+a{color:var(--blau);text-decoration:underline;text-underline-offset:2px}
+a:hover{color:var(--blau-tief)}
+:focus-visible{outline:2px solid var(--blau);outline-offset:2px}
+
+.kopf{
+  padding:20px 0;
+  border-bottom:1px solid var(--linie);
+  font-family:var(--sans);
+  font-size:16px;
+}
+.wortmarke{font-weight:700;color:var(--tinte);text-decoration:none}
+
+main{padding:48px 0 72px}
+
+.stand{
+  font-family:var(--sans);
+  font-size:15px;
+  color:var(--rand-text);
+  margin-bottom:32px;
+}
+
+.zurueck{
+  font-family:var(--sans);
+  font-size:16px;
+  margin-top:40px;
+  padding-top:24px;
+  border-top:1px solid var(--linie);
+}
+
+@media (max-width:759px){
+  body{font-size:18px}
+  .huelle{padding:0 20px}
+  h1{font-size:30px}
+  h2{font-size:20px}
+  main{padding:36px 0 56px}
+}
+</style>
+</head>
+<body>
+
+<div class="kopf huelle">
+  <a class="wortmarke" href="index.html">Digitale Zahnärzte</a>
+</div>
+
+<main class="huelle">
+
+  <h1>Datenschutz bei Anfragen</h1>
+  <p class="stand">Gilt für die Angaben, die Sie in das Anfrageformular eintragen.</p>
+
+  <h2>Verantwortlich</h2>
+  <p>Verantwortlich ist die Digital Movement Marketing Ltd, handelnd als Digital Movement UK, 128 City Road, London EC1V 2NX.</p>
+
+  <h2>Zweck, Rechtsgrundlage und Löschung</h2>
+  <p>Wir verarbeiten Ihre Angaben ausschließlich zur Beantwortung dieser Anfrage (Art. 6 Abs. 1 lit. a und b DSGVO), geben sie nicht an Dritte weiter und löschen sie spätestens sechs Monate nach Ende der Korrespondenz.</p>
+
+  <h2>Widerruf Ihrer Einwilligung</h2>
+  <p>Ihre Einwilligung können Sie jederzeit formlos mit Wirkung für die Zukunft widerrufen. Eine Nachricht an <a href="mailto:hallo@digitalezahnärzte.de">hallo@digitalezahnärzte.de</a> genügt.</p>
+
+  <h2>Ihre Rechte</h2>
+  <p>Ihre Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit und Beschwerde bei einer Aufsichtsbehörde sowie alle weiteren Angaben finden Sie in der <a href="/datenschutz.html">Datenschutzerklärung</a>.</p>
+
+  <p class="zurueck"><a href="index.html">Zurück zur Seite</a> · <a href="/datenschutz.html">Datenschutzerklärung</a> · <a href="/impressum.html">Impressum</a></p>
+
+</main>
+
+</body>
+</html>
