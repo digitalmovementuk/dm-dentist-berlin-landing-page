@@ -24,7 +24,7 @@
 <title>Zahnarzt Marketing: SEO, KI-Suche, Website | Digitale Zahnärzte</title>
 <meta name="description" content="Praxismarketing für Zahnärzte: Suchmaschinenoptimierung, Sichtbarkeit in KI-Suchen und Webdesign. Mehr Anfragen aus Google. Erstgespräch unverbindlich.">
 <meta name="google-site-verification" content="oAQgBShPN5QNNlEsI9u1B7Z_nuCaBG8G0XE5EXCxaDA" />
-<meta name="dm-lead-endpoint" content="https://leads.digitalmovement.uk/send.php">
+<meta name="dm-lead-endpoint" content="https://leads.digitalmovement.uk/">
 <!-- Fill in once the GA4 property exists (Admin -> Data Streams -> Web -> Measurement ID). Blank = analytics stays off, no broken calls. -->
 <meta name="dm-ga-measurement-id" content="G-16ZG8GFH67">
 <script>
@@ -2537,6 +2537,21 @@ footer p { margin: 0; color: var(--muted); text-align: center; }
 
   [data-reveal] { opacity: 1; transform: none; }
 }
+
+  /* Vierte Zeile traegt das Zielwort. Eigene Zeilenhoehe ist noetig: die
+     geerbte ist fuer die grosse Wortmarke kleiner als die Schriftgroesse
+     gesetzt und wuerde die Umlautpunkte von "FUER" abschneiden, weil die
+     Zeile fuer die Einblend-Animation overflow:hidden hat. */
+  .hero__line--sub {
+    margin-top: 0.15em;
+  }
+  .hero__line--sub span {
+    font-size: clamp(1.3rem, 3.6vw, 2.2rem);
+    line-height: 1.3;
+    letter-spacing: 0.01em;
+    word-spacing: normal;
+    color: var(--muted, #6b7785);
+  }
 </style>
 <script type="application/ld+json">{
   "@context": "https://schema.org",
@@ -2729,6 +2744,7 @@ footer p { margin: 0; color: var(--muted); text-align: center; }
             <div class="hero__line"><span style="--line-delay:0ms">ANFRAGEN</span></div>
             <div class="hero__line"><span class="gradient-word" style="--line-delay:110ms">AUS GOOGLE</span></div>
             <div class="hero__line"><span style="--line-delay:220ms">UND KI.</span></div>
+            <div class="hero__line hero__line--sub"><span style="--line-delay:330ms">FÜR ZAHNARZTPRAXEN.</span></div>
           </h1>
 
           <p class="hero__lead">Zahnarzt-Marketing aus einer Hand: mehr Anfragen für die Behandlungen, mit denen Ihre Praxis wachsen soll, und eine Website, die Interessenten dorthin führt.</p>
@@ -2773,7 +2789,7 @@ footer p { margin: 0; color: var(--muted); text-align: center; }
 
             <label class="consent">
               <input type="checkbox" name="consent" required aria-describedby="err-consent-hero">
-              <span>Ich habe den <a href="datenschutz.html" target="_blank" rel="noreferrer">Datenschutzhinweis</a> gelesen und bin mit der Verarbeitung meiner Angaben zur Bearbeitung dieser Anfrage einverstanden.
+              <span>Ich willige ein, dass meine Angaben zur Bearbeitung dieser Anfrage verarbeitet werden. Hinweise dazu im <a href="datenschutz.html" target="_blank" rel="noreferrer">Datenschutzhinweis</a>.
                 <span class="field-error" id="err-consent-hero" data-err="consent" hidden></span>
               </span>
             </label>
@@ -3258,7 +3274,7 @@ und Anfragen</h3>
 
         <label class="consent">
           <input type="checkbox" name="consent" required aria-describedby="err-consent">
-          <span>Ich habe den <a href="datenschutz.html" target="_blank" rel="noreferrer">Datenschutzhinweis</a> gelesen und bin mit der Verarbeitung meiner Angaben zur Bearbeitung dieser Anfrage einverstanden.
+          <span>Ich willige ein, dass meine Angaben zur Bearbeitung dieser Anfrage verarbeitet werden. Hinweise dazu im <a href="datenschutz.html" target="_blank" rel="noreferrer">Datenschutzhinweis</a>.
             <span class="field-error" id="err-consent" data-err="consent" hidden></span>
           </span>
         </label>
@@ -3278,7 +3294,7 @@ und Anfragen</h3>
         </div>
 
         <div class="receipt-person">
-          <img src="assets/founder-raoul.jpg" alt="Raoul Müller, Digital Movement" width="56" height="56" loading="lazy" decoding="async">
+          <picture><source srcset="assets/founder-raoul-56.webp" type="image/webp"><img src="assets/founder-raoul-56.jpg" alt="Raoul Müller, Digital Movement" width="56" height="56" loading="lazy" decoding="async"></picture>
           <span>
             <strong>Raoul Müller</strong>
             <small>Digital Movement</small>
@@ -3776,7 +3792,10 @@ und Anfragen</h3>
         name: data.get("name"),
         email: data.get("email"),
         phone: data.get("phone") || "",
-        company_website: data.get("company_website") || ""
+        company_website: data.get("company_website") || "",
+        // Der Endpoint verlangt das Feld; ohne es antwortet er mit
+        // "Please tick the consent box so we may reply to you."
+        consent: true
       };
 
       var finish = function (mode) {
@@ -3789,6 +3808,9 @@ und Anfragen</h3>
       };
 
       if (endpoint) {
+        // Bewusst normaler CORS-Modus: nur so laesst sich echter Erfolg von
+        // einer Ablehnung unterscheiden. "no-cors" wuerde eine opaque Antwort
+        // liefern und damit auch ein serverseitiges 403 als Erfolg ausgeben.
         fetch(endpoint, {
           method: "POST",
           headers: { "Content-Type": "text/plain;charset=utf-8" },
@@ -3798,16 +3820,11 @@ und Anfragen</h3>
           setSending(false);
           finish("endpoint");
         })["catch"](function () {
-          // Say what happened and let the visitor try again, rather than
-          // silently switching channel.
+          // Statt den Interessenten mit einer Fehlermeldung stehen zu lassen:
+          // auf den Mailweg wechseln, damit die Anfrage nicht verloren geht.
           setSending(false);
-          if (errorBox) {
-            errorBox.innerHTML =
-              'Das Senden hat gerade nicht geklappt. Bitte versuchen Sie es noch einmal ' +
-              'oder schreiben Sie direkt an <a href="mailto:hallo@xn--digitalezahnrzte-6nb.de">hallo@digitalezahnärzte.de</a>.';
-            errorBox.hidden = false;
-            errorBox.focus();
-          }
+          openMailFallback(payload);
+          finish("email");
         });
         return;
       }
