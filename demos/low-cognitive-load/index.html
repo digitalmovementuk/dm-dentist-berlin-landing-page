@@ -541,6 +541,70 @@ input:focus-visible,textarea:focus-visible{
 .bildunterschrift{margin-top:8px}
 .kontaktzeile{margin-top:16px}
 
+/* ---------- Bewertungen ---------- */
+
+.bewertung-kopf{
+  padding-bottom:20px;
+  border-bottom:1px solid var(--linie);
+}
+.note{
+  display:flex;
+  align-items:baseline;
+  flex-wrap:wrap;
+  gap:4px 12px;
+  margin:0 0 6px;
+}
+.note-zahl{
+  font-size:40px;
+  font-weight:700;
+  line-height:1;
+  color:var(--tinte);
+  font-variant-numeric:tabular-nums;
+}
+.sterne{
+  color:var(--blau);
+  font-size:21px;
+  letter-spacing:3px;
+}
+.note-text{
+  font-family:var(--sans);
+  font-size:16px;
+  color:var(--rand-text);
+}
+.bewertung-meta{
+  font-family:var(--sans);
+  font-size:15px;
+  line-height:1.5;
+  color:var(--rand-text);
+  margin:0;
+}
+
+/* Eine Stimme pro Zeile, getrennt durch dieselbe Haarlinie wie im FAQ —
+   kein Kartenraster, das drei Zitate in 38rem zusammenquetschen wuerde. */
+.stimme{
+  margin:0;
+  padding:22px 0;
+  border-bottom:1px solid var(--linie);
+}
+.stimme p{
+  font-size:21px;
+  line-height:1.5;
+  color:var(--tinte);
+  margin:0 0 8px;
+}
+.stimme footer{
+  font-family:var(--sans);
+  font-size:15px;
+  line-height:1.5;
+  color:var(--rand-text);
+}
+
+.bewertung-link{
+  font-family:var(--sans);
+  font-size:16px;
+  margin-top:24px;
+}
+
 /* ---------- FAQ ---------- */
 
 details{border-bottom:1px solid var(--linie)}
@@ -637,6 +701,9 @@ details > p{padding:0 0 16px 28px;margin:0}
   .h1-zusatz{font-size:22px;line-height:1.35;margin-top:10px}
   h2{font-size:28px;text-align:center}
   h3,.karte-titel{font-size:22px}
+  .note-zahl{font-size:34px}
+  .stimme p{font-size:19px}
+  .bewertung-kopf,.stimme,.bewertung-link{text-align:left}
   .h3-zusatz{font-size:14px;display:block;margin-top:2px}
   .fazit,.hinweis{padding:14px 16px;text-align:left}
   summary{font-size:21px}
@@ -896,6 +963,42 @@ details > p{padding:0 0 16px 28px;margin:0}
         <p class="kontaktzeile">Raoul Müller, Gründer · Digital Movement · Berlin</p>
         <p class="kontaktzeile"><a href="mailto:hallo@digitalezahnärzte.de">hallo@digitalezahnärzte.de</a> · <a href="tel:+4917682360647">+49 176 82360647</a></p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== BEWERTUNGEN ===================== -->
+<section>
+  <div class="huelle">
+    <h2>Bewertungen</h2>
+    <div class="mass">
+
+      <div class="bewertung-kopf">
+        <p class="note">
+          <span class="note-zahl">5,0</span>
+          <span class="sterne" aria-hidden="true">★★★★★</span>
+          <span class="note-text">auf Google</span>
+        </p>
+        <p class="bewertung-meta">102 Bewertungen · öffentliche Google-Bewertungen von Digital Movement Australia</p>
+      </div>
+
+      <blockquote class="stimme">
+        <p>„Great quality service, proactive, positive and easy to deal with.“</p>
+        <footer>Jessica Purcell · Google Review · 2026</footer>
+      </blockquote>
+
+      <blockquote class="stimme">
+        <p>„I started getting real leads not long after.“</p>
+        <footer>Beth Sorensen · Google Review · 2025</footer>
+      </blockquote>
+
+      <blockquote class="stimme">
+        <p>„I couldn’t be happier with the redesign.“</p>
+        <footer>Malin Burnand · Google Review · 2025</footer>
+      </blockquote>
+
+      <p class="bewertung-link"><a href="https://www.google.com/maps/place/Digital+Movement/@-37.8177182,144.9579593,15z/data=!4m6!3m5!1s0x6ad66936265037b9:0x9f0a95fb572901fc!8m2!3d-37.8177182!4d144.9579593!16s%2Fg%2F11h9k3dglx" target="_blank" rel="noopener">Alle Bewertungen ansehen</a></p>
+
     </div>
   </div>
 </section>
