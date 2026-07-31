@@ -497,12 +497,13 @@ input:focus-visible,textarea:focus-visible{
   align-items:start;
   max-width:var(--mass);
 }
+/* Rundes Portrait — das Bild bringt seinen eigenen freigestellten Kreis
+   mit (transparentes PNG/WebP), deshalb hier kein Rahmen und kein
+   Hintergrund: die Ecken sollen nichts zeigen, in beiden Themes. */
 .portrait{
   width:160px;
-  height:200px;
-  border:1px solid var(--linie);
-  border-radius:6px;
-  background:var(--weiss);
+  height:160px;
+  border-radius:50%;
   overflow:hidden;
 }
 .portrait img{
@@ -628,7 +629,7 @@ details > p{padding:0 0 16px 28px;margin:0}
 
   .knopf{height:56px;font-size:16px}
 
-  .portrait{width:100%;max-width:200px;height:240px;margin:0 auto}
+  .portrait{width:140px;height:140px;margin:0 auto}
   .gruender{text-align:left}
   .bildunterschrift{text-align:center}
 
@@ -854,7 +855,12 @@ details > p{padding:0 0 16px 28px;margin:0}
     <h2>Mit wem Sie sprechen</h2>
     <div class="gruender">
       <div>
-        <div class="portrait"><img src="assets/founder-raoul.jpg" alt="Raoul Müller, Gründer von Digitale Zahnärzte" width="160" height="200"></div>
+        <div class="portrait">
+          <picture>
+            <source srcset="assets/founder-raoul-round.webp" type="image/webp">
+            <img src="assets/founder-raoul-round.png" alt="Raoul Müller, Gründer von Digitale Zahnärzte" width="160" height="160">
+          </picture>
+        </div>
         <p class="bildunterschrift">Raoul Müller, Gründer</p>
       </div>
       <div>
