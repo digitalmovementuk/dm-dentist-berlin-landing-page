@@ -279,6 +279,16 @@ h2 + *{margin-top:40px}
 
 .hero h1{margin-bottom:24px}
 
+/* Zweite H1-Zeile — gehört zur Ueberschrift (gleiche Tinte), tritt aber
+   über das Gewicht zurück, damit die Hierarchie in drei Stufen liest. */
+.h1-zusatz{
+  display:block;
+  margin-top:12px;
+  font-size:28px;
+  font-weight:400;
+  line-height:1.3;
+}
+
 .lead{
   font-size:21px;
   line-height:1.5;
@@ -289,19 +299,35 @@ h2 + *{margin-top:40px}
   font-family:var(--sans);
   font-size:16px;
   line-height:1.5;
-  margin-bottom:32px;
+  margin-bottom:16px;
 }
 
-/* Vertrauensblock — Belege ohne erfundene Zahlen: Arbeitsweise
-   statt Behauptung. */
-.vertrauen{border-top:1px solid var(--linie);padding-top:24px}
-.vertrauen p{
+/* Erfolgsgeschichte — ein belegter Fall aus den 300 Kunden, im
+   gleichen Akzent-Panel wie das Fazit der Leistungen. */
+.erfolg{
+  padding:14px 18px;
+  background:var(--weiss);
+  border:1px solid var(--linie);
+  border-left:3px solid var(--blau);
+  border-radius:0 6px 6px 0;
   font-family:var(--sans);
-  font-size:16px;
-  line-height:1.5;
-  margin:0 0 12px;
 }
-.vertrauen p:last-child{margin-bottom:0}
+.erfolg-kopf{
+  font-size:15px;
+  line-height:1.4;
+  color:var(--rand-text);
+  margin:0 0 6px;
+}
+.erfolg-kopf strong{color:var(--tinte)}
+.erfolg-zahlen{
+  font-size:16px;
+  line-height:1.7;
+  margin:0;
+}
+.erfolg-zahlen strong{
+  color:var(--blau);
+  font-variant-numeric:tabular-nums;
+}
 
 /* ---------- Formular ---------- */
 
@@ -395,6 +421,36 @@ input:focus-visible,textarea:focus-visible{
 .block + .block{margin-top:32px}
 .block h3{margin-bottom:8px}
 
+/* Englischer Fachbegriff hinter der Überschrift — tritt zurück, damit
+   der deutsche Teil zuerst gelesen wird. */
+.h3-zusatz{
+  font-family:var(--sans);
+  font-size:15px;
+  font-weight:400;
+  line-height:1.4;
+  color:var(--rand-text);
+  white-space:nowrap;
+}
+
+/* Farblich abgesetzte Kästen: Kurzfassung der Leistungen (.fazit)
+   und Hinweise im Fließtext (.hinweis). Gleiche Optik, anderer Abstand. */
+.fazit,.hinweis{
+  padding:16px 20px;
+  background:var(--weiss);
+  border:1px solid var(--linie);
+  border-left:3px solid var(--blau);
+  border-radius:0 6px 6px 0;
+  color:var(--blau);
+  font-style:italic;
+  hyphens:manual;
+  -webkit-hyphens:manual;
+  text-wrap:pretty;
+}
+/* Deutlich mehr Luft als die 32px zwischen den Blöcken — das Fazit
+   fasst zusammen, es ist kein weiterer Block. */
+.fazit{margin-top:48px}
+.hinweis{margin-top:16px}
+
 .schritt-nr{
   font-family:var(--sans);
   font-size:16px;
@@ -432,13 +488,6 @@ input:focus-visible,textarea:focus-visible{
   line-height:1.5;
   margin-top:8px;
 }
-.preis-fuss{
-  font-family:var(--sans);
-  font-size:16px;
-  line-height:1.5;
-  margin-top:32px;
-}
-
 /* ---------- Gründer ---------- */
 
 .gruender{
@@ -552,7 +601,6 @@ details > p{padding:0 0 16px 28px;margin:0}
 
   .block + .block{margin-top:22px}
   .entscheidung{margin:22px 0}
-  .preis-fuss{margin-top:22px}
   .gruender{gap:16px}
 
   .kopf{padding:14px 0}
@@ -560,8 +608,11 @@ details > p{padding:0 0 16px 28px;margin:0}
   .kopf-cta{font-size:15px}
 
   h1{font-size:40px;line-height:1.15;text-align:left}
+  .h1-zusatz{font-size:22px;line-height:1.35;margin-top:10px}
   h2{font-size:28px;text-align:center}
   h3,.karte-titel{font-size:22px}
+  .h3-zusatz{font-size:14px;display:block;margin-top:2px}
+  .fazit,.hinweis{padding:14px 16px;text-align:left}
   summary{font-size:21px}
 
   .lead{font-size:18px;text-align:left}
@@ -570,7 +621,8 @@ details > p{padding:0 0 16px 28px;margin:0}
 
   .hero{padding-top:24px;padding-bottom:56px}
 
-  .beleg,.vertrauen{text-align:left}
+  .beleg,.erfolg{text-align:left}
+  .erfolg{padding:14px 16px}
 
   .karte-titel,.karte-intro{text-align:left}
 
@@ -584,7 +636,6 @@ details > p{padding:0 0 16px 28px;margin:0}
 
   /* Sektionsüberschriften + Intros zentriert, Fließtext/Karten/Listen linksbündig — bizee-Muster */
   section:not(.hero) > .huelle > h2{text-align:center}
-  .preis-fuss{text-align:left}
 }
 </style>
 </head>
@@ -624,14 +675,13 @@ details > p{padding:0 0 16px 28px;margin:0}
     <div class="hero-raster">
 
       <div>
-        <h1>Mehr Anfragen aus Google und KI-Suche.</h1>
+        <h1>Mehr Neupatienten. Umsatzwachstum.<span class="h1-zusatz">Wir machen Sie sichtbar auf Google und ChatGPT.</span></h1>
         <p class="lead mass">SEO, KI-Sichtbarkeit und Webdesign für Zahnarztpraxen – damit Sie gefunden werden, wenn jemand in Ihrer Stadt nach Implantaten, Alignern oder einfach einem neuen Zahnarzt sucht.</p>
         <p class="beleg">Digital Movement betreut seit 2018 über 300 Kunden · 5,0 ★ bei Google (102 Bewertungen)</p>
 
-        <div class="vertrauen">
-          <p><strong>Erst der Befund, dann der Plan.</strong> Vor jedem Vertrag steht eine Potenzialanalyse. Was erreichbar ist – und was nicht – wissen Sie, bevor Sie unterschreiben.</p>
-          <p><strong>Zahlen statt Zusagen.</strong> Was Ihr Budget bewirkt, sehen Sie jeden Monat schwarz auf weiß – nicht erst nach einem Jahr.</p>
-          <p><strong>Nur Zahnarztpraxen.</strong> Von der Einzelpraxis bis zum MVZ – Sie müssen uns nicht erklären, was eine PZR ist.</p>
+        <div class="erfolg">
+          <p class="erfolg-kopf">Erfolgsgeschichte <strong>VIP Dental Clinic</strong></p>
+          <p class="erfolg-zahlen"><strong>+70 %</strong> Neupatientenanfragen pro Monat<br><strong>+45 %</strong> Umsatzwachstum</p>
         </div>
       </div>
 
@@ -668,19 +718,21 @@ details > p{padding:0 0 16px 28px;margin:0}
     <div class="mass">
 
       <div class="block">
-        <h3>Sichtbarkeit bei Google</h3>
-        <p>Ob Prophylaxe, Wurzelbehandlung oder Angstpatienten – wer eine Behandlung sucht, vergleicht die ersten Ergebnisse und klickt selten weiter. Wir arbeiten daran, dass Ihre Praxis bei genau diesen Suchen auftaucht: mit einer eigenen Seite je Behandlung und sauberer technischer Basis.</p>
+        <h3>Sichtbarkeit bei Google <span class="h3-zusatz">(Search Engine Optimisation – SEO)</span></h3>
+        <p>Ob „Prophylaxe“, „Wurzelbehandlung“ oder „Angstpatienten“ – wer eine Behandlung sucht, vergleicht die ersten drei Ergebnisse auf Google und klickt selten weiter. Wir arbeiten daran, dass Ihre Praxis genau hier auftaucht: mit einer eigenen Seite je Behandlung.</p>
       </div>
 
       <div class="block">
-        <h3>Sichtbarkeit in der KI-Suche</h3>
-        <p>Immer mehr Patienten fragen ChatGPT oder die KI-Übersicht bei Google, welche Praxis für sie infrage kommt. Diese Systeme zitieren Quellen. Wir bereiten Ihre Inhalte so auf, dass Ihre Praxis dazugehört – mit klaren Fakten zu Leistungen und Standort.</p>
+        <h3>Sichtbarkeit in der KI-Suche <span class="h3-zusatz">(Answer Engine Optimisation – AEO)</span></h3>
+        <p>Immer mehr Patienten fragen ChatGPT oder die KI-Übersicht bei Google, welche Praxis für sie infrage kommt. Diese Systeme zitieren Quellen. Wir bereiten Ihre Inhalte so auf, dass Ihre Praxis hier auftaucht.</p>
       </div>
 
       <div class="block">
-        <h3>Website und Anfragen</h3>
-        <p>Sichtbarkeit endet nicht beim Klick. Ihre Website muss schnell laden, auf dem Handy funktionieren und den Weg zur Anfrage kurz halten – sonst war der Aufwand davor umsonst. Deshalb gehören Website und Sichtbarkeit bei uns zusammen.</p>
+        <h3>Website und Anfragen <span class="h3-zusatz">(Website-Entwicklung)</span></h3>
+        <p>Suchoptimierung für Google und KI-Suche erhöht die Anzahl der Besucher auf Ihrer Website. Damit diese auch in Patientenanfragen konvertieren, optimieren wir jede der Behandlungsseiten, sodass möglichst viele Besucher eine Anfrage hinterlassen oder einen Termin machen. Wichtig hierbei: eine vollständige Optimierung für Mobilgeräte!</p>
       </div>
+
+      <p class="fazit">Kurz gefasst: Wir machen Sie online sichtbar und liefern eine Premium-Webseite, optimiert für Patientenanfragen.</p>
 
     </div>
   </div>
@@ -691,8 +743,41 @@ details > p{padding:0 0 16px 28px;margin:0}
   <div class="huelle">
     <h2>Preise</h2>
     <div class="mass">
-      <p>Der Preis richtet sich nach Behandlungsspektrum, Region und Umfang Ihrer Praxis. Im Erstgespräch bekommen Sie eine konkrete Spanne und sehen, was darin enthalten ist.</p>
-      <p class="preis-fuss">Vorher legen wir uns bewusst nicht fest – jede Praxis startet von einem anderen Punkt aus.</p>
+      <div class="block">
+        <div class="preis-kopf">
+          <h3>SEO Basic</h3>
+          <span class="preis">499 €/Monat</span>
+        </div>
+        <p>Der Einstieg: Wir optimieren Ihre bestehenden Seiten für Google. Dann analysieren wir Ihre Suchbegriffe und bauen für die drei wichtigsten je eine Seite.</p>
+        <p class="umfang">Enthält: 3 neue Behandlungsseiten · Google-Unternehmensprofil gepflegt · Monatliche Optimierung · Monatsbericht</p>
+      </div>
+
+      <div class="block">
+        <div class="preis-kopf">
+          <h3>SEO Standard</h3>
+          <span class="preis">2.499 €/Monat</span>
+        </div>
+        <p>Das Wachstumspaket: für Praxen, die ihren Umsatz steigern wollen. Alles aus „Basic“. Dazu bauen wir Seiten für Ihre Top-15 Suchbegriffe – auch für die KI-Suche optimiert.</p>
+        <p class="umfang">Enthält: SEO- &amp; AEO-Recherche · 15 neue Behandlungsseiten · KI-Suche inklusive · Monatliche Optimierung · Monatsbericht</p>
+      </div>
+
+      <div class="block">
+        <div class="preis-kopf">
+          <h3>SEO Max</h3>
+          <span class="preis">4.990 €/Monat</span>
+        </div>
+        <p>„Max“ nutzt Google und KI voll aus. Ziel: maximal viele neue Patientenanfragen. Wir recherchieren Ihre Top-50 Suchbegriffe und bauen für jeden eine eigene Seite. Dazu wöchentliche Blog-Beiträge für maximale Rankings.</p>
+        <p class="umfang">Enthält: Alles aus Standard · 50 Behandlungsseiten + Standortseiten · Wöchentliche Blog-Beiträge</p>
+      </div>
+
+      <div class="block">
+        <div class="preis-kopf">
+          <h3>Website</h3>
+          <span class="preis">7.499 € einmalig</span>
+        </div>
+        <p>Eine neue Praxis-Website – einzeln buchbar oder als Fundament für eines der SEO-Pakete.</p>
+        <p class="hinweis">In den SEO-Paketen Standard und Max ist die Website ohne Extrakosten enthalten.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -799,7 +884,7 @@ details > p{padding:0 0 16px 28px;margin:0}
 
       <details>
         <summary>Was kostet das?</summary>
-        <p>Das richtet sich nach Behandlungsspektrum, Region und Umfang Ihrer Praxis. Im Erstgespräch bekommen Sie eine konkrete Spanne und sehen, was darin enthalten ist – vorher legen wir uns bewusst nicht fest.</p>
+        <p>Zwischen 499 € und 4.990 € pro Monat, je nach Paket; eine neue Website kostet einmalig 7.499 €. Alle Preise zzgl. MwSt. Welches Paket zu Ihrer Praxis passt, klären wir im Erstgespräch.</p>
       </details>
 
       <details>
