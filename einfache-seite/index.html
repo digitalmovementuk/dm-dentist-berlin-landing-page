@@ -26,6 +26,7 @@
      erst nach Einwilligung; ohne Einwilligung geht nichts an Google. -->
 <script src="/assets/js/dm-consent.js"></script>
 <script src="/assets/js/dm-tracking.js" defer></script>
+<meta name="dm-lead-endpoint" content="https://leads.digitalmovement.uk/">
 <title>Digitale Zahnärzte — SEO, KI-Sichtbarkeit & Webdesign für Zahnarztpraxen</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23F1F6F5'/%3E%3Crect x='2' y='2' width='60' height='60' rx='8' fill='none' stroke='%230E6C93' stroke-width='2'/%3E%3Ctext x='32' y='42' font-family='Georgia,Cambria,serif' font-size='28' font-weight='700' fill='%23082A33' text-anchor='middle'%3EDZ%3C/text%3E%3C/svg%3E">
 <meta name="description" content="SEO, KI-Sichtbarkeit und Webdesign für Zahnarztpraxen. Unverbindliches Erstgespräch mit Gründer Raoul Müller.">
@@ -699,6 +700,23 @@ details > p{padding:0 0 16px 28px;margin:0}
    wiederkehrenden Anker und füllt das Blatt.
    ============================================================ */
 
+/* Rückmeldung der Anfrageformulare — Fehler sichtbar machen, ohne die
+   Farbe als einziges Signal zu nutzen (Text steht immer dabei). */
+.hat-fehler input,
+.einwilligung.hat-fehler input[type=checkbox]{border-color:#b3261e;border-width:2px}
+.hat-fehler label{color:#b3261e}
+[data-theme="dark"] .hat-fehler input,
+[data-theme="dark"] .einwilligung.hat-fehler input[type=checkbox]{border-color:#ffb4ab}
+[data-theme="dark"] .hat-fehler label{color:#ffb4ab}
+.formular-hinweis{
+  margin:0 0 14px;
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.5;
+  color:#b3261e;
+}
+[data-theme="dark"] .formular-hinweis{color:#ffb4ab}
+
 @media (min-width:1024px){
   section:not(.hero):not(.abschluss) > .huelle{
     display:grid;
@@ -1178,6 +1196,148 @@ details > p{padding:0 0 16px 28px;margin:0}
       try { localStorage.setItem(KEY, next); } catch (e) {}
     });
   }
+})();
+</script>
+
+<script>
+/* ---------- Anfrageformulare ----------
+   Beide Formulare trugen bisher nur onsubmit="event.preventDefault()" und
+   hatten keinen Handler: sie sahen vollständig aus, verwarfen aber jede
+   Anfrage. Sie senden jetzt an denselben Endpoint wie die Hauptversion.
+   Das inline onsubmit bleibt bewusst stehen — fällt dieses Skript aus,
+   verhindert es, dass der Browser die Eingaben in die URL schreibt. */
+(function () {
+  "use strict";
+
+  var metaEndpoint = document.querySelector('meta[name="dm-lead-endpoint"]');
+  var endpoint = metaEndpoint ? metaEndpoint.content.trim() : "";
+  var POSTFACH = "hallo@xn--digitalezahnrzte-6nb.de";
+
+  function melde(name, params) {
+    if (typeof window.dmTrack === "function") window.dmTrack(name, params);
+  }
+
+  Array.prototype.forEach.call(document.querySelectorAll("form.karte"), function (form, index) {
+    var kennung = form.id || ("formular-" + (index + 1));
+    var knopf = form.querySelector('button[type="submit"]');
+    var knopfText = knopf ? knopf.textContent : "Erstgespräch anfragen";
+
+    var hinweis = document.createElement("p");
+    hinweis.className = "formular-hinweis";
+    hinweis.setAttribute("role", "alert");
+    hinweis.hidden = true;
+    if (knopf) knopf.parentNode.insertBefore(hinweis, knopf);
+
+    function feld(name) { return form.querySelector('[name="' + name + '"]'); }
+
+    function fehlerLoeschen() {
+      Array.prototype.forEach.call(form.querySelectorAll(".hat-fehler"), function (el) {
+        el.classList.remove("hat-fehler");
+      });
+      hinweis.hidden = true;
+      hinweis.textContent = "";
+    }
+
+    function fehlerZeigen(liste) {
+      liste.forEach(function (name) {
+        var f = feld(name);
+        var huelle = f && f.closest ? f.closest(".feld, .einwilligung") : null;
+        if (huelle) huelle.classList.add("hat-fehler");
+      });
+      hinweis.textContent = liste.length === 1
+        ? "Bitte prüfen Sie die markierte Angabe."
+        : "Bitte prüfen Sie die " + liste.length + " markierten Angaben.";
+      hinweis.hidden = false;
+      var erstes = feld(liste[0]);
+      if (erstes) erstes.focus();
+    }
+
+    function sendet(an) {
+      if (!knopf) return;
+      knopf.disabled = an;
+      knopf.textContent = an ? "Wird gesendet …" : knopfText;
+    }
+
+    function fertig(weg) {
+      form.innerHTML =
+        '<p class="karte-titel">Danke, Ihre Anfrage ist unterwegs.</p>' +
+        '<p class="helfer">' +
+        (weg === "endpoint"
+          ? "Wir melden uns innerhalb eines Werktags bei Ihnen."
+          : "Bitte schicken Sie die eben geöffnete E-Mail noch ab.") +
+        "</p>";
+      form.setAttribute("role", "status");
+      /* Zählt nur, wenn die Anfrage den Endpoint wirklich erreicht hat —
+         beim Mailweg gibt es keine Zustellbestätigung. */
+      if (weg === "endpoint") melde("generate_lead", { dm_formular: kennung });
+    }
+
+    function mailweg(daten) {
+      var text = "Name: " + daten.name + "\nTelefon: " + daten.phone + "\nE-Mail: " + daten.email;
+      window.location.href = "mailto:" + POSTFACH +
+        "?subject=" + encodeURIComponent("Anfrage Erstgespräch") +
+        "&body=" + encodeURIComponent(text);
+    }
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      fehlerLoeschen();
+
+      /* Honigtopf: für Menschen unsichtbar, nur Bots füllen ihn aus.
+         Keine Fehlermeldung — der Bot soll nicht lernen, woran es lag. */
+      var honig = feld("firma");
+      if (honig && honig.value.trim()) { fertig("endpoint"); return; }
+
+      var fehler = [];
+      ["name", "tel", "email"].forEach(function (name) {
+        var f = feld(name);
+        if (!f || !String(f.value || "").trim()) fehler.push(name);
+      });
+      var mail = feld("email");
+      if (mail && mail.value.trim() && fehler.indexOf("email") === -1 &&
+          !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(mail.value.trim())) {
+        fehler.push("email");
+      }
+      var einwilligung = feld("einwilligung");
+      if (einwilligung && !einwilligung.checked) fehler.push("einwilligung");
+
+      if (fehler.length) {
+        fehlerZeigen(fehler);
+        melde("formular_fehler", { dm_formular: kennung, dm_feld: fehler.join(","), dm_quelle: "seite" });
+        return;
+      }
+
+      var daten = {
+        name: feld("name").value.trim(),
+        email: feld("email").value.trim(),
+        phone: feld("tel").value.trim(),
+        company_website: "",
+        /* Der Endpoint verlangt dieses Feld; ohne es lehnt er die Anfrage
+           mit "Please tick the consent box so we may reply to you." ab. */
+        consent: true
+      };
+
+      if (!endpoint) { mailweg(daten); fertig("email"); return; }
+
+      sendet(true);
+      /* Normaler CORS-Modus, kein "no-cors": nur so lässt sich echter
+         Erfolg von einer Ablehnung des Servers unterscheiden. */
+      fetch(endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify(daten)
+      }).then(function (antwort) {
+        if (!antwort.ok) throw new Error("bad status");
+        sendet(false);
+        fertig("endpoint");
+      })["catch"](function () {
+        /* Lieber der Umweg über das Mailprogramm als eine verlorene Anfrage. */
+        sendet(false);
+        mailweg(daten);
+        fertig("email");
+      });
+    }, false);
+  });
 })();
 </script>
 
