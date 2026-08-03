@@ -1727,9 +1727,13 @@ html[data-version="einfach"] #einfach-wrap { display: block; }
   background: rgb(255 255 255 / 7%);
 }
 
+/* Das Portrait bringt seinen eigenen freigestellten Kreis mit (transparentes
+   PNG/WebP) — deshalb kein Hintergrund und kein Rahmen; der border-radius ist
+   nur die Absicherung, falls der JPG-Fallback greift. */
 .receipt-person img {
-  width: 56px;
-  height: 56px;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
   object-fit: cover;
   filter: grayscale(1);
 }
@@ -3294,7 +3298,7 @@ und Anfragen</h3>
         </div>
 
         <div class="receipt-person">
-          <picture><source srcset="assets/founder-raoul-56.webp" type="image/webp"><img src="assets/founder-raoul-56.jpg" alt="Raoul Müller, Digital Movement" width="56" height="56" loading="lazy" decoding="async"></picture>
+          <picture><source srcset="assets/founder-raoul-round.webp" type="image/webp"><img src="assets/founder-raoul-round.png" alt="Raoul Müller, Digital Movement" width="96" height="96" loading="lazy" decoding="async"></picture>
           <span>
             <strong>Raoul Müller</strong>
             <small>Digital Movement</small>
