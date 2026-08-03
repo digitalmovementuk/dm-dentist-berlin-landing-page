@@ -32,6 +32,13 @@
   var metaTag = document.querySelector('meta[name="dm-ga-measurement-id"]');
   var id = metaTag && metaTag.content ? metaTag.content.trim() : MEASUREMENT_ID;
 
+  /* Auf einem lokalen Testserver wird nichts gemessen. Ohne diese Sperre
+     landen Testaufrufe als echte Besuche in der Auswertung — genau das ist
+     am 3.8.2026 passiert. Die Seite verhält sich sonst unverändert. */
+  var lokal = /^(localhost|127\.0\.0\.1|\[::1\]|0\.0\.0\.0)$/.test(window.location.hostname) ||
+              window.location.protocol === "file:";
+  if (lokal) id = "";
+
   var embedded = false;
   try { embedded = window.self !== window.top; } catch (e) { embedded = true; }
 
