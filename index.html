@@ -25,62 +25,10 @@
 <meta name="description" content="Praxismarketing für Zahnärzte: Suchmaschinenoptimierung, Sichtbarkeit in KI-Suchen und Webdesign. Mehr Anfragen aus Google. Erstgespräch unverbindlich.">
 <meta name="google-site-verification" content="oAQgBShPN5QNNlEsI9u1B7Z_nuCaBG8G0XE5EXCxaDA" />
 <meta name="dm-lead-endpoint" content="https://leads.digitalmovement.uk/">
-<!-- Fill in once the GA4 property exists (Admin -> Data Streams -> Web -> Measurement ID). Blank = analytics stays off, no broken calls. -->
-<meta name="dm-ga-measurement-id" content="G-16ZG8GFH67">
-<script>
-/* GA4 loader, gated on the meta tag above so a missing ID is a no-op rather
-   than a broken script tag. Consent Mode v2 defaults to denied across both
-   categories, so nothing is stored until the visitor chooses in the banner
-   at the foot of the page. A previously saved choice is re-applied here,
-   before the tag loads, so returning visitors are measured (or not) from
-   their very first pageview. Two categories: "statistik" gates GA itself;
-   "marketing" gates ad_storage/ad_user_data/ad_personalization, which
-   nothing reads yet but will the moment a Google Ads or Meta tag is added —
-   visitors who already answered won't need to be asked again. */
-(function () {
-  var id = document.querySelector('meta[name="dm-ga-measurement-id"]').content;
-  if (!id) return;
-  window.dataLayer = window.dataLayer || [];
-  function gtag() { dataLayer.push(arguments); }
-  window.gtag = gtag;
-  gtag("consent", "default", {
-    ad_storage: "denied",
-    analytics_storage: "denied",
-    ad_user_data: "denied",
-    ad_personalization: "denied",
-    wait_for_update: 500
-  });
-
-  function parseConsent(raw) {
-    if (!raw) return null;
-    if (raw === "granted") return { statistik: true, marketing: false };
-    if (raw === "denied") return { statistik: false, marketing: false };
-    try {
-      var obj = JSON.parse(raw);
-      if (obj && typeof obj.statistik === "boolean" && typeof obj.marketing === "boolean") return obj;
-    } catch (e) {}
-    return null;
-  }
-
-  var raw = null;
-  try { raw = localStorage.getItem("dm-dental-consent"); } catch (e) {}
-  var saved = parseConsent(raw);
-  if (saved) {
-    gtag("consent", "update", {
-      analytics_storage: saved.statistik ? "granted" : "denied",
-      ad_storage: saved.marketing ? "granted" : "denied",
-      ad_user_data: saved.marketing ? "granted" : "denied",
-      ad_personalization: saved.marketing ? "granted" : "denied"
-    });
-  }
-  gtag("js", new Date());
-  gtag("config", id, { anonymize_ip: true });
-  var s = document.createElement("script");
-  s.async = true;
-  s.src = "https://www.googletagmanager.com/gtag/js?id=" + id;
-  document.head.appendChild(s);
-})();
-</script>
+<!-- Consent Mode v2 + GA4-Loader, geteilt von allen Seiten. Laedt gtag.js
+     erst nach Einwilligung; ohne Einwilligung geht nichts an Google. -->
+<script src="/assets/js/dm-consent.js"></script>
+<script src="/assets/js/dm-tracking.js" defer></script>
 
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
@@ -3460,15 +3408,14 @@ und Anfragen</h3>
     }
 
     function apply(state) {
-      try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {}
-      if (typeof gtag === "function") {
-        gtag("consent", "update", {
-          analytics_storage: state.statistik ? "granted" : "denied",
-          ad_storage: state.marketing ? "granted" : "denied",
-          ad_user_data: state.marketing ? "granted" : "denied",
-          ad_personalization: state.marketing ? "granted" : "denied"
-        });
+      // Speichern, Consent Mode aktualisieren, GA4 ueberhaupt erst laden und
+      // die Entscheidung in den iframe der einfachen Seite spiegeln — alles
+      // in assets/js/dm-consent.js, damit jede Seite dieselbe Logik nutzt.
+      if (window.dmConsent) {
+        window.dmConsent.set(state, "banner-startseite");
+        return;
       }
+      try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {}
     }
 
     function setPanelCheckboxes(state) {
